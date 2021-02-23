@@ -11,6 +11,6 @@ This module may not be suitable for everyone, but I find myselef not needing all
 * Shrinked player list and fonts
 * Shrinked icon size and position of the left-side tools, and moved up
 
-![Example Image](./example.jpg)
+![Example Image](./example2.jpg)
 
 Any feedback welcome
