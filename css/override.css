@@ -1,0 +1,32 @@
+#logo { 
+  visibility: hidden;
+}
+
+#hotbar {
+  visibility: hidden;
+}
+
+#navigation {
+  visibility: hidden;
+}
+
+#players {
+  visibility: hidden;
+}
+
+#controls {
+  top: 25px;
+  left: 0px;
+}
+
+#controls .control-tools {
+  left: 38px;
+}
+
+#controls .scene-control, #controls .control-tool {
+  width: 18px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 21px;
+  margin: 2px 0px 4px;
+}

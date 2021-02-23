@@ -1,0 +1,13 @@
+{
+	"name": "minimal-ui",
+	"title": "Minimal UI",
+	"author": "JeansenVaars#2857",
+	"description": "Minimalistic UI aggressivelly hides or shrinks non-essential UI hud elements from the screen.",
+	"version": "0.0.1",
+	"minimumCoreVersion": "0.7.9",
+	"compatibleCoreVersion": "0.7.9",
+	"styles": ["/css/override.css"],
+	"url": "https://github.com/saif-ellafi/foundryvtt-minimal-ui.git",
+	"manifest": "https://raw.githubusercontent.com/Sky-Captain-13/foundry/master/luminous/luminous/module.json",
+	"download": "https://github.com/Sky-Captain-13/foundry/raw/master/luminous/luminous.zip"
+}
