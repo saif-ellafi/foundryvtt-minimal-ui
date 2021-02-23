@@ -5,12 +5,12 @@ Minimalistic UI aggressivelly hides or shrinks non-essential UI hud elements fro
 
 This module may not be suitable for everyone, but I find myselef not needing all of the default elements in my games.
 
-* Hidden players list
 * Hidden Foundry Logo
-* Hidden Macro Bar
-* Hidden Scene Navigation panel (GM can use it normally from Scenes side-panel)
-* Shrinked icon size and position of the left-side tools
+* Hidden Macro Bar (If you use macro bar, then this mod is not for you)
+* Hidden Scene Navigation panel (Notice you can no longer allow player navigation)
+* Shrinked player list and fonts
+* Shrinked icon size and position of the left-side tools, and moved up
 
-![Example Image](https://github.com/saif-ellafi/foundryvtt-minimal-ui/blob/main/example.jpg?raw=true)
+![Example Image](./example.jpg)
 
 Any feedback welcome
