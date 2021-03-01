@@ -14,6 +14,6 @@ space on screen to focus more on the game.
 * Shrinked player list and fonts
 * Shrinked icon size and position of the left-side tools, and moved up
 
-![Example Image](./example3.jpg)
+![Example Image](./example4.jpg)
 
 Any feedback welcome
