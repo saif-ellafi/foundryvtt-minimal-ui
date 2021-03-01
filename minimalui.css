@@ -3,7 +3,7 @@
 }
 
 #hotbar {
-  visibility: hidden;
+  left: 500px;
 }
 
 #navigation {
@@ -11,8 +11,8 @@
 }
 
 #players {
-    width: 150px;
-    font-size: 12px;
+  width: 150px;
+  font-size: 12px;
 }
 
 #controls {

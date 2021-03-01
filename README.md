@@ -9,8 +9,8 @@ and are willing to navigate through the Scene Directory instead, may appreciate 
 space on screen to focus more on the game.
 
 * Hidden Foundry Logo
-* Hidden Macro Bar (If you use macro bar, then this mod is not for you)
 * Hidden Scene Navigation panel (Notice you can no longer allow player navigation unless DF Scene Enhancement)
+* Macro Bar collapsed by default and centered in screen
 * Shrinked player list and fonts
 * Shrinked icon size and position of the left-side tools, and moved up
 
