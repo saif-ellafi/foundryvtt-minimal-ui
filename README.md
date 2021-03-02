@@ -2,7 +2,7 @@
 
 Reduces the size of Foundry interface and allows hiding or collapsing specific parts of it.
 
-This includes hiding Foundry's Logo, Scene Navigation and Macro Bar.
+This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Bar.
 
 Settings allow for customizing which components to hide or to collapse by default.
 
