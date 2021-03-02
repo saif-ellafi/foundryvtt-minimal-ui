@@ -1,10 +1,25 @@
-#logo { 
+:root {
+  --visinav: hidden;
+  --visiplay: hidden;
+  --visihotbar: hidden;
+}
+
+#logo {
   visibility: hidden;
+}
+
+#navigation {
+  visibility: var(--visinav);
+}
+
+#hotbar {
+  visibility: var(--visihotbar);
 }
 
 #players {
   width: 150px;
   font-size: 12px;
+  visibility: var(--visiplay);
 }
 
 #controls {

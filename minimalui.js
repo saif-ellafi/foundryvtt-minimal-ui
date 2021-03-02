@@ -3,21 +3,11 @@ function collapse(toggleId) {
   target.click();
 }
 
-function hideElement(elementId) {
-  let target = document.getElementById(elementId);
-  target.style.setProperty('visibility', 'hidden');
-}
-
-function showElement(elementId) {
-  let target = document.getElementById(elementId);
-  target.style.setProperty('visibility', 'visible');
-}
-
 Hooks.on('init', () => {
   game.settings.register('minimal-ui', 'sceneNavigation', {
     name: "Scene Navigation",
     hint: "Customize scene navigation UI. Consider 'DF Scene Enhancement' module when this option is set to hidden",
-    scope: 'client',
+    scope: 'world',
     config: true,
     type: String,
     choices: {
@@ -26,26 +16,15 @@ Hooks.on('init', () => {
       "hidden": "Hide Completely"
     },
     default: "collapsed",
-    restricted: true,
     onChange: value => {
-      switch(value) {
-        case 'shown':
-          showElement('navigation');
-          break;
-        case 'collapsed':
-          showElement('navigation');
-          break;
-        case 'hidden':
-          hideElement('navigation');
-          break;
-      }
+      window.location.reload()
     }
   });
 
   game.settings.register('minimal-ui', 'macroBar', {
     name: "Macro Bar",
     hint: "Customize Macro Bar UI",
-    scope: 'client',
+    scope: 'world',
     config: true,
     type: String,
     choices: {
@@ -54,26 +33,15 @@ Hooks.on('init', () => {
       "hidden": "Hide Completely"
     },
     default: "collapsed",
-    restricted: true,
     onChange: value => {
-      switch(value) {
-        case 'shown':
-          showElement('hotbar');
-          break;
-        case 'collapsed':
-          showElement('hotbar');
-          break;
-        case 'hidden':
-          hideElement('hotbar');
-          break;
-      }
+      window.location.reload()
     }
   });
 
   game.settings.register('minimal-ui', 'playerList', {
     name: "Player List",
     hint: "Customize Player List UI",
-    scope: 'client',
+    scope: 'world',
     config: true,
     type: String,
     choices: {
@@ -81,47 +49,43 @@ Hooks.on('init', () => {
       "hidden": "Hide Completely"
     },
     default: "shown",
-    restricted: true,
     onChange: value => {
-      switch(value) {
-        case 'shown':
-          showElement('players');
-          break;
-        case 'hidden':
-          hideElement('players');
-          break;
-      }
+      window.location.reload()
     }
   });
 });
 
-Hooks.once('ready', async function() {
+Hooks.on('ready', async function() {
+
+  let rootStyle = document.querySelector(':root').style;
 
   switch(game.settings.get('minimal-ui', 'sceneNavigation')) {
     case 'collapsed': {
+      rootStyle.setProperty('--visinav', 'visible');
       collapse("nav-toggle");
       break;
     }
-    case 'hidden': {
-      hideElement("navigation");
+    case 'shown': {
+      rootStyle.setProperty('--visinav', 'visible');
       break;
     }
   }
 
   switch(game.settings.get('minimal-ui', 'macroBar')) {
     case 'collapsed': {
+      rootStyle.setProperty('--visihotbar', 'visible');
       collapse("bar-toggle");
       break;
     }
-    case 'hidden': {
-      hideElement("hotbar");
+    case 'shown': {
+      rootStyle.setProperty('--visihotbar', 'visible');
       break;
     }
   }
 
   switch(game.settings.get('minimal-ui', 'playerList')) {
-    case 'hidden': {
-      hideElement("players");
+    case 'shown': {
+      rootStyle.setProperty('--visiplay', 'visible');
       break;
     }
   }
