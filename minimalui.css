@@ -2,6 +2,8 @@
   --visinav: hidden;
   --visiplay: hidden;
   --visihotbar: hidden;
+  --leftbarpos: -8px;
+  --submenustyle: contents;
 }
 
 #logo {
@@ -23,7 +25,7 @@
 }
 
 #controls {
-  top: -8px;
+  top: var(--leftbarpos);
   left: 0px;
 }
 
@@ -31,10 +33,27 @@
   left: 40px;
 }
 
+#controls .scene-control.active, #controls .scene-control:hover {
+  border: 1px solid red;
+  color: orange;
+}
+
+#controls .control-tool.active, #controls .control-tool:hover {
+  border: 0px;
+  color: yellow;
+}
+
 #controls .scene-control, #controls .control-tool {
-  width: 18px;
-  height: 20px;
-  font-size: 12px;
-  line-height: 21px;
-  margin: 2px 0px 4px;
+  width: 25px;
+  height: 28px;
+  font-size: 15px;
+  line-height: 30px;
+  margin: 2px 0px 0px;
+  box-sizing: content-box;
+  border-radius: 5px;
+  border-width: 0px;
+}
+
+#controls .active .control-tools {
+  display: var(--submenustyle);
 }

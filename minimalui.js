@@ -1,6 +1,8 @@
 function collapse(toggleId) {
   let target = document.getElementById(toggleId);
-  target.click();
+  if (target) {
+    target.click();
+  }
 }
 
 Hooks.on('init', () => {
@@ -53,6 +55,40 @@ Hooks.on('init', () => {
       window.location.reload()
     }
   });
+
+  game.settings.register('minimal-ui', 'sidePanelPosition', {
+    name: "Left panel button position",
+    hint: "Choose favorite side panel position",
+    scope: 'world',
+    config: true,
+    type: String,
+    choices: {
+      "top": "Top Left",
+      "center": "Center Left",
+      "bottom": "Bottom Left"
+    },
+    default: "center",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+
+  game.settings.register('minimal-ui', 'sidePanelMenuStyle', {
+    name: "Left panel menu style",
+    hint: "Choose whether to expand to the right or keep a single column of buttons",
+    scope: 'world',
+    config: true,
+    type: String,
+    choices: {
+      "default": "Controls to the right",
+      "column": "Keep a single column"
+    },
+    default: "column",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+
 });
 
 Hooks.on('ready', async function() {
@@ -86,6 +122,37 @@ Hooks.on('ready', async function() {
   switch(game.settings.get('minimal-ui', 'playerList')) {
     case 'shown': {
       rootStyle.setProperty('--visiplay', 'visible');
+      break;
+    }
+  }
+});
+
+Hooks.on('renderSceneControls', async function() {
+
+  let rootStyle = document.querySelector(':root').style;
+
+  switch(game.settings.get('minimal-ui', 'sidePanelPosition')) {
+    case 'top': {
+      rootStyle.setProperty('--leftbarpos', '-8px');
+      break;
+    }
+    case 'center': {
+      rootStyle.setProperty('--leftbarpos', '250px');
+      break;
+    }
+    case 'bottom': {
+      rootStyle.setProperty('--leftbarpos', '500px');
+      break;
+    }
+  }
+
+  switch(game.settings.get('minimal-ui', 'sidePanelMenuStyle')) {
+    case 'default': {
+      rootStyle.setProperty('--submenustyle', 'block');
+      break;
+    }
+    case 'column': {
+      rootStyle.setProperty('--submenustyle', 'contents');
       break;
     }
   }
