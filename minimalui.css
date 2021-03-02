@@ -2,14 +2,6 @@
   visibility: hidden;
 }
 
-#hotbar {
-  left: 500px;
-}
-
-#navigation {
-  visibility: hidden;
-}
-
 #players {
   width: 150px;
   font-size: 12px;

@@ -1,19 +1,25 @@
 ## Minimal UI for FoundryVTT
 
-Minimalistic UI. Aggressivelly hides and shrinks non-essential UI hud elements from the screen.
-This includes hiding Foundry's Logo, Scene Navigation and Macro Bar.
-For Scene Navigation, I Highly recommend to combine with DF Scene Enhancement module by flamewave000.
+Reduces the size of Foundry interface and allows hiding or collapsing specific parts of it.
 
-This module may not be suitable for everyone, but those that don't need Macro Bar 
-and are willing to navigate through the Scene Directory instead, may appreciate the 
-space on screen to focus more on the game.
+This includes hiding Foundry's Logo, Scene Navigation and Macro Bar.
+
+Settings allow for customizing which components to hide or to collapse by default.
+
+For those who hide Scene Navigation, I Highly recommend combining with DF Scene Enhancement module by @flamewave000.
+
+This module may not be suitable for everyone, but some may appreciate the space on screen gained to focus on the game.
+
+Changes are very minimal and do not have any impact on performance whatsoever.
+Should not affect or impact other UI modules.
 
 * Hidden Foundry Logo
-* Hidden Scene Navigation panel (Notice you can no longer allow player navigation unless DF Scene Enhancement)
-* Macro Bar collapsed by default and centered in screen
-* Shrinked player list and fonts
-* Shrinked icon size and position of the left-side tools, and moved up
+* Allows hiding Players List (Default: Visible)
+* Allows Hiding or having the Macro Bar collapsed (Default: Collapsed)
+* Allows Hiding or having the scene navigation collapsed (Default: Collapsed)
+* Shrinked player list, icon and font sizes on the main interface
+* Shrinked icon size and position of the left-side tools, and moved up to save space
 
-![Example Image](./example4.jpg)
+![Example Image](./example5.jpg)
 
 Any feedback welcome
