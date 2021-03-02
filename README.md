@@ -20,6 +20,10 @@ Should not affect or impact other UI modules.
 * Shrinked player list, icon and font sizes on the main interface
 * Shrinked icon size and position of the left-side tools, and moved up to save space
 
+### ToDo:
+* Add an extra option for Players List to have it visible but completely collapsed
+* More fine-tuning of settings in regards of space and basic UI elements 
+
 ![Example Image](./example5.jpg)
 
 Any feedback welcome
