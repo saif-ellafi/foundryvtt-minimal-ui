@@ -7,6 +7,7 @@
   --submenustyle: contents;
   --hotbaranim1: 0px;
   --hotbaranim2: 1px
+  --navistart: 10px;
 }
 
 #logo {
@@ -14,7 +15,7 @@
 }
 
 #navigation {
-  left: 10px;
+  left: var(--navistart);
   visibility: var(--visinav);
 }
 

@@ -1,3 +1,6 @@
+### 0.1.0
+* Bugfix: Overlapping scene navigation when side control was on Top Left
+
 ### 0.0.9
 * Enhancement: Added Macro Auto-Hide mode with animation
 * Enhancement: Added some shadow around the Macro Bar

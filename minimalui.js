@@ -164,18 +164,22 @@ Hooks.on('renderSceneControls', async function() {
   switch(game.settings.get('minimal-ui', 'sidePanelPosition')) {
     case 'top': {
       rootStyle.setProperty('--leftbarpos', '0vmin');
+      rootStyle.setProperty('--navistart', '45px');
       break;
     }
     case 'center': {
       rootStyle.setProperty('--leftbarpos', '20vmin');
+      rootStyle.setProperty('--navistart', '10px');
       break;
     }
     case 'lower': {
       rootStyle.setProperty('--leftbarpos', '30vmin');
+      rootStyle.setProperty('--navistart', '10px');
       break;
     }
     case 'bottom': {
       rootStyle.setProperty('--leftbarpos', '40vmin');
+      rootStyle.setProperty('--navistart', '10px');
       break;
     }
   }
