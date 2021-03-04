@@ -2,8 +2,11 @@
   --visinav: hidden;
   --visiplay: hidden;
   --visihotbar: hidden;
+  --macrobarpos: 350px;
   --leftbarpos: -8px;
   --submenustyle: contents;
+  --hotbaranim1: 0px;
+  --hotbaranim2: 1px
 }
 
 #logo {
@@ -15,19 +18,38 @@
   visibility: var(--visinav);
 }
 
-#hotbar {
-  left: 170px;
+#hotbar:hover {
   bottom: 0px;
+  transition: 0.5s;
+}
+
+#hotbar {
+  left: var(--macrobarpos);
+  bottom: var(--hotbaranim1);
   visibility: var(--visihotbar);
+  transition: 0.05s ease-out 0.5s;
 }
 
 #hotbar .bar-controls {
   background: #191919;
 }
 
+#hotbar #macro-list:hover {
+  border-top: 1px solid #ff4900bd;
+  box-shadow: 0px 0px 10px 2px #ff4900bd;
+  transition: 0.5s;
+}
+
+#hotbar #macro-list {
+  border-top: var(--hotbaranim2) solid #782e2252;
+  box-shadow: 0px 0px 10px 2px #ff4900bd;
+  transition: 0.05s ease-out 0.5s;
+}
+
 #players:hover {
   width: 150px;
   font-size: 12px;
+  transition: 0.05s;
 }
 
 #players {
@@ -35,7 +57,6 @@
   bottom: 0px;
   font-size: 0px;
   visibility: var(--visiplay);
-
 }
 
 #players ol li.player {
@@ -43,7 +64,7 @@
 }
 
 #players h3 {
-  margin: 0px;
+  margin: 0px -2px;
   border-bottom: 0px;
 }
 

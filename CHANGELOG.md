@@ -1,3 +1,8 @@
+### 0.0.9
+* Enhancement: Added Macro Auto-Hide mode with animation
+* Enhancement: Added some shadow around the Macro Bar
+* Enhancement: Macro Bar may be repositioned by settings
+
 ### 0.0.8
 * Enhancement: Scenes now pushed to the left and reduced based size
 * Enhancement: Players List now show color dots and full details on mouse-over

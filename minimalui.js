@@ -31,10 +31,23 @@ Hooks.on('init', () => {
     type: String,
     choices: {
       "shown": "Show Normally",
+      "autohide": "Slightly hidden, mouse-over to bring it up",
       "collapsed": "Start Collapsed by Default",
       "hidden": "Hide Completely"
     },
-    default: "collapsed",
+    default: "autohide",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+
+  game.settings.register('minimal-ui', 'macroBarPosition', {
+    name: "Macro Bar Position",
+    hint: "Reference at 350. Minimum is 170. Increase value to move it to right. Reduce to the left.",
+    scope: 'world',
+    config: true,
+    type: Number,
+    default: 350,
     onChange: value => {
       window.location.reload()
     }
@@ -114,10 +127,23 @@ Hooks.on('ready', async function() {
       collapse("bar-toggle");
       break;
     }
+    case 'autohide': {
+      rootStyle.setProperty('--visihotbar', 'visible');
+      rootStyle.setProperty('--hotbaranim1', '-45px');
+      rootStyle.setProperty('--hotbaranim2', '10px');
+      break;
+    }
     case 'shown': {
       rootStyle.setProperty('--visihotbar', 'visible');
       break;
     }
+  }
+
+  let mbPos = game.settings.get('minimal-ui', 'macroBarPosition');
+  if (mbPos < 170) {
+    rootStyle.setProperty('--macrobarpos', '170px');
+  } else {
+    rootStyle.setProperty('--macrobarpos', String(mbPos)+'px');
   }
 
   switch(game.settings.get('minimal-ui', 'playerList')) {
