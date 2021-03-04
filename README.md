@@ -7,17 +7,15 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 Various settings allow for tweaking to personal tastes although the premise is simplicity.
 
 * Hidden Foundry Logo
+* Scenes, Player list and left side controls customized for minimalism 
 * Allows hiding Players List (Default: Visible)
 * Allows Hiding or having the Macro Bar collapsed (Default: Collapsed)
 * Allows Hiding or having the scene navigation collapsed (Default: Collapsed)
-* Shrinked player list, icon and font sizes on the main interface
 * Shrinked icon size and position of the left-side controls as well as vertical expansion
 
 ### ToDo:
-* Add an extra option for Players List to have it visible but completely collapsed
-* More fine-tuning of settings in regards of space and basic UI elements
+* More user-based settings
 * Customized macro hotbar size
+* Any suggestions welcome
 
-![Example Image](./example6.jpg)
-
-Any feedback welcome
+![Example Image](./example8.jpg)

@@ -11,22 +11,59 @@
 }
 
 #navigation {
+  left: 10px;
   visibility: var(--visinav);
 }
 
 #hotbar {
+  left: 170px;
+  bottom: 0px;
   visibility: var(--visihotbar);
 }
 
-#players {
+#hotbar .bar-controls {
+  background: #191919;
+}
+
+#players:hover {
   width: 150px;
   font-size: 12px;
+}
+
+#players {
+  width: 30px;
+  bottom: 0px;
+  font-size: 0px;
   visibility: var(--visiplay);
+
+}
+
+#players ol li.player {
+  padding: 1px 6px;
+}
+
+#players h3 {
+  margin: 0px;
+  border-bottom: 0px;
+}
+
+#navigation .nav-item {
+  line-height: 20px;
+}
+
+#navigation #nav-toggle {
+  height: 24px;
+  background: #292929bd;
+}
+
+#navigation #scene-list .scene ul.scene-players {
+  top: 16px;
 }
 
 #controls {
-  top: var(--leftbarpos);
   left: 0px;
+  top: 0px;
+  margin-top: var(--leftbarpos);
 }
 
 #controls .control-tools {

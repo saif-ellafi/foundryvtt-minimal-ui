@@ -58,13 +58,14 @@ Hooks.on('init', () => {
 
   game.settings.register('minimal-ui', 'sidePanelPosition', {
     name: "Left panel button position",
-    hint: "Choose favorite side panel position",
+    hint: "Choose favorite side panel position. Find the best for you, as it depends on the resolution and pixel density",
     scope: 'world',
     config: true,
     type: String,
     choices: {
       "top": "Top Left",
-      "center": "Center Left",
+      "center": "Center Upper Left",
+      "lower": "Center Lower Left",
       "bottom": "Bottom Left"
     },
     default: "center",
@@ -125,6 +126,9 @@ Hooks.on('ready', async function() {
       break;
     }
   }
+
+  $("#players")[0].val = "";
+
 });
 
 Hooks.on('renderSceneControls', async function() {
@@ -133,15 +137,19 @@ Hooks.on('renderSceneControls', async function() {
 
   switch(game.settings.get('minimal-ui', 'sidePanelPosition')) {
     case 'top': {
-      rootStyle.setProperty('--leftbarpos', '-8px');
+      rootStyle.setProperty('--leftbarpos', '0vmin');
       break;
     }
     case 'center': {
-      rootStyle.setProperty('--leftbarpos', '250px');
+      rootStyle.setProperty('--leftbarpos', '20vmin');
+      break;
+    }
+    case 'lower': {
+      rootStyle.setProperty('--leftbarpos', '30vmin');
       break;
     }
     case 'bottom': {
-      rootStyle.setProperty('--leftbarpos', '500px');
+      rootStyle.setProperty('--leftbarpos', '40vmin');
       break;
     }
   }
