@@ -1,4 +1,4 @@
-### 0.0.7
+### 0.0.8
 * Enhancement: Scenes now pushed to the left and reduced based size
 * Enhancement: Players List now show color dots and full details on mouse-over
 * Bugfix: Adjusted bottom position controls
