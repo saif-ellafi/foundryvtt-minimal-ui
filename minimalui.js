@@ -69,6 +69,22 @@ Hooks.on('init', () => {
     }
   });
 
+  game.settings.register('minimal-ui', 'sidePanelSize', {
+    name: "Left panel size",
+    hint: "Choose favorite side panel size.",
+    scope: 'world',
+    config: true,
+    type: String,
+    choices: {
+      "small": "Small",
+      "standard": "Standard"
+    },
+    default: "small",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+
   game.settings.register('minimal-ui', 'sidePanelPosition', {
     name: "Left panel button position",
     hint: "Choose favorite side panel position. Find the best for you, as it depends on the resolution and pixel density",
@@ -161,10 +177,29 @@ Hooks.on('renderSceneControls', async function() {
 
   let rootStyle = document.querySelector(':root').style;
 
+  switch(game.settings.get('minimal-ui', 'sidePanelSize')) {
+    case 'small': {
+      $("#controls .scene-control, #controls .control-tool").addClass('small-left-panel');
+      $("#controls .control-tools").css({'left': '40px'})
+    }
+  }
+
   switch(game.settings.get('minimal-ui', 'sidePanelPosition')) {
     case 'top': {
       rootStyle.setProperty('--leftbarpos', '0vmin');
-      rootStyle.setProperty('--navistart', '45px');
+      if ((game.settings.get('minimal-ui', 'sidePanelSize') == 'small')) {
+        if (game.settings.get('minimal-ui', 'sidePanelMenuStyle') == 'column') {
+          rootStyle.setProperty('--navistart', '45px');
+        } else {
+          rootStyle.setProperty('--navistart', '75px');
+        }
+      } else {
+        if (game.settings.get('minimal-ui', 'sidePanelMenuStyle') == 'column') {
+          rootStyle.setProperty('--navistart', '55px');
+        } else {
+          rootStyle.setProperty('--navistart', '100px');
+        }
+      }
       break;
     }
     case 'center': {

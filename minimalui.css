@@ -88,10 +88,6 @@
   margin-top: var(--leftbarpos);
 }
 
-#controls .control-tools {
-  left: 40px;
-}
-
 #controls .scene-control.active, #controls .scene-control:hover {
   border: 1px solid red;
   color: orange;
@@ -103,6 +99,10 @@
 }
 
 #controls .scene-control, #controls .control-tool {
+  border: 0px solid #000;
+}
+
+#controls > .small-left-panel, #controls > .small-left-panel .small-left-panel {
   width: 25px;
   height: 28px;
   font-size: 15px;
