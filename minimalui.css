@@ -9,6 +9,8 @@
   --hotbaranim2: 1px;
   --navistart: 10px;
   --leftbarstart: 0px;
+  --leftbarstartsub: -50px;
+  --submenuhover: 60px
 }
 
 #logo {
@@ -125,11 +127,11 @@
 
 #controls .active .control-tools {
   display: var(--submenustyle);
-  left: -50px;
+  left: var(--leftbarstartsub);
   transition: 0.5s;
 }
 
 #controls:hover .active .control-tools {
   display: var(--submenustyle);
-  left: 65px;
+  left: var(--submenuhover);
 }

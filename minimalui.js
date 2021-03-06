@@ -13,6 +13,11 @@ function lockControls(unlock) {
     controlsLocked = true;
     controlsLastPos = rootStyle.getPropertyValue('--leftbarstart');
     rootStyle.setProperty('--leftbarstart', '0px');
+    if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
+      rootStyle.setProperty('--leftbarstartsub', '55px');
+    } else {
+      rootStyle.setProperty('--leftbarstartsub', '65px');
+    }
     $("#sidebar-lock > i").removeClass("fa-lock-open");
     $("#sidebar-lock > i").addClass("fa-lock");
   } else if (unlock) {
@@ -20,6 +25,12 @@ function lockControls(unlock) {
     $("#sidebar-lock > i").removeClass("fa-lock");
     $("#sidebar-lock > i").addClass("fa-lock-open");
     rootStyle.setProperty('--leftbarstart', controlsLastPos);
+    if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
+      rootStyle.setProperty('--leftbarstartsub', '-50px');
+    } else {
+      rootStyle.setProperty('--leftbarstartsub', '-50px');
+    }
+
     controlsLastPos = controlsLastPos;
   }
 }
@@ -219,6 +230,11 @@ Hooks.on('renderSceneControls', async function() {
       } else if (!controlsLocked) {
         rootStyle.setProperty('--leftbarstart', '-52px');
       }
+      if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
+        rootStyle.setProperty('--submenuhover', '55px');
+      } else {
+        rootStyle.setProperty('--submenuhover', '65px');
+      }
       break;
     }
   }
@@ -226,7 +242,6 @@ Hooks.on('renderSceneControls', async function() {
   switch(game.settings.get('minimal-ui', 'sidePanelSize')) {
     case 'small': {
       $("#controls .scene-control, #controls .control-tool").addClass('small-left-panel');
-      $("#controls .control-tools").css({'left': '40px'})
     }
   }
 
@@ -278,7 +293,13 @@ Hooks.on('renderSceneControls', async function() {
 
   let locked = controlsLocked ? 'fa-lock' : 'fa-lock-open';
 
-  $("#controls > li.scene-control").on('click', function() {lockControls(false)});
+  $("#controls > li.scene-control").on('click', function() {
+    lockControls(false)
+    $("#controls > li.scene-control.active > ol > li").on('click', function() {lockControls(false)});
+  });
+  $("#controls > li.scene-control.active > ol > li").on('click', function() {
+    lockControls(false)
+  });
 
   // To consider: Hide after selecting sub-tool?
   // $("#controls > li.scene-control.active > ol > li.control-tool").on('click', function() {lockControls(true)});

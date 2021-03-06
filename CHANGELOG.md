@@ -1,3 +1,7 @@
+### 0.2.1
+* Bugfix: Clicking on submenus directly now locks the left controls
+* Bugfix: Improved compatibility across combinations of settings
+
 ### 0.2.0
 * Enhancement: Left control bar may now be auto-hidden and shown on mouse over
 * Enhancement: Left control bar now supports small or big size
