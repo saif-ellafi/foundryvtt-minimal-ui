@@ -1,3 +1,8 @@
+### 0.2.0
+* Enhancement: Left control bar may now be auto-hidden and shown on mouse over
+* Enhancement: Left control bar now supports small or big size
+* Bugfix: Ignored some configuration combinations that could lead to offsets
+
 ### 0.1.0
 * Bugfix: Overlapping scene navigation when side control was on Top Left
 

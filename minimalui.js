@@ -5,6 +5,25 @@ function collapse(toggleId) {
   }
 }
 
+var controlsLocked = false;
+var controlsLastPos = '0px';
+function lockControls(unlock) {
+  let rootStyle = document.querySelector(':root').style;
+  if (!controlsLocked) {
+    controlsLocked = true;
+    controlsLastPos = rootStyle.getPropertyValue('--leftbarstart');
+    rootStyle.setProperty('--leftbarstart', '0px');
+    $("#sidebar-lock > i").removeClass("fa-lock-open");
+    $("#sidebar-lock > i").addClass("fa-lock");
+  } else if (unlock) {
+    controlsLocked = false;
+    $("#sidebar-lock > i").removeClass("fa-lock");
+    $("#sidebar-lock > i").addClass("fa-lock-open");
+    rootStyle.setProperty('--leftbarstart', controlsLastPos);
+    controlsLastPos = controlsLastPos;
+  }
+}
+
 Hooks.on('init', () => {
   game.settings.register('minimal-ui', 'sceneNavigation', {
     name: "Scene Navigation",
@@ -64,6 +83,22 @@ Hooks.on('init', () => {
       "hidden": "Hide Completely"
     },
     default: "shown",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+
+  game.settings.register('minimal-ui', 'sidePanel', {
+    name: "Left panel behavior",
+    hint: "Choose whether left panel is always visible or auto hides",
+    scope: 'world',
+    config: true,
+    type: String,
+    choices: {
+      "always": "Always Visible",
+      "autohide": "Auto-Hide"
+    },
+    default: "autohide",
     onChange: value => {
       window.location.reload()
     }
@@ -177,6 +212,17 @@ Hooks.on('renderSceneControls', async function() {
 
   let rootStyle = document.querySelector(':root').style;
 
+  switch(game.settings.get('minimal-ui', 'sidePanel')) {
+    case 'autohide': {
+      if (!controlsLocked && game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
+        rootStyle.setProperty('--leftbarstart', '-40px');
+      } else if (!controlsLocked) {
+        rootStyle.setProperty('--leftbarstart', '-52px');
+      }
+      break;
+    }
+  }
+
   switch(game.settings.get('minimal-ui', 'sidePanelSize')) {
     case 'small': {
       $("#controls .scene-control, #controls .control-tool").addClass('small-left-panel');
@@ -184,35 +230,35 @@ Hooks.on('renderSceneControls', async function() {
     }
   }
 
-  switch(game.settings.get('minimal-ui', 'sidePanelPosition')) {
-    case 'top': {
+  switch(true) {
+    case (game.settings.get('minimal-ui', 'sidePanelPosition') == 'top' || (game.settings.get('minimal-ui', 'sidePanelSize') == 'standard' && game.settings.get('minimal-ui', 'sidePanelMenuStyle') == 'column')): {
       rootStyle.setProperty('--leftbarpos', '0vmin');
-      if ((game.settings.get('minimal-ui', 'sidePanelSize') == 'small')) {
-        if (game.settings.get('minimal-ui', 'sidePanelMenuStyle') == 'column') {
-          rootStyle.setProperty('--navistart', '45px');
-        } else {
-          rootStyle.setProperty('--navistart', '75px');
-        }
-      } else {
+      if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
         if (game.settings.get('minimal-ui', 'sidePanelMenuStyle') == 'column') {
           rootStyle.setProperty('--navistart', '55px');
         } else {
-          rootStyle.setProperty('--navistart', '100px');
+          rootStyle.setProperty('--navistart', '85px');
+        }
+      } else {
+        if (game.settings.get('minimal-ui', 'sidePanelMenuStyle') == 'column') {
+          rootStyle.setProperty('--navistart', '65px');
+        } else {
+          rootStyle.setProperty('--navistart', '110px');
         }
       }
       break;
     }
-    case 'center': {
+    case (game.settings.get('minimal-ui', 'sidePanelPosition') == 'center'): {
       rootStyle.setProperty('--leftbarpos', '20vmin');
       rootStyle.setProperty('--navistart', '10px');
       break;
     }
-    case 'lower': {
+    case (game.settings.get('minimal-ui', 'sidePanelPosition') ==  'lower'): {
       rootStyle.setProperty('--leftbarpos', '30vmin');
       rootStyle.setProperty('--navistart', '10px');
       break;
     }
-    case 'bottom': {
+    case (game.settings.get('minimal-ui', 'sidePanelPosition') ==  'bottom'): {
       rootStyle.setProperty('--leftbarpos', '40vmin');
       rootStyle.setProperty('--navistart', '10px');
       break;
@@ -230,5 +276,20 @@ Hooks.on('renderSceneControls', async function() {
     }
   }
 
-})
+  let locked = controlsLocked ? 'fa-lock' : 'fa-lock-open';
 
+  $("#controls > li.scene-control").on('click', function() {lockControls(false)});
+
+  // To consider: Hide after selecting sub-tool?
+  // $("#controls > li.scene-control.active > ol > li.control-tool").on('click', function() {lockControls(true)});
+
+  if (game.settings.get('minimal-ui', 'sidePanel') == 'autohide') {
+    $("#controls").append(`<li id="sidebar-lock" class="scene-control" title="Pin Sidebar">
+                                 <i class="fas ${locked}" style="color: red" onclick="lockControls(true)"></i>
+                             </li>`);
+    if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
+      $("#controls > #sidebar-lock").addClass("small-left-panel");
+    }
+  }
+
+})
