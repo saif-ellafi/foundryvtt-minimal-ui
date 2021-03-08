@@ -14,9 +14,9 @@ function lockControls(unlock) {
     controlsLastPos = rootStyle.getPropertyValue('--leftbarstart');
     rootStyle.setProperty('--leftbarstart', '0px');
     if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
-      rootStyle.setProperty('--leftbarstartsub', '55px');
+      rootStyle.setProperty('--leftbarstartsub', '50px');
     } else {
-      rootStyle.setProperty('--leftbarstartsub', '65px');
+      rootStyle.setProperty('--leftbarstartsub', '60px');
     }
     $("#sidebar-lock > i").removeClass("fa-lock-open");
     $("#sidebar-lock > i").addClass("fa-lock");
@@ -25,10 +25,9 @@ function lockControls(unlock) {
     $("#sidebar-lock > i").removeClass("fa-lock");
     $("#sidebar-lock > i").addClass("fa-lock-open");
     rootStyle.setProperty('--leftbarstart', controlsLastPos);
+    rootStyle.setProperty('--leftbarstartsub', '-50px');
     if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
-      rootStyle.setProperty('--leftbarstartsub', '-50px');
-    } else {
-      rootStyle.setProperty('--leftbarstartsub', '-50px');
+      rootStyle.setProperty('--leftbarpad', '20px');
     }
 
     controlsLastPos = controlsLastPos;
@@ -223,17 +222,24 @@ Hooks.on('renderSceneControls', async function() {
 
   let rootStyle = document.querySelector(':root').style;
 
+  if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
+    rootStyle.setProperty('--leftbarstartsub', '50px');
+    rootStyle.setProperty('--submenuhover', '50px');
+    if (game.settings.get('minimal-ui', 'sidePanel') == 'autohide') {
+      rootStyle.setProperty('--leftbarpad', '20px');
+    }
+  } else {
+    rootStyle.setProperty('--leftbarstartsub', '60px');
+    rootStyle.setProperty('--submenuhover', '60px');
+  }
+
   switch(game.settings.get('minimal-ui', 'sidePanel')) {
     case 'autohide': {
-      if (!controlsLocked && game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
-        rootStyle.setProperty('--leftbarstart', '-40px');
-      } else if (!controlsLocked) {
-        rootStyle.setProperty('--leftbarstart', '-52px');
-      }
-      if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
-        rootStyle.setProperty('--submenuhover', '55px');
+      if (!controlsLocked) {
+        rootStyle.setProperty('--leftbarstart', '-50px');
+        rootStyle.setProperty('--leftbarstartsub', '-50px');
       } else {
-        rootStyle.setProperty('--submenuhover', '65px');
+        rootStyle.setProperty('--leftbarpad', '10px');
       }
       break;
     }

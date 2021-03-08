@@ -1,3 +1,9 @@
+### 0.2.2
+* Bugfix: Fixed a wrong border-width setting causing unwanted shakes (Thanks @SoulCake)
+* Bugfix: Left submenu should now appear visible and stay in fixed position
+* Bugfix: Fixed hover area not being detected with small icons in some displays (Thanks @Drew for reporting)
+* Bugfix: Left side submenu controls don't move when hovering anymore
+
 ### 0.2.1
 * Bugfix: Clicking on submenus directly now locks the left controls
 * Bugfix: Improved compatibility across combinations of settings

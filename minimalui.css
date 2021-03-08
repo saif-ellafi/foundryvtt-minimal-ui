@@ -9,8 +9,9 @@
   --hotbaranim2: 1px;
   --navistart: 10px;
   --leftbarstart: 0px;
-  --leftbarstartsub: -50px;
-  --submenuhover: 60px
+  --leftbarstartsub: 60px;
+  --submenuhover: 60px;
+  --leftbarpad: 10px;
 }
 
 #logo {
@@ -93,11 +94,13 @@
     border-right: 1px solid #ff4900bd;
     box-shadow: 3px 0px 10px 0px #ff4900bd;
     transition: 0.1s;
+    padding-right: var(--leftbarpad);
 }
 
 #controls:hover {
     left: 0px;
     transition: 0.5s;
+    padding-right: 10px;
 }
 
 #controls .scene-control.active, #controls .scene-control:hover {
@@ -122,7 +125,6 @@
   margin: 2px 0px 0px;
   box-sizing: content-box;
   border-radius: 5px;
-  border-width: 0px;
 }
 
 #controls .active .control-tools {
