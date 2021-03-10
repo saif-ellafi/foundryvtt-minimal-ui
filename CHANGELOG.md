@@ -1,3 +1,7 @@
+### 0.2.3
+* Enhancement: Added Player-list default always visible option
+* Bugfix: Fixed an undesired padding resize when hovering a locked panel
+
 ### 0.2.2
 * Bugfix: Fixed a wrong border-width setting causing unwanted shakes (Thanks @SoulCake)
 * Bugfix: Left submenu should now appear visible and stay in fixed position

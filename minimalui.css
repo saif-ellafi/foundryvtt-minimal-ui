@@ -12,6 +12,8 @@
   --leftbarstartsub: 60px;
   --submenuhover: 60px;
   --leftbarpad: 10px;
+  --playerfsize: 0px;
+  --playerwidth: 30px;
 }
 
 #logo {
@@ -58,10 +60,10 @@
 }
 
 #players {
-  width: 30px;
+  width: var(--playerwidth);
   left: 5px;
   bottom: 0px;
-  font-size: 0px;
+  font-size: var(--playerfsize);
   visibility: var(--visiplay);
 }
 

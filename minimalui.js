@@ -14,6 +14,7 @@ function lockControls(unlock) {
     controlsLastPos = rootStyle.getPropertyValue('--leftbarstart');
     rootStyle.setProperty('--leftbarstart', '0px');
     if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
+      rootStyle.setProperty('--leftbarpad', '10px');
       rootStyle.setProperty('--leftbarstartsub', '50px');
     } else {
       rootStyle.setProperty('--leftbarstartsub', '60px');
@@ -89,7 +90,8 @@ Hooks.on('init', () => {
     config: true,
     type: String,
     choices: {
-      "shown": "Show Normally",
+      "default": "Always Visible",
+      "shown": "Show Collapsed",
       "hidden": "Hide Completely"
     },
     default: "shown",
@@ -208,6 +210,12 @@ Hooks.on('ready', async function() {
   }
 
   switch(game.settings.get('minimal-ui', 'playerList')) {
+    case 'default': {
+      rootStyle.setProperty('--playerfsize', '12px');
+      rootStyle.setProperty('--playerwidth', '150px');
+      rootStyle.setProperty('--visiplay', 'visible');
+      break;
+    }
     case 'shown': {
       rootStyle.setProperty('--visiplay', 'visible');
       break;
