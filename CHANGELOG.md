@@ -1,3 +1,10 @@
+### 0.2.4
+* Bugfix: Improved click detection of the side panel lock/unlock button
+* Bugfix: Single column mode now always stays on top, to work better modules that add many components
+* Style: Reduced transparency and added stronger background to left panel parts
+* Style: Lowered top position maximum a little bit
+* Change: Default side panel style is now expand to right, rather than a single column
+
 ### 0.2.3
 * Enhancement: Added Player-list default always visible option
 * Bugfix: Fixed an undesired padding resize when hovering a locked panel

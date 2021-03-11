@@ -134,7 +134,7 @@ Hooks.on('init', () => {
 
   game.settings.register('minimal-ui', 'sidePanelPosition', {
     name: "Left panel button position",
-    hint: "Choose favorite side panel position. Find the best for you, as it depends on the resolution and pixel density",
+    hint: "Choose favorite side panel position. Will be ignored if using 'Keep a single column' style.",
     scope: 'world',
     config: true,
     type: String,
@@ -160,7 +160,7 @@ Hooks.on('init', () => {
       "default": "Controls to the right",
       "column": "Keep a single column"
     },
-    default: "column",
+    default: "default",
     onChange: value => {
       window.location.reload()
     }
@@ -260,8 +260,8 @@ Hooks.on('renderSceneControls', async function() {
   }
 
   switch(true) {
-    case (game.settings.get('minimal-ui', 'sidePanelPosition') == 'top' || (game.settings.get('minimal-ui', 'sidePanelSize') == 'standard' && game.settings.get('minimal-ui', 'sidePanelMenuStyle') == 'column')): {
-      rootStyle.setProperty('--leftbarpos', '0vmin');
+    case (game.settings.get('minimal-ui', 'sidePanelPosition') == 'top' || game.settings.get('minimal-ui', 'sidePanelMenuStyle') == 'column'): {
+      rootStyle.setProperty('--leftbarpos', '5vmin');
       if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
         if (game.settings.get('minimal-ui', 'sidePanelMenuStyle') == 'column') {
           rootStyle.setProperty('--navistart', '55px');
@@ -319,8 +319,8 @@ Hooks.on('renderSceneControls', async function() {
   // $("#controls > li.scene-control.active > ol > li.control-tool").on('click', function() {lockControls(true)});
 
   if (game.settings.get('minimal-ui', 'sidePanel') == 'autohide') {
-    $("#controls").append(`<li id="sidebar-lock" class="scene-control" title="Pin Sidebar">
-                                 <i class="fas ${locked}" style="color: red" onclick="lockControls(true)"></i>
+    $("#controls").append(`<li id="sidebar-lock" class="scene-control" title="Pin Sidebar" onclick="lockControls(true)">
+                                 <i class="fas ${locked}" style="color: red"></i>
                              </li>`);
     if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
       $("#controls > #sidebar-lock").addClass("small-left-panel");

@@ -90,19 +90,20 @@
 }
 
 #controls {
-    left: var(--leftbarstart);
-    top: 10px;
-    margin-top: var(--leftbarpos);
-    border-right: 1px solid #ff4900bd;
-    box-shadow: 3px 0px 10px 0px #ff4900bd;
-    transition: 0.1s;
-    padding-right: var(--leftbarpad);
+  left: var(--leftbarstart);
+  top: 10px;
+  margin-top: var(--leftbarpos);
+  border-right: 1px solid #ff4900bd;
+  box-shadow: 3px 0px 10px 0px #ff4900bd;
+  transition: 0.1s;
+  padding-right: var(--leftbarpad);
+  background: #0000003b;
 }
 
 #controls:hover {
-    left: 0px;
-    transition: 0.5s;
-    padding-right: 10px;
+  left: 0px;
+  transition: 0.5s;
+  padding-right: 10px;
 }
 
 #controls .scene-control.active, #controls .scene-control:hover {
@@ -133,6 +134,9 @@
   display: var(--submenustyle);
   left: var(--leftbarstartsub);
   transition: 0.5s;
+  background: #00000059;
+  border: solid #ff000087;
+  border-radius: 5px;
 }
 
 #controls:hover .active .control-tools {
