@@ -226,8 +226,8 @@ Hooks.on('ready', async function() {
 
 });
 
-Hooks.on('renderSceneControls', async function() {
-
+Hooks.once('renderSceneControls', async function() {
+  
   let rootStyle = document.querySelector(':root').style;
 
   if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
@@ -250,12 +250,6 @@ Hooks.on('renderSceneControls', async function() {
         rootStyle.setProperty('--leftbarpad', '10px');
       }
       break;
-    }
-  }
-
-  switch(game.settings.get('minimal-ui', 'sidePanelSize')) {
-    case 'small': {
-      $("#controls .scene-control, #controls .control-tool").addClass('small-left-panel');
     }
   }
 
@@ -304,8 +298,9 @@ Hooks.on('renderSceneControls', async function() {
       break;
     }
   }
+})
 
-  let locked = controlsLocked ? 'fa-lock' : 'fa-lock-open';
+Hooks.on('renderSceneControls', async function() {
 
   $("#controls > li.scene-control").on('click', function() {
     lockControls(false)
@@ -314,17 +309,47 @@ Hooks.on('renderSceneControls', async function() {
   $("#controls > li.scene-control.active > ol > li").on('click', function() {
     lockControls(false)
   });
+  
+  switch(game.settings.get('minimal-ui', 'sidePanelSize')) {
+    case 'small': {
+      $("#controls .scene-control, #controls .control-tool").addClass('small-left-panel');
+    }
+  }
+  
+  // --------------- COMPATIBILITY SECTION ------------------
+  // Here we add (ugly) hacks for minimal UI to work well with modules that affect UI components
+  
+  // Give a little time for other modules to add their controls first, and reapply changes
+  await new Promise(waitABit => setTimeout(waitABit, 1));
 
-  // To consider: Hide after selecting sub-tool?
-  // $("#controls > li.scene-control.active > ol > li.control-tool").on('click', function() {lockControls(true)});
-
+  // Catch all -re apply- for modules that add buttons to controls. Done twice to minimize "Shaking" UI
+  switch(game.settings.get('minimal-ui', 'sidePanelSize')) {
+    case 'small': {
+      $("#controls .scene-control, #controls .control-tool").addClass('small-left-panel');
+    }
+  }
+  
+  let locked = controlsLocked ? 'fa-lock' : 'fa-lock-open';
   if (game.settings.get('minimal-ui', 'sidePanel') == 'autohide') {
-    $("#controls").append(`<li id="sidebar-lock" class="scene-control" title="Pin Sidebar" onclick="lockControls(true)">
-                                 <i class="fas ${locked}" style="color: red"></i>
-                             </li>`);
+    $("#controls").append(
+      `
+      <li id="sidebar-lock" class="scene-control" title="Pin Sidebar" onclick="lockControls(true)">
+      <i class="fas ${locked}" style="color: red"></i>
+      </li>
+      `
+    );
     if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
       $("#controls > #sidebar-lock").addClass("small-left-panel");
     }
   }
+  
+  // Support for Simple Dice Roller
+  if (game.modules.has("simple-dice-roller")) {
+    $("#controls > li.scene-control.sdr-scene-control").click(function() {
+      $("#controls > li.scene-control.sdr-scene-control.active > ol")[0].style.setProperty('display', 'inherit');
+    });
+  }
+  
+  // ----------------------------------------------------------------------
 
 })

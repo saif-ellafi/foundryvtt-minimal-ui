@@ -106,21 +106,26 @@
   padding-right: 10px;
 }
 
+#controls .scene-control, #controls .control-tool {
+  margin: 0 0 2px; 
+}
+
 #controls .scene-control.active, #controls .scene-control:hover {
-  border: 1px solid red;
+  border: 1px solid transparent;
   color: orange;
 }
 
+#controls .control-tool.active, #controls .control-tool {
+  border: 0px solid transparent;
+}
+
 #controls .control-tool.active, #controls .control-tool:hover {
-  border: 0px;
+  border: 0px solid transparent;
   color: yellow;
 }
 
-#controls .scene-control, #controls .control-tool {
-  border: 0px solid #000;
-}
-
 #controls > .small-left-panel, #controls > .small-left-panel .small-left-panel {
+  border: 1px solid transparent;
   width: 25px;
   height: 28px;
   font-size: 15px;
