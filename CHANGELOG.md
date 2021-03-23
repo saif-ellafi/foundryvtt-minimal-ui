@@ -1,3 +1,13 @@
+### 0.3.0
+* Enhancement: added a lock in the macro hotbar when using auto-hide mode to stick it visible. Auto triggers when opening macros (Thanks GitHub: @jbblily)
+* Enhancement: Experimental compatibility with modules that add left side controls (Quick Insert, Search Anywhere, etc)
+* Enhancement: Experimental compatibility with simple dice roller when in single column mode (Thanks @SalieriC)
+* Enhancement: lock side panel button should always be the last button regardless of other modules
+* Bugfix: removed shakiness from hovering left side controls and exceeding borders in some configuration combinations
+* Bugfix: slightly compressed the space between butons in the left side control
+* Bugfix: more coherent hotbar transition and shadows behavior in auto-hide mode
+* Bugfix: better configuration descriptions and other minor tweaks
+
 ### 0.2.4
 * Bugfix: Improved click detection of the side panel lock/unlock button
 * Bugfix: Single column mode now always stays on top, to work better modules that add many components

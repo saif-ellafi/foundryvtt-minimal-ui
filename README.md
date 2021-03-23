@@ -17,8 +17,9 @@ Many settings allow for tweaking to personal tastes including size, position and
 
 ### ToDo:
 * Compatibility with other modules
-* Deal with webcam feature
+* Improve webcam features UI
+* Make colors customizable
 * Any suggestions welcome
 
 ![Example GIF](./examplegif-long.gif)
-![Example Image](./example9.jpg)
+![Example Image](./example10.jpg)
