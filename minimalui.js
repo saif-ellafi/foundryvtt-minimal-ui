@@ -5,6 +5,7 @@ function collapse(toggleId) {
   }
 }
 
+var hotbarLocked = false;
 var controlsLocked = false;
 var controlsLastPos = '0px';
 function lockControls(unlock) {
@@ -34,6 +35,20 @@ function lockControls(unlock) {
     controlsLastPos = controlsLastPos;
   }
 }
+function lockHotbar(unlock) {
+  let rootStyle = document.querySelector(':root').style;
+  if (hotbarLocked && unlock) {
+    rootStyle.setProperty('--hotbaranim1', '-45px');
+    $("#bar-lock > i").removeClass("fa-lock");
+    $("#bar-lock > i").addClass("fa-lock-open");
+    hotbarLocked = false;
+  } else {
+    rootStyle.setProperty('--hotbaranim1', '0px');
+    $("#bar-lock > i").removeClass("fa-lock-open");
+    $("#bar-lock > i").addClass("fa-lock");
+    hotbarLocked = true;
+  }
+}
 
 Hooks.on('init', () => {
   game.settings.register('minimal-ui', 'sceneNavigation', {
@@ -61,7 +76,7 @@ Hooks.on('init', () => {
     type: String,
     choices: {
       "shown": "Show Normally",
-      "autohide": "Slightly hidden, mouse-over to bring it up",
+      "autohide": "Auto-Hide",
       "collapsed": "Start Collapsed by Default",
       "hidden": "Hide Completely"
     },
@@ -91,10 +106,10 @@ Hooks.on('init', () => {
     type: String,
     choices: {
       "default": "Always Visible",
-      "shown": "Show Collapsed",
+      "autohide": "Auto-Hide",
       "hidden": "Hide Completely"
     },
-    default: "shown",
+    default: "autohide",
     onChange: value => {
       window.location.reload()
     }
@@ -193,7 +208,16 @@ Hooks.on('ready', async function() {
     case 'autohide': {
       rootStyle.setProperty('--visihotbar', 'visible');
       rootStyle.setProperty('--hotbaranim1', '-45px');
-      rootStyle.setProperty('--hotbaranim2', '10px');
+      rootStyle.setProperty('--macrobarlh', '12px');
+      $("#hotbar-directory-controls").append(
+        `
+        <a id="bar-lock">
+          <i class="fas fa-lock-open"></i>
+        </a>
+        `
+      );
+      $("#macro-directory").click(function() {lockHotbar(false)});
+      $("#bar-lock").click(function() {lockHotbar(true)});
       break;
     }
     case 'shown': {
@@ -216,7 +240,7 @@ Hooks.on('ready', async function() {
       rootStyle.setProperty('--visiplay', 'visible');
       break;
     }
-    case 'shown': {
+    case 'autohide': {
       rootStyle.setProperty('--visiplay', 'visible');
       break;
     }

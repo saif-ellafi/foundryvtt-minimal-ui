@@ -6,7 +6,6 @@
   --leftbarpos: -8px;
   --submenustyle: contents;
   --hotbaranim1: 0px;
-  --hotbaranim2: 1px;
   --navistart: 10px;
   --leftbarstart: 0px;
   --leftbarstartsub: 60px;
@@ -14,6 +13,7 @@
   --leftbarpad: 10px;
   --playerfsize: 0px;
   --playerwidth: 30px;
+  --macrobarlh: 30px
 }
 
 #logo {
@@ -39,6 +39,20 @@
 
 #hotbar .bar-controls {
   background: #191919;
+  height: 120%;
+  margin: -8px 2px;
+}
+
+#hotbar .bar-controls a.page-control {
+  font-size: 20px;
+}
+
+#hotbar #hotbar-directory-controls {
+  font-size: 14px;
+}
+
+#hotbar .bar-controls span.page-number {
+  line-height: 20px;
 }
 
 #hotbar #macro-list:hover {
@@ -48,9 +62,13 @@
 }
 
 #hotbar #macro-list {
-  border-top: var(--hotbaranim2) solid #782e2252;
+  border-top: 1px solid #ff4900bd;
   box-shadow: 0px 0px 10px 2px #ff4900bd;
   transition: 0.05s ease-out 0.5s;
+}
+
+#hotbar #hotbar-directory-controls a {
+  line-height: var(--macrobarlh);
 }
 
 #players:hover {
