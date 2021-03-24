@@ -49,6 +49,18 @@ function lockHotbar(unlock) {
     hotbarLocked = true;
   }
 }
+function addLockButton() {
+  let locked = controlsLocked ? 'fa-lock' : 'fa-lock-open';
+  if (game.settings.get('minimal-ui', 'sidePanel') == 'autohide') {
+    $("#controls").append(
+      `
+      <li id="sidebar-lock" class="scene-control" title="Pin Sidebar" onclick="lockControls(true)">
+      <i class="fas ${locked}" style="color: red"></i>
+      </li>
+      `
+    );
+  }
+}
 
 Hooks.on('init', () => {
   game.settings.register('minimal-ui', 'sceneNavigation', {
@@ -88,11 +100,11 @@ Hooks.on('init', () => {
 
   game.settings.register('minimal-ui', 'macroBarPosition', {
     name: "Macro Bar Position",
-    hint: "Reference at 350. Minimum is 170. Increase value to move it to right. Reduce to the left.",
+    hint: "Reference at 400. Minimum is 170. Increase value to move it to right. Reduce to the left.",
     scope: 'world',
     config: true,
     type: Number,
-    default: 350,
+    default: 400,
     onChange: value => {
       window.location.reload()
     }
@@ -230,18 +242,23 @@ Hooks.on('ready', async function() {
       break;
     }
     case 'autohide': {
+      if (!(game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active)) {
+        rootStyle.setProperty('--hotbaranim1', '-45px');
+        rootStyle.setProperty('--macrobarlh', '12px');
+        $("#hotbar-directory-controls").append(
+          `
+          <a id="bar-lock">
+            <i class="fas fa-lock-open"></i>
+          </a>
+          `
+        );
+        $("#macro-directory").click(function() {lockHotbar(false)});
+        $("#bar-lock").click(function() {lockHotbar(true)});
+      } else {
+        rootStyle.setProperty('--macrobarhv', '10px');
+        rootStyle.setProperty('--macrobarmg', '0px');
+      }
       rootStyle.setProperty('--visihotbar', 'visible');
-      rootStyle.setProperty('--hotbaranim1', '-45px');
-      rootStyle.setProperty('--macrobarlh', '12px');
-      $("#hotbar-directory-controls").append(
-        `
-        <a id="bar-lock">
-          <i class="fas fa-lock-open"></i>
-        </a>
-        `
-      );
-      $("#macro-directory").click(function() {lockHotbar(false)});
-      $("#bar-lock").click(function() {lockHotbar(true)});
       break;
     }
     case 'shown': {
@@ -283,7 +300,12 @@ Hooks.once('renderSceneControls', async function() {
 
   if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
     rootStyle.setProperty('--leftbarstartsub', '50px');
+    rootStyle.setProperty('--leftbarw', '25px');
+    rootStyle.setProperty('--leftbarh', '28px');
+    rootStyle.setProperty('--leftbarlh', '30px');
+    rootStyle.setProperty('--leftbarfs', '15px');
     rootStyle.setProperty('--submenuhover', '50px');
+    
     if (game.settings.get('minimal-ui', 'sidePanel') == 'autohide') {
       rootStyle.setProperty('--leftbarpad', '20px');
     }
@@ -361,43 +383,27 @@ Hooks.on('renderSceneControls', async function() {
     lockControls(false)
   });
   
-  switch(game.settings.get('minimal-ui', 'sidePanelSize')) {
-    case 'small': {
-      $("#controls .scene-control, #controls .control-tool").addClass('small-left-panel');
-    }
-  }
+  addLockButton();
   
   // --------------- COMPATIBILITY SECTION ------------------
-  // Here we add (ugly) hacks for minimal UI to work well with modules that affect UI components
+  // Here we add workarounds for minimal UI to work well with modules that affect UI components
   
   // Give a little time for other modules to add their controls first, and reapply changes
   await new Promise(waitABit => setTimeout(waitABit, 1));
-
-  // Catch all -re apply- for modules that add buttons to controls. Done twice to minimize "Shaking" UI
-  switch(game.settings.get('minimal-ui', 'sidePanelSize')) {
-    case 'small': {
-      $("#controls .scene-control, #controls .control-tool").addClass('small-left-panel');
-    }
-  }
   
-  let locked = controlsLocked ? 'fa-lock' : 'fa-lock-open';
-  if (game.settings.get('minimal-ui', 'sidePanel') == 'autohide') {
-    $("#controls").append(
-      `
-      <li id="sidebar-lock" class="scene-control" title="Pin Sidebar" onclick="lockControls(true)">
-      <i class="fas ${locked}" style="color: red"></i>
-      </li>
-      `
-    );
-    if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
-      $("#controls > #sidebar-lock").addClass("small-left-panel");
-    }
+  // Delete and add lock button if needed, so the lock is always at the bottom
+  if ($("#controls > li").index($("#sidebar-lock")) != $("#controls > li").length) {
+    $("#sidebar-lock").remove();
+    addLockButton();
   }
   
   // Support for Simple Dice Roller
-  if (game.modules.has("simple-dice-roller")) {
+  if (game.modules.has('simple-dice-roller') && game.modules.get('simple-dice-roller').active) {
     $("#controls > li.scene-control.sdr-scene-control").click(function() {
-      $("#controls > li.scene-control.sdr-scene-control.active > ol")[0].style.setProperty('display', 'inherit');
+      let olControl = $("#controls > li.scene-control.sdr-scene-control.active > ol")[0];
+      if (olControl) {
+        olControl.style.setProperty('display', 'inherit');
+      }
     });
   }
   

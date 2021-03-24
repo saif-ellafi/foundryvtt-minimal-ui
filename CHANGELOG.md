@@ -1,5 +1,7 @@
 ### 0.3.1
 * Enhancement: Customize your border and shadow colors for Minimal UI (Thanks SalieriC for the idea)
+* Bugfix: Improved compatibility with Custom Hotbar
+* Bugfix: Module compatibility tricks now apply only when the modules are active, not only installed
 
 ### 0.3.0
 * Enhancement: added a lock in the macro hotbar when using auto-hide mode to stick it visible. Auto triggers when opening macros (Thanks GitHub: @jbblily)

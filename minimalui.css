@@ -9,11 +9,17 @@
   --navistart: 10px;
   --leftbarstart: 0px;
   --leftbarstartsub: 60px;
-  --submenuhover: 60px;
   --leftbarpad: 10px;
+  --leftbarw: 36px;
+  --leftbarh: 36px;
+  --leftbarlh: 36px;
+  --leftbarfs: 24px;
+  --submenuhover: 60px;
   --playerfsize: 0px;
   --playerwidth: 30px;
   --macrobarlh: 30px;
+  --macrobarhv: 0px;
+  --macrobarmg: -8px;
   --bordercolor: #ff4900bd;
   --shadowcolor: #ff4900bd;
 }
@@ -28,7 +34,7 @@
 }
 
 #hotbar:hover {
-  bottom: 0px;
+  bottom: var(--macrobarhv);
   transition: 0.5s;
 }
 
@@ -42,7 +48,7 @@
 #hotbar .bar-controls {
   background: #191919;
   height: 120%;
-  margin: -8px 2px;
+  margin: var(--macrobarmg) 2px;
 }
 
 #hotbar .bar-controls a.page-control {
@@ -154,16 +160,13 @@
   color: yellow;
 }
 
-#controls > .small-left-panel, #controls > .small-left-panel .small-left-panel {
-  border: 1px solid transparent;
-  width: 25px;
-  height: 28px;
-  font-size: 15px;
-  line-height: 30px;
-  margin: 2px 0px 0px;
-  box-sizing: content-box;
-  border-radius: 5px;
+#controls > li:nth-child(n), #controls > li.scene-control > ol > li.control-tool {
+  width: var(--leftbarw);
+  height: var(--leftbarh);
+  line-height: var(--leftbarlh);
+  font-size: var(--leftbarfs);
 }
+
 
 #controls .active .control-tools {
   display: var(--submenustyle);
