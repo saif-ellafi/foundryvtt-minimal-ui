@@ -1,3 +1,6 @@
+### 0.3.1
+* Enhancement: Customize your border and shadow colors for Minimal UI (Thanks SalieriC for the idea)
+
 ### 0.3.0
 * Enhancement: added a lock in the macro hotbar when using auto-hide mode to stick it visible. Auto triggers when opening macros (Thanks GitHub: @jbblily)
 * Enhancement: Experimental compatibility with modules that add left side controls (Quick Insert, Search Anywhere, etc)

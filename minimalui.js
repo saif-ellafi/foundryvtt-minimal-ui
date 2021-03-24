@@ -180,6 +180,30 @@ Hooks.on('init', () => {
       window.location.reload()
     }
   });
+  
+  game.settings.register("minimal-ui", "borderColor", {
+    name: "Border Colors",
+    hint: "Customize border colors of Foundry. Get color codes from www.w3schools.com/colors/colors_picker.asp",
+    scope: "world",
+    config: true,
+    default: "#ff4900bd",
+    type: String,
+    onChange: lang => {
+      window.location.reload()
+    }
+  });
+  
+  game.settings.register("minimal-ui", "shadowColor", {
+    name: "Border Colors",
+    hint: "Customize shadow colors of Foundry. Get color codes from www.w3schools.com/colors/colors_picker.asp",
+    scope: "world",
+    config: true,
+    default: "#ff4900bd",
+    type: String,
+    onChange: lang => {
+      window.location.reload()
+    }
+  });
 
 });
 
@@ -253,6 +277,9 @@ Hooks.on('ready', async function() {
 Hooks.once('renderSceneControls', async function() {
   
   let rootStyle = document.querySelector(':root').style;
+  
+  rootStyle.setProperty('--bordercolor', game.settings.get('minimal-ui', 'borderColor'));
+  rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
 
   if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
     rootStyle.setProperty('--leftbarstartsub', '50px');

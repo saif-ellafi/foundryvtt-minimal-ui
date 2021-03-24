@@ -1,24 +1,23 @@
 ## Minimal UI for FoundryVTT
 
-Configurable UI module, allows the user to hide, collapse or auto-hide components.
+Configurable UI module, allows the user to hide, collapse or auto-hide components separately.
 
 This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Bar.
-
-Many settings allow for tweaking to personal tastes including size, position and behavior of UI elements.
 
 * Hidden Foundry Logo
 * Scenes, Player list and left side controls customized for minimalism by default 
 * Macro Bar may be hidden, collapsed, auto-hidden (default) or shown
-* Macro Bar may be repositioned horizontally
-* Compact Players list shows the names only on mouse over
-* Allows Hiding or having the scene navigation collapsed (Default: Collapsed)
-* Left controls may collapse vertically in a single column or as a new column like normally
-* Left controls may be resized, moved vertically and auto-hidden
+* Macro Bar may be repositioned along the X-Axis
+* Players list may be hidden compeltely, shown on hover or shown normally
+* Allows Hiding or having the scene navigation collapsed by default
+* Left controls may be collapsed into a single column (or not)
+* Left controls may be standard or small size
+* Left controls may be moved vertically and set behavior to auto-hidden
+* Colors of borders and shadows customizeable
 
 ### ToDo:
 * Compatibility with other modules
 * Improve webcam features UI
-* Make colors customizable
 * Any suggestions welcome
 
 ![Example GIF](./examplegif-long.gif)

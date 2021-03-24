@@ -13,7 +13,9 @@
   --leftbarpad: 10px;
   --playerfsize: 0px;
   --playerwidth: 30px;
-  --macrobarlh: 30px
+  --macrobarlh: 30px;
+  --bordercolor: #ff4900bd;
+  --shadowcolor: #ff4900bd;
 }
 
 #logo {
@@ -56,14 +58,14 @@
 }
 
 #hotbar #macro-list:hover {
-  border-top: 1px solid #ff4900bd;
-  box-shadow: 0px 0px 10px 2px #ff4900bd;
+  border-top: 1px solid var(--bordercolor);
+  box-shadow: 0px 0px 10px 2px var(--shadowcolor);
   transition: 0.5s;
 }
 
 #hotbar #macro-list {
-  border-top: 1px solid #ff4900bd;
-  box-shadow: 0px 0px 10px 2px #ff4900bd;
+  border-top: 1px solid var(--bordercolor);
+  box-shadow: 0px 0px 10px 2px var(--shadowcolor);
   transition: 0.05s ease-out 0.5s;
 }
 
@@ -107,12 +109,22 @@
   top: 16px;
 }
 
+#sidebar-tabs {
+  border-bottom: var(--bordercolor);
+  box-shadow: 0 0 10px var(--shadowcolor);
+}
+
+#sidebar-tabs > .item.active {
+  border: 1px solid var(--bordercolor);
+  box-shadow: 0 0 6px inset var(--shadowcolor);
+}
+
 #controls {
   left: var(--leftbarstart);
   top: 10px;
   margin-top: var(--leftbarpos);
-  border-right: 1px solid #ff4900bd;
-  box-shadow: 3px 0px 10px 0px #ff4900bd;
+  border-right: 1px solid var(--bordercolor);
+  box-shadow: 3px 0px 10px 0px var(--shadowcolor);
   transition: 0.1s;
   padding-right: var(--leftbarpad);
   background: #0000003b;
