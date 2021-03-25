@@ -1,3 +1,14 @@
+### 0.3.4
+* Enhancement: Shadow Strength borders now configurable (And their colors)
+* Enhancement: Visual stability and border spacing improved (Thanks GambitTV for feedback)
+* Compatibility: Bullseye module (Thanks Avitale34 for reporting)
+* Compatibility: Simple Dice Roller now locks the sidebar
+* Bugfix: Reduced amount of bumps in animations, hopefully to zero
+* Bugfix: Applied appropriate style and colors to 'Toggle' buttons
+* Bugfix: Fixed sliding Hotbar on different X-Axis positions
+* Bugfix: Fixed overlapping borders in some buttons
+* Bugfix: Fixed setting descriptions (Thanks plutoneId)
+
 ### 0.3.3
 * Bugfix: Fixed a bug that caused Macro bar to lock itself after adding a new Macro
 
@@ -7,13 +18,13 @@
 ### 0.3.1
 * Enhancement: Customize your border and shadow colors for Minimal UI (Thanks SalieriC for the idea)
 * Enhancement: Better and more consistent visuals and shadow colors
-* Bugfix: Improved compatibility with Custom Hotbar
-* Bugfix: Module compatibility tricks now apply only when the modules are active, not only installed
+* Compatibility: Custom Hotbar
+* Compatibility: Module compatibility styles now apply only when the modules are active, not when just installed
 
 ### 0.3.0
 * Enhancement: added a lock in the macro hotbar when using auto-hide mode to stick it visible. Auto triggers when opening macros (Thanks GitHub: @jbblily)
 * Enhancement: Experimental compatibility with modules that add left side controls (Quick Insert, Search Anywhere, etc)
-* Enhancement: Experimental compatibility with simple dice roller when in single column mode (Thanks @SalieriC)
+* Enhancement: Experimental compatibility with simple dice roller when in single column mode (Thanks SalieriC)
 * Enhancement: lock side panel button should always be the last button regardless of other modules
 * Bugfix: removed shakiness from hovering left side controls and exceeding borders in some configuration combinations
 * Bugfix: slightly compressed the space between butons in the left side control

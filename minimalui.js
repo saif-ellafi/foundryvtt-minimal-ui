@@ -14,8 +14,8 @@ function lockControls(unlock) {
     controlsLocked = true;
     controlsLastPos = rootStyle.getPropertyValue('--leftbarstart');
     rootStyle.setProperty('--leftbarstart', '0px');
+    rootStyle.setProperty('--leftbarpad', '7px');
     if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
-      rootStyle.setProperty('--leftbarpad', '10px');
       rootStyle.setProperty('--leftbarstartsub', '50px');
     } else {
       rootStyle.setProperty('--leftbarstartsub', '60px');
@@ -27,11 +27,12 @@ function lockControls(unlock) {
     $("#sidebar-lock > i").removeClass("fa-lock");
     $("#sidebar-lock > i").addClass("fa-lock-open");
     rootStyle.setProperty('--leftbarstart', controlsLastPos);
-    rootStyle.setProperty('--leftbarstartsub', '-50px');
+    rootStyle.setProperty('--leftbarstartsub', '-60px');
     if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
+      rootStyle.setProperty('--leftbarpad', '30px');
+    } else {
       rootStyle.setProperty('--leftbarpad', '20px');
     }
-
     controlsLastPos = controlsLastPos;
   }
 }
@@ -160,7 +161,7 @@ Hooks.on('init', () => {
   });
 
   game.settings.register('minimal-ui', 'sidePanelPosition', {
-    name: "Left panel button position",
+    name: "Left panel position",
     hint: "Choose favorite side panel position. Will be ignored if using 'Keep a single column' style.",
     scope: 'world',
     config: true,
@@ -195,7 +196,7 @@ Hooks.on('init', () => {
   
   game.settings.register("minimal-ui", "borderColor", {
     name: "Border Colors",
-    hint: "Customize border colors of Foundry. Get color codes from www.w3schools.com/colors/colors_picker.asp",
+    hint: "Default: #ff4900bd | Disable with: #ffffff00 | Get codes: w3schools.com/colors/colors_picker.asp",
     scope: "world",
     config: true,
     default: "#ff4900bd",
@@ -206,8 +207,8 @@ Hooks.on('init', () => {
   });
   
   game.settings.register("minimal-ui", "shadowColor", {
-    name: "Border Colors",
-    hint: "Customize shadow colors of Foundry. Get color codes from www.w3schools.com/colors/colors_picker.asp",
+    name: "Shadow Colors",
+    hint: "Default: #ff4900bd | Disable with: #ffffff00 | Get codes: w3schools.com/colors/colors_picker.asp",
     scope: "world",
     config: true,
     default: "#ff4900bd",
@@ -216,12 +217,30 @@ Hooks.on('init', () => {
       window.location.reload()
     }
   });
+  
+  game.settings.register("minimal-ui", "shadowStrength", {
+    name: "Shadow Strength",
+    hint: "How gloomy and shadow are the borders? Default: 10",
+    scope: "world",
+    config: true,
+    default: "10",
+    type: String,
+    onChange: lang => {
+      window.location.reload()
+    }
+  });
 
 });
 
-Hooks.on('ready', async function() {
+Hooks.once('ready', async function() {
 
   let rootStyle = document.querySelector(':root').style;
+  
+  // Compatibility Workaround for bullseye module
+  if (game.modules.has('bullseye') && game.modules.get('bullseye').active) {
+    rootStyle.setProperty('--navistart', '125px');
+    rootStyle.setProperty('--logovisibility', 'visible');
+  }
 
   switch(game.settings.get('minimal-ui', 'sceneNavigation')) {
     case 'collapsed': {
@@ -233,13 +252,6 @@ Hooks.on('ready', async function() {
       rootStyle.setProperty('--visinav', 'visible');
       break;
     }
-  }
-
-  let mbPos = game.settings.get('minimal-ui', 'macroBarPosition');
-  if (mbPos < 170) {
-    rootStyle.setProperty('--macrobarpos', '170px');
-  } else {
-    rootStyle.setProperty('--macrobarpos', String(mbPos)+'px');
   }
 
   switch(game.settings.get('minimal-ui', 'playerList')) {
@@ -265,6 +277,7 @@ Hooks.once('renderSceneControls', async function() {
   
   rootStyle.setProperty('--bordercolor', game.settings.get('minimal-ui', 'borderColor'));
   rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
+  rootStyle.setProperty('--shadowstrength', game.settings.get('minimal-ui', 'shadowStrength') + 'px');
 
   if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
     rootStyle.setProperty('--leftbarstartsub', '50px');
@@ -273,10 +286,6 @@ Hooks.once('renderSceneControls', async function() {
     rootStyle.setProperty('--leftbarlh', '30px');
     rootStyle.setProperty('--leftbarfs', '15px');
     rootStyle.setProperty('--submenuhover', '50px');
-    
-    if (game.settings.get('minimal-ui', 'sidePanel') == 'autohide') {
-      rootStyle.setProperty('--leftbarpad', '20px');
-    }
   } else {
     rootStyle.setProperty('--leftbarstartsub', '60px');
     rootStyle.setProperty('--submenuhover', '60px');
@@ -285,10 +294,8 @@ Hooks.once('renderSceneControls', async function() {
   switch(game.settings.get('minimal-ui', 'sidePanel')) {
     case 'autohide': {
       if (!controlsLocked) {
-        rootStyle.setProperty('--leftbarstart', '-50px');
-        rootStyle.setProperty('--leftbarstartsub', '-50px');
-      } else {
-        rootStyle.setProperty('--leftbarpad', '10px');
+        rootStyle.setProperty('--leftbarstart', '-60px');
+        rootStyle.setProperty('--leftbarstartsub', '-60px');
       }
       break;
     }
@@ -344,7 +351,7 @@ Hooks.once('renderSceneControls', async function() {
 Hooks.on('renderHotbar', async function() {
   
   let rootStyle = document.querySelector(':root').style;
-
+  
   switch(game.settings.get('minimal-ui', 'macroBar')) {
     case 'collapsed': {
       rootStyle.setProperty('--visihotbar', 'visible');
@@ -379,18 +386,29 @@ Hooks.on('renderHotbar', async function() {
       break;
     }
   }
+
+  let mbPos = game.settings.get('minimal-ui', 'macroBarPosition');
+  if (mbPos < 170) {
+    rootStyle.setProperty('--macrobarpos', '170px');
+  } else {
+    rootStyle.setProperty('--macrobarpos', String(mbPos)+'px');
+  }
   
 })
 
 Hooks.on('renderSceneControls', async function() {
-
-  $("#controls > li.scene-control").on('click', function() {
-    lockControls(false)
-    $("#controls > li.scene-control.active > ol > li").on('click', function() {lockControls(false)});
-  });
-  $("#controls > li.scene-control.active > ol > li").on('click', function() {
-    lockControls(false)
-  });
+  
+  let rootStyle = document.querySelector(':root').style;
+  
+  if (game.settings.get('minimal-ui', 'sidePanel') == 'autohide' && !controlsLocked) {
+    if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
+      rootStyle.setProperty('--leftbarpad', '30px');
+    } else {
+      rootStyle.setProperty('--leftbarpad', '20px');
+    }
+  } else {
+    rootStyle.setProperty('--leftbarpad', '7px');
+  }
   
   addLockButton();
   
@@ -399,6 +417,14 @@ Hooks.on('renderSceneControls', async function() {
   
   // Give a little time for other modules to add their controls first, and reapply changes
   await new Promise(waitABit => setTimeout(waitABit, 1));
+  
+  $("#controls > li.scene-control").on('click', function() {
+    lockControls(false);
+    $("#controls > li.scene-control.active > ol > li").on('click', function() {lockControls(false)});
+  });
+  $("#controls > li.scene-control.active > ol > li").on('click', function() {
+    lockControls(false);
+  });
   
   // Delete and add lock button if needed, so the lock is always at the bottom
   if ($("#controls > li").index($("#sidebar-lock")) != $("#controls > li").length) {
