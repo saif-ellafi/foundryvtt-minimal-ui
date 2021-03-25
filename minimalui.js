@@ -374,9 +374,6 @@ Hooks.on('renderHotbar', async function() {
         if (hotbarLocked) {
           lockHotbar(false);
         }
-      } else {
-        rootStyle.setProperty('--macrobarhv', '10px');
-        rootStyle.setProperty('--macrobarmg', '0px');
       }
       rootStyle.setProperty('--visihotbar', 'visible');
       break;
@@ -385,6 +382,15 @@ Hooks.on('renderHotbar', async function() {
       rootStyle.setProperty('--visihotbar', 'visible');
       break;
     }
+  }
+  
+  // Compatibility patch for custom-hotbar
+  if (game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active) {
+    if ($("#custom-hotbar")[0]) {
+      $("#custom-hotbar")[0].style.setProperty('bottom', '68px');
+    }
+    rootStyle.setProperty('--macrobarhv', '10px');
+    rootStyle.setProperty('--macrobarmg', '0px');
   }
 
   let mbPos = game.settings.get('minimal-ui', 'macroBarPosition');

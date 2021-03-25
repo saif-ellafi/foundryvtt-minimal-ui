@@ -1,3 +1,6 @@
+### 0.3.5
+* Compatibility: Custom Hotbar patch applied and slightly repositioned higher than default (Thanks SalieriC for feedback)
+
 ### 0.3.4
 * Enhancement: Shadow Strength borders now configurable (And their colors)
 * Enhancement: Visual stability and border spacing improved (Thanks GambitTV for feedback)
