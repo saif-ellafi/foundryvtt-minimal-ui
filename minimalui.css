@@ -149,15 +149,24 @@
 #controls .scene-control.active, #controls .scene-control:hover {
   border: 1px solid transparent;
   color: orange;
+  border: solid 1px var(--bordercolor);
+  box-shadow: 1px 0px 10px 0px var(--shadowcolor);
+  padding-right: 2px;
+}
+
+#controls .control-tool.toggle.active, #controls .control-tool.toggle:hover {
+  padding-right: 2px;
 }
 
 #controls .control-tool.active, #controls .control-tool {
   border: 0px solid transparent;
+  padding-right: 2px;
 }
 
 #controls .control-tool.active, #controls .control-tool:hover {
   border: 0px solid transparent;
   color: yellow;
+  box-shadow: 1px 0px 10px 0px var(--shadowcolor);
 }
 
 #controls > li:nth-child(n), #controls > li.scene-control > ol > li.control-tool {
@@ -165,6 +174,7 @@
   height: var(--leftbarh);
   line-height: var(--leftbarlh);
   font-size: var(--leftbarfs);
+  padding-right: 0px;
 }
 
 
@@ -173,8 +183,9 @@
   left: var(--leftbarstartsub);
   transition: 0.5s;
   background: #00000059;
-  border: solid #ff000087;
-  border-radius: 5px;
+  border: solid 1px var(--bordercolor);
+  box-shadow: 1px 0px 10px 0px var(--shadowcolor);
+  border-radius: 3px;
 }
 
 #controls:hover .active .control-tools {
