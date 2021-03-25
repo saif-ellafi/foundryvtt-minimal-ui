@@ -115,6 +115,12 @@
   top: 16px;
 }
 
+#navigation #scene-list .scene.view, #navigation #scene-list .scene.context {
+  border: 1px solid var(--bordercolor);
+  border-bottom: 1px solid var(--bordercolor);
+  box-shadow: 0 0 10px var(--shadowcolor);
+}
+
 #sidebar-tabs {
   border-bottom: var(--bordercolor);
   box-shadow: 0 0 10px var(--shadowcolor);

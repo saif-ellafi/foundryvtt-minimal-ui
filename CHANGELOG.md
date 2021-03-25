@@ -1,3 +1,6 @@
+### 0.3.2
+* Bugfix: Added scene buttons border and shadow colors to the customizable theme palette
+
 ### 0.3.1
 * Enhancement: Customize your border and shadow colors for Minimal UI (Thanks SalieriC for the idea)
 * Enhancement: Better and more consistent visuals and shadow colors
