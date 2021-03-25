@@ -1,6 +1,6 @@
 ### 0.3.1
 * Enhancement: Customize your border and shadow colors for Minimal UI (Thanks SalieriC for the idea)
-* Enhancement: Better and more consistent visuals and shadow colofrs
+* Enhancement: Better and more consistent visuals and shadow colors
 * Bugfix: Improved compatibility with Custom Hotbar
 * Bugfix: Module compatibility tricks now apply only when the modules are active, not only installed
 
