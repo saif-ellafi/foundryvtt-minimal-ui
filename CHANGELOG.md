@@ -1,3 +1,6 @@
+### 0.3.3
+* Bugfix: Fixed a bug that caused Macro bar to lock itself after adding a new Macro
+
 ### 0.3.2
 * Bugfix: Added scene buttons border and shadow colors to the customizable theme palette
 

@@ -235,38 +235,6 @@ Hooks.on('ready', async function() {
     }
   }
 
-  switch(game.settings.get('minimal-ui', 'macroBar')) {
-    case 'collapsed': {
-      rootStyle.setProperty('--visihotbar', 'visible');
-      collapse("bar-toggle");
-      break;
-    }
-    case 'autohide': {
-      if (!(game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active)) {
-        rootStyle.setProperty('--hotbaranim1', '-45px');
-        rootStyle.setProperty('--macrobarlh', '12px');
-        $("#hotbar-directory-controls").append(
-          `
-          <a id="bar-lock">
-            <i class="fas fa-lock-open"></i>
-          </a>
-          `
-        );
-        $("#macro-directory").click(function() {lockHotbar(false)});
-        $("#bar-lock").click(function() {lockHotbar(true)});
-      } else {
-        rootStyle.setProperty('--macrobarhv', '10px');
-        rootStyle.setProperty('--macrobarmg', '0px');
-      }
-      rootStyle.setProperty('--visihotbar', 'visible');
-      break;
-    }
-    case 'shown': {
-      rootStyle.setProperty('--visihotbar', 'visible');
-      break;
-    }
-  }
-
   let mbPos = game.settings.get('minimal-ui', 'macroBarPosition');
   if (mbPos < 170) {
     rootStyle.setProperty('--macrobarpos', '170px');
@@ -371,6 +339,47 @@ Hooks.once('renderSceneControls', async function() {
       break;
     }
   }
+})
+
+Hooks.on('renderHotbar', async function() {
+  
+  let rootStyle = document.querySelector(':root').style;
+
+  switch(game.settings.get('minimal-ui', 'macroBar')) {
+    case 'collapsed': {
+      rootStyle.setProperty('--visihotbar', 'visible');
+      collapse("bar-toggle");
+      break;
+    }
+    case 'autohide': {
+      if (!(game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active)) {
+        rootStyle.setProperty('--hotbaranim1', '-45px');
+        rootStyle.setProperty('--macrobarlh', '12px');
+        $("#hotbar-directory-controls").append(
+          `
+          <a id="bar-lock">
+            <i class="fas fa-lock-open"></i>
+          </a>
+          `
+        );
+        $("#macro-directory").click(function() {lockHotbar(false)});
+        $("#bar-lock").click(function() {lockHotbar(true)});
+        if (hotbarLocked) {
+          lockHotbar(false);
+        }
+      } else {
+        rootStyle.setProperty('--macrobarhv', '10px');
+        rootStyle.setProperty('--macrobarmg', '0px');
+      }
+      rootStyle.setProperty('--visihotbar', 'visible');
+      break;
+    }
+    case 'shown': {
+      rootStyle.setProperty('--visihotbar', 'visible');
+      break;
+    }
+  }
+  
 })
 
 Hooks.on('renderSceneControls', async function() {
