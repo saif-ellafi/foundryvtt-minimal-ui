@@ -21,4 +21,4 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 * Any suggestions welcome
 
 ![Example GIF](./examplegif-long.gif)
-![Example Image](./example11.jpg)
+![Example Image](./example12.jpg)
