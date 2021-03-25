@@ -20,5 +20,5 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 * Improve webcam features UI
 * Any suggestions welcome
 
-![Example GIF](./examplegif-long.gif)
+![Example GIF](./examplegif-long2.gif)
 ![Example Image](./example12.jpg)
