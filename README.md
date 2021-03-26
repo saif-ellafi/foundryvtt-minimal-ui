@@ -5,7 +5,8 @@ Configurable UI module, allows the user to hide, collapse or auto-hide component
 This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Bar.
 
 * Hidden Foundry Logo
-* Scenes, Player list and left side controls customized for minimalism by default 
+* Scenes, Player list and left side controls customized for minimalism by default
+* Scene Navigation allows preview the map on mouse over
 * Macro Bar may be hidden, collapsed, auto-hidden (default) or shown
 * Macro Bar may be repositioned along the X-Axis
 * Players list may be hidden completely, shown on hover or shown normally
