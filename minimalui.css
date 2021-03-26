@@ -21,7 +21,9 @@
   
   --playervis: hidden;
   --playerfsize: 0px;
-  --playerwidth: 30px;
+  --playerwidth: 25px;
+  --playerslh: 20px;
+  --playerbennies: none;
   
   --macrobarvis: hidden;
   --macrobarypos: 10px;
@@ -98,19 +100,23 @@
 #players:hover {
   width: 150px;
   font-size: 12px;
-  transition: 0.05s;
 }
 
 #players {
   width: var(--playerwidth);
   left: 5px;
-  bottom: 0px;
+  bottom: 2px;
   font-size: var(--playerfsize);
   visibility: var(--playervis);
 }
 
 #players ol li.player {
   padding: 1px 6px;
+  line-height: var(--playerslh);
+}
+
+#players:hover ol li.player {
+  line-height: 20px;
 }
 
 #players h3 {
@@ -119,7 +125,7 @@
 }
 
 .bennies-count {
-  display: none;
+  display: var(--playerbennies);
 }
 
 /** SCENE NAVIGATION **/

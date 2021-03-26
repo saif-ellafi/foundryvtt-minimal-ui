@@ -305,21 +305,39 @@ Hooks.on('init', () => {
 
 Hooks.once('ready', async function() {
   
+});
+
+Hooks.on('renderPlayerList', async function() {
+  let rootStyle = document.querySelector(':root').style;
+  
   $("#players")[0].val = "";
   
-  // SWADE Special Compatibility
-  if (game.system.data.name == 'swade') {
-    $(".bennies-count").hide();
-    $("#players").hover(
-      function() {
-        $(".bennies-count").show();
-      },
-      function() {
-        $(".bennies-count").hide();
-      }
-    );
-  };
-  
+  switch(game.settings.get('minimal-ui', 'playerList')) {
+    case 'default': {
+      rootStyle.setProperty('--playerfsize', MinimalUI.cssPlayersDefaultFontSize);
+      rootStyle.setProperty('--playerwidth', MinimalUI.cssPlayersDefaultWidth);
+      rootStyle.setProperty('--playerbennies', 'inline');
+      rootStyle.setProperty('--playervis', 'visible');
+      break;
+    }
+    case 'autohide': {
+      rootStyle.setProperty('--playervis', 'visible');
+      rootStyle.setProperty('--playerbennies', 'none');
+      rootStyle.setProperty('--playerslh', '2px');
+      // SWADE Special Compatibility
+      if (game.system.data.name == 'swade') {
+        $("#players").hover(
+          function() {
+            $(".bennies-count").show();
+          },
+          function() {
+            $(".bennies-count").hide();
+          }
+        );
+      };
+      break;
+    }
+  }
 });
 
 Hooks.on('renderSceneNavigation', async function() {
@@ -405,19 +423,6 @@ Hooks.once('renderSceneNavigation', async function() {
       break;
     }
   }
-
-  switch(game.settings.get('minimal-ui', 'playerList')) {
-    case 'default': {
-      rootStyle.setProperty('--playerfsize', MinimalUI.cssPlayersDefaultFontSize);
-      rootStyle.setProperty('--playerwidth', MinimalUI.cssPlayersDefaultWidth);
-      rootStyle.setProperty('--playervis', 'visible');
-      break;
-    }
-    case 'autohide': {
-      rootStyle.setProperty('--playervis', 'visible');
-      break;
-    }
-  }
   
 });
 
@@ -441,14 +446,15 @@ Hooks.once('renderSceneControls', async function() {
     hint: "Default: #ff4900bd",
     label: "Color Picker",
     scope: "world",
-    config: true,
-    default: "#ff4900bd",
+    defaultColor: "#ff4900bd",
     type: String,
     onChange: lang => {
       rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
     }
   });
   
+  rootStyle.setProperty('--bordercolor', game.settings.get('minimal-ui', 'borderColor'));
+  rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
   rootStyle.setProperty('--shadowstrength', game.settings.get('minimal-ui', 'shadowStrength') + 'px');
 
   if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {

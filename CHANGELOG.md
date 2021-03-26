@@ -1,3 +1,11 @@
+### 0.4.3
+* Compatibility: SWADE Bennies should always show on visible players list (Thanks SalieriC)
+* Bugfix: Scene thumbnail preview is now only valid for GMs (Thanks CasualTerror)
+* Bugfix: Players List auto-hide mode is now centered and properly spaced
+* Bugfix: Fixed "glitchy" players list hover animation
+* Bugfix: Fixed colors not applying on launch (Thanks SalieriC)
+* Bugfix: Fixed colors wrong default values
+
 ### 0.4.2
 * Compatibility: Fixed compatibility with libWrapper and colorsettings in Minimal UI
 
