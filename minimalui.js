@@ -59,13 +59,13 @@ class MinimalUI {
     let rootStyle = document.querySelector(':root').style;
     if (!MinimalUI.controlsLocked) {
       MinimalUI.controlsLocked = true;
-      MinimalUI.cssControlsLastPos = rootStyle.getPropertyValue('--leftbarstart');
-      rootStyle.setProperty('--leftbarstart', MinimalUI.cssLeftBarStartVisible);
+      MinimalUI.cssControlsLastPos = rootStyle.getPropertyValue('--leftbarxpos');
+      rootStyle.setProperty('--leftbarxpos', MinimalUI.cssLeftBarStartVisible);
       rootStyle.setProperty('--leftbarpad', MinimalUI.cssLeftBarPaddingDefault);
       if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
-        rootStyle.setProperty('--leftbarstartsub', MinimalUI.cssLeftBarSubMenuSmall);
+        rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuSmall);
       } else {
-        rootStyle.setProperty('--leftbarstartsub', MinimalUI.cssLeftBarSubMenuStandard);
+        rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuStandard);
       }
       $("#sidebar-lock > i").removeClass("fa-lock-open");
       $("#sidebar-lock > i").addClass("fa-lock");
@@ -73,8 +73,8 @@ class MinimalUI {
       MinimalUI.controlsLocked = false;
       $("#sidebar-lock > i").removeClass("fa-lock");
       $("#sidebar-lock > i").addClass("fa-lock-open");
-      rootStyle.setProperty('--leftbarstart', MinimalUI.cssControlsLastPos);
-      rootStyle.setProperty('--leftbarstartsub', MinimalUI.cssLeftBarHiddenPosition);
+      rootStyle.setProperty('--leftbarxpos', MinimalUI.cssControlsLastPos);
+      rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarHiddenPosition);
       if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
         rootStyle.setProperty('--leftbarpad', MinimalUI.cssLeftBarPaddingSmall);
       } else {
@@ -86,12 +86,12 @@ class MinimalUI {
   static lockHotbar(unlock) {
     let rootStyle = document.querySelector(':root').style;
     if (MinimalUI.hotbarLocked && unlock) {
-      rootStyle.setProperty('--hotbaranim', MinimalUI.cssHotbarHidden);
+      rootStyle.setProperty('--macrobarypos', MinimalUI.cssHotbarHidden);
       $("#bar-lock > i").removeClass("fa-lock");
       $("#bar-lock > i").addClass("fa-lock-open");
       MinimalUI.hotbarLocked = false;
     } else {
-      rootStyle.setProperty('--hotbaranim', MinimalUI.cssHotbarReveal);
+      rootStyle.setProperty('--macrobarypos', MinimalUI.cssHotbarReveal);
       $("#bar-lock > i").removeClass("fa-lock-open");
       $("#bar-lock > i").addClass("fa-lock");
       MinimalUI.hotbarLocked = true;
@@ -115,8 +115,8 @@ class MinimalUI {
 
 Hooks.on('init', () => {
   game.settings.register('minimal-ui', 'sceneNavigation', {
-    name: "Scene Navigation",
-    hint: "Customize scene navigation UI. Consider 'DF Scene Enhancement' module when this option is set to hidden",
+    name: "Scene Navigation Style",
+    hint: "Customize scene navigation behaviour. Consider 'DF Scene Enhancement' module when this option is set to hidden",
     scope: 'world',
     config: true,
     type: String,
@@ -126,6 +126,23 @@ Hooks.on('init', () => {
       "hidden": "Hide Completely"
     },
     default: "collapsed",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+  
+  game.settings.register('minimal-ui', 'sceneNavigationSize', {
+    name: "Scene Navigation Size",
+    hint: "Customize scene navigation Size, when visible.",
+    scope: 'world',
+    config: true,
+    type: String,
+    choices: {
+      "small": "Small",
+      "standard": "Standard",
+      "big": "Big"
+    },
+    default: "small",
     onChange: value => {
       window.location.reload()
     }
@@ -288,18 +305,33 @@ Hooks.once('ready', async function() {
   
   // Compatibility Workaround for bullseye module
   if (game.modules.has('bullseye') && game.modules.get('bullseye').active) {
-    rootStyle.setProperty('--navistart', MinimalUI.cssSceneNavBullseyeStart);
-    rootStyle.setProperty('--logovisibility', 'visible');
+    rootStyle.setProperty('--navixpos', MinimalUI.cssSceneNavBullseyeStart);
+    rootStyle.setProperty('--logovis', 'visible');
   }
 
   switch(game.settings.get('minimal-ui', 'sceneNavigation')) {
     case 'collapsed': {
-      rootStyle.setProperty('--visinav', 'visible');
+      rootStyle.setProperty('--navivis', 'visible');
       MinimalUI.collapse("nav-toggle");
       break;
     }
     case 'shown': {
-      rootStyle.setProperty('--visinav', 'visible');
+      rootStyle.setProperty('--navivis', 'visible');
+      break;
+    }
+  }
+  
+  switch(game.settings.get('minimal-ui', 'sceneNavigationSize')) {
+    case 'standard': {
+      rootStyle.setProperty('--navilh', '32px');
+      rootStyle.setProperty('--navifs', '16px');
+      rootStyle.setProperty('--navibuttonsize', '34px');
+      break;
+    }
+    case 'big': {
+      rootStyle.setProperty('--navilh', '40px');
+      rootStyle.setProperty('--navifs', '20px');
+      rootStyle.setProperty('--navibuttonsize', '43px');
       break;
     }
   }
@@ -308,11 +340,11 @@ Hooks.once('ready', async function() {
     case 'default': {
       rootStyle.setProperty('--playerfsize', MinimalUI.cssPlayersDefaultFontSize);
       rootStyle.setProperty('--playerwidth', MinimalUI.cssPlayersDefaultWidth);
-      rootStyle.setProperty('--visiplay', 'visible');
+      rootStyle.setProperty('--playervis', 'visible');
       break;
     }
     case 'autohide': {
-      rootStyle.setProperty('--visiplay', 'visible');
+      rootStyle.setProperty('--playervis', 'visible');
       break;
     }
   }
@@ -330,22 +362,22 @@ Hooks.once('renderSceneControls', async function() {
   rootStyle.setProperty('--shadowstrength', game.settings.get('minimal-ui', 'shadowStrength') + 'px');
 
   if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
-    rootStyle.setProperty('--leftbarstartsub', MinimalUI.cssLeftBarSubMenuSmall);
-    rootStyle.setProperty('--submenuhover', MinimalUI.cssLeftBarSubMenuSmall);
+    rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuSmall);
+    rootStyle.setProperty('--leftbarsubhover', MinimalUI.cssLeftBarSubMenuSmall);
     rootStyle.setProperty('--leftbarw', MinimalUI.cssLeftBarSmallWidth);
     rootStyle.setProperty('--leftbarh', MinimalUI.cssLeftBarSmallHeight);
     rootStyle.setProperty('--leftbarlh', MinimalUI.cssLeftBarSmallLineHeight);
     rootStyle.setProperty('--leftbarfs', MinimalUI.cssLeftBarSmallFontSize);
   } else {
-    rootStyle.setProperty('--leftbarstartsub', MinimalUI.cssLeftBarSubMenuStandard);
-    rootStyle.setProperty('--submenuhover', MinimalUI.cssLeftBarSubMenuStandard);
+    rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuStandard);
+    rootStyle.setProperty('--leftbarsubhover', MinimalUI.cssLeftBarSubMenuStandard);
   }
 
   switch(game.settings.get('minimal-ui', 'sidePanel')) {
     case 'autohide': {
       if (!MinimalUI.controlsLocked) {
-        rootStyle.setProperty('--leftbarstart', MinimalUI.cssLeftBarHiddenPosition);
-        rootStyle.setProperty('--leftbarstartsub', MinimalUI.cssLeftBarHiddenPosition);
+        rootStyle.setProperty('--leftbarxpos', MinimalUI.cssLeftBarHiddenPosition);
+        rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarHiddenPosition);
       }
       break;
     }
@@ -353,30 +385,30 @@ Hooks.once('renderSceneControls', async function() {
 
   switch(true) {
     case (game.settings.get('minimal-ui', 'sidePanelPosition') == 'top' || game.settings.get('minimal-ui', 'sidePanelMenuStyle') == 'column'): {
-      rootStyle.setProperty('--leftbarpos', MinimalUI.cssLeftBarVerticalPositionTop);
+      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionTop);
       break;
     }
     case (game.settings.get('minimal-ui', 'sidePanelPosition') == 'center'): {
-      rootStyle.setProperty('--leftbarpos', MinimalUI.cssLeftBarVerticalPositionCenter);
+      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionCenter);
       break;
     }
     case (game.settings.get('minimal-ui', 'sidePanelPosition') ==  'lower'): {
-      rootStyle.setProperty('--leftbarpos', MinimalUI.cssLeftBarVerticalPositionLower);
+      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionLower);
       break;
     }
     case (game.settings.get('minimal-ui', 'sidePanelPosition') ==  'bottom'): {
-      rootStyle.setProperty('--leftbarpos', MinimalUI.cssLeftBarVerticalPositionBottom);
+      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionBottom);
       break;
     }
   }
 
   switch(game.settings.get('minimal-ui', 'sidePanelMenuStyle')) {
     case 'default': {
-      rootStyle.setProperty('--submenustyle', 'block');
+      rootStyle.setProperty('--leftbarsubstyle', 'block');
       break;
     }
     case 'column': {
-      rootStyle.setProperty('--submenustyle', 'contents');
+      rootStyle.setProperty('--leftbarsubstyle', 'contents');
       break;
     }
   }
@@ -388,14 +420,14 @@ Hooks.on('renderHotbar', async function() {
   
   let mbPos = game.settings.get('minimal-ui', 'macroBarPosition');
   if (mbPos < MinimalUI.cssMinimumMacroBarX) {
-    rootStyle.setProperty('--macrobarpos', String(MinimalUI.cssMinimumMacroBarX)+'px');
+    rootStyle.setProperty('--macrobarxpos', String(MinimalUI.cssMinimumMacroBarX)+'px');
   } else {
-    rootStyle.setProperty('--macrobarpos', String(mbPos)+'px');
+    rootStyle.setProperty('--macrobarxpos', String(mbPos)+'px');
   }
   
   switch(game.settings.get('minimal-ui', 'macroBar')) {
     case 'collapsed': {
-      rootStyle.setProperty('--visihotbar', 'visible');
+      rootStyle.setProperty('--macrobarvis', 'visible');
       MinimalUI.collapse("bar-toggle");
       if (game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active) {
         MinimalUI.collapse("custom-bar-toggle");
@@ -404,7 +436,7 @@ Hooks.on('renderHotbar', async function() {
     }
     case 'autohide': {
       if (!(game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active)) {
-        rootStyle.setProperty('--hotbaranim', MinimalUI.cssHotbarHidden);
+        rootStyle.setProperty('--macrobarypos', MinimalUI.cssHotbarHidden);
         rootStyle.setProperty('--macrobarlh1', MinimalUI.cssHotbarLeftControlsLineHeight);
         rootStyle.setProperty('--macrobarlh2', MinimalUI.cssHotbarRightControlsLineHeight);
         rootStyle.setProperty('--macrobarmg', MinimalUI.cssHotbarControlsMargin);
@@ -417,11 +449,11 @@ Hooks.on('renderHotbar', async function() {
           MinimalUI.lockHotbar(false);
         }
       }
-      rootStyle.setProperty('--visihotbar', 'visible');
+      rootStyle.setProperty('--macrobarvis', 'visible');
       break;
     }
     case 'shown': {
-      rootStyle.setProperty('--visihotbar', 'visible');
+      rootStyle.setProperty('--macrobarvis', 'visible');
       break;
     }
   }

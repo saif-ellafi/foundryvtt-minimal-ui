@@ -1,41 +1,46 @@
 :root {
-  --visinav: hidden;
-  --visiplay: hidden;
-  --visihotbar: hidden;
-  --macrobarpos: 400px;
-  --leftbarpos: 20vmin;
-  --submenustyle: contents;
-  --hotbaranim: 10px;
-  --navistart: 10px;
-  --leftbarstart: 0px;
-  --leftbarstartsub: 60px;
+  --logovis: hidden;
+  
+  --navivis: hidden;
+  --navixpos: 75px;
+  --navilh: 20px;
+  --navifs: 14px;
+  --navibuttonsize: 23px;
+  
+  --leftbarxpos: 0px;
+  --leftbarypos: 20vmin;
   --leftbarpad: 7px;
   --leftbarw: 36px;
   --leftbarh: 36px;
   --leftbarlh: 36px;
   --leftbarfs: 24px;
-  --submenuhover: 60px;
+  --leftbarsubstart: 60px;
+  --leftbarsubhover: 60px;
+  --leftbarsubstyle: contents;
+  
+  --playervis: hidden;
   --playerfsize: 0px;
   --playerwidth: 30px;
+  
+  --macrobarvis: hidden;
+  --macrobarypos: 10px;
+  --macrobarxpos: 400px;
   --macrobarlh1: 24px;
   --macrobarlh2: 8px;
   --macrobarhv: 10px;
   --macrobarmg: 0px;
   --macrobarhh: 100%;
+  
   --bordercolor: #ff4900bd;
   --shadowcolor: #ff4900bd;
   --shadowstrength: 10px;
-  --logovisibility: hidden
 }
 
 #logo {
-  visibility: var(--logovisibility);
+  visibility: var(--logovis);
 }
 
-#navigation {
-  left: var(--navistart);
-  visibility: var(--visinav);
-}
+/** MACRO HOTBAR **/
 
 #hotbar:hover {
   bottom: var(--macrobarhv);
@@ -43,9 +48,9 @@
 }
 
 #hotbar {
-  left: var(--macrobarpos);
-  bottom: var(--hotbaranim);
-  visibility: var(--visihotbar);
+  left: var(--macrobarxpos);
+  bottom: var(--macrobarypos);
+  visibility: var(--macrobarvis);
   transition: 0.05s ease-out 0.5s;
 }
 
@@ -87,6 +92,8 @@
   line-height: var(--macrobarlh1);
 }
 
+/** PLAYERS LIST **/
+
 #players:hover {
   width: 150px;
   font-size: 12px;
@@ -98,7 +105,7 @@
   left: 5px;
   bottom: 0px;
   font-size: var(--playerfsize);
-  visibility: var(--visiplay);
+  visibility: var(--playervis);
 }
 
 #players ol li.player {
@@ -110,12 +117,20 @@
   border-bottom: 0px;
 }
 
+/** SCENE NAVIGATION **/
+
+#navigation {
+  left: var(--navixpos);
+  visibility: var(--navivis);
+}
+
 #navigation .nav-item {
-  line-height: 20px;
+  line-height: var(--navilh);
+  font-size: var(--navifs);
 }
 
 #navigation #nav-toggle {
-  height: 24px;
+  height: var(--navibuttonsize);
   background: #292929bd;
 }
 
@@ -129,6 +144,8 @@
   box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
 }
 
+/** SIDE BAR CONTROLS AND BUTTONS **/
+
 #sidebar-tabs {
   border-bottom: var(--bordercolor);
   box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
@@ -140,9 +157,9 @@
 }
 
 #controls {
-  left: var(--leftbarstart);
+  left: var(--leftbarxpos);
   top: 10px;
-  margin-top: var(--leftbarpos);
+  margin-top: var(--leftbarypos);
   border-right: 1px solid var(--bordercolor);
   box-shadow: 3px 0px var(--shadowstrength) 0px var(--shadowcolor);
   transition: 0.1s;
@@ -212,8 +229,8 @@
 
 
 #controls .active .control-tools {
-  display: var(--submenustyle);
-  left: var(--leftbarstartsub);
+  display: var(--leftbarsubstyle);
+  left: var(--leftbarsubstart);
   transition: 0.5s;
   background: #00000059;
   border: solid 1px var(--bordercolor);
@@ -222,6 +239,6 @@
 }
 
 #controls:hover .active .control-tools {
-  display: var(--submenustyle);
-  left: var(--submenuhover);
+  display: var(--leftbarsubstyle);
+  left: var(--leftbarsubhover);
 }
