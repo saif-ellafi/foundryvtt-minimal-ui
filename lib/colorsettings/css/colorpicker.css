@@ -1,0 +1,4 @@
+#client-settings #config-tabs div.tab[data-tab="modules"] div.form-group .picker_wrapper .picker_cancel button {
+  padding-bottom: 0;
+  padding-top: 0;
+}
