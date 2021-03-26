@@ -1,3 +1,6 @@
+### 0.4.1
+* Bugfix: Integrated dependencies as a fallback for missing ColorSettings module
+
 ### 0.4.0
 * Enhancement: Scene Navigation allows options to hover and preview the scene thumbnail (enabled by default)
 * Enhancement: Scene Navigation allows three possible size options (default small)
