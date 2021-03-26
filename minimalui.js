@@ -116,7 +116,7 @@ class MinimalUI {
 Hooks.on('init', () => {
   game.settings.register('minimal-ui', 'sceneNavigation', {
     name: "Scene Navigation Style",
-    hint: "Customize scene navigation behaviour. Consider 'DF Scene Enhancement' module when this option is set to hidden",
+    hint: "Customize scene navigation behaviour. Consider 'DF Scene Enhancement' when hidden.",
     scope: 'world',
     config: true,
     type: String,
@@ -125,7 +125,7 @@ Hooks.on('init', () => {
       "collapsed": "Start Collapsed by Default",
       "hidden": "Hide Completely"
     },
-    default: "collapsed",
+    default: "shown",
     onChange: value => {
       window.location.reload()
     }
@@ -143,6 +143,34 @@ Hooks.on('init', () => {
       "big": "Big"
     },
     default: "small",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+  
+  game.settings.register('minimal-ui', 'sceneNavigationPreview', {
+    name: "Scene Navigation Preview",
+    hint: "Choose whether to show an image preview on the navigation top bar. Experimental feature.",
+    scope: 'world',
+    config: true,
+    type: String,
+    choices: {
+      "never": "Never",
+      "hover": "On Mouse Over"
+    },
+    default: "hover",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+  
+  game.settings.register('minimal-ui', 'sceneNavigationPreviewMargin', {
+    name: "Scene Navigation Preview Margin",
+    hint: "Increase this value if you use scene preview and have too many maps :) Default 10",
+    scope: 'world',
+    config: true,
+    type: String,
+    default: "10",
     onChange: value => {
       window.location.reload()
     }
@@ -260,31 +288,7 @@ Hooks.on('init', () => {
       window.location.reload()
     }
   });
-  
-  game.settings.register("minimal-ui", "borderColor", {
-    name: "Border Colors",
-    hint: "Default: #ff4900bd | Disable with: #ffffff00 | Get codes: w3schools.com/colors/colors_picker.asp",
-    scope: "world",
-    config: true,
-    default: "#ff4900bd",
-    type: String,
-    onChange: lang => {
-      window.location.reload()
-    }
-  });
-  
-  game.settings.register("minimal-ui", "shadowColor", {
-    name: "Shadow Colors",
-    hint: "Default: #ff4900bd | Disable with: #ffffff00 | Get codes: w3schools.com/colors/colors_picker.asp",
-    scope: "world",
-    config: true,
-    default: "#ff4900bd",
-    type: String,
-    onChange: lang => {
-      window.location.reload()
-    }
-  });
-  
+
   game.settings.register("minimal-ui", "shadowStrength", {
     name: "Shadow Strength",
     hint: "How gloomy and shadow are the borders? Default: 10",
@@ -300,7 +304,73 @@ Hooks.on('init', () => {
 });
 
 Hooks.once('ready', async function() {
+  
+  $("#players")[0].val = "";
+  
+  // SWADE Special Compatibility
+  if (game.system.data.name == 'swade') {
+    $(".bennies-count").hide();
+    $("#players").hover(
+      function() {
+        $(".bennies-count").show();
+      },
+      function() {
+        $(".bennies-count").hide();
+      }
+    );
+  };
+  
+});
 
+Hooks.on('renderSceneNavigation', async function() {
+  
+  let rootStyle = document.querySelector(':root').style;
+  
+  switch(game.settings.get('minimal-ui', 'sceneNavigationPreview')) {
+    case 'hover': {
+      let previewMargin = game.settings.get('minimal-ui', 'sceneNavigationPreviewMargin');
+      rootStyle.setProperty('--navithumbmarg', previewMargin + 'px');
+      let sceneTabs = $("#scene-list li");
+      sceneTabs.each(function(i, sceneTab) {
+        let sceneId = $(sceneTab).attr('data-scene-id');
+        if (sceneId) {
+          let sceneThumbUrl = game.scenes.get(sceneId).data.thumb;
+          if (sceneThumbUrl) {
+            new Image().src = sceneThumbUrl;
+            $(sceneTab).append(
+              `
+              <div style="position: fixed;">
+              <img
+                id="hover_preview_${i}"
+                class="navi-preview"
+                src='${sceneThumbUrl}'>
+              </img>
+              </div>
+              `
+            );
+            $(sceneTab).hover(
+              function() {
+                if (!$(sceneTab).hasClass('view')) {
+                  $(`#hover_preview_${i}`).show(200);
+                }
+              },
+              function() {
+                if (!$(sceneTab).hasClass('view')) {
+                  $(`#hover_preview_${i}`).fadeOut(50);
+                }
+              }
+            );
+          }
+        }
+      });
+      break;
+    }
+  }
+  
+});
+
+Hooks.once('renderSceneNavigation', async function() {
+  
   let rootStyle = document.querySelector(':root').style;
   
   // Compatibility Workaround for bullseye module
@@ -348,17 +418,37 @@ Hooks.once('ready', async function() {
       break;
     }
   }
-
-  $("#players")[0].val = "";
-
+  
 });
 
 Hooks.once('renderSceneControls', async function() {
   
   let rootStyle = document.querySelector(':root').style;
   
-  rootStyle.setProperty('--bordercolor', game.settings.get('minimal-ui', 'borderColor'));
-  rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
+  new window.Ardittristan.ColorSetting("minimal-ui", "borderColor", {
+    name: "Border Colors",
+    hint: "Default: #ff4900bd",
+    label: "Color Picker",
+    scope: "world",
+    defaultColor: "#ff4900bd",
+    onChange: lang => {
+      rootStyle.setProperty('--bordercolor', game.settings.get('minimal-ui', 'borderColor'));
+    }
+  });
+  
+  new window.Ardittristan.ColorSetting("minimal-ui", "shadowColor", {
+    name: "Shadow Colors",
+    hint: "Default: #ff4900bd",
+    label: "Color Picker",
+    scope: "world",
+    config: true,
+    default: "#ff4900bd",
+    type: String,
+    onChange: lang => {
+      rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
+    }
+  });
+  
   rootStyle.setProperty('--shadowstrength', game.settings.get('minimal-ui', 'shadowStrength') + 'px');
 
   if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
@@ -412,6 +502,7 @@ Hooks.once('renderSceneControls', async function() {
       break;
     }
   }
+  
 })
 
 Hooks.on('renderHotbar', async function() {

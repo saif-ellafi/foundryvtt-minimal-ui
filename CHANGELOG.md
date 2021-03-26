@@ -1,3 +1,12 @@
+### 0.4.0
+* Enhancement: Scene Navigation allows options to hover and preview the scene thumbnail (enabled by default)
+* Enhancement: Scene Navigation allows three possible size options (default small)
+* Enhancement: Now using Color Settings! Allows picking colors in real time from module settings.
+* Compatibility: SWADE hides bennies when using collapsed player list (Thanks SalieriC)
+* Bugfix: Fixed sliding macro Hotbar when using collapsed mode
+* Bugfix: Toggle button higlight should now use configured colors
+* Bugfix: Right sidebar buttons should use configured colors (Thanks SalieriC)
+
 ### 0.3.6
 * Compatibility: Vertical position for Custom Hotbar now properly respected (Thanks GambetTV)
 * Compatibility: Macrobar aligned now as default for better compatibility with macro modules

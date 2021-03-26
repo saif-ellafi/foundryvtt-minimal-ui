@@ -6,6 +6,7 @@
   --navilh: 20px;
   --navifs: 14px;
   --navibuttonsize: 23px;
+  --navithumbmarg: 10px;
   
   --leftbarxpos: 0px;
   --leftbarypos: 20vmin;
@@ -117,6 +118,10 @@
   border-bottom: 0px;
 }
 
+.bennies-count {
+  display: none;
+}
+
 /** SCENE NAVIGATION **/
 
 #navigation {
@@ -144,7 +149,17 @@
   box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
 }
 
-/** SIDE BAR CONTROLS AND BUTTONS **/
+.navi-preview {
+  display: none;
+  position: relative;
+  top: var(--navithumbmarg);
+  opacity: 1;
+  border: 1px solid var(--bordercolor);
+  border-bottom: 1px solid var(--bordercolor);
+  box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
+}
+
+/** RIGHT SIDEBAR CONTROLS AND BUTTONS **/
 
 #sidebar-tabs {
   border-bottom: var(--bordercolor);
@@ -155,6 +170,16 @@
   border: 1px solid var(--bordercolor);
   box-shadow: 0 0 var(--shadowstrength) inset var(--shadowcolor);
 }
+
+.tabs .item.active {
+  text-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
+}
+
+#sidebar-tabs > a:nth-child(n):hover {
+  text-shadow: 0 0 var(--shadowstrength) var(--bordercolor);
+}
+
+/** LEFT SIDEBAR CONTROLS AND BUTTONS **/
 
 #controls {
   left: var(--leftbarxpos);
