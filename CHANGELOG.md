@@ -1,3 +1,6 @@
+### 0.4.2
+* Compatibility: Fixed compatibility with libWrapper and colorsettings in Minimal UI
+
 ### 0.4.1
 * Bugfix: Integrated dependencies as a fallback for missing ColorSettings module
 
