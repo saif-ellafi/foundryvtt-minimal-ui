@@ -6,7 +6,7 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 
 * Hidden Foundry Logo
 * Scenes, Player list and left side controls customized for minimalism by default
-* Scene Navigation allows preview the map on mouse over
+* Scene Navigation allows preview the map on mouse over (GM Only)
 * Macro Bar may be hidden, collapsed, auto-hidden (default) or shown
 * Macro Bar may be repositioned along the X-Axis
 * Players list may be hidden completely, shown on hover or shown normally
