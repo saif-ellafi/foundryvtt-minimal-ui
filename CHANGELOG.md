@@ -1,3 +1,10 @@
+### 0.3.6
+* Compatibility: Vertical position for Custom Hotbar now properly respected (Thanks GambetTV)
+* Compatibility: Macrobar aligned now as default for better compatibility with macro modules
+* Bugfix: Fixed incorrect Macrobar positioning in "Show Normally" Mode
+* Bugfix: Fixed Macro controls positioning when not using Auto-Hide mode to look like default
+* Bugfix: Shadow color now also applied to macro hover colors (Thanks SalieriC)
+
 ### 0.3.5
 * Compatibility: Custom Hotbar patch applied and slightly repositioned higher than default (Thanks SalieriC for feedback)
 

@@ -39,12 +39,12 @@ function lockControls(unlock) {
 function lockHotbar(unlock) {
   let rootStyle = document.querySelector(':root').style;
   if (hotbarLocked && unlock) {
-    rootStyle.setProperty('--hotbaranim1', '-45px');
+    rootStyle.setProperty('--hotbaranim1', '-50px');
     $("#bar-lock > i").removeClass("fa-lock");
     $("#bar-lock > i").addClass("fa-lock-open");
     hotbarLocked = false;
   } else {
-    rootStyle.setProperty('--hotbaranim1', '0px');
+    rootStyle.setProperty('--hotbaranim1', '1px');
     $("#bar-lock > i").removeClass("fa-lock-open");
     $("#bar-lock > i").addClass("fa-lock");
     hotbarLocked = true;
@@ -83,7 +83,7 @@ Hooks.on('init', () => {
 
   game.settings.register('minimal-ui', 'macroBar', {
     name: "Macro Bar",
-    hint: "Customize Macro Bar UI",
+    hint: "Customize Macro Bar UI. Auto-Hide Ignored when using Custom Hotbar module.",
     scope: 'world',
     config: true,
     type: String,
@@ -356,12 +356,19 @@ Hooks.on('renderHotbar', async function() {
     case 'collapsed': {
       rootStyle.setProperty('--visihotbar', 'visible');
       collapse("bar-toggle");
+      if (game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active) {
+        collapse("custom-bar-toggle");
+      };
       break;
     }
     case 'autohide': {
       if (!(game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active)) {
-        rootStyle.setProperty('--hotbaranim1', '-45px');
-        rootStyle.setProperty('--macrobarlh', '12px');
+        rootStyle.setProperty('--hotbaranim1', '-50px');
+        rootStyle.setProperty('--macrobarlh1', '12px');
+        rootStyle.setProperty('--macrobarlh2', '20px');
+        rootStyle.setProperty('--macrobarmg', '-10px');
+        rootStyle.setProperty('--macrobarhh', '120%');
+        rootStyle.setProperty('--macrobarhv', '1px');
         $("#hotbar-directory-controls").append(
           `
           <a id="bar-lock">
@@ -382,15 +389,6 @@ Hooks.on('renderHotbar', async function() {
       rootStyle.setProperty('--visihotbar', 'visible');
       break;
     }
-  }
-  
-  // Compatibility patch for custom-hotbar
-  if (game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active) {
-    if ($("#custom-hotbar")[0]) {
-      $("#custom-hotbar")[0].style.setProperty('bottom', '68px');
-    }
-    rootStyle.setProperty('--macrobarhv', '10px');
-    rootStyle.setProperty('--macrobarmg', '0px');
   }
 
   let mbPos = game.settings.get('minimal-ui', 'macroBarPosition');

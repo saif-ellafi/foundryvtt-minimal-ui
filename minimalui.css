@@ -5,7 +5,7 @@
   --macrobarpos: 400px;
   --leftbarpos: -8px;
   --submenustyle: contents;
-  --hotbaranim1: 0px;
+  --hotbaranim1: 10px;
   --navistart: 10px;
   --leftbarstart: 0px;
   --leftbarstartsub: 60px;
@@ -17,9 +17,11 @@
   --submenuhover: 60px;
   --playerfsize: 0px;
   --playerwidth: 30px;
-  --macrobarlh: 30px;
-  --macrobarhv: 0px;
-  --macrobarmg: -8px;
+  --macrobarlh1: 24px;
+  --macrobarlh2: 8px;
+  --macrobarhv: 10px;
+  --macrobarmg: 0px;
+  --macrobarhh: 100%;
   --bordercolor: #ff4900bd;
   --shadowcolor: #ff4900bd;
   --shadowstrength: 10px;
@@ -49,7 +51,7 @@
 
 #hotbar .bar-controls {
   background: #191919;
-  height: 120%;
+  height: var(--macrobarhh);
   margin: var(--macrobarmg) 2px;
 }
 
@@ -62,7 +64,7 @@
 }
 
 #hotbar .bar-controls span.page-number {
-  line-height: 20px;
+  line-height: var(--macrobarlh2);
 }
 
 #hotbar #macro-list:hover {
@@ -77,8 +79,12 @@
   transition: 0.05s ease-out 0.5s;
 }
 
+#hotbar .macro:hover {
+  box-shadow: 0 0 10px var(--shadowcolor) inset;
+}
+
 #hotbar #hotbar-directory-controls a {
-  line-height: var(--macrobarlh);
+  line-height: var(--macrobarlh1);
 }
 
 #players:hover {
