@@ -26,5 +26,5 @@ https://github.com/ardittristan/VTTColorSettings
 * Improve webcam features UI
 * Any suggestions welcome
 
-![Example GIF](./examplegif-long2.gif)
+![Example GIF](./examplegif-long3.gif)
 ![Example Image](./example12.jpg)
