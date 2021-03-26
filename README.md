@@ -16,6 +16,11 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 * Left controls may be moved vertically and set behavior to auto-hidden
 * Colors of borders and shadows and their strength customizeable
 
+## Appreciations
+* Thanks to ardittristan for the awesome color settings module. The module can be optionally separately installed.
+https://github.com/ardittristan/VTTColorSettings
+* Thanks to the FoundryVTT Discord community for the issue reports and feedback.
+
 ### ToDo:
 * Compatibility with other modules
 * Improve webcam features UI
