@@ -1,3 +1,7 @@
+### 0.4.4
+* Compatibility: DnD-UI Module is now tested and supported
+* Bugfix: Effectively this time thumbnail preview is only valid for GMs (Thanks CasualTerror)
+
 ### 0.4.3
 * Compatibility: SWADE Bennies should always show on visible players list (Thanks SalieriC)
 * Bugfix: Scene thumbnail preview is now only valid for GMs (Thanks CasualTerror)

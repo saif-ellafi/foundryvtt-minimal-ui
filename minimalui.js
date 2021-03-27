@@ -9,6 +9,7 @@ class MinimalUI {
   
   static cssLeftBarSubMenuSmall = '50px';
   static cssLeftBarSubMenuStandard = '60px';
+  static cssLeftBarSubMenuDndUi = '65px';
   
   static cssLeftBarPaddingDefault = '7px';
   static cssLeftBarPaddingSmall = '30px';
@@ -30,6 +31,7 @@ class MinimalUI {
   
   static cssHotbarLeftControlsLineHeight = '12px';
   static cssHotbarRightControlsLineHeight = '20px';
+  static cssHotbarRightControlsLineHeightDnDUi = '10px';
   static cssHotbarControlsAutoHideHeight = '120%';
   static cssHotbarAutoHideHeight = '1px';
   static cssHotbarControlsMargin = '-10px';
@@ -40,6 +42,7 @@ class MinimalUI {
   
   static cssPlayersDefaultFontSize = '12px';
   static cssPlayersDefaultWidth = '150px';
+  static cssPlayersDefaultWidthDnDUi = '200px';
   
   static htmlHotbarLockButton =
     `
@@ -67,6 +70,12 @@ class MinimalUI {
       } else {
         rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuStandard);
       }
+      // Special compatibility DnD-UI
+      if (game.modules.get("dnd-ui")) {
+        rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuDndUi);
+        rootStyle.setProperty('--leftbarsubhover', MinimalUI.cssLeftBarSubMenuDndUi);
+      };
+      // ---
       $("#sidebar-lock > i").removeClass("fa-lock-open");
       $("#sidebar-lock > i").addClass("fa-lock");
     } else if (unlock) {
@@ -316,15 +325,36 @@ Hooks.on('renderPlayerList', async function() {
     case 'default': {
       rootStyle.setProperty('--playerfsize', MinimalUI.cssPlayersDefaultFontSize);
       rootStyle.setProperty('--playerwidth', MinimalUI.cssPlayersDefaultWidth);
-      rootStyle.setProperty('--playerbennies', 'inline');
       rootStyle.setProperty('--playervis', 'visible');
+      // DnD UI Special Compatibility
+      if (game.modules.get("dnd-ui")) {
+        rootStyle.setProperty('--playerwidth', '200px');
+      }
+      // SWADE Special Compatibility
+      rootStyle.setProperty('--playerbennies', 'inline');
+      // ---
       break;
     }
     case 'autohide': {
       rootStyle.setProperty('--playervis', 'visible');
-      rootStyle.setProperty('--playerbennies', 'none');
       rootStyle.setProperty('--playerslh', '2px');
+      // DnD UI Special Compatibility
+      if (game.modules.get("dnd-ui")) {
+        $("#players").css('border-image', 'none');
+        $("#players").css('border-color', 'black');
+        $("#players").hover(
+          function() {
+            $("#players").css('border-image', '');
+            $("#players").css('border-color', '');
+          },
+          function() {
+            $("#players").css('border-image', 'none');
+            $("#players").css('border-color', 'black');
+          }
+        );
+      }
       // SWADE Special Compatibility
+      rootStyle.setProperty('--playerbennies', 'none');
       if (game.system.data.name == 'swade') {
         $("#players").hover(
           function() {
@@ -335,9 +365,15 @@ Hooks.on('renderPlayerList', async function() {
           }
         );
       };
+      // ---
       break;
     }
   }
+  // DnD UI Special Compatibility
+  if (game.modules.get("dnd-ui")) {
+    rootStyle.setProperty('--playerwidthhv', '200px');
+  }
+  // ---
 });
 
 Hooks.on('renderSceneNavigation', async function() {
@@ -346,41 +382,43 @@ Hooks.on('renderSceneNavigation', async function() {
   
   switch(game.settings.get('minimal-ui', 'sceneNavigationPreview')) {
     case 'hover': {
-      let previewMargin = game.settings.get('minimal-ui', 'sceneNavigationPreviewMargin');
-      rootStyle.setProperty('--navithumbmarg', previewMargin + 'px');
-      let sceneTabs = $("#scene-list li");
-      sceneTabs.each(function(i, sceneTab) {
-        let sceneId = $(sceneTab).attr('data-scene-id');
-        if (sceneId) {
-          let sceneThumbUrl = game.scenes.get(sceneId).data.thumb;
-          if (sceneThumbUrl) {
-            new Image().src = sceneThumbUrl;
-            $(sceneTab).append(
-              `
-              <div style="position: fixed;">
-              <img
-                id="hover_preview_${i}"
-                class="navi-preview"
-                src='${sceneThumbUrl}'>
-              </img>
-              </div>
-              `
-            );
-            $(sceneTab).hover(
-              function() {
-                if (!$(sceneTab).hasClass('view')) {
-                  $(`#hover_preview_${i}`).show(200);
+      if (game.user.isGM) {
+        let sceneTabs = $("#scene-list li");
+        let previewMargin = game.settings.get('minimal-ui', 'sceneNavigationPreviewMargin');
+        rootStyle.setProperty('--navithumbmarg', previewMargin + 'px');
+        sceneTabs.each(function(i, sceneTab) {
+          let sceneId = $(sceneTab).attr('data-scene-id');
+          if (sceneId) {
+            let sceneThumbUrl = game.scenes.get(sceneId).data.thumb;
+            if (sceneThumbUrl) {
+              new Image().src = sceneThumbUrl;
+              $(sceneTab).append(
+                `
+                <div style="position: fixed;">
+                <img
+                  id="hover_preview_${i}"
+                  class="navi-preview"
+                  src='${sceneThumbUrl}'>
+                </img>
+                </div>
+                `
+              );
+              $(sceneTab).hover(
+                function() {
+                  if (!$(sceneTab).hasClass('view')) {
+                    $(`#hover_preview_${i}`).show(200);
+                  }
+                },
+                function() {
+                  if (!$(sceneTab).hasClass('view')) {
+                    $(`#hover_preview_${i}`).fadeOut(50);
+                  }
                 }
-              },
-              function() {
-                if (!$(sceneTab).hasClass('view')) {
-                  $(`#hover_preview_${i}`).fadeOut(50);
-                }
-              }
-            );
+              );
+            }
           }
-        }
-      });
+        });
+      };
       break;
     }
   }
@@ -468,7 +506,13 @@ Hooks.once('renderSceneControls', async function() {
     rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuStandard);
     rootStyle.setProperty('--leftbarsubhover', MinimalUI.cssLeftBarSubMenuStandard);
   }
-
+  // Special compatibility DnD-UI
+  if (game.modules.get("dnd-ui")) {
+    rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuDndUi);
+    rootStyle.setProperty('--leftbarsubhover', MinimalUI.cssLeftBarSubMenuDndUi);
+  };
+  // ---
+  
   switch(game.settings.get('minimal-ui', 'sidePanel')) {
     case 'autohide': {
       if (!MinimalUI.controlsLocked) {
@@ -536,6 +580,9 @@ Hooks.on('renderHotbar', async function() {
         rootStyle.setProperty('--macrobarypos', MinimalUI.cssHotbarHidden);
         rootStyle.setProperty('--macrobarlh1', MinimalUI.cssHotbarLeftControlsLineHeight);
         rootStyle.setProperty('--macrobarlh2', MinimalUI.cssHotbarRightControlsLineHeight);
+        if (game.modules.get("dnd-ui")) {
+          rootStyle.setProperty('--macrobarlh2', MinimalUI.cssHotbarRightControlsLineHeightDnDUi);
+        }
         rootStyle.setProperty('--macrobarmg', MinimalUI.cssHotbarControlsMargin);
         rootStyle.setProperty('--macrobarhh', MinimalUI.cssHotbarControlsAutoHideHeight);
         rootStyle.setProperty('--macrobarhv', MinimalUI.cssHotbarAutoHideHeight);

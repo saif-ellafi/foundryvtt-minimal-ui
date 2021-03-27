@@ -16,6 +16,21 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 * Left controls may be moved vertically and set behavior to auto-hidden
 * Colors of borders and shadows and their strength customizeable
 
+## Support with Systems and Modules
+MinimalUI is made as agnostic as possible. Yet, it is impossible to ensure maximum compatibility.
+I invite you to share any systems or modules that conflict with MinimalUI or do not look correctly.
+Also do share systems and modules Minimal UI already works with too!
+### So far, these are systems I tested and explicitly Supported:
+* DnD 5e
+* Savage Worlds
+* Dark Heresy
+### So far, these are modules I tested and explicitly Supported:
+* DnD-UI
+* Bullseye
+* Custom Hotbar
+* Quick Insert / Search Anywhere
+* Simple Dice Roller
+
 ## Appreciations
 * Thanks to ardittristan for the awesome color settings module. The module can be optionally separately installed.
 https://github.com/ardittristan/VTTColorSettings

@@ -22,6 +22,7 @@
   --playervis: hidden;
   --playerfsize: 0px;
   --playerwidth: 25px;
+  --playerwidthhv: 150px;
   --playerslh: 20px;
   --playerbennies: none;
   
@@ -98,7 +99,7 @@
 /** PLAYERS LIST **/
 
 #players:hover {
-  width: 150px;
+  width: var(--playerwidthhv);
   font-size: 12px;
 }
 
