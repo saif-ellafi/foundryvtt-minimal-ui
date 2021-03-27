@@ -1,5 +1,7 @@
 class MinimalUI {
   
+  static hiddenInterface = false;
+  
   static hotbarLocked = false;
   static controlsLocked = false;
   static cssControlsLastPos = '0px';
@@ -36,6 +38,9 @@ class MinimalUI {
   static cssHotbarAutoHideHeight = '1px';
   static cssHotbarControlsMargin = '-10px';
   
+  static cssSceneNavNoLogoStart = '5px';
+  static cssSceneNavSmallLogoStart = '75px';
+  static cssSceneNavStandardLogoStart = '125px';
   static cssSceneNavBullseyeStart = '125px';
   
   static cssMinimumMacroBarX = 170;
@@ -56,6 +61,30 @@ class MinimalUI {
     if (target) {
       target.click();
     }
+  }
+  
+  static hideAll(alsoChat) {
+    $('#logo').click(_ => {
+    if (!MinimalUI.hiddenInterface) {
+      if (alsoChat) {
+        $('#sidebar').hide();
+      };
+      $('#navigation').hide();
+      $('#controls').hide();
+      $('#players').hide();
+      $('#hotbar').hide();
+      MinimalUI.hiddenInterface = true;
+    } else {
+      if (alsoChat) {
+        $('#sidebar').show();
+      };
+      $('#navigation').show();
+      $('#controls').show();
+      $('#players').show();
+      $('#hotbar').show();
+      MinimalUI.hiddenInterface = false;
+    }
+    });
   }
 
   static lockControls(unlock) {
@@ -123,6 +152,40 @@ class MinimalUI {
 }
 
 Hooks.on('init', () => {
+  
+  game.settings.register('minimal-ui', 'foundryLogoSize', {
+    name: "Foundry Logo Size",
+    hint: "Foundry logo visibility and size",
+    scope: 'world',
+    config: true,
+    type: String,
+    choices: {
+      "hidden": "Hide",
+      "small": "Small",
+      "standard": "Standard"
+    },
+    default: "hidden",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+  
+  game.settings.register('minimal-ui', 'foundryLogoBehaviour', {
+    name: "Foundry Logo Behaviour",
+    hint: "Use the Foundry Logo to toggle visual elements (when visible, of course).",
+    scope: 'world',
+    config: true,
+    type: String,
+    choices: {
+      "toggleAll": "Logo toggles Hide ALL UI",
+      "toggleButChat": "Logo toggles Hide ALL UI except Chat"
+    },
+    default: "toggleButChat",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+  
   game.settings.register('minimal-ui', 'sceneNavigation', {
     name: "Scene Navigation Style",
     hint: "Customize scene navigation behaviour. Consider 'DF Scene Enhancement' when hidden.",
@@ -314,6 +377,43 @@ Hooks.on('init', () => {
 
 Hooks.once('ready', async function() {
   
+  let rootStyle = document.querySelector(':root').style;
+  
+  if (game.settings.get('minimal-ui', 'foundryLogoSize') != 'hidden') {
+    switch(game.settings.get('minimal-ui', 'foundryLogoBehaviour')) {
+      case 'toggleAll': {
+        MinimalUI.hideAll(true);
+        break;
+      }
+      case 'toggleButChat': {
+        MinimalUI.hideAll(false);
+        break;
+      }
+    }
+  }
+  
+  switch(game.settings.get('minimal-ui', 'foundryLogoSize')) {
+    case 'small': {
+      rootStyle.setProperty('--logovis', 'visible');
+      rootStyle.setProperty('--navixpos', MinimalUI.cssSceneNavSmallLogoStart);
+      rootStyle.setProperty('--logoh', '25px');
+      rootStyle.setProperty('--logow', '50px');
+      break;
+    }
+    case 'standard': {
+      rootStyle.setProperty('--logovis', 'visible');
+      break;
+    }
+  }
+  
+  // Compatibility Workaround for bullseye module
+  if (game.modules.has('bullseye') && game.modules.get('bullseye').active) {
+    rootStyle.setProperty('--navixpos', MinimalUI.cssSceneNavBullseyeStart);
+    rootStyle.setProperty('--logovis', 'visible');
+    rootStyle.setProperty('--logoh', '50px');
+    rootStyle.setProperty('--logow', '100px');
+  }
+  
 });
 
 Hooks.on('renderPlayerList', async function() {
@@ -423,17 +523,30 @@ Hooks.on('renderSceneNavigation', async function() {
     }
   }
   
-});
-
-Hooks.once('renderSceneNavigation', async function() {
-  
-  let rootStyle = document.querySelector(':root').style;
+  switch(game.settings.get('minimal-ui', 'foundryLogoSize')) {
+    case 'hidden': {
+      rootStyle.setProperty('--navixpos', MinimalUI.cssSceneNavNoLogoStart);
+      break;
+    }
+    case 'small': {
+      rootStyle.setProperty('--navixpos', MinimalUI.cssSceneNavSmallLogoStart);
+      break;
+    }
+  }
   
   // Compatibility Workaround for bullseye module
   if (game.modules.has('bullseye') && game.modules.get('bullseye').active) {
     rootStyle.setProperty('--navixpos', MinimalUI.cssSceneNavBullseyeStart);
     rootStyle.setProperty('--logovis', 'visible');
+    rootStyle.setProperty('--logoh', '50px');
+    rootStyle.setProperty('--logow', '100px');
   }
+  
+});
+
+Hooks.once('renderSceneNavigation', async function() {
+  
+  let rootStyle = document.querySelector(':root').style;
 
   switch(game.settings.get('minimal-ui', 'sceneNavigation')) {
     case 'collapsed': {

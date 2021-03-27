@@ -1,3 +1,8 @@
+### 0.4.5
+* Enhancement: Foundry Logo can be optionally shown in small, standard size or hidden!
+* Enhancement: Foundry Logo can be used to Toggle the UI - Including or not the Chat! (Thanks QuantumFunks)
+* Enhancement: The Scene Navigation should adjust to optimize available space based on the Foundry Logo configuration (Thanks SalieriC)
+
 ### 0.4.4
 * Compatibility: DnD-UI Module is now tested and supported
 * Bugfix: Effectively this time thumbnail preview is only valid for GMs (Thanks CasualTerror)

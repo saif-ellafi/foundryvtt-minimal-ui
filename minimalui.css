@@ -1,8 +1,10 @@
 :root {
   --logovis: hidden;
+  --logoh: 50px;
+  --logow: 100px;
   
   --navivis: hidden;
-  --navixpos: 75px;
+  --navixpos: 125px;
   --navilh: 20px;
   --navifs: 14px;
   --navibuttonsize: 23px;
@@ -42,6 +44,8 @@
 
 #logo {
   visibility: var(--logovis);
+  height: var(--logoh);
+  width: var(--logow);
 }
 
 /** MACRO HOTBAR **/
