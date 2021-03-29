@@ -1,280 +1,280 @@
 :root {
-  --logovis: hidden;
-  --logoh: 50px;
-  --logow: 100px;
+    --logovis: hidden;
+    --logoh: 50px;
+    --logow: 100px;
+    
+    --navivis: hidden;
+    --navixpos: 125px;
+    --navilh: 20px;
+    --navifs: 14px;
+    --navibuttonsize: 23px;
+    --navithumbmarg: 10px;
+    
+    --leftbarxpos: 0px;
+    --leftbarypos: 20vmin;
+    --leftbarpad: 7px;
+    --leftbarw: 36px;
+    --leftbarh: 36px;
+    --leftbarlh: 36px;
+    --leftbarfs: 24px;
+    --leftbarsubstart: 60px;
+    --leftbarsubhover: 60px;
+    --leftbarsubstyle: contents;
+    
+    --playervis: hidden;
+    --playerfsize: 0px;
+    --playerwidth: 25px;
+    --playerwidthhv: 150px;
+    --playerslh: 20px;
+    --playerbennies: none;
+    
+    --macrobarvis: hidden;
+    --macrobarypos: 10px;
+    --macrobarxpos: 400px;
+    --macrobarlh1: 24px;
+    --macrobarlh2: 8px;
+    --macrobarhv: 10px;
+    --macrobarmg: 0px;
+    --macrobarhh: 100%;
+    
+    --bordercolor: #ff4900bd;
+    --shadowcolor: #ff4900bd;
+    --shadowstrength: 10px;
+  }
   
-  --navivis: hidden;
-  --navixpos: 125px;
-  --navilh: 20px;
-  --navifs: 14px;
-  --navibuttonsize: 23px;
-  --navithumbmarg: 10px;
+  #logo {
+    visibility: var(--logovis);
+    height: var(--logoh);
+    width: var(--logow);
+  }
   
-  --leftbarxpos: 0px;
-  --leftbarypos: 20vmin;
-  --leftbarpad: 7px;
-  --leftbarw: 36px;
-  --leftbarh: 36px;
-  --leftbarlh: 36px;
-  --leftbarfs: 24px;
-  --leftbarsubstart: 60px;
-  --leftbarsubhover: 60px;
-  --leftbarsubstyle: contents;
+  /** MACRO HOTBAR **/
   
-  --playervis: hidden;
-  --playerfsize: 0px;
-  --playerwidth: 25px;
-  --playerwidthhv: 150px;
-  --playerslh: 20px;
-  --playerbennies: none;
+  #hotbar:hover {
+    bottom: var(--macrobarhv);
+    transition: 0.5s;
+  }
   
-  --macrobarvis: hidden;
-  --macrobarypos: 10px;
-  --macrobarxpos: 400px;
-  --macrobarlh1: 24px;
-  --macrobarlh2: 8px;
-  --macrobarhv: 10px;
-  --macrobarmg: 0px;
-  --macrobarhh: 100%;
+  #hotbar {
+    left: var(--macrobarxpos);
+    bottom: var(--macrobarypos);
+    visibility: var(--macrobarvis);
+    transition: 0.05s ease-out 0.5s;
+  }
   
-  --bordercolor: #ff4900bd;
-  --shadowcolor: #ff4900bd;
-  --shadowstrength: 10px;
-}
-
-#logo {
-  visibility: var(--logovis);
-  height: var(--logoh);
-  width: var(--logow);
-}
-
-/** MACRO HOTBAR **/
-
-#hotbar:hover {
-  bottom: var(--macrobarhv);
-  transition: 0.5s;
-}
-
-#hotbar {
-  left: var(--macrobarxpos);
-  bottom: var(--macrobarypos);
-  visibility: var(--macrobarvis);
-  transition: 0.05s ease-out 0.5s;
-}
-
-#hotbar .bar-controls {
-  background: #191919;
-  height: var(--macrobarhh);
-  margin: var(--macrobarmg) 2px;
-}
-
-#hotbar .bar-controls a.page-control {
-  font-size: 20px;
-}
-
-#hotbar #hotbar-directory-controls {
-  font-size: 14px;
-}
-
-#hotbar .bar-controls span.page-number {
-  line-height: var(--macrobarlh2);
-}
-
-#hotbar #macro-list:hover {
-  border-top: 1px solid var(--bordercolor);
-  box-shadow: 0px 0px var(--shadowstrength) 2px var(--shadowcolor);
-  transition: 0.5s;
-}
-
-#hotbar #macro-list {
-  border-top: 1px solid var(--bordercolor);
-  box-shadow: 0px 0px var(--shadowstrength) 2px var(--shadowcolor);
-  transition: 0.05s ease-out 0.5s;
-}
-
-#hotbar .macro:hover {
-  box-shadow: 0 0 10px var(--shadowcolor) inset;
-}
-
-#hotbar #hotbar-directory-controls a {
-  line-height: var(--macrobarlh1);
-}
-
-/** PLAYERS LIST **/
-
-#players:hover {
-  width: var(--playerwidthhv);
-  font-size: 12px;
-}
-
-#players {
-  width: var(--playerwidth);
-  left: 5px;
-  bottom: 2px;
-  font-size: var(--playerfsize);
-  visibility: var(--playervis);
-}
-
-#players ol li.player {
-  padding: 1px 6px;
-  line-height: var(--playerslh);
-}
-
-#players:hover ol li.player {
-  line-height: 20px;
-}
-
-#players h3 {
-  margin: 0px -2px;
-  border-bottom: 0px;
-}
-
-.bennies-count {
-  display: var(--playerbennies);
-}
-
-/** SCENE NAVIGATION **/
-
-#navigation {
-  left: var(--navixpos);
-  visibility: var(--navivis);
-}
-
-#navigation .nav-item {
-  line-height: var(--navilh);
-  font-size: var(--navifs);
-}
-
-#navigation #nav-toggle {
-  height: var(--navibuttonsize);
-  background: #292929bd;
-}
-
-#navigation #scene-list .scene ul.scene-players {
-  top: 16px;
-}
-
-#navigation #scene-list .scene.view, #navigation #scene-list .scene.context {
-  border: 1px solid var(--bordercolor);
-  border-bottom: 1px solid var(--bordercolor);
-  box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
-}
-
-.navi-preview {
-  display: none;
-  position: relative;
-  top: var(--navithumbmarg);
-  opacity: 1;
-  border: 1px solid var(--bordercolor);
-  border-bottom: 1px solid var(--bordercolor);
-  box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
-}
-
-/** RIGHT SIDEBAR CONTROLS AND BUTTONS **/
-
-#sidebar-tabs {
-  border-bottom: var(--bordercolor);
-  box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
-}
-
-#sidebar-tabs > .item.active {
-  border: 1px solid var(--bordercolor);
-  box-shadow: 0 0 var(--shadowstrength) inset var(--shadowcolor);
-}
-
-.tabs .item.active {
-  text-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
-}
-
-#sidebar-tabs > a:nth-child(n):hover {
-  text-shadow: 0 0 var(--shadowstrength) var(--bordercolor);
-}
-
-/** LEFT SIDEBAR CONTROLS AND BUTTONS **/
-
-#controls {
-  left: var(--leftbarxpos);
-  top: 10px;
-  margin-top: var(--leftbarypos);
-  border-right: 1px solid var(--bordercolor);
-  box-shadow: 3px 0px var(--shadowstrength) 0px var(--shadowcolor);
-  transition: 0.1s;
-  padding-right: var(--leftbarpad);
-  background: #0000003b;
-}
-
-#controls:hover {
-  left: 0px;
-  transition: 0.5s;
-  padding-right: 7px;
-}
-
-#controls .control-tool.toggle {
-  background: var(--shadowcolor);
-  border: 0px solid var(--bordercolor);
-}
-
-#controls .control-tool.toggle:hover {
-  background: var(--bordercolor);
-  box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
-}
-
-#controls .control-tool.toggle.active {
-  background: var(--bordercolor);
-  box-shadow: 0 0 var(--shadowstrength) var(--bordercolor);
-}
-
-#controls .scene-control, #controls .control-tool {
-  margin: 0 0 2px; 
-}
-
-#controls .scene-control.active, #controls .scene-control:hover {
-  border: 1px solid transparent;
-  color: orange;
-  border: solid 1px var(--bordercolor);
-  box-shadow: 1px 0px var(--shadowstrength) 0px var(--shadowcolor);
-  padding-right: 2px;
-  padding-left: 1px;
-}
-
-#controls .control-tool.toggle.active, #controls .control-tool.toggle:hover {
-  padding-right: 0px;
-  padding-left: 1px;
-}
-
-#controls .control-tool.active, #controls .control-tool {
-  border: 0px solid transparent;
-  padding-right: 0px;
-  padding-left: 1px;
-}
-
-#controls .control-tool.active, #controls .control-tool:hover {
-  border: 0px solid transparent;
-  color: yellow;
-  box-shadow: 1px 0px var(--shadowstrength) 0px var(--shadowcolor);
-}
-
-#controls > li:nth-child(n), #controls > li.scene-control > ol > li.control-tool {
-  width: var(--leftbarw);
-  height: var(--leftbarh);
-  line-height: var(--leftbarlh);
-  font-size: var(--leftbarfs);
-  padding-right: 0px;
-  padding-left: 1px;
-}
-
-
-#controls .active .control-tools {
-  display: var(--leftbarsubstyle);
-  left: var(--leftbarsubstart);
-  transition: 0.5s;
-  background: #00000059;
-  border: solid 1px var(--bordercolor);
-  box-shadow: 1px 0px var(--shadowstrength) 0px var(--shadowcolor);
-  border-radius: 3px;
-}
-
-#controls:hover .active .control-tools {
-  display: var(--leftbarsubstyle);
-  left: var(--leftbarsubhover);
-}
+  #hotbar .bar-controls {
+    background: #191919;
+    height: var(--macrobarhh);
+    margin: var(--macrobarmg) 2px;
+  }
+  
+  #hotbar .bar-controls a.page-control {
+    font-size: 20px;
+  }
+  
+  #hotbar #hotbar-directory-controls {
+    font-size: 14px;
+  }
+  
+  #hotbar .bar-controls span.page-number {
+    line-height: var(--macrobarlh2);
+  }
+  
+  #hotbar #macro-list:hover {
+    border-top: 1px solid var(--bordercolor);
+    box-shadow: 0px 0px var(--shadowstrength) 2px var(--shadowcolor);
+    transition: 0.5s;
+  }
+  
+  #hotbar #macro-list {
+    border-top: 1px solid var(--bordercolor);
+    box-shadow: 0px -1px var(--shadowstrength) 2px var(--shadowcolor);
+    transition: 0.05s ease-out 0.5s;
+  }
+  
+  #hotbar .macro:hover {
+    box-shadow: 0 0 10px var(--shadowcolor) inset;
+  }
+  
+  #hotbar #hotbar-directory-controls a {
+    line-height: var(--macrobarlh1);
+  }
+  
+  /** PLAYERS LIST **/
+  
+  #players:hover {
+    width: var(--playerwidthhv);
+    font-size: 12px;
+  }
+  
+  #players {
+    width: var(--playerwidth);
+    left: 5px;
+    bottom: 2px;
+    font-size: var(--playerfsize);
+    visibility: var(--playervis);
+  }
+  
+  #players ol li.player {
+    padding: 1px 6px;
+    line-height: var(--playerslh);
+  }
+  
+  #players:hover ol li.player {
+    line-height: 20px;
+  }
+  
+  #players h3 {
+    margin: 0px -2px;
+    border-bottom: 0px;
+  }
+  
+  .bennies-count {
+    display: var(--playerbennies);
+  }
+  
+  /** SCENE NAVIGATION **/
+  
+  #navigation {
+    left: var(--navixpos);
+    visibility: var(--navivis);
+  }
+  
+  #navigation .nav-item {
+    line-height: var(--navilh);
+    font-size: var(--navifs);
+  }
+  
+  #navigation #nav-toggle {
+    height: var(--navibuttonsize);
+    background: #292929bd;
+  }
+  
+  #navigation #scene-list .scene ul.scene-players {
+    top: 16px;
+  }
+  
+  #navigation #scene-list .scene.view, #navigation #scene-list .scene.context {
+    border: 1px solid var(--bordercolor);
+    border-bottom: 1px solid var(--bordercolor);
+    box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
+  }
+  
+  .navi-preview {
+    display: none;
+    position: relative;
+    top: var(--navithumbmarg);
+    opacity: 1;
+    border: 1px solid var(--bordercolor);
+    border-bottom: 1px solid var(--bordercolor);
+    box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
+  }
+  
+  /** RIGHT SIDEBAR CONTROLS AND BUTTONS **/
+  
+  #sidebar-tabs {
+    border-bottom: 1px solid var(--bordercolor);
+    box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
+  }
+  
+  #sidebar-tabs > .item.active {
+    box-shadow: 0 0 var(--shadowstrength) inset var(--shadowcolor);
+  }
+  
+  .tabs .item.active {
+    text-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
+  }
+  
+  #sidebar-tabs > a:nth-child(n):hover {
+    text-shadow: 0 0 var(--shadowstrength) var(--bordercolor);
+  }
+  
+  /** LEFT SIDEBAR CONTROLS AND BUTTONS **/
+  
+  #controls {
+    left: var(--leftbarxpos);
+    top: 10px;
+    margin-top: var(--leftbarypos);
+    border-right: 1px solid var(--bordercolor);
+    box-shadow: 3px 0px var(--shadowstrength) 0px var(--shadowcolor);
+    transition: 0.1s;
+    padding-right: var(--leftbarpad);
+    background: #0000003b;
+  }
+  
+  #controls:hover {
+    left: 0px;
+    transition: 0.5s;
+    padding-right: 7px;
+  }
+  
+  #controls .control-tool.toggle {
+    background: var(--shadowcolor);
+    border: 0px solid var(--bordercolor);
+  }
+  
+  #controls .control-tool.toggle:hover {
+    background: var(--bordercolor);
+    box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
+  }
+  
+  #controls .control-tool.toggle.active {
+    background: var(--bordercolor);
+    box-shadow: 0 0 var(--shadowstrength) var(--bordercolor);
+  }
+  
+  #controls .scene-control, #controls .control-tool {
+    margin: 0 0 2px; 
+  }
+  
+  #controls .scene-control.active, #controls .scene-control:hover {
+    border: 1px solid transparent;
+    color: orange;
+    border: solid 1px var(--bordercolor);
+    box-shadow: 1px 0px var(--shadowstrength) 0px var(--shadowcolor);
+    padding-right: 2px;
+    padding-left: 1px;
+  }
+  
+  #controls .control-tool.toggle.active, #controls .control-tool.toggle:hover {
+    padding-right: 0px;
+    padding-left: 1px;
+  }
+  
+  #controls .control-tool.active, #controls .control-tool {
+    border: 0px solid transparent;
+    padding-right: 0px;
+    padding-left: 1px;
+  }
+  
+  #controls .control-tool.active, #controls .control-tool:hover {
+    border: 0px solid transparent;
+    color: yellow;
+    box-shadow: 1px 0px var(--shadowstrength) 0px var(--shadowcolor);
+  }
+  
+  #controls > li:nth-child(n), #controls > li.scene-control > ol > li.control-tool {
+    width: var(--leftbarw);
+    height: var(--leftbarh);
+    line-height: var(--leftbarlh);
+    font-size: var(--leftbarfs);
+    padding-right: 0px;
+    padding-left: 1px;
+  }
+  
+  
+  #controls .active .control-tools {
+    display: var(--leftbarsubstyle);
+    left: var(--leftbarsubstart);
+    transition: 0.5s;
+    background: #00000059;
+    border: solid 1px var(--bordercolor);
+    box-shadow: 1px 0px var(--shadowstrength) 0px var(--shadowcolor);
+    border-radius: 3px;
+  }
+  
+  #controls:hover .active .control-tools {
+    display: var(--leftbarsubstyle);
+    left: var(--leftbarsubhover);
+  }
+  

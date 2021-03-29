@@ -1,20 +1,22 @@
 class MinimalUI {
   
   static hiddenInterface = false;
+  static fakeDisabled = false;
   
   static hotbarLocked = false;
   static controlsLocked = false;
   static cssControlsLastPos = '0px';
   
   static cssLeftBarStartVisible = '0px';
-  static cssLeftBarHiddenPosition = '-60px';
+  static cssLeftBarHiddenPositionSmall = '-62px';
+  static cssLeftBarHiddenPositionStandard = '-72px';
   
   static cssLeftBarSubMenuSmall = '50px';
   static cssLeftBarSubMenuStandard = '60px';
   static cssLeftBarSubMenuDndUi = '65px';
   
   static cssLeftBarPaddingDefault = '7px';
-  static cssLeftBarPaddingSmall = '30px';
+  static cssLeftBarPaddingSmall = '26px';
   static cssLeftBarPaddingStandard = '20px';
     
   static cssLeftBarSmallWidth = '25px';
@@ -112,12 +114,12 @@ class MinimalUI {
       $("#sidebar-lock > i").removeClass("fa-lock");
       $("#sidebar-lock > i").addClass("fa-lock-open");
       rootStyle.setProperty('--leftbarxpos', MinimalUI.cssControlsLastPos);
-      rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarHiddenPosition);
       if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
-        rootStyle.setProperty('--leftbarpad', MinimalUI.cssLeftBarPaddingSmall);
+        rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarHiddenPositionSmall);
       } else {
-        rootStyle.setProperty('--leftbarpad', MinimalUI.cssLeftBarPaddingSmall);
+        rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarHiddenPositionStandard);
       }
+      rootStyle.setProperty('--leftbarpad', MinimalUI.cssLeftBarPaddingSmall);
     }
   }
 
@@ -577,97 +579,6 @@ Hooks.once('renderSceneNavigation', async function() {
   
 });
 
-Hooks.once('renderSceneControls', async function() {
-  
-  let rootStyle = document.querySelector(':root').style;
-  
-  new window.Ardittristan.ColorSetting("minimal-ui", "borderColor", {
-    name: "Border Colors",
-    hint: "Default: #ff4900bd",
-    label: "Color Picker",
-    scope: "world",
-    defaultColor: "#ff4900bd",
-    onChange: lang => {
-      rootStyle.setProperty('--bordercolor', game.settings.get('minimal-ui', 'borderColor'));
-    }
-  });
-  
-  new window.Ardittristan.ColorSetting("minimal-ui", "shadowColor", {
-    name: "Shadow Colors",
-    hint: "Default: #ff4900bd",
-    label: "Color Picker",
-    scope: "world",
-    defaultColor: "#ff4900bd",
-    type: String,
-    onChange: lang => {
-      rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
-    }
-  });
-  
-  rootStyle.setProperty('--bordercolor', game.settings.get('minimal-ui', 'borderColor'));
-  rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
-  rootStyle.setProperty('--shadowstrength', game.settings.get('minimal-ui', 'shadowStrength') + 'px');
-
-  if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
-    rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuSmall);
-    rootStyle.setProperty('--leftbarsubhover', MinimalUI.cssLeftBarSubMenuSmall);
-    rootStyle.setProperty('--leftbarw', MinimalUI.cssLeftBarSmallWidth);
-    rootStyle.setProperty('--leftbarh', MinimalUI.cssLeftBarSmallHeight);
-    rootStyle.setProperty('--leftbarlh', MinimalUI.cssLeftBarSmallLineHeight);
-    rootStyle.setProperty('--leftbarfs', MinimalUI.cssLeftBarSmallFontSize);
-  } else {
-    rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuStandard);
-    rootStyle.setProperty('--leftbarsubhover', MinimalUI.cssLeftBarSubMenuStandard);
-  }
-  // Special compatibility DnD-UI
-  if (game.modules.get("dnd-ui")) {
-    rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuDndUi);
-    rootStyle.setProperty('--leftbarsubhover', MinimalUI.cssLeftBarSubMenuDndUi);
-  };
-  // ---
-  
-  switch(game.settings.get('minimal-ui', 'sidePanel')) {
-    case 'autohide': {
-      if (!MinimalUI.controlsLocked) {
-        rootStyle.setProperty('--leftbarxpos', MinimalUI.cssLeftBarHiddenPosition);
-        rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarHiddenPosition);
-      }
-      break;
-    }
-  }
-
-  switch(true) {
-    case (game.settings.get('minimal-ui', 'sidePanelPosition') == 'top' || game.settings.get('minimal-ui', 'sidePanelMenuStyle') == 'column'): {
-      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionTop);
-      break;
-    }
-    case (game.settings.get('minimal-ui', 'sidePanelPosition') == 'center'): {
-      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionCenter);
-      break;
-    }
-    case (game.settings.get('minimal-ui', 'sidePanelPosition') ==  'lower'): {
-      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionLower);
-      break;
-    }
-    case (game.settings.get('minimal-ui', 'sidePanelPosition') ==  'bottom'): {
-      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionBottom);
-      break;
-    }
-  }
-
-  switch(game.settings.get('minimal-ui', 'sidePanelMenuStyle')) {
-    case 'default': {
-      rootStyle.setProperty('--leftbarsubstyle', 'block');
-      break;
-    }
-    case 'column': {
-      rootStyle.setProperty('--leftbarsubstyle', 'contents');
-      break;
-    }
-  }
-  
-})
-
 Hooks.on('renderHotbar', async function() {
   
   let rootStyle = document.querySelector(':root').style;
@@ -717,18 +628,110 @@ Hooks.on('renderHotbar', async function() {
   
 })
 
+Hooks.once('renderSceneControls', async function() {
+  
+  let rootStyle = document.querySelector(':root').style;
+  
+  new window.Ardittristan.ColorSetting("minimal-ui", "borderColor", {
+    name: "Border Colors",
+    hint: "Default: #ff4900bd",
+    label: "Color Picker",
+    scope: "world",
+    defaultColor: "#ff4900bd",
+    onChange: lang => {
+      rootStyle.setProperty('--bordercolor', game.settings.get('minimal-ui', 'borderColor'));
+    }
+  });
+  
+  new window.Ardittristan.ColorSetting("minimal-ui", "shadowColor", {
+    name: "Shadow Colors",
+    hint: "Default: #ff4900bd",
+    label: "Color Picker",
+    scope: "world",
+    defaultColor: "#ff4900bd",
+    type: String,
+    onChange: lang => {
+      rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
+    }
+  });
+  
+  rootStyle.setProperty('--bordercolor', game.settings.get('minimal-ui', 'borderColor'));
+  rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
+  rootStyle.setProperty('--shadowstrength', game.settings.get('minimal-ui', 'shadowStrength') + 'px');
+
+  if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
+    rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuSmall);
+    rootStyle.setProperty('--leftbarsubhover', MinimalUI.cssLeftBarSubMenuSmall);
+    rootStyle.setProperty('--leftbarw', MinimalUI.cssLeftBarSmallWidth);
+    rootStyle.setProperty('--leftbarh', MinimalUI.cssLeftBarSmallHeight);
+    rootStyle.setProperty('--leftbarlh', MinimalUI.cssLeftBarSmallLineHeight);
+    rootStyle.setProperty('--leftbarfs', MinimalUI.cssLeftBarSmallFontSize);
+  } else {
+    rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuStandard);
+    rootStyle.setProperty('--leftbarsubhover', MinimalUI.cssLeftBarSubMenuStandard);
+  }
+  // Special compatibility DnD-UI
+  if (game.modules.get("dnd-ui")) {
+    rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuDndUi);
+    rootStyle.setProperty('--leftbarsubhover', MinimalUI.cssLeftBarSubMenuDndUi);
+  };
+  // ---
+
+  switch(true) {
+    case (game.settings.get('minimal-ui', 'sidePanelPosition') == 'top' || game.settings.get('minimal-ui', 'sidePanelMenuStyle') == 'column'): {
+      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionTop);
+      break;
+    }
+    case (game.settings.get('minimal-ui', 'sidePanelPosition') == 'center'): {
+      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionCenter);
+      break;
+    }
+    case (game.settings.get('minimal-ui', 'sidePanelPosition') ==  'lower'): {
+      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionLower);
+      break;
+    }
+    case (game.settings.get('minimal-ui', 'sidePanelPosition') ==  'bottom'): {
+      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionBottom);
+      break;
+    }
+  }
+
+  switch(game.settings.get('minimal-ui', 'sidePanelMenuStyle')) {
+    case 'default': {
+      rootStyle.setProperty('--leftbarsubstyle', 'block');
+      break;
+    }
+    case 'column': {
+      rootStyle.setProperty('--leftbarsubstyle', 'contents');
+      break;
+    }
+  }
+  
+})
+
 Hooks.on('renderSceneControls', async function() {
   
   let rootStyle = document.querySelector(':root').style;
   
+  // Hide controls altogether when they're disabled
+  if (!MinimalUI.fakeDisabled && $("#controls").hasClass('disabled')) {
+    $("#controls").hide();
+  } else {
+    $("#controls").show();
+  };
+  
   if (game.settings.get('minimal-ui', 'sidePanel') == 'autohide' && !MinimalUI.controlsLocked) {
     if (game.settings.get('minimal-ui', 'sidePanelSize') == 'small') {
-      rootStyle.setProperty('--leftbarpad', MinimalUI.cssLeftBarPaddingSmall);
+      rootStyle.setProperty('--leftbarxpos', MinimalUI.cssLeftBarHiddenPositionSmall);
+      rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarHiddenPositionSmall);
     } else {
-      rootStyle.setProperty('--leftbarpad', MinimalUI.cssLeftBarPaddingSmall);
+      rootStyle.setProperty('--leftbarxpos', MinimalUI.cssLeftBarHiddenPositionStandard);
+      rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarHiddenPositionStandard);
     }
+    rootStyle.setProperty('--leftbarpad', MinimalUI.cssLeftBarPaddingSmall);
   } else {
     rootStyle.setProperty('--leftbarpad', MinimalUI.cssLeftBarPaddingDefault);
+    rootStyle.setProperty('--leftbarxpos', MinimalUI.cssLeftBarStartVisible);
   }
   
   MinimalUI.addLockButton();
@@ -764,5 +767,5 @@ Hooks.on('renderSceneControls', async function() {
   }
   
   // ----------------------------------------------------------------------
-
+  
 })

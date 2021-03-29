@@ -1,3 +1,10 @@
+### 0.4.6
+* Bugfix: When there is no scene, controls hidden altogether (avoids some reported confusion on hidden controls)
+* Bugfix: Reduced the margins on the controls and macro hotbar
+* Bugfix: Slightly increased top shadow in Hotbar when auto-hidden
+* Bugfix: Fixed missing borders on right side buttons (Should look more like vanilla Foundry on that side)
+* Bugfix: Removed unnecessary color settings configuration
+
 ### 0.4.5
 * Enhancement: Foundry Logo can be optionally shown in small, standard size or hidden!
 * Enhancement: Foundry Logo can be used to Toggle the UI - Including or not the Chat! (Thanks QuantumFunks)
