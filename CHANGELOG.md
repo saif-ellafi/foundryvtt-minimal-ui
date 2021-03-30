@@ -1,3 +1,7 @@
+### 0.5.0
+* Enhancement: Macro Hotbar has 3 sizes: 3-6-10 Slots!
+* Enhancement: Macro Hotbar collapse button in auto-hide mode removed
+
 ### 0.4.7
 * Bugfix: Removed color pickers from players view settings.
   It was never intended. Please do share feedback if you think

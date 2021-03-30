@@ -29,42 +29,42 @@ class MinimalUI {
   static cssLeftBarVerticalPositionLower = '30vmin';
   static cssLeftBarVerticalPositionBottom = '40vmin';
   
-  static cssHotbarHidden = '-50px';
+  static cssHotbarHidden = '-48px';
   static cssHotbarReveal = '1px';
   static cssHotbarShown = '10px';
-  
-  static cssHotbarLeftControlsLineHeight = '12px';
-  static cssHotbarRightControlsLineHeight = '20px';
+
+  static cssHotbarLeftControlsLineHeight = '24px';
+  static cssHotbarRightControlsLineHeight = '12px';
   static cssHotbarRightControlsLineHeightDnDUi = '10px';
-  static cssHotbarControlsAutoHideHeight = '120%';
+  static cssHotbarControlsAutoHideHeight = '100%';
   static cssHotbarAutoHideHeight = '1px';
-  static cssHotbarControlsMargin = '-10px';
-  
+  static cssHotbarControlsMargin = '0px';
+
   static cssSceneNavNoLogoStart = '5px';
   static cssSceneNavSmallLogoStart = '75px';
   static cssSceneNavStandardLogoStart = '125px';
   static cssSceneNavBullseyeStart = '125px';
-  
+
   static cssMinimumMacroBarX = 170;
-  
+
   static cssPlayersDefaultFontSize = '12px';
   static cssPlayersDefaultWidth = '150px';
   static cssPlayersDefaultWidthDnDUi = '200px';
-  
+
   static htmlHotbarLockButton =
     `
     <a id="bar-lock">
       <i class="fas fa-lock-open"></i>
     </a>
     `
-  
+
   static collapse(toggleId) {
     let target = document.getElementById(toggleId);
     if (target) {
       target.click();
     }
   }
-  
+
   static hideAll(alsoChat) {
     $('#logo').click(_ => {
     if (!MinimalUI.hiddenInterface) {
@@ -150,11 +150,11 @@ class MinimalUI {
       $("#controls").append(htmlSidebarLockButton);
     }
   }
-  
+
 }
 
 Hooks.on('init', () => {
-  
+
   game.settings.register('minimal-ui', 'foundryLogoSize', {
     name: "Foundry Logo Size",
     hint: "Foundry logo visibility and size",
@@ -171,7 +171,7 @@ Hooks.on('init', () => {
       window.location.reload()
     }
   });
-  
+
   game.settings.register('minimal-ui', 'foundryLogoBehaviour', {
     name: "Foundry Logo Behaviour",
     hint: "Use the Foundry Logo to toggle visual elements (when visible, of course).",
@@ -187,7 +187,7 @@ Hooks.on('init', () => {
       window.location.reload()
     }
   });
-  
+
   game.settings.register('minimal-ui', 'sceneNavigation', {
     name: "Scene Navigation Style",
     hint: "Customize scene navigation behaviour. Consider 'DF Scene Enhancement' when hidden.",
@@ -204,7 +204,7 @@ Hooks.on('init', () => {
       window.location.reload()
     }
   });
-  
+
   game.settings.register('minimal-ui', 'sceneNavigationSize', {
     name: "Scene Navigation Size",
     hint: "Customize scene navigation Size, when visible.",
@@ -221,7 +221,7 @@ Hooks.on('init', () => {
       window.location.reload()
     }
   });
-  
+
   game.settings.register('minimal-ui', 'sceneNavigationPreview', {
     name: "Scene Navigation Preview",
     hint: "Choose whether to show an image preview on the navigation top bar. Experimental feature.",
@@ -237,7 +237,7 @@ Hooks.on('init', () => {
       window.location.reload()
     }
   });
-  
+
   game.settings.register('minimal-ui', 'sceneNavigationPreviewMargin', {
     name: "Scene Navigation Preview Margin",
     hint: "Increase this value if you use scene preview and have too many maps :) Default 10",
@@ -263,6 +263,23 @@ Hooks.on('init', () => {
       "hidden": "Hide Completely"
     },
     default: "autohide",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+
+  game.settings.register('minimal-ui', 'macroBarSize', {
+    name: "Macro Bar Slot Size",
+    hint: "Customize Macro Bar slots & size",
+    scope: 'world',
+    config: true,
+    type: String,
+    choices: {
+      "slots_3": "3 Macro Slots",
+      "slots_6": "6 Macro Slots",
+      "slots_10": "10 Macro Slots"
+    },
+    default: "slots_10",
     onChange: value => {
       window.location.reload()
     }
@@ -378,9 +395,9 @@ Hooks.on('init', () => {
 });
 
 Hooks.once('ready', async function() {
-  
+
   let rootStyle = document.querySelector(':root').style;
-  
+
   if (game.settings.get('minimal-ui', 'foundryLogoSize') != 'hidden') {
     switch(game.settings.get('minimal-ui', 'foundryLogoBehaviour')) {
       case 'toggleAll': {
@@ -393,7 +410,7 @@ Hooks.once('ready', async function() {
       }
     }
   }
-  
+
   switch(game.settings.get('minimal-ui', 'foundryLogoSize')) {
     case 'small': {
       rootStyle.setProperty('--logovis', 'visible');
@@ -407,7 +424,7 @@ Hooks.once('ready', async function() {
       break;
     }
   }
-  
+
   // Compatibility Workaround for bullseye module
   if (game.modules.has('bullseye') && game.modules.get('bullseye').active) {
     rootStyle.setProperty('--navixpos', MinimalUI.cssSceneNavBullseyeStart);
@@ -415,14 +432,14 @@ Hooks.once('ready', async function() {
     rootStyle.setProperty('--logoh', '50px');
     rootStyle.setProperty('--logow', '100px');
   }
-  
+
 });
 
 Hooks.on('renderPlayerList', async function() {
   let rootStyle = document.querySelector(':root').style;
-  
+
   $("#players")[0].val = "";
-  
+
   switch(game.settings.get('minimal-ui', 'playerList')) {
     case 'default': {
       rootStyle.setProperty('--playerfsize', MinimalUI.cssPlayersDefaultFontSize);
@@ -479,9 +496,9 @@ Hooks.on('renderPlayerList', async function() {
 });
 
 Hooks.on('renderSceneNavigation', async function() {
-  
+
   let rootStyle = document.querySelector(':root').style;
-  
+
   switch(game.settings.get('minimal-ui', 'sceneNavigationPreview')) {
     case 'hover': {
       if (game.user.isGM) {
@@ -524,7 +541,7 @@ Hooks.on('renderSceneNavigation', async function() {
       break;
     }
   }
-  
+
   switch(game.settings.get('minimal-ui', 'foundryLogoSize')) {
     case 'hidden': {
       rootStyle.setProperty('--navixpos', MinimalUI.cssSceneNavNoLogoStart);
@@ -535,7 +552,7 @@ Hooks.on('renderSceneNavigation', async function() {
       break;
     }
   }
-  
+
   // Compatibility Workaround for bullseye module
   if (game.modules.has('bullseye') && game.modules.get('bullseye').active) {
     rootStyle.setProperty('--navixpos', MinimalUI.cssSceneNavBullseyeStart);
@@ -543,11 +560,11 @@ Hooks.on('renderSceneNavigation', async function() {
     rootStyle.setProperty('--logoh', '50px');
     rootStyle.setProperty('--logow', '100px');
   }
-  
+
 });
 
 Hooks.once('renderSceneNavigation', async function() {
-  
+
   let rootStyle = document.querySelector(':root').style;
 
   switch(game.settings.get('minimal-ui', 'sceneNavigation')) {
@@ -561,7 +578,7 @@ Hooks.once('renderSceneNavigation', async function() {
       break;
     }
   }
-  
+
   switch(game.settings.get('minimal-ui', 'sceneNavigationSize')) {
     case 'standard': {
       rootStyle.setProperty('--navilh', '32px');
@@ -576,20 +593,20 @@ Hooks.once('renderSceneNavigation', async function() {
       break;
     }
   }
-  
+
 });
 
 Hooks.on('renderHotbar', async function() {
-  
+
   let rootStyle = document.querySelector(':root').style;
-  
+
   let mbPos = game.settings.get('minimal-ui', 'macroBarPosition');
   if (mbPos < MinimalUI.cssMinimumMacroBarX) {
     rootStyle.setProperty('--macrobarxpos', String(MinimalUI.cssMinimumMacroBarX)+'px');
   } else {
     rootStyle.setProperty('--macrobarxpos', String(mbPos)+'px');
   }
-  
+
   switch(game.settings.get('minimal-ui', 'macroBar')) {
     case 'collapsed': {
       rootStyle.setProperty('--macrobarvis', 'visible');
@@ -617,11 +634,35 @@ Hooks.on('renderHotbar', async function() {
           MinimalUI.lockHotbar(false);
         }
       }
+      $("#bar-toggle").remove();
       rootStyle.setProperty('--macrobarvis', 'visible');
       break;
     }
     case 'shown': {
       rootStyle.setProperty('--macrobarvis', 'visible');
+      break;
+    }
+  }
+
+  switch(game.settings.get('minimal-ui', 'macroBarSize')) {
+    case "slots_3": {
+      $("#macro-list > li").each(function(i, slot) {
+        if (i > 2) {
+          console.log($(slot));
+          rootStyle.setProperty('--macrobarwf', '152px');
+          $(slot).remove();
+        }
+      });
+      break;
+    }
+    case "slots_6": {
+      $("#macro-list > li").each(function(i, slot) {
+        if (i > 5) {
+          console.log($(slot));
+          rootStyle.setProperty('--macrobarwf', '302px');
+          $(slot).remove();
+        }
+      });
       break;
     }
   }

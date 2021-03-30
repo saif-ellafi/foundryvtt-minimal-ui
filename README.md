@@ -4,17 +4,32 @@ Configurable UI module, allows the user to hide, collapse or auto-hide component
 
 This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Bar.
 
-* Foundry Logo may be hidden or resized, and made clickable to toggle UI elements.
+### Foundry Logo
+* Foundry Logo may be hidden or resized
+* Can be made clickable to toggle show/hide HUD (Including chat or not)
+  
+### Player List
 * Scenes, Player list and left side controls customized for minimalism by default
-* Scene Navigation allows preview the map on mouse over (GM Only)
-* Macro Bar may be hidden, collapsed, auto-hidden (default) or shown
-* Macro Bar may be repositioned along the X-Axis
 * Players list may be hidden completely, shown on hover or shown normally
+  
+### Scene Navigation
+* Scene Navigation allows preview the map on mouse over (GM Only)
 * Allows Hiding or having the scene navigation collapsed by default
+
+### Macro Hotbar
+* Macro Bar may be hidden, collapsed, auto-hidden (default) or shown
+* Macro Bar may be customized to 3 slots, 6 or default 10
+* Macro Bar may be repositioned along the X-Axis
+
+### Left Side Control Buttons
 * Left controls may be collapsed into a single column (or not)
+* May be shown normally or auto-hide mode on mouse over 
 * Left controls may be standard or small size
-* Left controls may be moved vertically and set behavior to auto-hidden
-* Colors of borders and shadows and their strength customizeable
+* Left controls may be repositioned along the Y-Axis
+  
+### Customization
+* Colors of borders and shadows and their strength customizable
+* Position of elements in the UI can be modified
 
 ## Support with Systems and Modules
 MinimalUI is made as agnostic as possible. Yet, it is impossible to ensure maximum compatibility.

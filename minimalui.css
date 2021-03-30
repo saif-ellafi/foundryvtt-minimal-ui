@@ -36,59 +36,61 @@
     --macrobarhv: 10px;
     --macrobarmg: 0px;
     --macrobarhh: 100%;
-    
+    --macrobarwf: 502px;
+
     --bordercolor: #ff4900bd;
     --shadowcolor: #ff4900bd;
     --shadowstrength: 10px;
   }
-  
+
   #logo {
     visibility: var(--logovis);
     height: var(--logoh);
     width: var(--logow);
   }
-  
+
   /** MACRO HOTBAR **/
-  
+
   #hotbar:hover {
     bottom: var(--macrobarhv);
     transition: 0.5s;
   }
-  
+
   #hotbar {
     left: var(--macrobarxpos);
     bottom: var(--macrobarypos);
     visibility: var(--macrobarvis);
     transition: 0.05s ease-out 0.5s;
   }
-  
+
   #hotbar .bar-controls {
     background: #191919;
     height: var(--macrobarhh);
     margin: var(--macrobarmg) 2px;
   }
-  
+
   #hotbar .bar-controls a.page-control {
     font-size: 20px;
   }
-  
+
   #hotbar #hotbar-directory-controls {
     font-size: 14px;
   }
-  
+
   #hotbar .bar-controls span.page-number {
     line-height: var(--macrobarlh2);
   }
-  
+
   #hotbar #macro-list:hover {
     border-top: 1px solid var(--bordercolor);
     box-shadow: 0px 0px var(--shadowstrength) 2px var(--shadowcolor);
     transition: 0.5s;
   }
-  
+
   #hotbar #macro-list {
     border-top: 1px solid var(--bordercolor);
     box-shadow: 0px -1px var(--shadowstrength) 2px var(--shadowcolor);
+    flex: 0 0 var(--macrobarwf);
     transition: 0.05s ease-out 0.5s;
   }
   
