@@ -1,3 +1,10 @@
+### 0.4.7
+* Bugfix: Removed color pickers from players view settings.
+  It was never intended. Please do share feedback if you think
+  Minimal-UI should be configurable by players. The original 
+  intention is that the GM sets the desired viewport.
+  (Thank you, Fox Reinhold for the bug report)
+
 ### 0.4.6
 * Bugfix: When there is no scene, controls hidden altogether (avoids some reported confusion on hidden controls)
 * Bugfix: Reduced the margins on the controls and macro hotbar

@@ -3,7 +3,7 @@
 	"title": "Minimal UI",
 	"author": "JeansenVaars#2857",
 	"description": "Minimal UI reduces size of Foundry interface and allows hiding or collapsing specific parts.",
-	"version": "0.4.6",
+	"version": "0.4.7",
 	"minimumCoreVersion": "0.7.9",
 	"compatibleCoreVersion": "0.7.9",
   	"esmodules": [ "lib/colorsettings/colorSetting.js" ],
