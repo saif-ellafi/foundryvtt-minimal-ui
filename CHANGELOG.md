@@ -1,3 +1,7 @@
+### 0.5.1
+* Enhancement: New setting to hide player cameras (Fan service for MarceloCortezz :))
+* Bugfix: Added slightly more space between left bar columns in small size
+
 ### 0.5.0
 * Enhancement: Macro Hotbar has 3 sizes: 3-6-10 Slots!
 * Enhancement: Macro Hotbar collapse button in auto-hide mode removed

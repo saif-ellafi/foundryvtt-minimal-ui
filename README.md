@@ -9,8 +9,7 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 * Can be made clickable to toggle show/hide HUD (Including chat or not)
   
 ### Player List
-* Scenes, Player list and left side controls customized for minimalism by default
-* Players list may be hidden completely, shown on hover or shown normally
+* Players list may be hidden completely, shown on mouse over or shown normally
   
 ### Scene Navigation
 * Scene Navigation allows preview the map on mouse over (GM Only)
@@ -26,8 +25,12 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 * May be shown normally or auto-hide mode on mouse over 
 * Left controls may be standard or small size
 * Left controls may be repositioned along the Y-Axis
+
+### Camera/Audio Controls
+* Allows hiding player boxes, showing only GMs
   
 ### Customization
+* Default settings target a balance between gaining space and functionality
 * Colors of borders and shadows and their strength customizable
 * Position of elements in the UI can be modified
 

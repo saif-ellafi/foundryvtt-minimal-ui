@@ -11,24 +11,24 @@ class MinimalUI {
   static cssLeftBarHiddenPositionSmall = '-62px';
   static cssLeftBarHiddenPositionStandard = '-72px';
   
-  static cssLeftBarSubMenuSmall = '50px';
+  static cssLeftBarSubMenuSmall = '58px';
   static cssLeftBarSubMenuStandard = '60px';
   static cssLeftBarSubMenuDndUi = '65px';
-  
+
   static cssLeftBarPaddingDefault = '7px';
   static cssLeftBarPaddingSmall = '26px';
   static cssLeftBarPaddingStandard = '20px';
-    
+
   static cssLeftBarSmallWidth = '25px';
   static cssLeftBarSmallHeight = '28px';
   static cssLeftBarSmallLineHeight = '30px';
   static cssLeftBarSmallFontSize = '15px';
-  
+
   static cssLeftBarVerticalPositionTop = '8vmin';
   static cssLeftBarVerticalPositionCenter = '20vmin';
   static cssLeftBarVerticalPositionLower = '30vmin';
   static cssLeftBarVerticalPositionBottom = '40vmin';
-  
+
   static cssHotbarHidden = '-48px';
   static cssHotbarReveal = '1px';
   static cssHotbarShown = '10px';
@@ -154,6 +154,18 @@ class MinimalUI {
 }
 
 Hooks.on('init', () => {
+
+  game.settings.register("minimal-ui", "shadowStrength", {
+    name: "Shadow Strength",
+    hint: "How gloomy and shadow are the borders? Default: 10",
+    scope: "world",
+    config: true,
+    default: "10",
+    type: String,
+    onChange: lang => {
+      window.location.reload()
+    }
+  });
 
   game.settings.register('minimal-ui', 'foundryLogoSize', {
     name: "Foundry Logo Size",
@@ -380,13 +392,17 @@ Hooks.on('init', () => {
     }
   });
 
-  game.settings.register("minimal-ui", "shadowStrength", {
-    name: "Shadow Strength",
-    hint: "How gloomy and shadow are the borders? Default: 10",
+  game.settings.register("minimal-ui", "hidePlayerCameras", {
+    name: "Hide Player Cameras",
+    hint: "For player camera/audio, whether only to show GMs",
     scope: "world",
     config: true,
-    default: "10",
+    default: "default",
     type: String,
+    choices: {
+      "default": "Default view",
+      "hidden": "Hide camera/audio box of players"
+    },
     onChange: lang => {
       window.location.reload()
     }
@@ -433,6 +449,18 @@ Hooks.once('ready', async function() {
     rootStyle.setProperty('--logow', '100px');
   }
 
+});
+
+Hooks.on('renderCameraViews', async function() {
+  switch(game.settings.get('minimal-ui', 'hidePlayerCameras')) {
+    case 'hidden': {
+      $("#camera-views > div").each(function(i, box) {
+        if (!game.users.get($(box).attr("data-user")).isGM) {
+          $(box).remove();
+        }
+      });
+    }
+  }
 });
 
 Hooks.on('renderPlayerList', async function() {
