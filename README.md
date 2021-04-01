@@ -46,7 +46,6 @@ https://github.com/ardittristan/VTTColorSettings
 
 ### ToDo:
 * Compatibility with other modules
-* Improve webcam features UI
 * Any suggestions welcome
 
 ![Example GIF](./examplegif-long3.gif)
