@@ -11,8 +11,8 @@ class MinimalUI {
   static cssLeftBarHiddenPositionSmall = '-62px';
   static cssLeftBarHiddenPositionStandard = '-72px';
   
-  static cssLeftBarSubMenuSmall = '58px';
-  static cssLeftBarSubMenuStandard = '60px';
+  static cssLeftBarSubMenuSmall = '55px';
+  static cssLeftBarSubMenuStandard = '65px';
   static cssLeftBarSubMenuDndUi = '65px';
 
   static cssLeftBarPaddingDefault = '7px';
@@ -38,6 +38,7 @@ class MinimalUI {
   static cssHotbarRightControlsLineHeightDnDUi = '10px';
   static cssHotbarControlsAutoHideHeight = '100%';
   static cssHotbarAutoHideHeight = '1px';
+  static cssHotbarAutoHideShadow = '-1px';
   static cssHotbarControlsMargin = '0px';
 
   static cssSceneNavNoLogoStart = '5px';
@@ -63,6 +64,15 @@ class MinimalUI {
     if (target) {
       target.click();
     }
+  }
+
+  static fixMinimizedRule(rule, measure) {
+      var stylesheet = document.querySelector('link[href*=minimalui]');
+
+      if( stylesheet ){
+          stylesheet = stylesheet.sheet;
+          stylesheet.insertRule('.minimized' + '{ ' + rule + ': ' + measure + ' !important }', stylesheet.cssRules.length);
+      }
   }
 
   static hideAll(alsoChat) {
@@ -153,7 +163,7 @@ class MinimalUI {
 
 }
 
-Hooks.on('init', () => {
+Hooks.once('init', () => {
 
   game.settings.register("minimal-ui", "shadowStrength", {
     name: "Shadow Strength",
@@ -195,6 +205,23 @@ Hooks.on('init', () => {
       "toggleButChat": "Logo toggles Hide ALL UI except Chat"
     },
     default: "toggleButChat",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+
+  game.settings.register('minimal-ui', 'organizedMinimize', {
+    name: "Foundry Organized Minimize",
+    hint: "This option may help you organize those minimized windows (Experimental).",
+    scope: 'world',
+    config: true,
+    type: String,
+    choices: {
+      "bottom": "Bottom",
+      "top": "Top",
+      "disabled": "Disabled"
+    },
+    default: "disabled",
     onChange: value => {
       window.location.reload()
     }
@@ -400,7 +427,7 @@ Hooks.on('init', () => {
     default: "default",
     type: String,
     choices: {
-      "default": "Default view",
+      "default": "No changes",
       "hidden": "Hide camera/audio box of players"
     },
     onChange: lang => {
@@ -447,6 +474,18 @@ Hooks.once('ready', async function() {
     rootStyle.setProperty('--logovis', 'visible');
     rootStyle.setProperty('--logoh', '50px');
     rootStyle.setProperty('--logow', '100px');
+  }
+
+  switch(game.settings.get('minimal-ui', 'organizedMinimize')) {
+    case 'top': {
+      MinimalUI.fixMinimizedRule('top', '70px');
+      break;
+    }
+    case 'bottom': {
+      MinimalUI.fixMinimizedRule('top', 'unset');
+      MinimalUI.fixMinimizedRule('bottom', '70px');
+      break;
+    }
   }
 
 });
@@ -655,6 +694,7 @@ Hooks.on('renderHotbar', async function() {
         rootStyle.setProperty('--macrobarmg', MinimalUI.cssHotbarControlsMargin);
         rootStyle.setProperty('--macrobarhh', MinimalUI.cssHotbarControlsAutoHideHeight);
         rootStyle.setProperty('--macrobarhv', MinimalUI.cssHotbarAutoHideHeight);
+        rootStyle.setProperty('--macrobarshp', MinimalUI.cssHotbarAutoHideShadow);
         $("#hotbar-directory-controls").append(MinimalUI.htmlHotbarLockButton);
         $("#macro-directory").click(function() {MinimalUI.lockHotbar(false)});
         $("#bar-lock").click(function() {MinimalUI.lockHotbar(true)});

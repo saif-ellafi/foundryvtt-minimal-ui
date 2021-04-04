@@ -33,6 +33,7 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 * Default settings target a balance between gaining space and functionality
 * Colors of borders and shadows and their strength customizable
 * Position of elements in the UI can be modified
+* Allows fixing the minimized window to a certain Axis to find them easily
 
 ## Support with Systems and Modules
 MinimalUI is made as agnostic as possible. Yet, it is impossible to ensure maximum compatibility.

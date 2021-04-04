@@ -1,3 +1,8 @@
+### 0.5.2
+* Enhancement: New Experimental feature fixes the Axis of minimized windows to bottom or top
+* Bugfix: Adjusted space between left side controls and its sub menu
+* Bugfix: Adjusted shadow of Macro hotbar when not in auto-hide mode
+
 ### 0.5.1
 * Enhancement: New setting to hide player cameras (Fan service for MarceloCortezz :))
 * Bugfix: Added slightly more space between left bar columns in small size
