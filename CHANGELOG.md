@@ -1,3 +1,6 @@
+### 0.5.3
+* Bugfix: Border colors on right side buttons should use chosen colors (Thanks SalieriC)
+
 ### 0.5.2
 * Enhancement: New Experimental feature fixes the Axis of minimized windows to bottom or top
 * Bugfix: Adjusted space between left side controls and its sub menu
