@@ -1,3 +1,8 @@
+### 0.5.4
+* Bugfix: Player List should use now the same color as the left side bar
+* Bugfix: Player List alignment slightly improved to stay on the left
+* Compatibility: Raise My Hand module, should show the hand even on player list hover module
+
 ### 0.5.3
 * Bugfix: Border colors on right side buttons should use chosen colors (Thanks SalieriC)
 
