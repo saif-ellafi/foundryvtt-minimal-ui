@@ -539,6 +539,11 @@ Hooks.on('renderPlayerList', async function() {
           }
         );
       }
+      // Compatibility for Raise Hand module
+      if (game.modules.has('raise-my-hand') && game.modules.get('raise-my-hand').active) {
+        rootStyle.setProperty('--playerwidth', '42px');
+        rootStyle.setProperty('--playerslh', '20px');
+      }
       // SWADE Special Compatibility
       rootStyle.setProperty('--playerbennies', 'none');
       if (game.system.data.name == 'swade') {
