@@ -27,6 +27,7 @@
   --playerwidthhv: 150px;
   --playerslh: 20px;
   --playerbennies: none;
+  --playerh3w: unset;
 
   --macrobarvis: hidden;
   --macrobarypos: 10px;
@@ -135,7 +136,7 @@
 #players h3 {
   margin: 0px -2px;
   border-bottom: 0px;
-  width: 0%;
+  width: var(--playerh3w);
 }
 
 .raised-hand {

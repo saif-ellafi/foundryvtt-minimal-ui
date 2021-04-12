@@ -1,3 +1,6 @@
+### 0.5.5
+* Bugfix: Fixed broken player list on always-visible mode (sorry!)
+
 ### 0.5.4
 * Bugfix: Player List should use now the same color as the left side bar
 * Bugfix: Player List alignment slightly improved to stay on the left

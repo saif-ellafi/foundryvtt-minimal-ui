@@ -524,6 +524,7 @@ Hooks.on('renderPlayerList', async function() {
     case 'autohide': {
       rootStyle.setProperty('--playervis', 'visible');
       rootStyle.setProperty('--playerslh', '2px');
+      rootStyle.setProperty('--playerh3w', '0%');
       // DnD UI Special Compatibility
       if (game.modules.get("dnd-ui")) {
         $("#players").css('border-image', 'none');
