@@ -1,3 +1,6 @@
+### 0.5.6 (WIP)
+* Compatibility: Minor fixes with DND-UI
+
 ### 0.5.5
 * Bugfix: Fixed broken player list on always-visible mode (sorry!)
 

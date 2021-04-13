@@ -112,7 +112,7 @@ class MinimalUI {
         rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuStandard);
       }
       // Special compatibility DnD-UI
-      if (game.modules.get("dnd-ui")) {
+      if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
         rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuDndUi);
         rootStyle.setProperty('--leftbarsubhover', MinimalUI.cssLeftBarSubMenuDndUi);
       };
@@ -513,7 +513,7 @@ Hooks.on('renderPlayerList', async function() {
       rootStyle.setProperty('--playerwidth', MinimalUI.cssPlayersDefaultWidth);
       rootStyle.setProperty('--playervis', 'visible');
       // DnD UI Special Compatibility
-      if (game.modules.get("dnd-ui")) {
+      if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
         rootStyle.setProperty('--playerwidth', '200px');
       }
       // SWADE Special Compatibility
@@ -526,7 +526,7 @@ Hooks.on('renderPlayerList', async function() {
       rootStyle.setProperty('--playerslh', '2px');
       rootStyle.setProperty('--playerh3w', '0%');
       // DnD UI Special Compatibility
-      if (game.modules.get("dnd-ui")) {
+      if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
         $("#players").css('border-image', 'none');
         $("#players").css('border-color', 'black');
         $("#players").hover(
@@ -562,7 +562,7 @@ Hooks.on('renderPlayerList', async function() {
     }
   }
   // DnD UI Special Compatibility
-  if (game.modules.get("dnd-ui")) {
+  if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
     rootStyle.setProperty('--playerwidthhv', '200px');
   }
   // ---
@@ -694,7 +694,7 @@ Hooks.on('renderHotbar', async function() {
         rootStyle.setProperty('--macrobarypos', MinimalUI.cssHotbarHidden);
         rootStyle.setProperty('--macrobarlh1', MinimalUI.cssHotbarLeftControlsLineHeight);
         rootStyle.setProperty('--macrobarlh2', MinimalUI.cssHotbarRightControlsLineHeight);
-        if (game.modules.get("dnd-ui")) {
+        if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
           rootStyle.setProperty('--macrobarlh2', MinimalUI.cssHotbarRightControlsLineHeightDnDUi);
         }
         rootStyle.setProperty('--macrobarmg', MinimalUI.cssHotbarControlsMargin);
@@ -740,13 +740,13 @@ Hooks.on('renderHotbar', async function() {
       break;
     }
   }
-  
+
 })
 
 Hooks.once('renderSceneControls', async function() {
-  
+
   let rootStyle = document.querySelector(':root').style;
-  
+
   new window.Ardittristan.ColorSetting("minimal-ui", "borderColor", {
     name: "Border Colors",
     hint: "Default: #ff4900bd",
@@ -757,7 +757,7 @@ Hooks.once('renderSceneControls', async function() {
       rootStyle.setProperty('--bordercolor', game.settings.get('minimal-ui', 'borderColor'));
     }
   });
-  
+
   new window.Ardittristan.ColorSetting("minimal-ui", "shadowColor", {
     name: "Shadow Colors",
     hint: "Default: #ff4900bd",
@@ -769,7 +769,7 @@ Hooks.once('renderSceneControls', async function() {
       rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
     }
   });
-  
+
   rootStyle.setProperty('--bordercolor', game.settings.get('minimal-ui', 'borderColor'));
   rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
   rootStyle.setProperty('--shadowstrength', game.settings.get('minimal-ui', 'shadowStrength') + 'px');
@@ -786,7 +786,7 @@ Hooks.once('renderSceneControls', async function() {
     rootStyle.setProperty('--leftbarsubhover', MinimalUI.cssLeftBarSubMenuStandard);
   }
   // Special compatibility DnD-UI
-  if (game.modules.get("dnd-ui")) {
+  if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
     rootStyle.setProperty('--leftbarsubstart', MinimalUI.cssLeftBarSubMenuDndUi);
     rootStyle.setProperty('--leftbarsubhover', MinimalUI.cssLeftBarSubMenuDndUi);
   };
