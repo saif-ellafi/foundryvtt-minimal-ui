@@ -504,6 +504,13 @@ Hooks.once('ready', async function() {
     }
   }
 
+  // Temporarily work around a bug in Foundry VTT 0.7.9
+  $("#sidebar-tabs > a:nth-child(n)").click(function(eve) {
+    if (ui.sidebar._collapsed) {
+      ui.sidebar.activateTab(jQuery(eve.currentTarget).attr('data-tab'))
+    }
+  })
+
 });
 
 Hooks.on('renderCameraViews', async function() {

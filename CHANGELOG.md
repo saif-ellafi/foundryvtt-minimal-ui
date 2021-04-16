@@ -1,3 +1,6 @@
+### 0.5.7
+* Compatibility: Works around a bug in Foundry that prevents opening windows when sidebar is collapsed
+
 ### 0.5.6
 * Enhancement: It is now possible to collapse right panel by default
 * Compatibility: Minor fixes with DND-UI
