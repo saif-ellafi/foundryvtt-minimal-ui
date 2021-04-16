@@ -10,6 +10,8 @@
   --navibuttonsize: 23px;
   --navithumbmarg: 10px;
 
+  --leftbarvis: hidden;
+
   --leftbarxpos: 0px;
   --leftbarypos: 20vmin;
   --leftbarpad: 7px;
@@ -186,6 +188,10 @@
 
 /** RIGHT SIDEBAR CONTROLS AND BUTTONS **/
 
+#sidebar {
+  visibility: var(--leftbarvis);
+}
+
 #sidebar-tabs {
   border-bottom: 1px solid var(--bordercolor);
   box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
@@ -194,6 +200,10 @@
 #sidebar-tabs > .item.active {
   box-shadow: 0 0 var(--shadowstrength) inset var(--shadowcolor);
   border: 1px solid var(--bordercolor);
+}
+
+#sidebar.collapsed #sidebar-tabs > .item.active {
+  border-bottom: 1px solid var(--bordercolor);
 }
 
 .tabs .item.active {

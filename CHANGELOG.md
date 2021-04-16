@@ -1,5 +1,7 @@
-### 0.5.6 (WIP)
+### 0.5.6
+* Enhancement: It is now possible to collapse right panel by default
 * Compatibility: Minor fixes with DND-UI
+* Bugfix: Fixed wrong border color in collapsed right panel (Thanks SalieriC)
 
 ### 0.5.5
 * Bugfix: Fixed broken player list on always-visible mode (sorry!)

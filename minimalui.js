@@ -59,7 +59,7 @@ class MinimalUI {
     </a>
     `
 
-  static collapse(toggleId) {
+  static collapseById(toggleId) {
     let target = document.getElementById(toggleId);
     if (target) {
       target.click();
@@ -222,6 +222,22 @@ Hooks.once('init', () => {
       "disabled": "Disabled"
     },
     default: "disabled",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+
+  game.settings.register('minimal-ui', 'rightSidePanel', {
+    name: "Right Side Panel Behaviour",
+    hint: "Whether the right side panel starts collapsed or not",
+    scope: 'world',
+    config: true,
+    type: String,
+    choices: {
+      "shown": "Shown",
+      "collapsed": "Collapsed"
+    },
+    default: "shown",
     onChange: value => {
       window.location.reload()
     }
@@ -568,6 +584,25 @@ Hooks.on('renderPlayerList', async function() {
   // ---
 });
 
+Hooks.once('renderSidebarTab', async function() {
+  let rootStyle = document.querySelector(':root').style;
+  switch(game.settings.get('minimal-ui', 'rightSidePanel')) {
+    case 'shown': {
+      rootStyle.setProperty('--leftbarvis', 'visible');
+      break;
+    }
+    case 'collapsed': {
+      await ui.sidebar.collapse();
+      await new Promise(waitABit => setTimeout(waitABit, 500));
+      rootStyle.setProperty('--leftbarvis', 'visible');
+      break;
+    }
+    default: {
+      rootStyle.setProperty('--leftbarvis', 'visible');
+    }
+  }
+});
+
 Hooks.on('renderSceneNavigation', async function() {
 
   let rootStyle = document.querySelector(':root').style;
@@ -643,7 +678,7 @@ Hooks.once('renderSceneNavigation', async function() {
   switch(game.settings.get('minimal-ui', 'sceneNavigation')) {
     case 'collapsed': {
       rootStyle.setProperty('--navivis', 'visible');
-      MinimalUI.collapse("nav-toggle");
+      MinimalUI.collapseById("nav-toggle");
       break;
     }
     case 'shown': {
@@ -683,9 +718,9 @@ Hooks.on('renderHotbar', async function() {
   switch(game.settings.get('minimal-ui', 'macroBar')) {
     case 'collapsed': {
       rootStyle.setProperty('--macrobarvis', 'visible');
-      MinimalUI.collapse("bar-toggle");
+      MinimalUI.collapseById("bar-toggle");
       if (game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active) {
-        MinimalUI.collapse("custom-bar-toggle");
+        MinimalUI.collapseById("custom-bar-toggle");
       };
       break;
     }

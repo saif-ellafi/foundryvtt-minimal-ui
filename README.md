@@ -10,6 +10,9 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
   
 ### Player List
 * Players list may be hidden completely, shown on mouse over or shown normally
+
+### Right Side Panel
+* May be collapsed by default
   
 ### Scene Navigation
 * Scene Navigation allows preview the map on mouse over (GM Only)
