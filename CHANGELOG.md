@@ -1,3 +1,10 @@
+### 0.6.0
+* Enhancement: NEW (Optional) Dynamic Minimal UI mode. After 60 seconds of inactivity,
+  UI will dynamically auto-hide until used or when switching Scenes. Check it out! (Experimental)
+* Enhancement: Vertical positioning of Sidebar and Horizontal position of Macro now globally adjusted based on
+  actual canvas size. Users on different screens should have similar experiences.
+* Compatibility: Fixed bug in Foundry that didn't show the chat when clicked if sidebar was collapsed
+
 ### 0.5.7
 * Compatibility: Works around a bug in Foundry that prevents opening windows when sidebar is collapsed
 

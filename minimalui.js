@@ -2,15 +2,16 @@ class MinimalUI {
   
   static hiddenInterface = false;
   static fakeDisabled = false;
-  
+  static lastHoverTime;
+
   static hotbarLocked = false;
   static controlsLocked = false;
   static cssControlsLastPos = '0px';
-  
+
   static cssLeftBarStartVisible = '0px';
   static cssLeftBarHiddenPositionSmall = '-62px';
   static cssLeftBarHiddenPositionStandard = '-72px';
-  
+
   static cssLeftBarSubMenuSmall = '55px';
   static cssLeftBarSubMenuStandard = '65px';
   static cssLeftBarSubMenuDndUi = '65px';
@@ -23,11 +24,6 @@ class MinimalUI {
   static cssLeftBarSmallHeight = '28px';
   static cssLeftBarSmallLineHeight = '30px';
   static cssLeftBarSmallFontSize = '15px';
-
-  static cssLeftBarVerticalPositionTop = '8vmin';
-  static cssLeftBarVerticalPositionCenter = '20vmin';
-  static cssLeftBarVerticalPositionLower = '30vmin';
-  static cssLeftBarVerticalPositionBottom = '40vmin';
 
   static cssHotbarHidden = '-48px';
   static cssHotbarReveal = '1px';
@@ -45,8 +41,6 @@ class MinimalUI {
   static cssSceneNavSmallLogoStart = '75px';
   static cssSceneNavStandardLogoStart = '125px';
   static cssSceneNavBullseyeStart = '125px';
-
-  static cssMinimumMacroBarX = 170;
 
   static cssPlayersDefaultFontSize = '12px';
   static cssPlayersDefaultWidth = '150px';
@@ -148,6 +142,48 @@ class MinimalUI {
     }
   }
 
+  static positionHotbar() {
+    let rootStyle = document.querySelector(':root').style;
+    let availableWidth = parseInt($("#board").css('width'));
+    switch(game.settings.get('minimal-ui', 'macroBarPosition')) {
+      case 'left': {
+        rootStyle.setProperty('--macrobarxpos', ((availableWidth/2.5)-(availableWidth/9)-(availableWidth/9))+'px');
+        break;
+      }
+      case 'center': {
+        rootStyle.setProperty('--macrobarxpos', ((availableWidth/2.5)-(availableWidth/9))+'px');
+        break;
+      }
+      case 'right': {
+        rootStyle.setProperty('--macrobarxpos', ((availableWidth/2.5))+'px');
+        break;
+      }
+    }
+  }
+
+  static positionSidebar() {
+    let rootStyle = document.querySelector(':root').style;
+    let availableHeight = parseInt($("#board").css('height'));
+    switch(true) {
+      case (game.settings.get('minimal-ui', 'sidePanelPosition') == 'top' || game.settings.get('minimal-ui', 'sidePanelMenuStyle') == 'column'): {
+        rootStyle.setProperty('--leftbarypos', ((availableHeight/3)-(availableHeight/9)-(availableHeight/9))+'px');
+        break;
+      }
+      case (game.settings.get('minimal-ui', 'sidePanelPosition') == 'center'): {
+        rootStyle.setProperty('--leftbarypos', ((availableHeight/3)-(availableHeight/9))+'px');
+        break;
+      }
+      case (game.settings.get('minimal-ui', 'sidePanelPosition') ==  'lower'): {
+        rootStyle.setProperty('--leftbarypos', ((availableHeight/3))+'px');
+        break;
+      }
+      case (game.settings.get('minimal-ui', 'sidePanelPosition') ==  'bottom'): {
+        rootStyle.setProperty('--leftbarypos', ((availableHeight/3)+(availableHeight/9))+'px');
+        break;
+      }
+    }
+  }
+
   static addLockButton() {
     let locked = MinimalUI.controlsLocked ? 'fa-lock' : 'fa-lock-open';
     let htmlSidebarLockButton =
@@ -173,6 +209,39 @@ Hooks.once('init', () => {
     default: "10",
     type: String,
     onChange: lang => {
+      window.location.reload()
+    }
+  });
+
+  game.settings.register('minimal-ui', 'dynamicMinimalUi', {
+    name: "MINIMAL UI Dynamic Mode",
+    hint: "Auto hides UI elements after 60 seconds of chat inactivity when controlling tokens or changing scenes (Experimental).",
+    scope: 'world',
+    config: true,
+    type: String,
+    choices: {
+      "enabled": "Enabled",
+      "disabled": "Disabled"
+    },
+    default: "disabled",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+
+  game.settings.register('minimal-ui', 'organizedMinimize', {
+    name: "MINIMAL UI Organized Minimize",
+    hint: "This option may help you organize those minimized windows by placing them either on a bottom line or top bar(Experimental).",
+    scope: 'world',
+    config: true,
+    type: String,
+    choices: {
+      "bottom": "Bottom",
+      "top": "Top",
+      "disabled": "Disabled"
+    },
+    default: "disabled",
+    onChange: value => {
       window.location.reload()
     }
   });
@@ -210,23 +279,6 @@ Hooks.once('init', () => {
     }
   });
 
-  game.settings.register('minimal-ui', 'organizedMinimize', {
-    name: "Foundry Organized Minimize",
-    hint: "This option may help you organize those minimized windows (Experimental).",
-    scope: 'world',
-    config: true,
-    type: String,
-    choices: {
-      "bottom": "Bottom",
-      "top": "Top",
-      "disabled": "Disabled"
-    },
-    default: "disabled",
-    onChange: value => {
-      window.location.reload()
-    }
-  });
-
   game.settings.register('minimal-ui', 'rightSidePanel', {
     name: "Right Side Panel Behaviour",
     hint: "Whether the right side panel starts collapsed or not",
@@ -237,7 +289,7 @@ Hooks.once('init', () => {
       "shown": "Shown",
       "collapsed": "Collapsed"
     },
-    default: "shown",
+    default: "collapsed",
     onChange: value => {
       window.location.reload()
     }
@@ -342,11 +394,16 @@ Hooks.once('init', () => {
 
   game.settings.register('minimal-ui', 'macroBarPosition', {
     name: "Macro Bar Position",
-    hint: `Reference at 400. Minimum is ${MinimalUI.cssMinimumMacroBarX}. Increase value to move it to right. Reduce to the left.`,
+    hint: `Horizontal position of the Macro Hotbar`,
     scope: 'world',
     config: true,
-    type: Number,
-    default: 400,
+    type: String,
+    choices: {
+      "left": "Center Left",
+      "center": "Center",
+      "right": "Center Right"
+    },
+    default: "center",
     onChange: value => {
       window.location.reload()
     }
@@ -401,6 +458,22 @@ Hooks.once('init', () => {
     }
   });
 
+  game.settings.register('minimal-ui', 'sidePanelMenuStyle', {
+    name: "Left panel menu style",
+    hint: "Choose whether to expand to the right or keep a single column of buttons",
+    scope: 'world',
+    config: true,
+    type: String,
+    choices: {
+      "default": "Controls to the right",
+      "column": "Keep a single column"
+    },
+    default: "default",
+    onChange: value => {
+      window.location.reload()
+    }
+  });
+
   game.settings.register('minimal-ui', 'sidePanelPosition', {
     name: "Left panel position",
     hint: "Choose favorite side panel position. Will be ignored if using 'Keep a single column' style.",
@@ -414,22 +487,6 @@ Hooks.once('init', () => {
       "bottom": "Bottom Left"
     },
     default: "center",
-    onChange: value => {
-      window.location.reload()
-    }
-  });
-
-  game.settings.register('minimal-ui', 'sidePanelMenuStyle', {
-    name: "Left panel menu style",
-    hint: "Choose whether to expand to the right or keep a single column of buttons",
-    scope: 'world',
-    config: true,
-    type: String,
-    choices: {
-      "default": "Controls to the right",
-      "column": "Keep a single column"
-    },
-    default: "default",
     onChange: value => {
       window.location.reload()
     }
@@ -451,6 +508,11 @@ Hooks.once('init', () => {
     }
   });
 
+});
+
+Hooks.on('canvasPan', function() {
+  MinimalUI.positionHotbar();
+  MinimalUI.positionSidebar();
 });
 
 Hooks.once('ready', async function() {
@@ -484,6 +546,12 @@ Hooks.once('ready', async function() {
     }
   }
 
+  MinimalUI.positionHotbar();
+
+  if (game.settings.get('minimal-ui', 'macroBar') != 'hidden') {
+    rootStyle.setProperty('--macrobarvis', 'visible');
+  }
+
   // Compatibility Workaround for bullseye module
   if (game.modules.has('bullseye') && game.modules.get('bullseye').active) {
     rootStyle.setProperty('--navixpos', MinimalUI.cssSceneNavBullseyeStart);
@@ -506,12 +574,52 @@ Hooks.once('ready', async function() {
 
   // Temporarily work around a bug in Foundry VTT 0.7.9
   $("#sidebar-tabs > a:nth-child(n)").click(function(eve) {
+    const tabName = jQuery(eve.currentTarget).attr('data-tab');
     if (ui.sidebar._collapsed) {
-      ui.sidebar.activateTab(jQuery(eve.currentTarget).attr('data-tab'))
+      if (tabName == 'chat') {
+        ui.sidebar.expand();
+      } else {
+        ui.sidebar.activateTab(tabName);
+      }
     }
   })
 
 });
+
+Hooks.on('hoverToken', function() {
+  if (game.settings.get('minimal-ui', 'dynamicMinimalUi') == 'enabled') {
+    if (game.time.serverTime - MinimalUI.lastHoverTime > 60000) {
+      ui.sidebar.collapse();
+      if (game.settings.get('minimal-ui', 'sidePanel') == 'autohide' && MinimalUI.controlsLocked) {
+        MinimalUI.lockControls(true);
+      }
+      MinimalUI.lastHoverTime = game.time.serverTime;
+    }
+  }
+});
+
+Hooks.on('canvasInit', function() {
+  if (game.settings.get('minimal-ui', 'dynamicMinimalUi') == 'enabled' && MinimalUI.lastHoverTime) {
+    ui.sidebar.collapse();
+    if (game.settings.get('minimal-ui', 'sidePanel') == 'autohide' && MinimalUI.controlsLocked) {
+      MinimalUI.lockControls(true);
+    }
+  }
+});
+
+Hooks.on('renderChatMessage', function() {
+  if (game.settings.get('minimal-ui', 'dynamicMinimalUi') == 'enabled') {
+    MinimalUI.lastHoverTime = game.time.serverTime;
+    ui.sidebar.activateTab('chat');
+    ui.sidebar.expand();
+  }
+});
+
+Hooks.on('sidebarCollapse', function(_, collapsed) {
+  if (game.settings.get('minimal-ui', 'dynamicMinimalUi') == 'enabled' && !collapsed) {
+    MinimalUI.lastHoverTime = game.time.serverTime;
+  }
+})
 
 Hooks.on('renderCameraViews', async function() {
   switch(game.settings.get('minimal-ui', 'hidePlayerCameras')) {
@@ -715,16 +823,8 @@ Hooks.on('renderHotbar', async function() {
 
   let rootStyle = document.querySelector(':root').style;
 
-  let mbPos = game.settings.get('minimal-ui', 'macroBarPosition');
-  if (mbPos < MinimalUI.cssMinimumMacroBarX) {
-    rootStyle.setProperty('--macrobarxpos', String(MinimalUI.cssMinimumMacroBarX)+'px');
-  } else {
-    rootStyle.setProperty('--macrobarxpos', String(mbPos)+'px');
-  }
-
   switch(game.settings.get('minimal-ui', 'macroBar')) {
     case 'collapsed': {
-      rootStyle.setProperty('--macrobarvis', 'visible');
       MinimalUI.collapseById("bar-toggle");
       if (game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active) {
         MinimalUI.collapseById("custom-bar-toggle");
@@ -751,11 +851,6 @@ Hooks.on('renderHotbar', async function() {
         }
       }
       $("#bar-toggle").remove();
-      rootStyle.setProperty('--macrobarvis', 'visible');
-      break;
-    }
-    case 'shown': {
-      rootStyle.setProperty('--macrobarvis', 'visible');
       break;
     }
   }
@@ -834,24 +929,7 @@ Hooks.once('renderSceneControls', async function() {
   };
   // ---
 
-  switch(true) {
-    case (game.settings.get('minimal-ui', 'sidePanelPosition') == 'top' || game.settings.get('minimal-ui', 'sidePanelMenuStyle') == 'column'): {
-      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionTop);
-      break;
-    }
-    case (game.settings.get('minimal-ui', 'sidePanelPosition') == 'center'): {
-      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionCenter);
-      break;
-    }
-    case (game.settings.get('minimal-ui', 'sidePanelPosition') ==  'lower'): {
-      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionLower);
-      break;
-    }
-    case (game.settings.get('minimal-ui', 'sidePanelPosition') ==  'bottom'): {
-      rootStyle.setProperty('--leftbarypos', MinimalUI.cssLeftBarVerticalPositionBottom);
-      break;
-    }
-  }
+  MinimalUI.positionSidebar();
 
   switch(game.settings.get('minimal-ui', 'sidePanelMenuStyle')) {
     case 'default': {

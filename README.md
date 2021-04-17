@@ -4,6 +4,11 @@ Configurable UI module, allows the user to hide, collapse or auto-hide component
 
 This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Bar.
 
+### Special Minimal UI Features
+* MINIMAL UI Dynamic Mode (Default: OFF): Auto-Hides UI elements after Chat inactivity or when 
+  switching scenes. This allows making up space intelligently for you to save space.
+* MINIMAL UI Organized Minimize (Default: OFF): 
+
 ### Foundry Logo
 * Foundry Logo may be hidden or resized
 * Can be made clickable to toggle show/hide HUD (Including chat or not)
@@ -36,7 +41,6 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 * Default settings target a balance between gaining space and functionality
 * Colors of borders and shadows and their strength customizable
 * Position of elements in the UI can be modified
-* Allows fixing the minimized window to a certain Axis to find them easily
 
 ## Support with Systems and Modules
 MinimalUI is made as agnostic as possible. Yet, it is impossible to ensure maximum compatibility.
