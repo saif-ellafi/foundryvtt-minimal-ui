@@ -1,5 +1,5 @@
 ### 0.6.1
-* Bugfix: Added missing hotbar configurations (Default and Manual). Thanks GametTV
+* Bugfix: Added missing hotbar configurations (Default and Manual). Thanks GambetTV
 * Bugfix: Fixed wrong default value (Right sidebar should default to shown, not collapsed)
 
 ### 0.6.0
