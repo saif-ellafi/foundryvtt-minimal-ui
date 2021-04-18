@@ -146,6 +146,10 @@ class MinimalUI {
     let rootStyle = document.querySelector(':root').style;
     let availableWidth = parseInt($("#board").css('width'));
     switch(game.settings.get('minimal-ui', 'macroBarPosition')) {
+      case 'default': {
+        rootStyle.setProperty('--macrobarxpos', '220px');
+        break;
+      }
       case 'left': {
         rootStyle.setProperty('--macrobarxpos', ((availableWidth/2.5)-(availableWidth/9)-(availableWidth/9))+'px');
         break;
@@ -156,6 +160,45 @@ class MinimalUI {
       }
       case 'right': {
         rootStyle.setProperty('--macrobarxpos', ((availableWidth/2.5))+'px');
+        break;
+      }
+      case 'manual': {
+        rootStyle.setProperty('--macrobarxpos', game.settings.get('minimal-ui', 'macroBarPixelPosition')+'px');
+        break;
+      }
+    }
+  }
+
+  static configureHotbar() {
+    let rootStyle = document.querySelector(':root').style;
+    switch(game.settings.get('minimal-ui', 'macroBar')) {
+      case 'collapsed': {
+        MinimalUI.collapseById("bar-toggle");
+        if (game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active) {
+          MinimalUI.collapseById("custom-bar-toggle");
+        };
+        break;
+      }
+      case 'autohide': {
+        if (!(game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active)) {
+          rootStyle.setProperty('--macrobarypos', MinimalUI.cssHotbarHidden);
+          rootStyle.setProperty('--macrobarlh1', MinimalUI.cssHotbarLeftControlsLineHeight);
+          rootStyle.setProperty('--macrobarlh2', MinimalUI.cssHotbarRightControlsLineHeight);
+          if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
+            rootStyle.setProperty('--macrobarlh2', MinimalUI.cssHotbarRightControlsLineHeightDnDUi);
+          }
+          rootStyle.setProperty('--macrobarmg', MinimalUI.cssHotbarControlsMargin);
+          rootStyle.setProperty('--macrobarhh', MinimalUI.cssHotbarControlsAutoHideHeight);
+          rootStyle.setProperty('--macrobarhv', MinimalUI.cssHotbarAutoHideHeight);
+          rootStyle.setProperty('--macrobarshp', MinimalUI.cssHotbarAutoHideShadow);
+          $("#hotbar-directory-controls").append(MinimalUI.htmlHotbarLockButton);
+          $("#macro-directory").click(function() {MinimalUI.lockHotbar(false)});
+          $("#bar-lock").click(function() {MinimalUI.lockHotbar(true)});
+          if (MinimalUI.hotbarLocked) {
+            MinimalUI.lockHotbar(false);
+          }
+        }
+        $("#bar-toggle").remove();
         break;
       }
     }
@@ -209,7 +252,7 @@ Hooks.once('init', () => {
     default: "10",
     type: String,
     onChange: lang => {
-      window.location.reload()
+      rootStyle.setProperty('--shadowstrength', game.settings.get('minimal-ui', 'shadowStrength') + 'px');
     }
   });
 
@@ -289,7 +332,7 @@ Hooks.once('init', () => {
       "shown": "Shown",
       "collapsed": "Collapsed"
     },
-    default: "collapsed",
+    default: "shown",
     onChange: value => {
       window.location.reload()
     }
@@ -399,13 +442,27 @@ Hooks.once('init', () => {
     config: true,
     type: String,
     choices: {
+      "default": "Foundry Default",
       "left": "Center Left",
       "center": "Center",
-      "right": "Center Right"
+      "right": "Center Right",
+      "manual": "Manual"
     },
     default: "center",
     onChange: value => {
-      window.location.reload()
+      MinimalUI.positionHotbar();
+    }
+  });
+
+  game.settings.register('minimal-ui', 'macroBarPixelPosition', {
+    name: "Macro Bar Manual Pixel Position",
+    hint: `Horizontal position in pixels. If Macro Position is 'Manual'`,
+    scope: 'world',
+    config: true,
+    type: String,
+    default: "400",
+    onChange: value => {
+      MinimalUI.positionHotbar();
     }
   });
 
@@ -823,37 +880,7 @@ Hooks.on('renderHotbar', async function() {
 
   let rootStyle = document.querySelector(':root').style;
 
-  switch(game.settings.get('minimal-ui', 'macroBar')) {
-    case 'collapsed': {
-      MinimalUI.collapseById("bar-toggle");
-      if (game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active) {
-        MinimalUI.collapseById("custom-bar-toggle");
-      };
-      break;
-    }
-    case 'autohide': {
-      if (!(game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active)) {
-        rootStyle.setProperty('--macrobarypos', MinimalUI.cssHotbarHidden);
-        rootStyle.setProperty('--macrobarlh1', MinimalUI.cssHotbarLeftControlsLineHeight);
-        rootStyle.setProperty('--macrobarlh2', MinimalUI.cssHotbarRightControlsLineHeight);
-        if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
-          rootStyle.setProperty('--macrobarlh2', MinimalUI.cssHotbarRightControlsLineHeightDnDUi);
-        }
-        rootStyle.setProperty('--macrobarmg', MinimalUI.cssHotbarControlsMargin);
-        rootStyle.setProperty('--macrobarhh', MinimalUI.cssHotbarControlsAutoHideHeight);
-        rootStyle.setProperty('--macrobarhv', MinimalUI.cssHotbarAutoHideHeight);
-        rootStyle.setProperty('--macrobarshp', MinimalUI.cssHotbarAutoHideShadow);
-        $("#hotbar-directory-controls").append(MinimalUI.htmlHotbarLockButton);
-        $("#macro-directory").click(function() {MinimalUI.lockHotbar(false)});
-        $("#bar-lock").click(function() {MinimalUI.lockHotbar(true)});
-        if (MinimalUI.hotbarLocked) {
-          MinimalUI.lockHotbar(false);
-        }
-      }
-      $("#bar-toggle").remove();
-      break;
-    }
-  }
+  MinimalUI.configureHotbar();
 
   switch(game.settings.get('minimal-ui', 'macroBarSize')) {
     case "slots_3": {

@@ -1,3 +1,7 @@
+### 0.6.1
+* Bugfix: Added missing hotbar configurations (Default and Manual). Thanks GametTV
+* Bugfix: Fixed wrong default value (Right sidebar should default to shown, not collapsed)
+
 ### 0.6.0
 * Enhancement: NEW (Optional) Dynamic Minimal UI mode. After 60 seconds of inactivity,
   UI will dynamically auto-hide until used or when switching Scenes. Check it out! (Experimental)
