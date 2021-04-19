@@ -3,6 +3,7 @@
 * Enhancement: "Organized Minimize" now includes a "Bar" mode that displays minimized windows dedicated area
 * Enhancement: Work around a Foundry Bug causing collapsed tabs not to be maximized when re-clicked
 * Compatibility: Integration with libWrapper for better library compatibility support
+* Compatibility: colorsettings lib now a dependency and no longer included
 
 ### 0.6.1
 * Bugfix: Added missing hotbar configurations (Default and Manual). Thanks GambetTV
