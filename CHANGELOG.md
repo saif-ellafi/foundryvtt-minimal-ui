@@ -1,3 +1,9 @@
+### 0.7.0
+* Enhancement: Renewed "Organized Minimize" mode now allows intelligently makes use of horizontal space
+* Enhancement: "Organized Minimize" now includes a "Bar" mode that displays minimized windows dedicated area
+* Enhancement: Work around a Foundry Bug causing collapsed tabs not to be maximized when re-clicked
+* Compatibility: Integration with libWrapper for better library compatibility support
+
 ### 0.6.1
 * Bugfix: Added missing hotbar configurations (Default and Manual). Thanks GambetTV
 * Bugfix: Fixed wrong default value (Right sidebar should default to shown, not collapsed)

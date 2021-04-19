@@ -4,6 +4,8 @@ class MinimalUI {
   static fakeDisabled = false;
   static lastHoverTime;
 
+  static minimizedWindows = {};
+
   static hotbarLocked = false;
   static controlsLocked = false;
   static cssControlsLastPos = '0px';
@@ -145,6 +147,9 @@ class MinimalUI {
   static positionHotbar() {
     let rootStyle = document.querySelector(':root').style;
     let availableWidth = parseInt($("#board").css('width'));
+    if (game.settings.get('minimal-ui', 'organizedMinimize') == 'bottomBar') {
+      rootStyle.setProperty('--minimw', availableWidth-600+'px');
+    }
     switch(game.settings.get('minimal-ui', 'macroBarPosition')) {
       case 'default': {
         rootStyle.setProperty('--macrobarxpos', '220px');
@@ -280,6 +285,7 @@ Hooks.once('init', () => {
     type: String,
     choices: {
       "bottom": "Bottom",
+      "bottomBar": "Bottom with Bar",
       "top": "Top",
       "disabled": "Disabled"
     },
@@ -574,6 +580,13 @@ Hooks.on('canvasPan', function() {
 
 Hooks.once('ready', async function() {
 
+  if(!game.modules.get('lib-wrapper')?.active && game.user.isGM)
+    ui.notifications.error("Module Minimal UI requires the 'libWrapper' module. Please install and activate it.");
+
+  try{window.Ardittristan.ColorSetting.tester} catch {
+    ui.notifications.notify("Module Minimal UI requires the 'lib - ColorSettings'. Please install and activate it.", "error");
+  }
+
   let rootStyle = document.querySelector(':root').style;
 
   if (game.settings.get('minimal-ui', 'foundryLogoSize') != 'hidden') {
@@ -627,6 +640,16 @@ Hooks.once('ready', async function() {
       MinimalUI.fixMinimizedRule('bottom', '70px');
       break;
     }
+    case 'bottomBar': {
+      let availableWidth = parseInt($("#board").css('width'));
+      rootStyle.setProperty('--minimw', availableWidth-600+'px');
+      rootStyle.setProperty('--minimbot', '65px');
+      rootStyle.setProperty('--minimtop', 'unset');
+      $("body").append(`<div id="minimized-bar" class="app"></div>`);
+      MinimalUI.fixMinimizedRule('top', 'unset');
+      MinimalUI.fixMinimizedRule('bottom', '70px');
+      break;
+    }
   }
 
   // Temporarily work around a bug in Foundry VTT 0.7.9
@@ -640,6 +663,42 @@ Hooks.once('ready', async function() {
       }
     }
   })
+
+  libWrapper.register('minimal-ui', 'Application.prototype.minimize', async function (wrapped, ...args) {
+    const minGap = 200;
+    const sidebarGap = 700;
+    const jumpGap = 210;
+    const boardSize = parseInt($("#board").css('width'));
+    const maxGap = boardSize - sidebarGap;
+    console.log('MinimalUI: Application.prototype.minimize was called');
+    const targetHtml = $(`[data-appid='${this.appId}']`);
+    targetHtml.hide();
+    let targetPos;
+    for (i=minGap; i<maxGap+jumpGap; i=i+jumpGap) {
+      if (MinimalUI.minimizedWindows[i]?.appId == this.appId) {
+        targetPos = i;
+      } else if (!targetPos && !MinimalUI.minimizedWindows[i]?.rendered) {
+        MinimalUI.minimizedWindows[i] = this;
+        targetPos = i;
+      }
+    }
+    this.position.left = targetPos ?? this.position.left;
+    const result = wrapped(...args);
+    this.render();
+    await new Promise(waitABit => setTimeout(waitABit, 200));
+    targetHtml.show();
+    return result;
+  }, 'WRAPPER');
+
+  libWrapper.register('minimal-ui', 'Application.prototype.maximize', async function (wrapped, ...args) {
+      console.log('MinimalUI: Application.prototype.maximize was called');
+      let targetHtml = $(`[data-appid='${this.appId}']`);
+      targetHtml.hide();
+      let result = wrapped(...args);
+      await new Promise(waitABit => setTimeout(waitABit, 200));
+      targetHtml.show();
+      return result;
+  }, 'WRAPPER');
 
 });
 
@@ -771,8 +830,13 @@ Hooks.once('renderSidebarTab', async function() {
     }
     default: {
       rootStyle.setProperty('--leftbarvis', 'visible');
+      break;
     }
   }
+});
+
+Hooks.on('renderSidebarTab', function(app) {
+  if (app._minimized) app.maximize();
 });
 
 Hooks.on('renderSceneNavigation', async function() {
@@ -886,7 +950,6 @@ Hooks.on('renderHotbar', async function() {
     case "slots_3": {
       $("#macro-list > li").each(function(i, slot) {
         if (i > 2) {
-          console.log($(slot));
           rootStyle.setProperty('--macrobarwf', '152px');
           $(slot).remove();
         }
@@ -896,7 +959,6 @@ Hooks.on('renderHotbar', async function() {
     case "slots_6": {
       $("#macro-list > li").each(function(i, slot) {
         if (i > 5) {
-          console.log($(slot));
           rootStyle.setProperty('--macrobarwf', '302px');
           $(slot).remove();
         }

@@ -42,6 +42,10 @@
   --macrobarwf: 502px;
   --macrobarshp: 0px;
 
+  --minimw: unset;
+  --minimbot: unset;
+  --minimtop: unset;
+
   --bordercolor: #ff4900bd;
   --shadowcolor: #ff4900bd;
   --shadowstrength: 10px;
@@ -301,4 +305,16 @@
 #controls:hover .active .control-tools {
   display: var(--leftbarsubstyle);
   left: var(--leftbarsubhover);
+}
+
+/** MINIMIZED BAR **/
+#minimized-bar {
+  position: absolute;
+  width: var(--minimw);
+  height: 40px;
+  bottom: var(--minimbot);
+  top: var(--minimtop);
+  border-radius: 5px;
+  left: 180px;
+  opacity: 90%;
 }
