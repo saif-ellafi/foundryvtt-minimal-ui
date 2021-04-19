@@ -1,6 +1,6 @@
 ### 0.7.0
 * Enhancement: Renewed "Organized Minimize" mode now makes intelligent use of horizontal space for minimized windows
-* Enhancement: "Organized Minimize" now includes a "Bar" mode that displays minimized windows dedicated area
+* Enhancement: "Organized Minimize" now includes a "Bar" mode that displays minimized taskbar area
 * Enhancement: Work around a Foundry Bug causing collapsed tabs not to be maximized when re-clicked
 * Compatibility: Integration with libWrapper for better library compatibility support
 * Compatibility: colorsettings lib now a dependency and no longer included
