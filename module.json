@@ -10,9 +10,22 @@
 		{"name": "lib-wrapper"},
 		{"name": "colorsettings"}
 	],
-	"esmodules": [ ],
+	"esmodules": [ "minimalui.js" ],
+	"includes": [
+		"modules/component/camera.js",
+		"modules/component/controls.js",
+		"modules/component/hotbar.js",
+		"modules/component/logo.js",
+		"modules/component/navigation.js",
+		"modules/component/players.js",
+		"modules/component/sidebar.js",
+		"modules/customization/theme.js",
+		"modules/feature/dynamic.js",
+		"modules/feature/minimize.js",
+		"modules/patch.js",
+		"modules/util.js"
+	],
 	"styles": [ "minimalui.css" ],
-	"scripts": [ "minimalui.js" ],
 	"url": "https://github.com/saif-ellafi/foundryvtt-minimal-ui.git",
 	"manifest": "https://raw.githubusercontent.com/saif-ellafi/foundryvtt-minimal-ui/main/module.json",
 	"download": "https://github.com/saif-ellafi/foundryvtt-minimal-ui/archive/main.zip"
