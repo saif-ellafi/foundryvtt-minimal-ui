@@ -1,4 +1,5 @@
-import {rootStyle} from '../minimal-ui-util.js';
+import {rootStyle} from '../util.js';
+import '../../styles/component/players.css';
 
 export default class MinimalUIPlayers {
 
@@ -7,15 +8,15 @@ export default class MinimalUIPlayers {
 
     static initSettings() {
         game.settings.register('minimal-ui', 'playerList', {
-            name: "Player List",
-            hint: "Customize Player List UI",
+            name: game.i18n.localize("MinimalUI.PlayersBehaviourName"),
+            hint: game.i18n.localize("MinimalUI.PlayersBehaviourHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "default": "Always Visible",
-                "autohide": "Auto-Hide",
-                "hidden": "Hide Completely"
+                "default": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
+                "autohide": game.i18n.localize("MinimalUI.SettingsAutoHide"),
+                "hidden": game.i18n.localize("MinimalUI.SettingsHide")
             },
             default: "autohide",
             onChange: _ => {

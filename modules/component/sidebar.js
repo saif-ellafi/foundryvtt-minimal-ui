@@ -1,18 +1,19 @@
-import {rootStyle} from '../minimal-ui-util.js';
+import {rootStyle} from '../util.js';
+import '../../styles/component/sidebar.css';
 
 export default class MinimalUISidebar {
 
     static initSettings() {
 
         game.settings.register('minimal-ui', 'rightSidePanel', {
-            name: "Right Side Panel Behaviour",
-            hint: "Whether the right side panel starts collapsed or not",
+            name: game.i18n.localize("MinimalUI.SidebarStyleName"),
+            hint: game.i18n.localize("MinimalUI.SidebarStyleHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "shown": "Shown",
-                "collapsed": "Collapsed"
+                "shown": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
+                "collapsed": game.i18n.localize("MinimalUI.SettingsCollapsed")
             },
             default: "shown",
             onChange: _ => {

@@ -1,9 +1,8 @@
 export default class MinimalUICamera {
-
     static initSettings() {
         game.settings.register("minimal-ui", "hidePlayerCameras", {
-            name: "Hide Player Cameras",
-            hint: "For player camera/audio, whether only to show GMs",
+            name: game.i18n.localize("MinimalUI.HidePlayerCameraName"),
+            hint: game.i18n.localize("MinimalUI.HidePlayerCameraHint"),
             scope: "world",
             config: true,
             default: "default",

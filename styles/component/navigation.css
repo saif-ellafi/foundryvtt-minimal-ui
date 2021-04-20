@@ -1,0 +1,43 @@
+:root {
+    --navivis: hidden;
+    --navixpos: 125px;
+    --navilh: 20px;
+    --navifs: 14px;
+    --navibuttonsize: 23px;
+    --navithumbmarg: 10px;
+}
+
+#navigation {
+    left: var(--navixpos);
+    visibility: var(--navivis);
+}
+
+#navigation .nav-item {
+    line-height: var(--navilh);
+    font-size: var(--navifs);
+}
+
+#navigation #nav-toggle {
+    height: var(--navibuttonsize);
+    background: #292929bd;
+}
+
+#navigation #scene-list .scene ul.scene-players {
+    top: 16px;
+}
+
+#navigation #scene-list .scene.view, #navigation #scene-list .scene.context {
+    border: 1px solid var(--bordercolor);
+    border-bottom: 1px solid var(--bordercolor);
+    box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
+}
+
+.navi-preview {
+    display: none;
+    position: relative;
+    top: var(--navithumbmarg);
+    opacity: 1;
+    border: 1px solid var(--bordercolor);
+    border-bottom: 1px solid var(--bordercolor);
+    box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
+}

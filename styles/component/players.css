@@ -1,0 +1,50 @@
+:root {
+    --playervis: hidden;
+    --playerfsize: 0px;
+    --playerwidth: 25px;
+    --playerwidthhv: 150px;
+    --playerslh: 20px;
+    --playerbennies: none;
+    --playerh3w: unset;
+}
+
+#players:hover {
+    width: var(--playerwidthhv);
+    font-size: 12px;
+}
+
+#players {
+    width: var(--playerwidth);
+    left: 5px;
+    bottom: 2px;
+    font-size: var(--playerfsize);
+    visibility: var(--playervis);
+    background: #0000003b;
+}
+
+#players ol li.player {
+    padding: 1px 6px;
+    line-height: var(--playerslh);
+}
+
+#players:hover ol li.player {
+    line-height: 20px;
+}
+
+#players:hover h3 {
+    width: unset;
+}
+
+#players h3 {
+    margin: 0 -2px;
+    border-bottom: 0;
+    width: var(--playerh3w);
+}
+
+.raised-hand {
+    font-size: 12px;
+}
+
+.bennies-count {
+    display: var(--playerbennies);
+}

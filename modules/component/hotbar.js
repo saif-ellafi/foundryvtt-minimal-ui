@@ -1,4 +1,5 @@
-import {rootStyle} from '../minimal-ui-util.js';
+import {rootStyle} from '../util.js';
+import '../../styles/component/hotbar.css';
 
 export default class MinimalUIHotbar {
 
@@ -111,16 +112,16 @@ export default class MinimalUIHotbar {
     static initSettings() {
 
         game.settings.register('minimal-ui', 'macroBar', {
-            name: "Macro Bar",
-            hint: "Customize Macro Bar UI. Auto-Hide Ignored when using Custom Hotbar module.",
+            name: game.i18n.localize("MinimalUI.HotbarStyleName"),
+            hint: game.i18n.localize("MinimalUI.HotbarStyleHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "shown": "Show Normally",
-                "autohide": "Auto-Hide",
-                "collapsed": "Start Collapsed by Default",
-                "hidden": "Hide Completely"
+                "shown": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
+                "autohide": game.i18n.localize("MinimalUI.SettingsAutoHide"),
+                "collapsed": game.i18n.localize("MinimalUI.SettingsCollapsed"),
+                "hidden": game.i18n.localize("MinimalUI.SettingsHide")
             },
             default: "autohide",
             onChange: _ => {
@@ -129,15 +130,15 @@ export default class MinimalUIHotbar {
         });
 
         game.settings.register('minimal-ui', 'macroBarSize', {
-            name: "Macro Bar Slot Size",
-            hint: "Customize Macro Bar slots & size",
+            name: game.i18n.localize("MinimalUI.HotbarStyleName"),
+            hint: game.i18n.localize("MinimalUI.HotbarStyleHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "slots_3": "3 Macro Slots",
-                "slots_6": "6 Macro Slots",
-                "slots_10": "10 Macro Slots"
+                "slots_3": "3 Slots",
+                "slots_6": "6 Slots",
+                "slots_10": "10 Slots"
             },
             default: "slots_10",
             onChange: _ => {
@@ -146,17 +147,17 @@ export default class MinimalUIHotbar {
         });
 
         game.settings.register('minimal-ui', 'macroBarPosition', {
-            name: "Macro Bar Position",
-            hint: `Horizontal position of the Macro Hotbar`,
+            name: game.i18n.localize("MinimalUI.HotbarPositionName"),
+            hint: game.i18n.localize("MinimalUI.HotbarPositionHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "default": "Foundry Default",
-                "left": "Center Left",
-                "center": "Center",
-                "right": "Center Right",
-                "manual": "Manual"
+                "default": game.i18n.localize("MinimalUI.SettingsDefault"),
+                "left": game.i18n.localize("MinimalUI.HotbarPositionCenterLeft"),
+                "center": game.i18n.localize("MinimalUI.HotbarPositionCenter"),
+                "right": game.i18n.localize("MinimalUI.HotbarPositionCenterRight"),
+                "manual": game.i18n.localize("MinimalUI.HotbarPositionManual")
             },
             default: "center",
             onChange: _ => {
@@ -165,8 +166,8 @@ export default class MinimalUIHotbar {
         });
 
         game.settings.register('minimal-ui', 'macroBarPixelPosition', {
-            name: "Macro Bar Manual Pixel Position",
-            hint: `Horizontal position in pixels. If Macro Position is 'Manual'`,
+            name: game.i18n.localize("MinimalUI.HotbarPPositionName"),
+            hint: game.i18n.localize("MinimalUI.HotbarPPositionHint"),
             scope: 'world',
             config: true,
             type: String,

@@ -1,4 +1,5 @@
-import {rootStyle} from '../minimal-ui-util.js';
+import {rootStyle} from '../util.js';
+import '../../styles/component/logo.css';
 
 export default class MinimalUILogo {
 
@@ -6,7 +7,7 @@ export default class MinimalUILogo {
 
     static hideAll(alsoChat) {
         $('#logo').click(_ => {
-            if (!MinimalUI.hiddenInterface) {
+            if (!MinimalUILogo.hiddenInterface) {
                 if (alsoChat) {
                     $('#sidebar').hide();
                 }
@@ -14,7 +15,7 @@ export default class MinimalUILogo {
                 $('#controls').hide();
                 $('#players').hide();
                 $('#hotbar').hide();
-                MinimalUI.hiddenInterface = true;
+                MinimalUILogo.hiddenInterface = true;
             } else {
                 if (alsoChat) {
                     $('#sidebar').show();
@@ -23,7 +24,7 @@ export default class MinimalUILogo {
                 $('#controls').show();
                 $('#players').show();
                 $('#hotbar').show();
-                MinimalUI.hiddenInterface = false;
+                MinimalUILogo.hiddenInterface = false;
             }
         });
     }
@@ -31,15 +32,15 @@ export default class MinimalUILogo {
     static initSettings() {
 
         game.settings.register('minimal-ui', 'foundryLogoSize', {
-            name: "Foundry Logo Size",
-            hint: "Foundry logo visibility and size",
+            name: game.i18n.localize("MinimalUI.LogoStyleName"),
+            hint: game.i18n.localize("MinimalUI.LogoStyleHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "hidden": "Hide",
-                "small": "Small",
-                "standard": "Standard"
+                "hidden": game.i18n.localize("MinimalUI.SettingsHide"),
+                "small": game.i18n.localize("MinimalUI.SettingsSmall"),
+                "standard": game.i18n.localize("MinimalUI.SettingsStandard")
             },
             default: "hidden",
             onChange: _ => {
@@ -48,14 +49,14 @@ export default class MinimalUILogo {
         });
 
         game.settings.register('minimal-ui', 'foundryLogoBehaviour', {
-            name: "Foundry Logo Behaviour",
-            hint: "Use the Foundry Logo to toggle visual elements (when visible, of course).",
+            name: game.i18n.localize("MinimalUI.LogoBehaviourName"),
+            hint:  game.i18n.localize("MinimalUI.LogoBehaviourHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "toggleAll": "Logo toggles Hide ALL UI",
-                "toggleButChat": "Logo toggles Hide ALL UI except Chat"
+                "toggleAll": game.i18n.localize("MinimalUI.LogoBehaviourToggle"),
+                "toggleButChat": game.i18n.localize("MinimalUI.LogoBehaviourToggleNoChat")
             },
             default: "toggleButChat",
             onChange: _ => {
@@ -71,11 +72,11 @@ export default class MinimalUILogo {
             if (game.settings.get('minimal-ui', 'foundryLogoSize') !== 'hidden') {
                 switch (game.settings.get('minimal-ui', 'foundryLogoBehaviour')) {
                     case 'toggleAll': {
-                        MinimalUI.hideAll(true);
+                        MinimalUILogo.hideAll(true);
                         break;
                     }
                     case 'toggleButChat': {
-                        MinimalUI.hideAll(false);
+                        MinimalUILogo.hideAll(false);
                         break;
                     }
                 }

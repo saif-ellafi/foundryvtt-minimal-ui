@@ -1,0 +1,11 @@
+:root {
+    --logovis: hidden;
+    --logoh: 50px;
+    --logow: 100px;
+}
+
+#logo {
+    visibility: var(--logovis);
+    height: var(--logoh);
+    width: var(--logow);
+}

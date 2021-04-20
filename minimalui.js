@@ -1,26 +1,34 @@
-import MinimalUIPatch from "./modules/minimal-ui-patch.js";
+import MinimalUICamera from './modules/component/camera.js'
+import MinimalUIControls from './modules/component/controls.js'
+import MinimalUIHotbar from './modules/component/hotbar.js'
+import MinimalUILogo from './modules/component/logo.js'
+import MinimalUINavigation from './modules/component/navigation.js'
+import MinimalUIPlayers from './modules/component/players.js'
+import MinimalUISidebar from './modules/component/sidebar.js'
 
-console.log('Thank you for using Minimal UI by JeansenVaars');
+import MinimalUITheme from './modules/customization/theme.js'
+
+import MinimalUIDynamic from './modules/feature/dynamic.js'
+import MinimalUIMinimize from './modules/feature/minimize.js'
+
+import MinimalUIPatch from "./modules/patch.js";
 
 class MinimalUI {
     static noColorSettings = false;
     static noLibWrapper = false;
 }
 
-import MinimalUICamera from './modules/component/minimal-ui-camera.js'
-import MinimalUIControls from './modules/component/minimal-ui-controls.js'
-import MinimalUIHotbar from './modules/component/minimal-ui-hotbar.js'
-import MinimalUILogo from './modules/component/minimal-ui-logo.js'
-import MinimalUINavigation from './modules/component/minimal-ui-navigation.js'
-import MinimalUIPlayers from './modules/component/minimal-ui-players.js'
-import MinimalUISidebar from './modules/component/minimal-ui-sidebar.js'
-
-import MinimalUITheme from './modules/customization/minimal-ui-theme.js'
-
-import MinimalUIDynamic from './modules/feature/minimal-ui-dynamic.js'
-import MinimalUIMinimize from './modules/feature/minimal-ui-minimize.js'
-
 Hooks.once('init', () => {
+
+    /** Initialize settings for Theme Functionality */
+    if (game.modules.get('colorsettings')?.active) {
+        MinimalUITheme.initSettings();
+        MinimalUITheme.initHooks();
+    } else {
+        MinimalUI.noColorSettings = true;
+    }
+    /** ------------------------- */
+
     /** Initialize settings for Special Feature Functionality */
     MinimalUIDynamic.initSettings();
     MinimalUIDynamic.initHooks();
@@ -50,15 +58,6 @@ Hooks.once('init', () => {
     MinimalUISidebar.initHooks();
     MinimalUIPlayers.initHooks();
     MinimalUICamera.initHooks();
-    /** ------------------------- */
-
-    /** Initialize settings for Theme Functionality */
-    if (game.modules.get('colorsettings')?.active) {
-        MinimalUITheme.initSettings();
-        MinimalUITheme.initHooks();
-    } else {
-        MinimalUI.noColorSettings = true;
-    }
     /** ------------------------- */
 
     /** Initialize Foundry UI Patches */

@@ -1,4 +1,5 @@
-import {rootStyle} from '../minimal-ui-util.js';
+import {rootStyle} from '../util.js';
+import '../../styles/component/navigation.css';
 
 export default class MinimalUINavigation {
 
@@ -16,15 +17,15 @@ export default class MinimalUINavigation {
     static initSettings() {
 
         game.settings.register('minimal-ui', 'sceneNavigation', {
-            name: "Scene Navigation Style",
-            hint: "Customize scene navigation behaviour. Consider 'DF Scene Enhancement' when hidden.",
+            name: game.i18n.localize("MinimalUI.NavigationStyleName"),
+            hint: game.i18n.localize("MinimalUI.NavigationStyleHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "shown": "Show Normally",
-                "collapsed": "Start Collapsed by Default",
-                "hidden": "Hide Completely"
+                "shown": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
+                "collapsed": game.i18n.localize("MinimalUI.SettingsCollapsed"),
+                "hidden": game.i18n.localize("MinimalUI.SettingsHide")
             },
             default: "shown",
             onChange: _ => {
@@ -33,15 +34,15 @@ export default class MinimalUINavigation {
         });
 
         game.settings.register('minimal-ui', 'sceneNavigationSize', {
-            name: "Scene Navigation Size",
-            hint: "Customize scene navigation Size, when visible.",
+            name: game.i18n.localize("MinimalUI.NavigationSizeName"),
+            hint: game.i18n.localize("MinimalUI.NavigationSizeHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "small": "Small",
-                "standard": "Standard",
-                "big": "Big"
+                "small": game.i18n.localize("MinimalUI.SettingsSmall"),
+                "standard": game.i18n.localize("MinimalUI.SettingsStandard"),
+                "big": game.i18n.localize("MinimalUI.SettingsBig")
             },
             default: "small",
             onChange: _ => {
@@ -50,14 +51,14 @@ export default class MinimalUINavigation {
         });
 
         game.settings.register('minimal-ui', 'sceneNavigationPreview', {
-            name: "Scene Navigation Preview",
-            hint: "Choose whether to show an image preview on the navigation top bar. Experimental feature.",
+            name: game.i18n.localize("MinimalUI.NavigationPreviewName"),
+            hint:  game.i18n.localize("MinimalUI.NavigationPreviewHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "never": "Never",
-                "hover": "On Mouse Over"
+                "never": game.i18n.localize("MinimalUI.NavigationPreviewNever"),
+                "hover": game.i18n.localize("MinimalUI.NavigationPreviewHover")
             },
             default: "hover",
             onChange: _ => {
@@ -77,14 +78,6 @@ export default class MinimalUINavigation {
                 }
             }
 
-            // Compatibility Workaround for bullseye module
-            if (game.modules.has('bullseye') && game.modules.get('bullseye').active) {
-                rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavBullseyeStart);
-            } 
-        });
-
-        Hooks.once('renderSceneNavigation', async function() {
-
             switch(game.settings.get('minimal-ui', 'sceneNavigation')) {
                 case 'collapsed': {
                     rootStyle.setProperty('--navivis', 'visible');
@@ -96,6 +89,14 @@ export default class MinimalUINavigation {
                     break;
                 }
             }
+
+            // Compatibility Workaround for bullseye module
+            if (game.modules.has('bullseye') && game.modules.get('bullseye').active) {
+                rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavBullseyeStart);
+            }
+        });
+
+        Hooks.once('renderSceneNavigation', async function() {
 
             switch(game.settings.get('minimal-ui', 'sceneNavigationSize')) {
                 case 'standard': {

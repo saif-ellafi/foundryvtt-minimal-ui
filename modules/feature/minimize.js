@@ -1,4 +1,5 @@
-import {rootStyle} from '../minimal-ui-util.js';
+import {rootStyle} from '../util.js';
+import '../../styles/feature/minimize.css';
 
 export default class MinimalUIMinimize {
 
@@ -15,16 +16,16 @@ export default class MinimalUIMinimize {
 
     static initSettings() {
         game.settings.register('minimal-ui', 'organizedMinimize', {
-            name: "MINIMAL UI Organized Minimize",
-            hint: "This option may help you organize those minimized windows by placing them either on a bottom line or top bar(Experimental).",
+            name: game.i18n.localize("MinimalUI.OrganizedMinimizeName"),
+            hint: game.i18n.localize("MinimalUI.OrganizedMinimizeHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "bottom": "Bottom",
-                "bottomBar": "Bottom with Bar",
-                "top": "Top",
-                "disabled": "Disabled"
+                "bottom": game.i18n.localize("MinimalUI.OrganizedMinimizeBottom"),
+                "bottomBar": game.i18n.localize("MinimalUI.OrganizedMinimizeBottomBar"),
+                "top": game.i18n.localize("MinimalUI.OrganizedMinimizeTop"),
+                "disabled": game.i18n.localize("MinimalUI.Disabled")
             },
             default: "disabled",
             onChange: _ => {

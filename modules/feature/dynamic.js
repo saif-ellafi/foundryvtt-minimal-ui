@@ -1,3 +1,5 @@
+import MinimalUIControls from '../component/controls.js'
+
 export default class MinimalUIDynamic {
 
     static lastHoverTime;
@@ -5,14 +7,14 @@ export default class MinimalUIDynamic {
     static initSettings() {
 
         game.settings.register('minimal-ui', 'dynamicMinimalUi', {
-            name: "MINIMAL UI Dynamic Mode",
-            hint: "Auto hides UI elements after 60 seconds of chat inactivity when controlling tokens or changing scenes (Experimental).",
+            name: game.i18n.localize("MinimalUI.DynamicUIName"),
+            hint: game.i18n.localize("MinimalUI.DynamicUIHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "enabled": "Enabled",
-                "disabled": "Disabled"
+                "enabled": game.i18n.localize("MinimalUI.Enabled"),
+                "disabled": game.i18n.localize("MinimalUI.Disabled")
             },
             default: "disabled",
             onChange: _ => {
@@ -26,28 +28,28 @@ export default class MinimalUIDynamic {
 
         Hooks.on('hoverToken', function() {
             if (game.settings.get('minimal-ui', 'dynamicMinimalUi') === 'enabled') {
-                if (game.time.serverTime - MinimalUI.lastHoverTime > 60000) {
+                if (game.time.serverTime - MinimalUIDynamic.lastHoverTime > 60000) {
                     ui.sidebar.collapse();
-                    if (game.settings.get('minimal-ui', 'sidePanel') === 'autohide' && MinimalUI.controlsLocked) {
-                        MinimalUI.lockControls(true);
+                    if (game.settings.get('minimal-ui', 'sidePanel') === 'autohide' && MinimalUIControls.controlsLocked) {
+                        MinimalUIControls.lockControls(true);
                     }
-                    MinimalUI.lastHoverTime = game.time.serverTime;
+                    MinimalUIDynamic.lastHoverTime = game.time.serverTime;
                 }
             }
         });
 
         Hooks.on('canvasInit', function() {
-            if (game.settings.get('minimal-ui', 'dynamicMinimalUi') === 'enabled' && MinimalUI.lastHoverTime) {
+            if (game.settings.get('minimal-ui', 'dynamicMinimalUi') === 'enabled' && MinimalUIDynamic.lastHoverTime) {
                 ui.sidebar.collapse();
-                if (game.settings.get('minimal-ui', 'sidePanel') === 'autohide' && MinimalUI.controlsLocked) {
-                    MinimalUI.lockControls(true);
+                if (game.settings.get('minimal-ui', 'sidePanel') === 'autohide' && MinimalUIControls.controlsLocked) {
+                    MinimalUIControls.lockControls(true);
                 }
             }
         });
 
         Hooks.on('renderChatMessage', function() {
             if (game.settings.get('minimal-ui', 'dynamicMinimalUi') === 'enabled') {
-                MinimalUI.lastHoverTime = game.time.serverTime;
+                MinimalUIDynamic.lastHoverTime = game.time.serverTime;
                 ui.sidebar.activateTab('chat');
                 ui.sidebar.expand();
             }
@@ -55,7 +57,7 @@ export default class MinimalUIDynamic {
 
         Hooks.on('sidebarCollapse', function(_, collapsed) {
             if (game.settings.get('minimal-ui', 'dynamicMinimalUi') === 'enabled' && !collapsed) {
-                MinimalUI.lastHoverTime = game.time.serverTime;
+                MinimalUIDynamic.lastHoverTime = game.time.serverTime;
             }
         })
 

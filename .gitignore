@@ -2,3 +2,6 @@
 /shelf/
 /workspace.xml
 /.idea/
+/dist/
+/node_modules/
+*.zip

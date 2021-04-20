@@ -1,4 +1,5 @@
-import {rootStyle} from '../minimal-ui-util.js';
+import {rootStyle} from '../util.js';
+import '../../styles/component/controls.css';
 
 export default class MinimalUIControls {
 
@@ -80,29 +81,32 @@ export default class MinimalUIControls {
     }
 
     static addLockButton() {
-        let locked = MinimalUIControls.controlsLocked ? 'fa-lock' : 'fa-lock-open';
-        let htmlSidebarLockButton =
-            `
-      <li id="sidebar-lock" class="scene-control" title="Pin Sidebar" onclick="MinimalUIControls.lockControls(true)">
-      <i class="fas ${locked}" style="color: red"></i>
-      </li>
-      `
+        const locked = MinimalUIControls.controlsLocked ? 'fa-lock' : 'fa-lock-open';
+        const SidebarLockButton =
+            $(`
+            <li id="sidebar-lock" class="scene-control"
+            title="${game.i18n.localize("MinimalUI.PinSidebar")}">
+            <i class="fas ${locked}" style="color: red"></i>
+            </li>
+            `)
         if (game.settings.get('minimal-ui', 'sidePanel') === 'autohide') {
-            $("#controls").append(htmlSidebarLockButton);
+            SidebarLockButton
+                .click(() => MinimalUIControls.lockControls(true))
+                .appendTo("#controls");
         }
     }
 
     static initSettings() {
 
         game.settings.register('minimal-ui', 'sidePanel', {
-            name: "Left panel behavior",
-            hint: "Choose whether left panel is always visible or auto hides",
+            name: game.i18n.localize("MinimalUI.ControlsBehaviourName"),
+            hint: game.i18n.localize("MinimalUI.ControlsBehaviourHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "always": "Always Visible",
-                "autohide": "Auto-Hide"
+                "always": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
+                "autohide": game.i18n.localize("MinimalUI.SettingsAutoHide")
             },
             default: "autohide",
             onChange: _ => {
@@ -111,14 +115,14 @@ export default class MinimalUIControls {
         });
 
         game.settings.register('minimal-ui', 'sidePanelSize', {
-            name: "Left panel size",
-            hint: "Choose favorite side panel size.",
+            name: game.i18n.localize("MinimalUI.ControlsSizeName"),
+            hint: game.i18n.localize("MinimalUI.ControlsSizeHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "small": "Small",
-                "standard": "Standard"
+                "small": game.i18n.localize("MinimalUI.SettingsSmall"),
+                "standard": game.i18n.localize("MinimalUI.SettingsStandard")
             },
             default: "small",
             onChange: _ => {
@@ -127,14 +131,14 @@ export default class MinimalUIControls {
         });
 
         game.settings.register('minimal-ui', 'sidePanelMenuStyle', {
-            name: "Left panel menu style",
-            hint: "Choose whether to expand to the right or keep a single column of buttons",
+            name: game.i18n.localize("MinimalUI.ControlsStyleName"),
+            hint: game.i18n.localize("MinimalUI.ControlsStyleHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "default": "Controls to the right",
-                "column": "Keep a single column"
+                "default": game.i18n.localize("MinimalUI.ControlsStyleExpandRight"),
+                "column": game.i18n.localize("MinimalUI.ControlsStyleSingleColumn")
             },
             default: "default",
             onChange: _ => {
@@ -143,16 +147,16 @@ export default class MinimalUIControls {
         });
 
         game.settings.register('minimal-ui', 'sidePanelPosition', {
-            name: "Left panel position",
-            hint: "Choose favorite side panel position. Will be ignored if using 'Keep a single column' style.",
+            name: game.i18n.localize("MinimalUI.ControlsPositionName"),
+            hint: game.i18n.localize("MinimalUI.ControlsPositionHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "top": "Top Left",
-                "center": "Center Upper Left",
-                "lower": "Center Lower Left",
-                "bottom": "Bottom Left"
+                "top": game.i18n.localize("MinimalUI.ControlsPositionTopLeft"),
+                "center": game.i18n.localize("MinimalUI.ControlsPositionUpperLeft"),
+                "lower": game.i18n.localize("MinimalUI.ControlsPositionLowerLeft"),
+                "bottom": game.i18n.localize("MinimalUI.ControlsPositionBottomLeft")
             },
             default: "center",
             onChange: _ => {

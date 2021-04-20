@@ -53,6 +53,10 @@ MinimalUI is made as agnostic as possible. Yet, it is impossible to ensure maxim
 I invite you to share any systems or modules that conflict with MinimalUI or do not look correctly.
 Also do share systems and modules Minimal UI already works with too!
 
+# Build from Source
+Plugins: `rollup`, `rollup-plugin-css-porter`, `npm-build-zip`
+Build Script: `npm run build`
+
 # Appreciations
 * Thanks to lib - colorsettings module which is a dependency
 * Thanks to libWrapper module Minimal UI can work with better compatibility
@@ -60,3 +64,6 @@ Also do share systems and modules Minimal UI already works with too!
 
 ![Example GIF](./examplegif-long3.gif)
 ![Example Image](./example12.jpg)
+
+# Powered By
+[![JetBrains](./jetbrains.svg)](https://www.jetbrains.com)
