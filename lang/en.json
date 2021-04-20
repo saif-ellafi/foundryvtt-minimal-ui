@@ -56,7 +56,7 @@
   "MinimalUI.NavigationSizeName": "Scene Navigation Size",
   "MinimalUI.NavigationSizeHint": "Customize scene navigation Size, when visible.",
   "MinimalUI.NavigationPreviewName": "Scene Navigation Preview",
-  "MinimalUI.NavigationPreviewHint": "Choose whether to show an image preview on the navigation top bar. Experimental feature.",
+  "MinimalUI.NavigationPreviewHint": "Choose whether to show an image preview on the navigation top bar.",
   "MinimalUI.NavigationPreviewNever": "Never",
   "MinimalUI.NavigationPreviewHover": "On Mouse Over",
 
@@ -75,10 +75,10 @@
   "MinimalUI.ColorPicker": "Color Picker",
 
   "MinimalUI.DynamicUIName": "MINIMAL UI Dynamic Mode",
-  "MinimalUI.DynamicUIHint": "Auto hides UI elements after 60 seconds of chat inactivity when controlling tokens or changing scenes (Experimental).",
+  "MinimalUI.DynamicUIHint": "Auto hides UI elements after 60 seconds of chat inactivity when controlling tokens or changing scenes.",
 
   "MinimalUI.OrganizedMinimizeName": "MINIMAL UI Organized Minimize",
-  "MinimalUI.OrganizedMinimizeHint": "This option may help you organize those minimized windows by placing them either on a bottom line or top bar(Experimental).",
+  "MinimalUI.OrganizedMinimizeHint": "This option may help you organize those minimized windows by placing them either on a bottom line or top bar.",
   "MinimalUI.OrganizedMinimizeBottom": "Bottom",
   "MinimalUI.OrganizedMinimizeBottomBar": "Bottom with Bar",
   "MinimalUI.OrganizedMinimizeTop": "Top",
