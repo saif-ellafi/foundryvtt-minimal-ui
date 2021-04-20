@@ -88,7 +88,6 @@ export default class MinimalUIMinimize {
             if (game.settings.get('minimal-ui', 'organizedMinimize') !== 'disabled') {
 
                 libWrapper.register('minimal-ui', 'Application.prototype.minimize', async function (wrapped, ...args) {
-                    console.log(this);
                     const minimizedSetting = game.settings.get('minimal-ui', 'organizedMinimize');
                     const minGap = ['top', 'topBar'].includes(minimizedSetting) ? 50 : 200;
                     const sidebarGap = MinimalUIMinimize.cssMinimizedSize * 4;
@@ -107,11 +106,10 @@ export default class MinimalUIMinimize {
                             targetPos = i;
                         }
                     }
-                    this.position.left = targetPos ?? this.position.left;
+                    this.setPosition({left: targetPos ?? this.position.left});
                     const result = wrapped(...args);
                     this.element.find(".close").text('');
                     this.element.find(".close").append(`<a class="header-button close"><i class="fas fa-times"></i></a>`);
-                    this.render();
                     await new Promise(waitABit => setTimeout(waitABit, 200));
                     if (['bottomBar', 'topBar'].includes(minimizedSetting)) {
                         $("#minimized-bar").show();
@@ -130,7 +128,7 @@ export default class MinimalUIMinimize {
                     if (['bottomBar', 'topBar'].includes(minimizedSetting))
                         MinimalUIMinimize.cleanupMinimizeBar(this);
                     this.element.find(".close").text('');
-                    this.element.find(".close").append(`<a class="header-button close"><i class="fas fa-times"></i>Close</a>`);
+                    this.element.find(".close").append(`<i class="fas fa-times"></i>Close`);
                     targetHtml.show();
                     return result;
                 }, 'WRAPPER');
