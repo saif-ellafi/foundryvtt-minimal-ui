@@ -41,11 +41,11 @@ export default class MinimalUIMinimize {
         }
     }
 
-    static cleanupMinimizeBar(app) {
+    static cleanupMinimizeBar(app, force) {
         const minimizedApps = $(".minimized");
         const minimizedStash = Object.values(MinimalUIMinimize.minimizedStash);
-        const matchedStash = minimizedStash.find(a => a.appId === app.appId);
-        if ((minimizedApps.length === 0) || (minimizedApps.length === 1 && matchedStash)) {
+        const matchedStash = minimizedStash.find(a => a.appId === app?.appId);
+        if ((force) || (minimizedApps.length === 0) || (minimizedApps.length === 1 && matchedStash)) {
             MinimalUIMinimize.minimizedStash = {};
             $("#minimized-bar").hide();
         }
@@ -73,6 +73,16 @@ export default class MinimalUIMinimize {
     }
 
     static initHooks() {
+
+        $(document).keydown((event) => {
+            // 27 == Escape
+            if (event.which === 27) {
+                if (Object.keys(MinimalUIMinimize.minimizedStash).length > 0) {
+                    MinimalUIMinimize.cleanupMinimizeBar(undefined, true);
+                }
+            }
+
+        });
 
         Hooks.once('ready', async function() {
             if (game.settings.get('minimal-ui', 'organizedMinimize') !== 'disabled') {
