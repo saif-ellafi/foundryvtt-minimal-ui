@@ -4,6 +4,8 @@ import '../../styles/feature/minimize.css';
 export default class MinimalUIMinimize {
 
     static minimizedWindows = {};
+    static cssTopBarWidthDiff = 380;
+    static cssBottomBarWidthDiff = 600;
 
     static fixMinimizedRule(rule, measure) {
         let stylesheet = document.querySelector('link[href*=minimalui]');
@@ -11,6 +13,32 @@ export default class MinimalUIMinimize {
         if( stylesheet ){
             stylesheet = stylesheet.sheet;
             stylesheet.insertRule('.minimized' + '{ ' + rule + ': ' + measure + ' !important }', stylesheet.cssRules.length);
+        }
+    }
+
+    static positionMinimizeBar() {
+        const availableWidth = parseInt($("#board").css('width'));
+        switch (game.settings.get('minimal-ui', 'organizedMinimize')) {
+            case 'topBar': {
+                rootStyle.setProperty('--minimw', availableWidth - MinimalUIMinimize.cssTopBarWidthDiff + 'px');
+                break;
+            }
+            case 'bottomBar': {
+                rootStyle.setProperty('--minimw', availableWidth - MinimalUIMinimize.cssBottomBarWidthDiff + 'px');
+                break;
+            }
+        }
+        if ($(".minimized").length === 0) {
+            MinimalUIMinimize.minimizedWindows = {};
+            $("#minimized-bar").hide();
+        }
+    }
+
+    static cleanupMinimizeBar() {
+        console.log("CLEANUP: " + $(".minimized").length);
+        if ($(".minimized").length <= 1) {
+            MinimalUIMinimize.minimizedWindows = {};
+            $("#minimized-bar").hide();
         }
     }
 
@@ -25,6 +53,7 @@ export default class MinimalUIMinimize {
                 "bottom": game.i18n.localize("MinimalUI.OrganizedMinimizeBottom"),
                 "bottomBar": game.i18n.localize("MinimalUI.OrganizedMinimizeBottomBar"),
                 "top": game.i18n.localize("MinimalUI.OrganizedMinimizeTop"),
+                "topBar": game.i18n.localize("MinimalUI.OrganizedMinimizeTopBar"),
                 "disabled": game.i18n.localize("MinimalUI.Disabled")
             },
             default: "disabled",
@@ -40,7 +69,8 @@ export default class MinimalUIMinimize {
             if (game.settings.get('minimal-ui', 'organizedMinimize') !== 'disabled') {
 
                 libWrapper.register('minimal-ui', 'Application.prototype.minimize', async function (wrapped, ...args) {
-                    const minGap = 200;
+                    const minimizedSetting = game.settings.get('minimal-ui', 'organizedMinimize');
+                    const minGap = ['top', 'topBar'].includes(minimizedSetting) ? 50 : 200;
                     const sidebarGap = 700;
                     const jumpGap = 210;
                     const boardSize = parseInt($("#board").css('width'));
@@ -61,6 +91,9 @@ export default class MinimalUIMinimize {
                     const result = wrapped(...args);
                     this.render();
                     await new Promise(waitABit => setTimeout(waitABit, 200));
+                    if (['bottomBar', 'topBar'].includes(minimizedSetting)) {
+                        $("#minimized-bar").show();
+                    }
                     targetHtml.show();
                     return result;
                 }, 'WRAPPER');
@@ -71,6 +104,9 @@ export default class MinimalUIMinimize {
                     targetHtml.hide();
                     let result = wrapped(...args);
                     await new Promise(waitABit => setTimeout(waitABit, 200));
+                    const minimizedSetting = game.settings.get('minimal-ui', 'organizedMinimize');
+                    if (['bottomBar', 'topBar'].includes(minimizedSetting))
+                        MinimalUIMinimize.cleanupMinimizeBar();
                     targetHtml.show();
                     return result;
                 }, 'WRAPPER');
@@ -80,19 +116,30 @@ export default class MinimalUIMinimize {
                         MinimalUIMinimize.fixMinimizedRule('top', '70px');
                         break;
                     }
+                    case 'topBar': {
+                        rootStyle.setProperty('--minimbot', 'unset');
+                        rootStyle.setProperty('--minimtop', '65px');
+                        rootStyle.setProperty('--minileft', '40px');
+                        const minimizedBar = $(`<div id="minimized-bar" class="app"></div>`);
+                        minimizedBar.appendTo('body');
+                        MinimalUIMinimize.positionMinimizeBar();
+                        MinimalUIMinimize.fixMinimizedRule('top', '70px');
+                        break;
+                    }
                     case 'bottom': {
                         MinimalUIMinimize.fixMinimizedRule('top', 'unset');
-                        MinimalUIMinimize.fixMinimizedRule('bottom', '70px');
+                        MinimalUIMinimize.fixMinimizedRule('bottom', '75px');
                         break;
                     }
                     case 'bottomBar': {
-                        let availableWidth = parseInt($("#board").css('width'));
-                        rootStyle.setProperty('--minimw', availableWidth - 600 + 'px');
-                        rootStyle.setProperty('--minimbot', '65px');
+                        rootStyle.setProperty('--minimbot', '70px');
                         rootStyle.setProperty('--minimtop', 'unset');
-                        $("body").append(`<div id="minimized-bar" class="app"></div>`);
+                        rootStyle.setProperty('--minileft', '180px');
+                        const minimizedBar = $(`<div id="minimized-bar" class="app"></div>`).hide();
+                        minimizedBar.appendTo('body');
+                        MinimalUIMinimize.positionMinimizeBar();
                         MinimalUIMinimize.fixMinimizedRule('top', 'unset');
-                        MinimalUIMinimize.fixMinimizedRule('bottom', '70px');
+                        MinimalUIMinimize.fixMinimizedRule('bottom', '75px');
                         break;
                     }
                 }
@@ -100,6 +147,27 @@ export default class MinimalUIMinimize {
             }
 
         });
+
+        Hooks.on('canvasPan', function() {
+            MinimalUIMinimize.positionMinimizeBar();
+        });
+
+        Hooks.on('closeSidebarTab', function() {
+            MinimalUIMinimize.cleanupMinimizeBar();
+        });
+
+        Hooks.on('closeApplication', function() {
+            MinimalUIMinimize.cleanupMinimizeBar();
+        });
+
+        Hooks.on('closeItemSheet', function() {
+            MinimalUIMinimize.cleanupMinimizeBar();
+        });
+        Hooks.
+        on('closeActorSheet', function() {
+            MinimalUIMinimize.cleanupMinimizeBar();
+        });
+
     }
 
 }

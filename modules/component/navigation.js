@@ -141,12 +141,22 @@ export default class MinimalUINavigation {
                                     $(sceneTab).hover(
                                         function() {
                                             if (!$(sceneTab).hasClass('view')) {
+                                                const minimized = game.settings.get('minimal-ui', 'organizedMinimize');
                                                 $(`#hover_preview_${i}`).show(200);
+                                                if (['top', 'topBar'].includes(minimized)) {
+                                                    $("#minimized-bar")?.hide();
+                                                    $(".minimized").hide();
+                                                }
                                             }
                                         },
                                         function() {
                                             if (!$(sceneTab).hasClass('view')) {
-                                                $(`#hover_preview_${i}`).fadeOut(50);
+                                                const minimized = game.settings.get('minimal-ui', 'organizedMinimize');
+                                                $(`#hover_preview_${i}`).fadeOut(10);
+                                                if (['top', 'topBar'].includes(minimized)) {
+                                                    $("#minimized-bar")?.show();
+                                                    $(".minimized").show();
+                                                }
                                             }
                                         }
                                     );

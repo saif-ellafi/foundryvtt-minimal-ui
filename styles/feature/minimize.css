@@ -2,6 +2,7 @@
     --minimw: unset;
     --minimbot: unset;
     --minimtop: unset;
+    --minileft: unset;
 }
 
 #minimized-bar {
@@ -11,6 +12,6 @@
     bottom: var(--minimbot);
     top: var(--minimtop);
     border-radius: 5px;
-    left: 180px;
+    left: var(--minileft);
     opacity: 90%;
 }
