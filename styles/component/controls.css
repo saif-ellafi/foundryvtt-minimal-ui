@@ -1,25 +1,25 @@
 :root {
-    --leftbarvis: hidden;
-    --leftbarxpos: 0px;
-    --leftbarypos: 20vmin;
-    --leftbarpad: 7px;
-    --leftbarw: 36px;
-    --leftbarh: 36px;
-    --leftbarlh: 36px;
-    --leftbarfs: 24px;
-    --leftbarsubstart: 60px;
-    --leftbarsubhover: 60px;
-    --leftbarsubstyle: contents;
+    --controlsvis: hidden;
+    --controlsxpos: 0px;
+    --controlsypos: 20vmin;
+    --controlspad: 7px;
+    --controlsw: 36px;
+    --controlsh: 36px;
+    --controlslh: 36px;
+    --controlsfs: 24px;
+    --controlssubstart: 60px;
+    --controlssubhover: 60px;
+    --controlssubstyle: contents;
 }
 
 #controls {
-    left: var(--leftbarxpos);
+    left: var(--controlsxpos);
     top: 10px;
-    margin-top: var(--leftbarypos);
+    margin-top: var(--controlsypos);
     border-right: 1px solid var(--bordercolor);
     box-shadow: 3px 0 var(--shadowstrength) 0 var(--shadowcolor);
     transition: 0.1s;
-    padding-right: var(--leftbarpad);
+    padding-right: var(--controlspad);
     background: #0000003b;
 }
 
@@ -74,18 +74,18 @@
 }
 
 #controls > li:nth-child(n), #controls > li.scene-control > ol > li.control-tool {
-    width: var(--leftbarw);
-    height: var(--leftbarh);
-    line-height: var(--leftbarlh);
-    font-size: var(--leftbarfs);
+    width: var(--controlsw);
+    height: var(--controlsh);
+    line-height: var(--controlslh);
+    font-size: var(--controlsfs);
     padding-right: 0;
     padding-left: 1px;
 }
 
 
 #controls .active .control-tools {
-    display: var(--leftbarsubstyle);
-    left: var(--leftbarsubstart);
+    display: var(--controlssubstyle);
+    left: var(--controlssubstart);
     transition: 0.5s;
     background: #00000059;
     border: solid 1px var(--bordercolor);
@@ -94,6 +94,6 @@
 }
 
 #controls:hover .active .control-tools {
-    display: var(--leftbarsubstyle);
-    left: var(--leftbarsubhover);
+    display: var(--controlssubstyle);
+    left: var(--controlssubhover);
 }

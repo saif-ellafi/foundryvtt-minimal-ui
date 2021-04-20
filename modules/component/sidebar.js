@@ -5,7 +5,7 @@ export default class MinimalUISidebar {
 
     static initSettings() {
 
-        game.settings.register('minimal-ui', 'rightSidePanel', {
+        game.settings.register('minimal-ui', 'rightcontrolsBehaviour', {
             name: game.i18n.localize("MinimalUI.SidebarStyleName"),
             hint: game.i18n.localize("MinimalUI.SidebarStyleHint"),
             scope: 'world',
@@ -24,19 +24,19 @@ export default class MinimalUISidebar {
 
     static initHooks() {
         Hooks.once('renderSidebarTab', async function() {
-            switch(game.settings.get('minimal-ui', 'rightSidePanel')) {
+            switch(game.settings.get('minimal-ui', 'rightcontrolsBehaviour')) {
                 case 'shown': {
-                    rootStyle.setProperty('--leftbarvis', 'visible');
+                    rootStyle.setProperty('--controlsvis', 'visible');
                     break;
                 }
                 case 'collapsed': {
                     await ui.sidebar.collapse();
                     await new Promise(waitABit => setTimeout(waitABit, 500));
-                    rootStyle.setProperty('--leftbarvis', 'visible');
+                    rootStyle.setProperty('--controlsvis', 'visible');
                     break;
                 }
                 default: {
-                    rootStyle.setProperty('--leftbarvis', 'visible');
+                    rootStyle.setProperty('--controlsvis', 'visible');
                     break;
                 }
             }

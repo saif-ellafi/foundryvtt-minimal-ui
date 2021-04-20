@@ -67,3 +67,5 @@ Build Script: `npm run build`
 
 # Powered By
 [![JetBrains](./jetbrains.svg)](https://www.jetbrains.com)
+
+Thanks to JetBrains I can work on this project using **WebStorm**.

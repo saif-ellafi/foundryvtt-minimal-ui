@@ -30,7 +30,7 @@ export default class MinimalUIDynamic {
             if (game.settings.get('minimal-ui', 'dynamicMinimalUi') === 'enabled') {
                 if (game.time.serverTime - MinimalUIDynamic.lastHoverTime > 60000) {
                     ui.sidebar.collapse();
-                    if (game.settings.get('minimal-ui', 'sidePanel') === 'autohide' && MinimalUIControls.controlsLocked) {
+                    if (game.settings.get('minimal-ui', 'controlsBehaviour') === 'autohide' && MinimalUIControls.controlsLocked) {
                         MinimalUIControls.lockControls(true);
                     }
                     MinimalUIDynamic.lastHoverTime = game.time.serverTime;
@@ -41,7 +41,7 @@ export default class MinimalUIDynamic {
         Hooks.on('canvasInit', function() {
             if (game.settings.get('minimal-ui', 'dynamicMinimalUi') === 'enabled' && MinimalUIDynamic.lastHoverTime) {
                 ui.sidebar.collapse();
-                if (game.settings.get('minimal-ui', 'sidePanel') === 'autohide' && MinimalUIControls.controlsLocked) {
+                if (game.settings.get('minimal-ui', 'controlsBehaviour') === 'autohide' && MinimalUIControls.controlsLocked) {
                     MinimalUIControls.lockControls(true);
                 }
             }

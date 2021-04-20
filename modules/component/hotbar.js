@@ -34,12 +34,12 @@ export default class MinimalUIHotbar {
     static lockHotbar(unlock) {
         const barLock = $("#bar-lock > i");
         if (MinimalUIHotbar.hotbarLocked && unlock) {
-            rootStyle.setProperty('--macrobarypos', MinimalUIHotbar.cssHotbarHidden);
+            rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarHidden);
             barLock.removeClass("fa-lock");
             barLock.addClass("fa-lock-open");
             MinimalUIHotbar.hotbarLocked = false;
         } else {
-            rootStyle.setProperty('--macrobarypos', MinimalUIHotbar.cssHotbarReveal);
+            rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarReveal);
             barLock.removeClass("fa-lock-open");
             barLock.addClass("fa-lock");
             MinimalUIHotbar.hotbarLocked = true;
@@ -51,32 +51,32 @@ export default class MinimalUIHotbar {
         if (game.settings.get('minimal-ui', 'organizedMinimize') === 'bottomBar') {
             rootStyle.setProperty('--minimw', availableWidth-600+'px');
         }
-        switch(game.settings.get('minimal-ui', 'macroBarPosition')) {
+        switch(game.settings.get('minimal-ui', 'hotbarPosition')) {
             case 'default': {
-                rootStyle.setProperty('--macrobarxpos', '220px');
+                rootStyle.setProperty('--hotbarxpos', '220px');
                 break;
             }
             case 'left': {
-                rootStyle.setProperty('--macrobarxpos', ((availableWidth/2.5)-(availableWidth/9)-(availableWidth/9))+'px');
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth/2.5)-(availableWidth/9)-(availableWidth/9))+'px');
                 break;
             }
             case 'center': {
-                rootStyle.setProperty('--macrobarxpos', ((availableWidth/2.5)-(availableWidth/9))+'px');
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth/2.5)-(availableWidth/9))+'px');
                 break;
             }
             case 'right': {
-                rootStyle.setProperty('--macrobarxpos', ((availableWidth/2.5))+'px');
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth/2.5))+'px');
                 break;
             }
             case 'manual': {
-                rootStyle.setProperty('--macrobarxpos', game.settings.get('minimal-ui', 'macroBarPixelPosition')+'px');
+                rootStyle.setProperty('--hotbarxpos', game.settings.get('minimal-ui', 'hotbarPixelPosition')+'px');
                 break;
             }
         }
     }
 
     static configureHotbar() {
-        switch(game.settings.get('minimal-ui', 'macroBar')) {
+        switch(game.settings.get('minimal-ui', 'hotbar')) {
             case 'collapsed': {
                 MinimalUIHotbar.collapseHotbar("bar-toggle");
                 if (game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active) {
@@ -86,16 +86,16 @@ export default class MinimalUIHotbar {
             }
             case 'autohide': {
                 if (!(game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active)) {
-                    rootStyle.setProperty('--macrobarypos', MinimalUIHotbar.cssHotbarHidden);
-                    rootStyle.setProperty('--macrobarlh1', MinimalUIHotbar.cssHotbarLeftControlsLineHeight);
-                    rootStyle.setProperty('--macrobarlh2', MinimalUIHotbar.cssHotbarRightControlsLineHeight);
+                    rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarHidden);
+                    rootStyle.setProperty('--hotbarlh1', MinimalUIHotbar.cssHotbarLeftControlsLineHeight);
+                    rootStyle.setProperty('--hotbarlh2', MinimalUIHotbar.cssHotbarRightControlsLineHeight);
                     if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
-                        rootStyle.setProperty('--macrobarlh2', MinimalUIHotbar.cssHotbarRightControlsLineHeightDnDUi);
+                        rootStyle.setProperty('--hotbarlh2', MinimalUIHotbar.cssHotbarRightControlsLineHeightDnDUi);
                     }
-                    rootStyle.setProperty('--macrobarmg', MinimalUIHotbar.cssHotbarControlsMargin);
-                    rootStyle.setProperty('--macrobarhh', MinimalUIHotbar.cssHotbarControlsAutoHideHeight);
-                    rootStyle.setProperty('--macrobarhv', MinimalUIHotbar.cssHotbarAutoHideHeight);
-                    rootStyle.setProperty('--macrobarshp', MinimalUIHotbar.cssHotbarAutoHideShadow);
+                    rootStyle.setProperty('--hotbarmg', MinimalUIHotbar.cssHotbarControlsMargin);
+                    rootStyle.setProperty('--hotbarhh', MinimalUIHotbar.cssHotbarControlsAutoHideHeight);
+                    rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarAutoHideHeight);
+                    rootStyle.setProperty('--hotbarshp', MinimalUIHotbar.cssHotbarAutoHideShadow);
                     $("#hotbar-directory-controls").append(MinimalUIHotbar.htmlHotbarLockButton);
                     $("#macro-directory").click(function() {MinimalUIHotbar.lockHotbar(false)});
                     $("#bar-lock").click(function() {MinimalUIHotbar.lockHotbar(true)});
@@ -111,7 +111,7 @@ export default class MinimalUIHotbar {
     
     static initSettings() {
 
-        game.settings.register('minimal-ui', 'macroBar', {
+        game.settings.register('minimal-ui', 'hotbar', {
             name: game.i18n.localize("MinimalUI.HotbarStyleName"),
             hint: game.i18n.localize("MinimalUI.HotbarStyleHint"),
             scope: 'world',
@@ -129,7 +129,7 @@ export default class MinimalUIHotbar {
             }
         });
 
-        game.settings.register('minimal-ui', 'macroBarSize', {
+        game.settings.register('minimal-ui', 'hotbarSize', {
             name: game.i18n.localize("MinimalUI.HotbarStyleName"),
             hint: game.i18n.localize("MinimalUI.HotbarStyleHint"),
             scope: 'world',
@@ -146,7 +146,7 @@ export default class MinimalUIHotbar {
             }
         });
 
-        game.settings.register('minimal-ui', 'macroBarPosition', {
+        game.settings.register('minimal-ui', 'hotbarPosition', {
             name: game.i18n.localize("MinimalUI.HotbarPositionName"),
             hint: game.i18n.localize("MinimalUI.HotbarPositionHint"),
             scope: 'world',
@@ -165,7 +165,7 @@ export default class MinimalUIHotbar {
             }
         });
 
-        game.settings.register('minimal-ui', 'macroBarPixelPosition', {
+        game.settings.register('minimal-ui', 'hotbarPixelPosition', {
             name: game.i18n.localize("MinimalUI.HotbarPPositionName"),
             hint: game.i18n.localize("MinimalUI.HotbarPPositionHint"),
             scope: 'world',
@@ -187,8 +187,8 @@ export default class MinimalUIHotbar {
 
             MinimalUIHotbar.positionHotbar();
 
-            if (game.settings.get('minimal-ui', 'macroBar') !== 'hidden') {
-                rootStyle.setProperty('--macrobarvis', 'visible');
+            if (game.settings.get('minimal-ui', 'hotbar') !== 'hidden') {
+                rootStyle.setProperty('--hotbarvis', 'visible');
             }
 
         });
@@ -197,11 +197,11 @@ export default class MinimalUIHotbar {
 
             MinimalUIHotbar.configureHotbar();
 
-            switch(game.settings.get('minimal-ui', 'macroBarSize')) {
+            switch(game.settings.get('minimal-ui', 'hotbarSize')) {
                 case "slots_3": {
                     $("#macro-list > li").each(function(i, slot) {
                         if (i > 2) {
-                            rootStyle.setProperty('--macrobarwf', '152px');
+                            rootStyle.setProperty('--hotbarwf', '152px');
                             $(slot).remove();
                         }
                     });
@@ -210,7 +210,7 @@ export default class MinimalUIHotbar {
                 case "slots_6": {
                     $("#macro-list > li").each(function(i, slot) {
                         if (i > 5) {
-                            rootStyle.setProperty('--macrobarwf', '302px');
+                            rootStyle.setProperty('--hotbarwf', '302px');
                             $(slot).remove();
                         }
                     });
