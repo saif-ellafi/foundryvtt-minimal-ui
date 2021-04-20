@@ -48,9 +48,6 @@ export default class MinimalUIHotbar {
 
     static positionHotbar() {
         let availableWidth = parseInt($("#board").css('width'));
-        if (game.settings.get('minimal-ui', 'organizedMinimize') === 'bottomBar') {
-            rootStyle.setProperty('--minimw', availableWidth-600+'px');
-        }
         switch(game.settings.get('minimal-ui', 'hotbarPosition')) {
             case 'default': {
                 rootStyle.setProperty('--hotbarxpos', '220px');
