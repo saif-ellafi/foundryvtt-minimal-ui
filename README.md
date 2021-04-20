@@ -4,6 +4,11 @@ Configurable UI module, allows the user to hide, collapse or auto-hide component
 
 This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Bar.
 
+## By JeansenVaars
+![JVLogo](logo-small-black.png)
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V14D3AH)
+
 ## Special Minimal UI Features
 
 ### Dynamic Mode (Default: OFF)
@@ -53,6 +58,10 @@ MinimalUI is made as agnostic as possible. Yet, it is impossible to ensure maxim
 I invite you to share any systems or modules that conflict with MinimalUI or do not look correctly.
 Also do share systems and modules Minimal UI already works with too!
 
+# Build from Source
+Plugins: `rollup`, `rollup-plugin-css-porter`, `npm-build-zip`
+Build Script: `npm run build`
+
 # Appreciations
 * Thanks to lib - colorsettings module which is a dependency
 * Thanks to libWrapper module Minimal UI can work with better compatibility
@@ -60,3 +69,8 @@ Also do share systems and modules Minimal UI already works with too!
 
 ![Example GIF](./examplegif-long3.gif)
 ![Example Image](./example12.jpg)
+
+# Powered By
+[![JetBrains](./jetbrains.svg)](https://www.jetbrains.com)
+
+Thanks to JetBrains I can work on this project using **WebStorm**.

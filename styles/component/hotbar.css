@@ -1,0 +1,63 @@
+:root {
+    --hotbarvis: hidden;
+    --hotbarypos: 10px;
+    --hotbarxpos: 400px;
+    --hotbarlh1: 24px;
+    --hotbarlh2: 8px;
+    --hotbarhv: 10px;
+    --hotbarmg: 0px;
+    --hotbarhh: 100%;
+    --hotbarwf: 502px;
+    --hotbarshp: 0px;
+}
+
+#hotbar:hover {
+    bottom: var(--hotbarhv);
+    transition: 0.5s;
+}
+
+#hotbar {
+    left: var(--hotbarxpos);
+    bottom: var(--hotbarypos);
+    visibility: var(--hotbarvis);
+    transition: 0.05s ease-out 0.5s;
+}
+
+#hotbar .bar-controls {
+    background: #191919;
+    height: var(--hotbarhh);
+    margin: var(--hotbarmg) 2px;
+}
+
+#hotbar .bar-controls a.page-control {
+    font-size: 20px;
+}
+
+#hotbar #hotbar-directory-controls {
+    font-size: 14px;
+}
+
+#hotbar .bar-controls span.page-number {
+    line-height: var(--hotbarlh2);
+}
+
+#hotbar #macro-list:hover {
+    border-top: 1px solid var(--bordercolor);
+    box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
+    transition: 0.5s;
+}
+
+#hotbar #macro-list {
+    border-top: 1px solid var(--bordercolor);
+    box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
+    flex: 0 0 var(--hotbarwf);
+    transition: 0.05s ease-out 0.5s;
+}
+
+#hotbar .macro:hover {
+    box-shadow: 0 0 10px var(--shadowcolor) inset;
+}
+
+#hotbar #hotbar-directory-controls a {
+    line-height: var(--hotbarlh1);
+}

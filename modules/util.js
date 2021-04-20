@@ -1,0 +1,1 @@
+export const rootStyle = document.querySelector(':root').style;

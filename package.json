@@ -1,0 +1,38 @@
+{
+  "name": "foundryvtt-minimal-ui",
+  "version": "0.8.0",
+  "description": "Minimal UI allows customizing Foundry interface, by hiding, collapsing or resizing specific parts.",
+  "main": "minimalui.js",
+  "scripts": {
+    "copy": "cp ./module.json dist/ && cp ./lang dist/",
+    "copyWin": "copy module.json dist && xcopy /Y /I lang dist\\lang",
+    "build": "rollup --config ./rollup.config.js && npm run copy",
+    "buildWin": "rollup --config ./rollup.config.js && npm run copyWin",
+    "zip": "npm-build-zip --source=dist --destination=.",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saif-ellafi/foundryvtt-minimal-ui.git"
+  },
+  "keywords": [
+    "foundry",
+    "vtt",
+    "interface",
+    "ui",
+    "minimal"
+  ],
+  "author": "JeansenVaars (Saif Ellafi)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/saif-ellafi/foundryvtt-minimal-ui/issues"
+  },
+  "homepage": "https://github.com/saif-ellafi/foundryvtt-minimal-ui#readme",
+  "dependencies": {
+    "@rollup/plugin-json": "^4.1.0",
+    "rollup": "^2.45.2"
+  },
+  "devDependencies": {
+    "npm-build-zip": "^1.0.3"
+  }
+}

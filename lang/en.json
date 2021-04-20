@@ -1,0 +1,88 @@
+{
+
+  "MinimalUI.SettingsAlwaysVisible": "Always Visible",
+  "MinimalUI.SettingsAutoHide": "Auto-Hide",
+  "MinimalUI.SettingsCollapsed": "Start Collapsed",
+  "MinimalUI.SettingsHide": "Hide Completely",
+
+  "MinimalUI.SettingsSmall": "Small",
+  "MinimalUI.SettingsDefault": "Default",
+  "MinimalUI.SettingsStandard": "Standard",
+  "MinimalUI.SettingsBig": "Big",
+
+  "MinimalUI.Enabled": "Enabled",
+  "MinimalUI.Disabled": "Disabled",
+
+  "MinimalUI.LogoStyleName": "Foundry Logo",
+  "MinimalUI.LogoStyleHint": "Foundry logo visibility and size",
+  "MinimalUI.LogoBehaviourName": "Foundry Logo Behaviour",
+  "MinimalUI.LogoBehaviourHint": "Use the Foundry Logo to toggle visual elements (when visible, of course).",
+  "MinimalUI.LogoBehaviourToggle": "Logo toggles Hide ALL UI",
+  "MinimalUI.LogoBehaviourToggleNoChat": "Logo toggles Hide ALL UI except Chat",
+
+  "MinimalUI.HidePlayerCameraName": "Hide Player Cameras",
+  "MinimalUI.HidePlayerCameraHint": "For player camera/audio, whether only to show GMs",
+
+  "MinimalUI.ControlsBehaviourName": "Left Controls behavior",
+  "MinimalUI.ControlsBehaviourHint": "Choose whether left panel is always visible or auto hides",
+  "MinimalUI.ControlsSizeName": "Left Controls size",
+  "MinimalUI.ControlsSizeHint": "Choose favorite side panel size.",
+  "MinimalUI.ControlsStyleName": "Left Controls menu style",
+  "MinimalUI.ControlsStyleHint": "Choose whether to expand to the right or keep a single column of buttons",
+  "MinimalUI.ControlsStyleExpandRight": "Controls to the right",
+  "MinimalUI.ControlsStyleSingleColumn": "Keep a single column",
+  "MinimalUI.ControlsPositionName": "Left Controls position",
+  "MinimalUI.ControlsPositionHint": "Choose favorite side panel position. Will be ignored if using 'Keep a single column' style.",
+  "MinimalUI.ControlsPositionTopLeft": "Top Left",
+  "MinimalUI.ControlsPositionUpperLeft": "Center Upper Left",
+  "MinimalUI.ControlsPositionLowerLeft": "Center Lower Left",
+  "MinimalUI.ControlsPositionBottomLeft": "Bottom Left",
+
+  "MinimalUI.HotbarStyleName": "Macro Hotbar",
+  "MinimalUI.HotbarStyleHint": "Customize Hotbar UI. Auto-Hide Ignored when using Custom Hotbar module.",
+  "MinimalUI.HotbarSizeName": "Macro Hotbar Slot Size",
+  "MinimalUI.HotbarSizeHint": "Customize Macro Hotbar slots & size",
+  "MinimalUI.HotbarPositionName": "Macro Hotbar Position",
+  "MinimalUI.HotbarPositionHint": "Horizontal position of the Macro Hotbar",
+  "MinimalUI.HotbarPositionCenterLeft": "Center Left",
+  "MinimalUI.HotbarPositionCenter": "Center",
+  "MinimalUI.HotbarPositionCenterRight": "Center Right",
+  "MinimalUI.HotbarPositionManual": "Manual",
+  "MinimalUI.HotbarPPositionName": "Macro Hotbar Manual Pixel Position",
+  "MinimalUI.HotbarPPositionHint": "Horizontal position in pixels. If Macro Position is 'Manual'",
+
+  "MinimalUI.NavigationStyleName": "Scene Navigation Style",
+  "MinimalUI.NavigationStyleHint": "Customize scene navigation behaviour. Consider 'DF Scene Enhancement' when hidden.",
+  "MinimalUI.NavigationSizeName": "Scene Navigation Size",
+  "MinimalUI.NavigationSizeHint": "Customize scene navigation Size, when visible.",
+  "MinimalUI.NavigationPreviewName": "Scene Navigation Preview",
+  "MinimalUI.NavigationPreviewHint": "Choose whether to show an image preview on the navigation top bar.",
+  "MinimalUI.NavigationPreviewHover": "On Mouse Over",
+
+  "MinimalUI.PlayersBehaviourName": "Player List",
+  "MinimalUI.PlayersBehaviourHint": "Customize Player List UI",
+  
+  "MinimalUI.SidebarStyleName": "Right Side Panel Behaviour",
+  "MinimalUI.SidebarStyleHint": "Whether the right side panel starts collapsed or not",
+
+  "MinimalUI.BorderColorName": "Border Colors",
+  "MinimalUI.BorderColorHint": "Default: #ff4900bd",
+  "MinimalUI.ShadowColorName": "Shadow Colors",
+  "MinimalUI.ShadowColorHint": "Default: #ff4900bd",
+  "MinimalUI.ShadowStrengthName": "Shadow Strength",
+  "MinimalUI.ShadowStrengthHint": "How gloomy and shadow are the borders? Default: 10",
+  "MinimalUI.ColorPicker": "Color Picker",
+
+  "MinimalUI.DynamicUIName": "MINIMAL UI Dynamic Mode",
+  "MinimalUI.DynamicUIHint": "Auto hides UI elements after 60 seconds of chat inactivity when controlling tokens or changing scenes.",
+
+  "MinimalUI.OrganizedMinimizeName": "MINIMAL UI Organized Minimize",
+  "MinimalUI.OrganizedMinimizeHint": "This option may help you organize those minimized windows by placing them either on a bottom line or top bar.",
+  "MinimalUI.OrganizedMinimizeBottom": "Bottom",
+  "MinimalUI.OrganizedMinimizeBottomBar": "Bottom with Bar",
+  "MinimalUI.OrganizedMinimizeTop": "Top",
+  "MinimalUI.OrganizedMinimizeTopBar": "Top with Bar",
+
+  "MinimalUI.PinSidebar": "Pin Controls"
+
+}
