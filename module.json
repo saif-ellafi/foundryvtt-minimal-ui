@@ -20,6 +20,6 @@
 		}
 	],
 	"url": "https://github.com/saif-ellafi/foundryvtt-minimal-ui.git",
-	"manifest": "https://github.com/saif-ellafi/foundryvtt-minimal-ui/releases/download/latest/module.json",
+	"manifest": "https://github.com/saif-ellafi/foundryvtt-minimal-ui/releases/download/0.8.0/module.json",
 	"download": "https://github.com/saif-ellafi/foundryvtt-minimal-ui/releases/download/0.8.0/foundryvtt-minimal-ui_0.8.0.zip"
 }
