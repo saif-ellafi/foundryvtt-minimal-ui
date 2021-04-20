@@ -154,8 +154,11 @@ export default class MinimalUINavigation {
                                                 const minimized = game.settings.get('minimal-ui', 'organizedMinimize');
                                                 $(`#hover_preview_${i}`).fadeOut(10);
                                                 if (['top', 'topBar'].includes(minimized)) {
-                                                    $("#minimized-bar")?.show();
-                                                    $(".minimized").show();
+                                                    const minimized = $(".minimized");
+                                                    if (minimized.length > 0) {
+                                                        $("#minimized-bar")?.show();
+                                                        minimized.show();
+                                                    }
                                                 }
                                             }
                                         }

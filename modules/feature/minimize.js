@@ -186,8 +186,8 @@ export default class MinimalUIMinimize {
         Hooks.on('closeItemSheet', function(app) {
             MinimalUIMinimize.cleanupMinimizeBar(app);
         });
-        Hooks.
-        on('closeActorSheet', function(app) {
+
+        Hooks.on('closeActorSheet', function(app) {
             MinimalUIMinimize.cleanupMinimizeBar(app);
         });
 
