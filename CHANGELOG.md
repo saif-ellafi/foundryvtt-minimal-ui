@@ -1,5 +1,5 @@
 ### 0.8.0
-* Core: Rewritten a large part of Minimal UI to fulfill better coding practices and modularity
+* Core: Rewritten a large part of Minimal UI to fulfil better coding practices and modularity
 * Core: Added support for translations
 * Core: Minimal UI components are now more independent of each other
 * Core: Internal components now utilize appropriate Foundry's vocabulary and naming
