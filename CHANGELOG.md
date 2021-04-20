@@ -4,9 +4,12 @@
 * Core: Minimal UI components are now more independent of each other
 * Core: Internal components now utilize appropriate Foundry's vocabulary and naming
 * Enhancement: Significantly improved Organized Minimized mode behaviour
-* Enhancement: Organized Minimized mode's Bar now hides automatically when there's nothing minimized
+* Enhancement: Organized Minimized Bar now hides automatically when there's nothing minimized
 * Enhancement: New Organized Minimized mode: Top with Bar, allows for significant more space gains
+* Enhancement: Minimized windows in Organized Minimized mode are now snappier with X to close
 * Compatibility: Fixed compatibility between Minimized Mode and Custom Sheets (i.e. Monster Blocks)
+* Bugfix: Several bugfixes resolved as part of the overhaul of code
+* Other: Added a ko-fi page in my Readme in case someone wants to appreciate my work :)
 
 ### 0.7.0
 * Enhancement: Renewed "Organized Minimize" mode now makes intelligent use of horizontal space for minimized windows
