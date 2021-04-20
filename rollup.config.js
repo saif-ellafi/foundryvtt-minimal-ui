@@ -7,7 +7,7 @@ export default {
         format: 'cjs'
     },
     plugins: [ css({
-        raw: false,
-        minified: 'dist/minimalui.min.css',
+        raw: 'dist/minimalui.css',
+        minified: false,
     }) ]
 };

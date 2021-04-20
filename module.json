@@ -11,7 +11,7 @@
 		{"name": "colorsettings"}
 	],
 	"esmodules": [ "minimalui.js" ],
-	"styles": [ "minimalui.min.css" ],
+	"styles": [ "minimalui.css" ],
 	"languages": [
 		{
 			"lang": "en",
