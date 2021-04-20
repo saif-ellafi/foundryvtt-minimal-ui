@@ -63,9 +63,10 @@ Plugins: `rollup`, `rollup-plugin-css-porter`, `npm-build-zip`
 Build Script: `npm run build`
 
 # Appreciations
-* Thanks to lib - colorsettings module which is a dependency
-* Thanks to libWrapper module Minimal UI can work with better compatibility
-* Thanks to the FoundryVTT Discord community for the issue reports and feedback.
+* Thanks to colorsettings by ardittristan: Minimal UI has a color picker!
+* Thanks to libWrapper by ruipin: Minimal UI is less prone to conflicts!
+* Thanks to vance in the FoundryVTT Discord: Minimal UI is better written!
+* Thanks to the FoundryVTT Discord community for the amazing issue reports and feedback.
 
 ![Example GIF](./examplegif-long3.gif)
 ![Example Image](./example12.jpg)
