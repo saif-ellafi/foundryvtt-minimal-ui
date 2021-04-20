@@ -102,9 +102,11 @@ export default class MinimalUIMinimize {
                     for (let i = minGap; i < maxGap + jumpGap; i = i + jumpGap) {
                         if (MinimalUIMinimize.minimizedStash[i]?.appId === this.appId) {
                             targetPos = i;
+                            break;
                         } else if (!targetPos && !MinimalUIMinimize.minimizedStash[i]?.rendered) {
                             MinimalUIMinimize.minimizedStash[i] = this;
                             targetPos = i;
+                            break;
                         }
                     }
                     this.setPosition({left: targetPos ?? this.position.left});
