@@ -5,7 +5,8 @@ export default class MinimalUIMinimize {
 
     static minimizedStash = {};
     static cssMinimizedSize = 150;
-    static cssTopBarWidthDiff = 380;
+    static cssTopBarWidthDiff = 430;
+    static cssTopBarLeftStart = 100;
     static cssBottomBarWidthDiff = 525;
 
     static fixMinimizedRule(rule, measure) {
@@ -89,7 +90,7 @@ export default class MinimalUIMinimize {
 
                 libWrapper.register('minimal-ui', 'Application.prototype.minimize', async function (wrapped, ...args) {
                     const minimizedSetting = game.settings.get('minimal-ui', 'organizedMinimize');
-                    const minGap = ['top', 'topBar'].includes(minimizedSetting) ? 50 : 200;
+                    const minGap = ['top', 'topBar'].includes(minimizedSetting) ? MinimalUIMinimize.cssTopBarLeftStart + 10 : 200;
                     const sidebarGap = MinimalUIMinimize.cssMinimizedSize * 4;
                     const jumpGap = MinimalUIMinimize.cssMinimizedSize + 10;
                     const boardSize = parseInt($("#board").css('width'));
@@ -141,7 +142,7 @@ export default class MinimalUIMinimize {
                     case 'topBar': {
                         rootStyle.setProperty('--minimbot', 'unset');
                         rootStyle.setProperty('--minimtop', '65px');
-                        rootStyle.setProperty('--minileft', '40px');
+                        rootStyle.setProperty('--minileft', MinimalUIMinimize.cssTopBarLeftStart + 'px');
                         const minimizedBar = $(`<div id="minimized-bar" class="app"></div>`);
                         minimizedBar.appendTo('body');
                         MinimalUIMinimize.positionMinimizeBar();

@@ -57,7 +57,6 @@
   "MinimalUI.NavigationSizeHint": "Customize scene navigation Size, when visible.",
   "MinimalUI.NavigationPreviewName": "Scene Navigation Preview",
   "MinimalUI.NavigationPreviewHint": "Choose whether to show an image preview on the navigation top bar.",
-  "MinimalUI.NavigationPreviewNever": "Never",
   "MinimalUI.NavigationPreviewHover": "On Mouse Over",
 
   "MinimalUI.PlayersBehaviourName": "Player List",

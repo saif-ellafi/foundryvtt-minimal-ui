@@ -57,7 +57,7 @@ export default class MinimalUINavigation {
             config: true,
             type: String,
             choices: {
-                "never": game.i18n.localize("MinimalUI.NavigationPreviewNever"),
+                "disabled": game.i18n.localize("MinimalUI.Disabled"),
                 "hover": game.i18n.localize("MinimalUI.NavigationPreviewHover")
             },
             default: "hover",
