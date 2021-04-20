@@ -1,3 +1,13 @@
+### 0.8.0
+* Core: Rewritten a large part of Minimal UI to fulfill better coding practices and modularity
+* Core: Added support for translations
+* Core: Minimal UI components are now more independent of each other
+* Core: Internal components now utilize appropriate Foundry's vocabulary and naming
+* Enhancement: Significantly improved Organized Minimized mode behaviour
+* Enhancement: Organized Minimized mode's Bar now hides automatically when there's nothing minimized
+* Enhancement: New Organized Minimized mode: Top with Bar, allows for significant more space gains
+* Compatibility: Fixed compatibility between Minimized Mode and Custom Sheets (i.e. Monster Blocks)
+
 ### 0.7.0
 * Enhancement: Renewed "Organized Minimize" mode now makes intelligent use of horizontal space for minimized windows
 * Enhancement: "Organized Minimize" now includes a "Bar" mode that displays minimized taskbar area
