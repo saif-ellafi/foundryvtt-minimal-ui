@@ -29,7 +29,23 @@ export default class MinimalUILogo {
         });
     }
 
+    static updateImageSrc() {
+        $("#logo").attr('src', game.settings.get('minimal-ui', 'foundryLogoImage'));
+    }
+
     static initSettings() {
+
+        game.settings.register('minimal-ui', 'foundryLogoImage', {
+            name: game.i18n.localize("MinimalUI.LogoImageName"),
+            hint: game.i18n.localize("MinimalUI.LogoImageHint"),
+            scope: 'world',
+            config: true,
+            type: String,
+            default: "icons/fvtt.png",
+            onChange: _ => {
+                MinimalUILogo.updateImageSrc();
+            }
+        });
 
         game.settings.register('minimal-ui', 'foundryLogoSize', {
             name: game.i18n.localize("MinimalUI.LogoStyleName"),
@@ -68,6 +84,8 @@ export default class MinimalUILogo {
     static initHooks() {
 
         Hooks.once('ready', async function() {
+
+            MinimalUILogo.updateImageSrc();
 
             if (game.settings.get('minimal-ui', 'foundryLogoSize') !== 'hidden') {
                 switch (game.settings.get('minimal-ui', 'foundryLogoBehaviour')) {

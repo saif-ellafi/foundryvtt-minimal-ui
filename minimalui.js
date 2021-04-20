@@ -36,7 +36,7 @@ Hooks.once('init', () => {
         MinimalUIMinimize.initSettings();
         MinimalUIMinimize.initHooks();
     } else {
-        MinimalUI.noColorSettings = true;
+        MinimalUI.noLibWrapper = true;
     }
     /** ------------------------- */
 

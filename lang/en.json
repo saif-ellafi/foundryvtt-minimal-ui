@@ -13,6 +13,8 @@
   "MinimalUI.Enabled": "Enabled",
   "MinimalUI.Disabled": "Disabled",
 
+  "MinimalUI.LogoImageName": "Logo Image",
+  "MinimalUI.LogoImageHint": "Image should be 100x50 pixel size.",
   "MinimalUI.LogoStyleName": "Foundry Logo",
   "MinimalUI.LogoStyleHint": "Foundry logo visibility and size",
   "MinimalUI.LogoBehaviourName": "Foundry Logo Behaviour",
