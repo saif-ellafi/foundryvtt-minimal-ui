@@ -21,6 +21,7 @@ Intelligently positions minimized windows in a dedicated horizontal area, and
 allows displaying a taskbar for it. This helps to find minimized windows quickly.
 
 ## Foundry Logo
+* Custom logo image can be provided
 * Foundry Logo may be hidden or resized
 * Can be made clickable to toggle show/hide HUD (Including chat or not)
   
