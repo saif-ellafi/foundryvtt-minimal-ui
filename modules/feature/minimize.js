@@ -36,9 +36,14 @@ export default class MinimalUIMinimize {
                 break;
             }
         }
-        if ($(".minimized").length === 0) {
+        const minimized = $(".minimized");
+        const bar = $("#minimized-bar");
+        if (minimized.length === 0) {
             MinimalUIMinimize.minimizedStash = {};
-            $("#minimized-bar").hide();
+            bar.hide();
+        } else {
+            minimized.show();
+            bar.show();
         }
     }
 

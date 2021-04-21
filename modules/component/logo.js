@@ -35,18 +35,6 @@ export default class MinimalUILogo {
 
     static initSettings() {
 
-        game.settings.register('minimal-ui', 'foundryLogoImage', {
-            name: game.i18n.localize("MinimalUI.LogoImageName"),
-            hint: game.i18n.localize("MinimalUI.LogoImageHint"),
-            scope: 'world',
-            config: true,
-            type: String,
-            default: "icons/fvtt.png",
-            onChange: _ => {
-                MinimalUILogo.updateImageSrc();
-            }
-        });
-
         game.settings.register('minimal-ui', 'foundryLogoSize', {
             name: game.i18n.localize("MinimalUI.LogoStyleName"),
             hint: game.i18n.localize("MinimalUI.LogoStyleHint"),
@@ -79,13 +67,27 @@ export default class MinimalUILogo {
                 window.location.reload()
             }
         });
+
+        game.settings.register('minimal-ui', 'foundryLogoImage', {
+            name: game.i18n.localize("MinimalUI.LogoImageName"),
+            hint: game.i18n.localize("MinimalUI.LogoImageHint"),
+            scope: 'world',
+            config: true,
+            type: String,
+            default: "icons/fvtt.png",
+            onChange: _ => {
+                MinimalUILogo.updateImageSrc();
+            }
+        });
     }
 
     static initHooks() {
 
-        Hooks.once('ready', async function() {
-
+        Hooks.once('renderSceneNavigation', async function() {
             MinimalUILogo.updateImageSrc();
+        });
+
+        Hooks.once('ready', async function() {
 
             if (game.settings.get('minimal-ui', 'foundryLogoSize') !== 'hidden') {
                 switch (game.settings.get('minimal-ui', 'foundryLogoBehaviour')) {
