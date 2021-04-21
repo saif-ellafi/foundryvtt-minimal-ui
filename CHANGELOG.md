@@ -1,3 +1,9 @@
+### 0.8.1
+* Enhancement: New setting allows providing custom logo image
+* Bugfix: Fixed a bug causing the Minimized bar to appear when changing scenes
+* Bugfix: Fixed a bug causing the Minimized bar to disappear when changing scenes after scene preview
+* Bugfix: Fixed a wrong error message on some circumstances with libWrapper
+
 ### 0.8.0
 * Core: Rewritten a large part of Minimal UI to fulfil better coding practices and modularity
 * Core: Added support for translations

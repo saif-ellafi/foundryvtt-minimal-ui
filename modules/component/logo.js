@@ -29,8 +29,16 @@ export default class MinimalUILogo {
         });
     }
 
-    static updateImageSrc() {
-        $("#logo").attr('src', game.settings.get('minimal-ui', 'foundryLogoImage'));
+    static updateImageSrc(srcimg) {
+        $("#logo")
+            .attr('src', srcimg)
+            .on('error', function() {
+                if (game.user.isGM)
+                    ui.notifications.warn(
+                        "Minimal UI: Your Logo Image could not be found. Restoring to Default Foundry Logo"
+                    );
+                MinimalUILogo.updateImageSrc("icons/fvtt.png")
+            });
     }
 
     static initSettings() {
@@ -76,7 +84,7 @@ export default class MinimalUILogo {
             type: String,
             default: "icons/fvtt.png",
             onChange: _ => {
-                MinimalUILogo.updateImageSrc();
+                MinimalUILogo.updateImageSrc(game.settings.get('minimal-ui', 'foundryLogoImage'));
             }
         });
     }
@@ -84,7 +92,7 @@ export default class MinimalUILogo {
     static initHooks() {
 
         Hooks.once('renderSceneNavigation', async function() {
-            MinimalUILogo.updateImageSrc();
+            MinimalUILogo.updateImageSrc(game.settings.get('minimal-ui', 'foundryLogoImage'));
         });
 
         Hooks.once('ready', async function() {
