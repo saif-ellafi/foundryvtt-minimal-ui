@@ -13,13 +13,13 @@
   "MinimalUI.Enabled": "Enabled",
   "MinimalUI.Disabled": "Disabled",
 
-  "MinimalUI.LogoStyleName": "Foundry Logo",
+  "MinimalUI.LogoStyleName": "Foundry Logo Visibility",
   "MinimalUI.LogoStyleHint": "Foundry logo visibility and size",
   "MinimalUI.LogoBehaviourName": "Foundry Logo Behaviour",
   "MinimalUI.LogoBehaviourHint": "Use the Foundry Logo to toggle visual elements (when visible, of course).",
   "MinimalUI.LogoBehaviourToggle": "Logo toggles Hide ALL UI",
   "MinimalUI.LogoBehaviourToggleNoChat": "Logo toggles Hide ALL UI except Chat",
-  "MinimalUI.LogoImageName": "Logo Image",
+  "MinimalUI.LogoImageName": "Foundry Logo Image",
   "MinimalUI.LogoImageHint": "Image should be 100x50 pixel size.",
 
   "MinimalUI.HidePlayerCameraName": "Hide Player Cameras",
