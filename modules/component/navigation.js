@@ -120,7 +120,7 @@ export default class MinimalUINavigation {
             switch(game.settings.get('minimal-ui', 'sceneNavigationPreview')) {
                 case 'hover': {
                     if (game.user.isGM) {
-                        let sceneTabs = $("#scene-list li");
+                        let sceneTabs = $("#scene-list li,.scene-list li");
                         rootStyle.setProperty('--navithumbmarg', '10px');
                         sceneTabs.each(function(i, sceneTab) {
                             let sceneId = $(sceneTab).attr('data-scene-id');
