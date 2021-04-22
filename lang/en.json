@@ -1,4 +1,6 @@
 {
+  "I18N.LANGUAGE": "English",
+  "I18N.MAINTAINERS": "@JeansenVaars#2857",
 
   "MinimalUI.SettingsAlwaysVisible": "Always Visible",
   "MinimalUI.SettingsAutoHide": "Auto-Hide",
@@ -24,6 +26,7 @@
 
   "MinimalUI.HidePlayerCameraName": "Hide Player Cameras",
   "MinimalUI.HidePlayerCameraHint": "For player camera/audio, whether only to show GMs",
+  "MinimalUI.HidePlayerCameraSetting": "Hide camera/audio box of players",
 
   "MinimalUI.ControlsBehaviourName": "Left Controls behavior",
   "MinimalUI.ControlsBehaviourHint": "Choose whether left panel is always visible or auto hides",
@@ -44,6 +47,9 @@
   "MinimalUI.HotbarStyleHint": "Customize Hotbar UI. Auto-Hide Ignored when using Custom Hotbar module.",
   "MinimalUI.HotbarSizeName": "Macro Hotbar Slot Size",
   "MinimalUI.HotbarSizeHint": "Customize Macro Hotbar slots & size",
+  "MinimalUI.HotbarSlots3": "3 Slots",
+  "MinimalUI.HotbarSlots6": "6 Slots",
+  "MinimalUI.HotbarSlots10": "10 Slots",
   "MinimalUI.HotbarPositionName": "Macro Hotbar Position",
   "MinimalUI.HotbarPositionHint": "Horizontal position of the Macro Hotbar",
   "MinimalUI.HotbarPositionCenterLeft": "Center Left",

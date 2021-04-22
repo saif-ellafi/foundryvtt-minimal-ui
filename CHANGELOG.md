@@ -1,3 +1,8 @@
+### 0.8.2
+* Localization: Gracias a @lozalojo por Minimal UI en Español!!!
+* Localization: Fixed english missing texts
+* Bugfix: Errors on the logo images will be ignored if logo is hidden
+
 ### 0.8.1
 * Enhancement: New setting allows providing custom logo image
 * Bugfix: Fixed a bug causing the Minimized bar to appear when changing scenes

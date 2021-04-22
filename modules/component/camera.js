@@ -8,8 +8,8 @@ export default class MinimalUICamera {
             default: "default",
             type: String,
             choices: {
-                "default": "No changes",
-                "hidden": "Hide camera/audio box of players"
+                "default": game.i18n.localize("MinimalUI.SettingsDefault"),
+                "hidden": game.i18n.localize("MinimalUI.HidePlayerCameraSetting")
             },
             onChange: _ => {
                 window.location.reload()

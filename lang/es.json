@@ -26,6 +26,7 @@
 
   "MinimalUI.HidePlayerCameraName": "Ocultar cámaras de jugadores",
   "MinimalUI.HidePlayerCameraHint": "Para las cámaras y el audio de los jugadores, si solo se quiere mostrar los GMs",
+  "MinimalUI.HidePlayerCameraSetting": "Ocultar cámara/audio de los jugadores",
 
   "MinimalUI.ControlsBehaviourName": "Comportamiento de controles de la izquierda",
   "MinimalUI.ControlsBehaviourHint": "Escoger si el panel izquierdo debe ser siempre visible o auto-ocultarse",
@@ -46,6 +47,9 @@
   "MinimalUI.HotbarStyleHint": "Personaliza la UI de la barra de accesos directos. Se ignorará el auto-ocultar cuando se use el módulo 'Custom Hotbar'",
   "MinimalUI.HotbarSizeName": "Tamaño de cada hueco de la barra de macros",
   "MinimalUI.HotbarSizeHint": "Personaliza los huecos y su tamaño de la barra de macros",
+  "MinimalUI.HotbarSlots3": "3 Huecos",
+  "MinimalUI.HotbarSlots6": "6 Huecos",
+  "MinimalUI.HotbarSlots10": "10 Huecos",
   "MinimalUI.HotbarPositionName": "Posición de la barra de macros",
   "MinimalUI.HotbarPositionHint": "Posición horizontal de la barra de macros",
   "MinimalUI.HotbarPositionCenterLeft": "Centrado a la izquierda",

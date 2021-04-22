@@ -127,15 +127,15 @@ export default class MinimalUIHotbar {
         });
 
         game.settings.register('minimal-ui', 'hotbarSize', {
-            name: game.i18n.localize("MinimalUI.HotbarStyleName"),
-            hint: game.i18n.localize("MinimalUI.HotbarStyleHint"),
+            name: game.i18n.localize("MinimalUI.HotbarSizeName"),
+            hint: game.i18n.localize("MinimalUI.HotbarSizeHint"),
             scope: 'world',
             config: true,
             type: String,
             choices: {
-                "slots_3": "3 Slots",
-                "slots_6": "6 Slots",
-                "slots_10": "10 Slots"
+                "slots_3": game.i18n.localize("MinimalUI.HotbarSlots3"),
+                "slots_6": game.i18n.localize("MinimalUI.HotbarSlots6"),
+                "slots_10":game.i18n.localize("MinimalUI.HotbarSlots10")
             },
             default: "slots_10",
             onChange: _ => {
