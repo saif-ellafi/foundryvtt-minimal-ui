@@ -1,3 +1,9 @@
+### 0.8.3
+* Compatibility: Monks Scene Navigation thanks to a contribution from ironmonk88
+* Bugfix: Disabled scene preview animation for better compatibility and less strange behaviour
+* Bugfix: Adjusted position of active tokens indicators in list navigation based on navigation size
+* Bugfix: Adjusted spacing for scene previous based on navigation size
+
 ### 0.8.2
 * Localization: Gracias a @lozalojo por Minimal UI en Español!!!
 * Localization: Fixed english missing texts

@@ -13,6 +13,50 @@ export default class MinimalUINavigation {
             target.click();
         }
     }
+
+    static prepareScenePreview(i, sceneTab, sceneId) {
+        if (sceneId) {
+            let sceneThumbUrl = game.scenes.get(sceneId).data.thumb;
+            if (sceneThumbUrl) {
+                new Image().src = sceneThumbUrl;
+                $(sceneTab).append(
+                    `
+                                        <div style="position: fixed;">
+                                        <img
+                                          id="hover_preview_${i}"
+                                          class="navi-preview"
+                                          src='${sceneThumbUrl}' alt="Scene Preview">
+                                        </div>
+                                        `
+                );
+                $(sceneTab).hover(
+                    function() {
+                        if (!$(sceneTab).hasClass('view')) {
+                            const minimized = game.settings.get('minimal-ui', 'organizedMinimize');
+                            $(`#hover_preview_${i}`).show();
+                            if (['top', 'topBar'].includes(minimized)) {
+                                $("#minimized-bar")?.hide();
+                                $(".minimized").hide();
+                            }
+                        }
+                    },
+                    function() {
+                        if (!$(sceneTab).hasClass('view')) {
+                            const minimized = game.settings.get('minimal-ui', 'organizedMinimize');
+                            $(`#hover_preview_${i}`).hide();
+                            if (['top', 'topBar'].includes(minimized)) {
+                                const minimized = $(".minimized");
+                                if (minimized.length > 0) {
+                                    $("#minimized-bar")?.show();
+                                    minimized.show();
+                                }
+                            }
+                        }
+                    }
+                );
+            }
+        }
+    }
     
     static initSettings() {
 
@@ -102,12 +146,14 @@ export default class MinimalUINavigation {
                 case 'standard': {
                     rootStyle.setProperty('--navilh', '32px');
                     rootStyle.setProperty('--navifs', '16px');
+                    rootStyle.setProperty('--navilisttop', '24px');
                     rootStyle.setProperty('--navibuttonsize', '34px');
                     break;
                 }
                 case 'big': {
                     rootStyle.setProperty('--navilh', '40px');
                     rootStyle.setProperty('--navifs', '20px');
+                    rootStyle.setProperty('--navilisttop', '30px');
                     rootStyle.setProperty('--navibuttonsize', '43px');
                     break;
                 }
@@ -120,51 +166,21 @@ export default class MinimalUINavigation {
             switch(game.settings.get('minimal-ui', 'sceneNavigationPreview')) {
                 case 'hover': {
                     if (game.user.isGM) {
+                        // Compatibility: Includes class type scene list for compatibility with Monks Scene Navigation
                         let sceneTabs = $("#scene-list li,.scene-list li");
-                        rootStyle.setProperty('--navithumbmarg', '10px');
+                        if (game.modules.get('monks-scene-navigation')?.active) {
+                            if (game.settings.get('minimal-ui', 'sceneNavigationSize') === 'small')
+                                rootStyle.setProperty('--navithumbmarg', '15px');
+                            else if (game.settings.get('minimal-ui', 'sceneNavigationSize') === 'standard')
+                                rootStyle.setProperty('--navithumbmarg', '26px');
+                            else
+                                rootStyle.setProperty('--navithumbmarg', '32px');
+                        } else {
+                            rootStyle.setProperty('--navithumbmarg', '10px');
+                        }
                         sceneTabs.each(function(i, sceneTab) {
                             let sceneId = $(sceneTab).attr('data-scene-id');
-                            if (sceneId) {
-                                let sceneThumbUrl = game.scenes.get(sceneId).data.thumb;
-                                if (sceneThumbUrl) {
-                                    new Image().src = sceneThumbUrl;
-                                    $(sceneTab).append(
-                                        `
-                                        <div style="position: fixed;">
-                                        <img
-                                          id="hover_preview_${i}"
-                                          class="navi-preview"
-                                          src='${sceneThumbUrl}' alt="Scene Preview">
-                                        </div>
-                                        `
-                                    );
-                                    $(sceneTab).hover(
-                                        function() {
-                                            if (!$(sceneTab).hasClass('view')) {
-                                                const minimized = game.settings.get('minimal-ui', 'organizedMinimize');
-                                                $(`#hover_preview_${i}`).show(200);
-                                                if (['top', 'topBar'].includes(minimized)) {
-                                                    $("#minimized-bar")?.hide();
-                                                    $(".minimized").hide();
-                                                }
-                                            }
-                                        },
-                                        function() {
-                                            if (!$(sceneTab).hasClass('view')) {
-                                                const minimized = game.settings.get('minimal-ui', 'organizedMinimize');
-                                                $(`#hover_preview_${i}`).fadeOut(10);
-                                                if (['top', 'topBar'].includes(minimized)) {
-                                                    const minimized = $(".minimized");
-                                                    if (minimized.length > 0) {
-                                                        $("#minimized-bar")?.show();
-                                                        minimized.show();
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    );
-                                }
-                            }
+                            MinimalUINavigation.prepareScenePreview(i, sceneTab, sceneId);
                         });
                     }
                     break;
