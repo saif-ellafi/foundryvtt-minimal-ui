@@ -41,3 +41,40 @@
     border-bottom: 1px solid var(--bordercolor);
     box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
 }
+
+#navigation .monks-scene-navigation{
+    flex: 0 0 var(--navilh);
+    height: var(--navilh);
+}
+
+#navigation .monks-scene-navigation .scene-list > li.nav-item{
+    height: var(--navilh);
+}
+
+#navigation .monks-scene-navigation .scene-list > li.nav-item a{
+    line-height: var(--navilh);
+    height: var(--navilh);
+    font-size: var(--navifs);
+    padding:0px 4px;
+}
+
+#navigation .monks-scene-navigation .scene-list > li.nav-item ul.scene-players{
+    top:16px;
+}
+
+#navigation .monks-scene-navigation .scene-list > li.nav-item.folder a{
+    padding-top:0px;
+    border-top:1px;
+}
+
+#navigation .monks-scene-navigation .scene-list > li.nav-item.folder.expanded a{
+    height:calc(var(--navilh) + 6px);
+}
+
+#navigation .monks-scene-navigation .scene-list > li.nav-item.folder-header{
+    line-height: var(--navilh);
+}
+
+#navigation .monks-scene-navigation .scene-list > li.nav-item .navi-preview{
+    top: calc(var(--navithumbmarg) + 15px);
+}
