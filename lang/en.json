@@ -85,11 +85,14 @@
   "MinimalUI.DynamicUIHint": "Auto hides UI elements after 60 seconds of chat inactivity when controlling tokens or changing scenes.",
 
   "MinimalUI.OrganizedMinimizeName": "MINIMAL UI Organized Minimize",
-  "MinimalUI.OrganizedMinimizeHint": "This option may help you organize those minimized windows by placing them either on a bottom line or top bar.",
+  "MinimalUI.OrganizedMinimizeHint": "Organize minimized windows by placing them either on a bottom line or top bar.",
   "MinimalUI.OrganizedMinimizeBottom": "Bottom",
   "MinimalUI.OrganizedMinimizeBottomBar": "Bottom with Bar",
   "MinimalUI.OrganizedMinimizeTop": "Top",
   "MinimalUI.OrganizedMinimizeTopBar": "Top with Bar",
+
+  "MinimalUI.EnrichedMinimizeName": "MINIMAL UI Organized Minimize+",
+  "MinimalUI.EnrichedMinimizeHint": "Pin minimized windows with Right Click and highlight on mouse over",
 
   "MinimalUI.PinSidebar": "Pin Controls"
 

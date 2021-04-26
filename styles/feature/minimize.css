@@ -15,3 +15,11 @@
     left: var(--minileft);
     opacity: 90%;
 }
+
+.minimized-highlight {
+    background: var(--shadowcolor);
+}
+
+.minimized-pinned {
+    background: var(--bordercolor);
+}

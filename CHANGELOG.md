@@ -1,3 +1,12 @@
+### 0.8.4
+* Enhancement: Minimize+ Setting "Right Click" on a minimized window gives them border color
+* Enhancement: Minimize+ Setting Mouse over minimized windows gives them shadow color 
+* Compatibility: Search Anywhere "hand" now hidden in Organized Minimize mode when minimized
+* Bugfix: Organized Minimize returns windows to their original position when restored/maximized
+* Bugfix: Organized Minimize removed unwanted movement when moving windows along the axis 
+* Bugfix: Sub controls menu adjusted to avoid unwanted shaking animation
+
+
 ### 0.8.3
 * Compatibility: Monks Scene Navigation thanks to a contribution from ironmonk88
 * Bugfix: Disabled scene preview animation for better compatibility and less strange behaviour
