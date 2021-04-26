@@ -17,9 +17,11 @@
 }
 
 .minimized-highlight {
-    background: var(--shadowcolor);
+    background-color: var(--shadowcolor);
+    mix-blend-mode: luminosity;
 }
 
 .minimized-pinned {
-    background: var(--bordercolor);
+    background-color: var(--bordercolor);
+    mix-blend-mode: luminosity;
 }

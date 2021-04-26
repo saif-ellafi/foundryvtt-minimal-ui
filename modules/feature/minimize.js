@@ -63,9 +63,13 @@ export default class MinimalUIMinimize {
         app.element.find(".close").append(`<a class="header-button close"><i class="fas fa-times"></i></a>`);
         if (game.settings.get('minimal-ui', 'enrichedMinimize') === 'enabled') {
             const header = app.element.find(".window-header");
+            if (header.hasClass('minimized-was-pinned'))
+                header.addClass('minimized-pinned')
             header.on('contextmenu', function () {
-                if (header.hasClass('minimized-pinned'))
+                if (header.hasClass('minimized-pinned')) {
                     header.removeClass('minimized-pinned')
+                    header.removeClass('minimized-was-pinned')
+                }
                 else
                     header.addClass('minimized-pinned')
             });
@@ -84,8 +88,11 @@ export default class MinimalUIMinimize {
         app.element.find(".close").text('');
         app.element.find(".close").append(`<i class="fas fa-times"></i>Close`);
         if (game.settings.get('minimal-ui', 'enrichedMinimize') === 'enabled') {
-            app.element.find(".window-header").removeClass('minimized-pinned');
-            app.element.find(".window-header").off();
+            const header = app.element.find(".window-header");
+            if (header.hasClass('minimized-pinned'))
+                header.addClass('minimized-was-pinned');
+            header.removeClass('minimized-pinned');
+            header.off();
         }
     }
 

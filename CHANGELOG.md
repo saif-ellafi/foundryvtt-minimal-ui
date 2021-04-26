@@ -1,3 +1,7 @@
+### 0.8.5
+* Bugfix: Minimize+ colors darkened
+* Bugfix: Minimized a window that was pinned now stays pinned 
+
 ### 0.8.4
 * Enhancement: Minimize+ Setting "Right Click" colours a minimized window to find it quickly later
 * Enhancement: Minimize+ Setting Mouse over minimized windows gives them shadow color 
