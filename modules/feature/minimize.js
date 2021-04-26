@@ -5,8 +5,8 @@ export default class MinimalUIMinimize {
 
     static minimizedStash = {};
     static cssMinimizedSize = 150;
-    static cssTopBarLeftStart = 5;
-    static cssBottomBarLeftStart = 200;
+    static cssTopBarLeftStart = 8;
+    static cssBottomBarLeftStart = 160;
 
     static fixMinimizedRule(rule, measure) {
         let stylesheet = document.querySelector('link[href*=minimalui]');
@@ -39,7 +39,6 @@ export default class MinimalUIMinimize {
                 break;
             }
             case 'bottomBar': {
-                maxPosition += maxPosition > 0 ? MinimalUIMinimize.cssMinimizedSize : MinimalUIMinimize.cssBottomBarLeftStart;
                 rootStyle.setProperty('--minimw', maxPosition + 'px');
                 break;
             }
@@ -160,7 +159,7 @@ export default class MinimalUIMinimize {
 
                 libWrapper.register('minimal-ui', 'Application.prototype.minimize', async function (wrapped, ...args) {
                     const minimizedSetting = game.settings.get('minimal-ui', 'organizedMinimize');
-                    const minGap = ['top', 'topBar'].includes(minimizedSetting) ? MinimalUIMinimize.cssTopBarLeftStart + 10 : MinimalUIMinimize.cssBottomBarLeftStart;
+                    const minGap = ['top', 'topBar'].includes(minimizedSetting) ? MinimalUIMinimize.cssTopBarLeftStart + 10 : MinimalUIMinimize.cssBottomBarLeftStart + 10;
                     const sidebarGap = MinimalUIMinimize.cssMinimizedSize * 4;
                     const jumpGap = MinimalUIMinimize.cssMinimizedSize + 10;
                     const boardSize = parseInt($("#board").css('width'));
@@ -229,7 +228,7 @@ export default class MinimalUIMinimize {
                     case 'bottomBar': {
                         rootStyle.setProperty('--minimbot', '70px');
                         rootStyle.setProperty('--minimtop', 'unset');
-                        rootStyle.setProperty('--minileft', '180px');
+                        rootStyle.setProperty('--minileft', MinimalUIMinimize.cssBottomBarLeftStart + 'px');
                         const minimizedBar = $(`<div id="minimized-bar" class="app"></div>`).hide();
                         minimizedBar.appendTo('body');
                         MinimalUIMinimize.refreshMinimizeBar();

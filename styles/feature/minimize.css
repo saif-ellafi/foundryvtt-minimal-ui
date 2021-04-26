@@ -13,10 +13,10 @@
     top: var(--minimtop);
     border-radius: 5px;
     left: var(--minileft);
-    opacity: 40%;
+    opacity: 50%;
     transition: 0.2s;
     border: 1px solid var(--bordercolor);
-    box-shadow: 3px 0 var(--shadowstrength) 0 var(--shadowcolor);
+    box-shadow: 0 0 var(--shadowstrength) 0 var(--shadowcolor);
 }
 
 .window-app.minimized .window-header {
