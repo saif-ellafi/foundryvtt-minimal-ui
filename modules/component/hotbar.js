@@ -118,6 +118,7 @@ export default class MinimalUIHotbar {
                 "shown": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
                 "autohide": game.i18n.localize("MinimalUI.SettingsAutoHide"),
                 "collapsed": game.i18n.localize("MinimalUI.SettingsCollapsed"),
+                "onlygm": game.i18n.localize("MinimalUI.SettingsOnlyGM"),
                 "hidden": game.i18n.localize("MinimalUI.SettingsHide")
             },
             default: "autohide",
@@ -185,7 +186,12 @@ export default class MinimalUIHotbar {
             MinimalUIHotbar.positionHotbar();
 
             if (game.settings.get('minimal-ui', 'hotbar') !== 'hidden') {
-                rootStyle.setProperty('--hotbarvis', 'visible');
+                const gmCondition = game.settings.get('minimal-ui', 'hotbar') === 'onlygm';
+                if (gmCondition) {
+                    if (game.user.isGM)
+                        rootStyle.setProperty('--hotbarvis', 'visible');
+                } else
+                    rootStyle.setProperty('--hotbarvis', 'visible');
             }
 
         });

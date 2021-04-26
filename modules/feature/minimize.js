@@ -5,8 +5,9 @@ export default class MinimalUIMinimize {
 
     static minimizedStash = {};
     static cssMinimizedSize = 150;
+    static cssTopBarLeftStart = 5;
+    static cssBottomBarLeftStart = 200;
     static cssTopBarWidthDiff = 430;
-    static cssTopBarLeftStart = 100;
     static cssBottomBarWidthDiff = 525;
 
     static fixMinimizedRule(rule, measure) {
@@ -37,6 +38,10 @@ export default class MinimalUIMinimize {
                 break;
             }
         }
+    }
+
+    static refreshMinimizeBar() {
+        MinimalUIMinimize.positionMinimizeBar();
         const minimized = $(".minimized");
         const bar = $("#minimized-bar");
         if (minimized.length === 0) {
@@ -49,9 +54,8 @@ export default class MinimalUIMinimize {
     }
 
     static cleanupMinimizeBar(app, force) {
-        const minimizedApps = $(".minimized");
-        const minimizedStash = Object.values(MinimalUIMinimize.minimizedStash);
-        const matchedStash = minimizedStash.find(a => a.app.appId === app?.appId);
+        const minimizedApps = $(".minimized").toArray();
+        const matchedStash = minimizedApps.find(a => $(a).attr('data-appid') == app?.appId);
         if ((force) || (minimizedApps.length === 0) || (minimizedApps.length === 1 && matchedStash)) {
             MinimalUIMinimize.minimizedStash = {};
             $("#minimized-bar").hide();
@@ -110,7 +114,7 @@ export default class MinimalUIMinimize {
                 "topBar": game.i18n.localize("MinimalUI.OrganizedMinimizeTopBar"),
                 "disabled": game.i18n.localize("MinimalUI.Disabled")
             },
-            default: "topBar",
+            default: "top",
             onChange: _ => {
                 window.location.reload()
             }
@@ -149,7 +153,7 @@ export default class MinimalUIMinimize {
 
                 libWrapper.register('minimal-ui', 'Application.prototype.minimize', async function (wrapped, ...args) {
                     const minimizedSetting = game.settings.get('minimal-ui', 'organizedMinimize');
-                    const minGap = ['top', 'topBar'].includes(minimizedSetting) ? MinimalUIMinimize.cssTopBarLeftStart + 10 : 200;
+                    const minGap = ['top', 'topBar'].includes(minimizedSetting) ? MinimalUIMinimize.cssTopBarLeftStart + 10 : MinimalUIMinimize.cssBottomBarLeftStart;
                     const sidebarGap = MinimalUIMinimize.cssMinimizedSize * 4;
                     const jumpGap = MinimalUIMinimize.cssMinimizedSize + 10;
                     const boardSize = parseInt($("#board").css('width'));
@@ -171,9 +175,8 @@ export default class MinimalUIMinimize {
                     const result = wrapped(...args);
                     MinimalUIMinimize.enrichStyling(this);
                     await new Promise(waitABit => setTimeout(waitABit, 200));
-                    if (['bottomBar', 'topBar'].includes(minimizedSetting)) {
+                    if (['bottomBar', 'topBar'].includes(minimizedSetting))
                         $("#minimized-bar").show();
-                    }
                     targetHtml.show();
                     return result;
                 }, 'WRAPPER');
@@ -186,7 +189,7 @@ export default class MinimalUIMinimize {
                     const minimizedSetting = game.settings.get('minimal-ui', 'organizedMinimize');
                     const minimizedStash = Object.values(MinimalUIMinimize.minimizedStash);
                     const matchedStash = minimizedStash.find(a => a.app.appId === this?.appId);
-                    this.setPosition({left: matchedStash.oldLeft ?? this.position.left});
+                    this.setPosition({left: matchedStash?.oldLeft ?? this.position.left});
                     if (['bottomBar', 'topBar'].includes(minimizedSetting))
                         MinimalUIMinimize.cleanupMinimizeBar(this);
                     MinimalUIMinimize.unenrichStyling(this);
@@ -205,7 +208,7 @@ export default class MinimalUIMinimize {
                         rootStyle.setProperty('--minileft', MinimalUIMinimize.cssTopBarLeftStart + 'px');
                         const minimizedBar = $(`<div id="minimized-bar" class="app"></div>`);
                         minimizedBar.appendTo('body');
-                        MinimalUIMinimize.positionMinimizeBar();
+                        MinimalUIMinimize.refreshMinimizeBar();
                         MinimalUIMinimize.fixMinimizedRule('top', '70px');
                         break;
                     }
@@ -220,7 +223,7 @@ export default class MinimalUIMinimize {
                         rootStyle.setProperty('--minileft', '180px');
                         const minimizedBar = $(`<div id="minimized-bar" class="app"></div>`).hide();
                         minimizedBar.appendTo('body');
-                        MinimalUIMinimize.positionMinimizeBar();
+                        MinimalUIMinimize.refreshMinimizeBar();
                         MinimalUIMinimize.fixMinimizedRule('top', 'unset');
                         MinimalUIMinimize.fixMinimizedRule('bottom', '75px');
                         break;
@@ -232,7 +235,7 @@ export default class MinimalUIMinimize {
         });
 
         Hooks.on('canvasPan', function() {
-            MinimalUIMinimize.positionMinimizeBar();
+            MinimalUIMinimize.refreshMinimizeBar();
         });
 
         Hooks.on('closeSidebarTab', function(app) {
