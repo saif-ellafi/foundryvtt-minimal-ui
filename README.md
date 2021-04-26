@@ -19,6 +19,7 @@ without having to manually hide unwanted elements.
 ### Organized Minimize (Default: OFF)
 Intelligently positions minimized windows in a dedicated horizontal area, and 
 allows displaying a taskbar for it. This helps to find minimized windows quickly.
+Organized Minimize+ Setting allows colouring minimized windows to find them quicker
 
 ## Foundry Logo
 * Custom logo image can be provided

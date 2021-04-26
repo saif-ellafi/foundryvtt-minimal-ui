@@ -61,7 +61,6 @@ export default class MinimalUIMinimize {
     static enrichStyling(app) {
         app.element.find(".close").text('');
         app.element.find(".close").append(`<a class="header-button close"><i class="fas fa-times"></i></a>`);
-        app.element.find(".window-draggable-handle").hide();
         if (game.settings.get('minimal-ui', 'enrichedMinimize') === 'enabled') {
             const header = app.element.find(".window-header");
             header.on('contextmenu', function () {
@@ -84,7 +83,6 @@ export default class MinimalUIMinimize {
     static unenrichStyling(app) {
         app.element.find(".close").text('');
         app.element.find(".close").append(`<i class="fas fa-times"></i>Close`);
-        app.element.find(".window-draggable-handle").show();
         if (game.settings.get('minimal-ui', 'enrichedMinimize') === 'enabled') {
             app.element.find(".window-header").removeClass('minimized-pinned');
             app.element.find(".window-header").off();
@@ -181,7 +179,7 @@ export default class MinimalUIMinimize {
                     const minimizedSetting = game.settings.get('minimal-ui', 'organizedMinimize');
                     const minimizedStash = Object.values(MinimalUIMinimize.minimizedStash);
                     const matchedStash = minimizedStash.find(a => a.app.appId === this?.appId);
-                    this.setPosition({left: matchedStash.oldLeft});
+                    this.setPosition({left: matchedStash.oldLeft ?? this.position.left});
                     if (['bottomBar', 'topBar'].includes(minimizedSetting))
                         MinimalUIMinimize.cleanupMinimizeBar(this);
                     MinimalUIMinimize.unenrichStyling(this);
