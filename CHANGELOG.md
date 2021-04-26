@@ -1,5 +1,6 @@
 ### 0.8.7
 * Bugfix: Fixed styling issues with Minimized bottom bar
+* Bugfix: Fixed incorrect shadow direction
 
 ### 0.8.6
 * Enhancement: Organized Minimized Bar now takes only necessary amount of space
