@@ -7,8 +7,6 @@ export default class MinimalUIMinimize {
     static cssMinimizedSize = 150;
     static cssTopBarLeftStart = 5;
     static cssBottomBarLeftStart = 200;
-    static cssTopBarWidthDiff = 430;
-    static cssBottomBarWidthDiff = 525;
 
     static fixMinimizedRule(rule, measure) {
         let stylesheet = document.querySelector('link[href*=minimalui]');
@@ -27,14 +25,22 @@ export default class MinimalUIMinimize {
     }
 
     static positionMinimizeBar() {
-        const availableWidth = parseInt($("#board").css('width'));
-        switch (game.settings.get('minimal-ui', 'organizedMinimize')) {
+        const setting = game.settings.get('minimal-ui', 'organizedMinimize');
+        let maxPosition = Math.max(
+            ...Object.entries(MinimalUIMinimize.minimizedStash)
+                .filter(([_, app]) => app.app.rendered)
+                .map(([pos, _]) => Number(pos))
+                .concat(0)
+        );
+        switch (setting) {
             case 'topBar': {
-                rootStyle.setProperty('--minimw', availableWidth - MinimalUIMinimize.cssTopBarWidthDiff + 'px');
+                maxPosition += maxPosition > 0 ? MinimalUIMinimize.cssMinimizedSize : MinimalUIMinimize.cssTopBarLeftStart;
+                rootStyle.setProperty('--minimw', maxPosition + 'px');
                 break;
             }
             case 'bottomBar': {
-                rootStyle.setProperty('--minimw', availableWidth - MinimalUIMinimize.cssBottomBarWidthDiff + 'px');
+                maxPosition += maxPosition > 0 ? MinimalUIMinimize.cssMinimizedSize : MinimalUIMinimize.cssBottomBarLeftStart;
+                rootStyle.setProperty('--minimw', maxPosition + 'px');
                 break;
             }
         }
@@ -60,6 +66,7 @@ export default class MinimalUIMinimize {
             MinimalUIMinimize.minimizedStash = {};
             $("#minimized-bar").hide();
         }
+        MinimalUIMinimize.positionMinimizeBar();
     }
 
     static enrichStyling(app) {
@@ -114,7 +121,7 @@ export default class MinimalUIMinimize {
                 "topBar": game.i18n.localize("MinimalUI.OrganizedMinimizeTopBar"),
                 "disabled": game.i18n.localize("MinimalUI.Disabled")
             },
-            default: "top",
+            default: "topBar",
             onChange: _ => {
                 window.location.reload()
             }
@@ -175,8 +182,10 @@ export default class MinimalUIMinimize {
                     const result = wrapped(...args);
                     MinimalUIMinimize.enrichStyling(this);
                     await new Promise(waitABit => setTimeout(waitABit, 200));
-                    if (['bottomBar', 'topBar'].includes(minimizedSetting))
+                    if (['bottomBar', 'topBar'].includes(minimizedSetting)) {
+                        MinimalUIMinimize.positionMinimizeBar();
                         $("#minimized-bar").show();
+                    }
                     targetHtml.show();
                     return result;
                 }, 'WRAPPER');

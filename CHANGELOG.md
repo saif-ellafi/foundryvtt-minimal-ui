@@ -1,11 +1,10 @@
 ### 0.8.6
-* Enhancement: New Hotbar setting option: Only GM (Hides Macro Hotbar for players)
+* Enhancement: Organized Minimized Bar now takes only necessary amount of space
 * Enhancement: Better looking minimized windows with Minimal UI colorset
 * Enhancement: Better looking Minimized Bar (when enabled) and more transparent
+* Enhancement: New Hotbar setting option: Only GM (Hides Macro Hotbar for players)
 * Bugfix: Fixed miscalculation with the minimized bar in some circumstances
 * Bugfix: Fixed an error in some circumstances causing minimized windows to disappear
-
-
 
 ### 0.8.5
 * Bugfix: Minimize+ colors darkened
