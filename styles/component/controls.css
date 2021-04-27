@@ -7,8 +7,7 @@
     --controlsh: 36px;
     --controlslh: 36px;
     --controlsfs: 24px;
-    --controlssubstart: 60px;
-    --controlssubhover: 60px;
+    --controlssubleft: 60px;
     --controlssubstyle: contents;
 }
 
@@ -18,15 +17,13 @@
     margin-top: var(--controlsypos);
     border-right: 1px solid var(--bordercolor);
     box-shadow: 3px 0 var(--shadowstrength) 0 var(--shadowcolor);
-    transition: 0.1s;
+    transition: 0.5s;
     padding-right: var(--controlspad);
     background: #0000003b;
 }
 
 #controls:hover {
-    left: 0;
     transition: 0.5s;
-    padding-right: 7px;
 }
 
 #controls .control-tool.toggle {
@@ -85,7 +82,7 @@
 
 #controls .active .control-tools {
     display: var(--controlssubstyle);
-    left: var(--controlssubstart);
+    left: var(--controlssubleft);
     transition: 0.5s;
     background: #00000059;
     border: solid 1px var(--bordercolor);
@@ -95,5 +92,4 @@
 
 #controls:hover .active .control-tools {
     display: var(--controlssubstyle);
-    left: var(--controlssubhover);
 }

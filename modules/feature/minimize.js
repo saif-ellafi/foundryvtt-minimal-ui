@@ -212,7 +212,7 @@ export default class MinimalUIMinimize {
                     }
                     case 'topBar': {
                         rootStyle.setProperty('--minimbot', 'unset');
-                        rootStyle.setProperty('--minimtop', '65px');
+                        rootStyle.setProperty('--minimtop', '66px');
                         rootStyle.setProperty('--minileft', MinimalUIMinimize.cssTopBarLeftStart + 'px');
                         const minimizedBar = $(`<div id="minimized-bar" class="app"></div>`);
                         minimizedBar.appendTo('body');
@@ -222,18 +222,28 @@ export default class MinimalUIMinimize {
                     }
                     case 'bottom': {
                         MinimalUIMinimize.fixMinimizedRule('top', 'unset');
-                        MinimalUIMinimize.fixMinimizedRule('bottom', '75px');
+                        const hotbarSetting = game.settings.get('minimal-ui', 'hotbar');
+                        if (hotbarSetting === 'hidden' || (hotbarSetting === 'onlygm' && !game.user?.isGM))
+                            MinimalUIMinimize.fixMinimizedRule('bottom', '10px');
+                        else
+                            MinimalUIMinimize.fixMinimizedRule('bottom', '75px');
                         break;
                     }
                     case 'bottomBar': {
-                        rootStyle.setProperty('--minimbot', '70px');
                         rootStyle.setProperty('--minimtop', 'unset');
                         rootStyle.setProperty('--minileft', MinimalUIMinimize.cssBottomBarLeftStart + 'px');
                         const minimizedBar = $(`<div id="minimized-bar" class="app"></div>`).hide();
                         minimizedBar.appendTo('body');
+                        const hotbarSetting = game.settings.get('minimal-ui', 'hotbar');
+                        if (hotbarSetting === 'hidden' || (hotbarSetting === 'onlygm' && !game.user?.isGM)) {
+                            rootStyle.setProperty('--minimbot', '5px');
+                            MinimalUIMinimize.fixMinimizedRule('bottom', '11px');
+                        } else {
+                            rootStyle.setProperty('--minimbot', '70px');
+                            MinimalUIMinimize.fixMinimizedRule('bottom', '75px');
+                        }
                         MinimalUIMinimize.refreshMinimizeBar();
                         MinimalUIMinimize.fixMinimizedRule('top', 'unset');
-                        MinimalUIMinimize.fixMinimizedRule('bottom', '75px');
                         break;
                     }
                 }

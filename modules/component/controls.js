@@ -7,53 +7,74 @@ export default class MinimalUIControls {
     static fakeDisabled = false;
     static cssControlsLastPos = '0px';
 
+    static controlToolsHoverTransition;
+
     static cssControlsStartVisible = '0px';
     static cssControlsHiddenPositionSmall = '-62px';
     static cssControlsHiddenPositionStandard = '-72px';
 
-    static cssControlsSubMenuSmall = '48px';
-    static cssControlsSubMenuStandard = '58px';
-    static cssControlsSubMenuDndUi = '58px';
+    static cssControlsSubMenuSmall = '55px';
+    static cssControlsSubMenuStandard = '65px';
+    static cssControlsSubMenuDndUi = '65px';
 
     static cssControlsPaddingDefault = '7px';
-    static cssControlsPaddingSmall = '26px';
+    static cssControlsPaddingHidden = '26px';
 
     static cssControlsSmallWidth = '25px';
     static cssControlsSmallHeight = '28px';
     static cssControlsSmallLineHeight = '30px';
     static cssControlsSmallFontSize = '15px';
 
+    static revealControls() {
+        rootStyle.setProperty('--controlspad', MinimalUIControls.cssControlsPaddingDefault);
+        rootStyle.setProperty('--controlsxpos', MinimalUIControls.cssControlsStartVisible);
+    }
+
+    static revealControlTools() {
+        if (game.settings.get('minimal-ui', 'controlsSize') === 'small') {
+            rootStyle.setProperty('--controlssubleft', MinimalUIControls.cssControlsSubMenuSmall);
+        } else {
+            rootStyle.setProperty('--controlssubleft', MinimalUIControls.cssControlsSubMenuStandard);
+        }
+        // Special compatibility DnD-UI
+        if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
+            rootStyle.setProperty('--controlssubleft', MinimalUIControls.cssControlsSubMenuDndUi);
+        }
+        // ---
+    }
+
+    static hideControls() {
+        rootStyle.setProperty('--controlspad', MinimalUIControls.cssControlsPaddingHidden);
+        if (game.settings.get('minimal-ui', 'controlsSize') === 'small') {
+            rootStyle.setProperty('--controlsxpos', MinimalUIControls.cssControlsHiddenPositionSmall);
+        } else {
+            rootStyle.setProperty('--controlsxpos', MinimalUIControls.cssControlsHiddenPositionStandard);
+        }
+    }
+
+    static hideControlTools() {
+        if (game.settings.get('minimal-ui', 'controlsSize') === 'small') {
+            rootStyle.setProperty('--controlssubleft', MinimalUIControls.cssControlsHiddenPositionSmall);
+        } else {
+            rootStyle.setProperty('--controlssubleft', MinimalUIControls.cssControlsHiddenPositionStandard);
+        }
+    }
+
     static lockControls(unlock) {
         const sidebarLock = $("#sidebar-lock > i");
         if (!MinimalUIControls.controlsLocked) {
             MinimalUIControls.controlsLocked = true;
             MinimalUIControls.cssControlsLastPos = rootStyle.getPropertyValue('--controlsxpos');
-            rootStyle.setProperty('--controlsxpos', MinimalUIControls.cssControlsStartVisible);
-            rootStyle.setProperty('--controlspad', MinimalUIControls.cssControlsPaddingDefault);
-            if (game.settings.get('minimal-ui', 'controlsSize') === 'small') {
-                rootStyle.setProperty('--controlssubstart', MinimalUIControls.cssControlsSubMenuSmall);
-            } else {
-                rootStyle.setProperty('--controlssubstart', MinimalUIControls.cssControlsSubMenuStandard);
-            }
-            // Special compatibility DnD-UI
-            if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
-                rootStyle.setProperty('--controlssubstart', MinimalUIControls.cssControlsSubMenuDndUi);
-                rootStyle.setProperty('--controlssubhover', MinimalUIControls.cssControlsSubMenuDndUi);
-            }
-            // ---
+            MinimalUIControls.revealControls();
+            MinimalUIControls.revealControlTools();
             sidebarLock.removeClass("fa-lock-open");
             sidebarLock.addClass("fa-lock");
         } else if (unlock) {
             MinimalUIControls.controlsLocked = false;
             sidebarLock.removeClass("fa-lock");
             sidebarLock.addClass("fa-lock-open");
-            rootStyle.setProperty('--controlsxpos', MinimalUIControls.cssControlsLastPos);
-            if (game.settings.get('minimal-ui', 'controlsSize') === 'small') {
-                rootStyle.setProperty('--controlssubstart', MinimalUIControls.cssControlsHiddenPositionSmall);
-            } else {
-                rootStyle.setProperty('--controlssubstart', MinimalUIControls.cssControlsHiddenPositionStandard);
-            }
-            rootStyle.setProperty('--controlspad', MinimalUIControls.cssControlsPaddingSmall);
+            MinimalUIControls.hideControls();
+            MinimalUIControls.hideControlTools();
         }
     }
 
@@ -168,23 +189,11 @@ export default class MinimalUIControls {
     static initHooks() {
         Hooks.once('renderSceneControls', async function() {
             if (game.settings.get('minimal-ui', 'controlsSize') === 'small') {
-                rootStyle.setProperty('--controlssubstart', MinimalUIControls.cssControlsSubMenuSmall);
-                rootStyle.setProperty('--controlssubhover', MinimalUIControls.cssControlsSubMenuSmall);
                 rootStyle.setProperty('--controlsw', MinimalUIControls.cssControlsSmallWidth);
                 rootStyle.setProperty('--controlsh', MinimalUIControls.cssControlsSmallHeight);
                 rootStyle.setProperty('--controlslh', MinimalUIControls.cssControlsSmallLineHeight);
                 rootStyle.setProperty('--controlsfs', MinimalUIControls.cssControlsSmallFontSize);
-            } else {
-                rootStyle.setProperty('--controlssubstart', MinimalUIControls.cssControlsSubMenuStandard);
-                rootStyle.setProperty('--controlssubhover', MinimalUIControls.cssControlsSubMenuStandard);
             }
-            // Special compatibility DnD-UI
-            if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
-                rootStyle.setProperty('--controlssubstart', MinimalUIControls.cssControlsSubMenuDndUi);
-                rootStyle.setProperty('--controlssubhover', MinimalUIControls.cssControlsSubMenuDndUi);
-            }
-            // ---
-
             MinimalUIControls.positionSidebar();
         })
 
@@ -205,11 +214,12 @@ export default class MinimalUIControls {
                 }
             }
 
-        })
+        });
 
         Hooks.on('renderSceneControls', async function() {
 
             const controls = $("#controls");
+            const controlSettings = game.settings.get('minimal-ui', 'controlsBehaviour');
 
             // Hide controls altogether when they're disabled
             if (!MinimalUIControls.fakeDisabled && controls.hasClass('disabled')) {
@@ -218,18 +228,32 @@ export default class MinimalUIControls {
                 controls.show();
             }
 
-            if (game.settings.get('minimal-ui', 'controlsBehaviour') === 'autohide' && !MinimalUIControls.controlsLocked) {
-                if (game.settings.get('minimal-ui', 'controlsSize') === 'small') {
-                    rootStyle.setProperty('--controlsxpos', MinimalUIControls.cssControlsHiddenPositionSmall);
-                    rootStyle.setProperty('--controlssubstart', MinimalUIControls.cssControlsHiddenPositionSmall);
-                } else {
-                    rootStyle.setProperty('--controlsxpos', MinimalUIControls.cssControlsHiddenPositionStandard);
-                    rootStyle.setProperty('--controlssubstart', MinimalUIControls.cssControlsHiddenPositionStandard);
-                }
-                rootStyle.setProperty('--controlspad', MinimalUIControls.cssControlsPaddingSmall);
+            if (controlSettings === 'autohide') {
+                controls.hover(
+                    function () {
+                        if (!MinimalUIControls.controlsLocked) {
+                            MinimalUIControls.revealControls();
+                            MinimalUIControls.revealControlTools();
+                            clearTimeout(MinimalUIControls.controlToolsHoverTransition);
+                        }
+                    },
+                    function () {
+                        if (!MinimalUIControls.controlsLocked) {
+                            MinimalUIControls.controlToolsHoverTransition = setTimeout(function () {
+                                MinimalUIControls.hideControls();
+                                MinimalUIControls.hideControlTools();
+                            }, 500)
+                        }
+                    }
+                )
+            }
+
+            if (controlSettings === 'autohide' && !MinimalUIControls.controlsLocked) {
+                MinimalUIControls.hideControls();
+                MinimalUIControls.hideControlTools();
             } else {
-                rootStyle.setProperty('--controlspad', MinimalUIControls.cssControlsPaddingDefault);
-                rootStyle.setProperty('--controlsxpos', MinimalUIControls.cssControlsStartVisible);
+                MinimalUIControls.revealControls();
+                MinimalUIControls.revealControlTools();
             }
 
             MinimalUIControls.addLockButton();

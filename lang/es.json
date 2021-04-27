@@ -79,7 +79,7 @@
   "MinimalUI.ShadowColorName": "Color sombreado",
   "MinimalUI.ShadowColorHint": "Por defecto: #ff4900bd",
   "MinimalUI.ShadowStrengthName": "Fuerza sombreado",
-  "MinimalUI.ShadowStrengthHint": "Grado de sombreado y oscuridad de los bordes. Por defecto: 10",
+  "MinimalUI.ShadowStrengthHint": "Grado de sombreado y oscuridad de los bordes. Por defecto: 5",
   "MinimalUI.ColorPicker": "Escoger color",
 
   "MinimalUI.DynamicUIName": "Modo dinámico MINIMAL UI",

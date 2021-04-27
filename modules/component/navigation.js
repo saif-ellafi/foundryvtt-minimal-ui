@@ -7,6 +7,8 @@ export default class MinimalUINavigation {
     static cssSceneNavSmallLogoStart = '75px';
     static cssSceneNavBullseyeStart = '125px';
 
+    static naviHoverTransition;
+
     static collapseNavigation(toggleId) {
         let target = document.getElementById(toggleId);
         if (target) {
@@ -21,19 +23,20 @@ export default class MinimalUINavigation {
                 new Image().src = sceneThumbUrl;
                 $(sceneTab).append(
                     `
-                                        <div style="position: fixed;">
-                                        <img
-                                          id="hover_preview_${i}"
-                                          class="navi-preview"
-                                          src='${sceneThumbUrl}' alt="Scene Preview">
-                                        </div>
-                                        `
+                    <div style="position: fixed;">
+                    <img
+                      id="hover_preview_${i}"
+                      class="navi-preview"
+                      src='${sceneThumbUrl}' alt="Scene Preview">
+                    </div>
+                    `
                 );
                 $(sceneTab).hover(
                     function() {
                         if (!$(sceneTab).hasClass('view')) {
                             const minimized = game.settings.get('minimal-ui', 'organizedMinimize');
                             $(`#hover_preview_${i}`).show();
+                            clearTimeout(MinimalUINavigation.naviHoverTransition);
                             if (['top', 'topBar'].includes(minimized)) {
                                 $("#minimized-bar")?.hide();
                                 $(".minimized").hide();
@@ -45,11 +48,13 @@ export default class MinimalUINavigation {
                             const minimized = game.settings.get('minimal-ui', 'organizedMinimize');
                             $(`#hover_preview_${i}`).hide();
                             if (['top', 'topBar'].includes(minimized)) {
-                                const minimized = $(".minimized");
-                                if (minimized.length > 0) {
-                                    $("#minimized-bar")?.show();
-                                    minimized.show();
-                                }
+                                MinimalUINavigation.naviHoverTransition = setTimeout(function() {
+                                    const minimizedApps = $(".minimized");
+                                    if (minimizedApps.length > 0) {
+                                        $("#minimized-bar")?.fadeIn('fast');
+                                        minimizedApps.fadeIn('fast');
+                                    }
+                                }, 500)
                             }
                         }
                     }

@@ -1,3 +1,10 @@
+### 0.8.8
+* Enhancement: Minimized mode will use bottom of screen when Macro Hotbar is hidden
+* Compatibility: Give MyTab priority over the control of FoundryVTT Logo
+* Bugfix: Improved controls auto-hide mode for better responsiveness and spacing
+* Bugfix: Fixed styling inaccuracies on some Minimized elements
+* Bugfix: Fixed scene preview blinking when hovering through scenes with minimized windows
+
 ### 0.8.7
 * Bugfix: Fixed styling issues with Minimized bottom bar
 * Bugfix: Fixed incorrect shadow direction

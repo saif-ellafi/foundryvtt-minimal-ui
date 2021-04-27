@@ -79,7 +79,7 @@
   "MinimalUI.ShadowColorName": "Shadow Colors",
   "MinimalUI.ShadowColorHint": "Default: #ff4900bd",
   "MinimalUI.ShadowStrengthName": "Shadow Strength",
-  "MinimalUI.ShadowStrengthHint": "How gloomy and shadow are the borders? Default: 10",
+  "MinimalUI.ShadowStrengthHint": "How gloomy and shadow are the borders? Default: 5",
   "MinimalUI.ColorPicker": "Color Picker",
 
   "MinimalUI.DynamicUIName": "MINIMAL UI Dynamic Mode",

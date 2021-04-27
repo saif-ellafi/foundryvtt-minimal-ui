@@ -9,7 +9,7 @@ export default class MinimalUITheme {
             hint: game.i18n.localize("MinimalUI.ShadowStrengthHint"),
             scope: "world",
             config: true,
-            default: "10",
+            default: "5",
             type: String,
             onChange: _ => {
                 rootStyle.setProperty('--shadowstrength', game.settings.get('minimal-ui', 'shadowStrength') + 'px');

@@ -30,7 +30,8 @@ export default class MinimalUILogo {
     }
 
     static updateImageSrc(srcimg) {
-        if (game.settings.get('minimal-ui', 'foundryLogoSize') !== 'hidden') {
+        const logoSetting = game.settings.get('minimal-ui', 'foundryLogoSize');
+        if (!game.modules.get('mytab')?.active && logoSetting !== 'hidden') {
             $("#logo")
                 .attr('src', srcimg)
                 .on('error', function () {
