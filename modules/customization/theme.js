@@ -35,7 +35,7 @@ export default class MinimalUITheme {
                 hint: game.i18n.localize("MinimalUI.ShadowColorHint"),
                 label: game.i18n.localize("MinimalUI.ColorPicker"),
                 scope: "world",
-                defaultColor: "#ff4900bd",
+                defaultColor: "#ff0000bd",
                 type: String,
                 onChange: _ => {
                     rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));

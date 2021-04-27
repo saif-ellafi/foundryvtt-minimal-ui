@@ -15,7 +15,7 @@ export default class MinimalUISidebar {
                 "shown": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
                 "collapsed": game.i18n.localize("MinimalUI.SettingsCollapsed")
             },
-            default: "shown",
+            default: "collapsed",
             onChange: _ => {
                 window.location.reload()
             }

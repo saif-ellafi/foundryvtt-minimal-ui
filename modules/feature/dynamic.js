@@ -16,7 +16,7 @@ export default class MinimalUIDynamic {
                 "enabled": game.i18n.localize("MinimalUI.Enabled"),
                 "disabled": game.i18n.localize("MinimalUI.Disabled")
             },
-            default: "disabled",
+            default: "enabled",
             onChange: _ => {
                 window.location.reload()
             }

@@ -1,3 +1,8 @@
+### 0.9.0 WIP
+* Enhancement: Module defaults revisited for a better new users experience
+* Bugfix: Minimized mode adjusted positioning on various setting combos
+
+
 ### 0.8.8
 * Enhancement: Minimized mode will use bottom of screen when Macro Hotbar is hidden
 * Compatibility: Give MyTab priority over the control of FoundryVTT Logo
