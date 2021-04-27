@@ -73,6 +73,9 @@ Build Script: `npm run build`
 ![Example GIF](./examplegif-long3.gif)
 ![Example Image](./example12.jpg)
 
+# License
+[MIT License](./LICENSE.md)
+
 # Powered By
 [![JetBrains](./jetbrains.svg)](https://www.jetbrains.com)
 
