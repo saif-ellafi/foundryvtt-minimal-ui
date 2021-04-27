@@ -23,7 +23,7 @@
     "minimal"
   ],
   "author": "JeansenVaars (Saif Ellafi)",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/saif-ellafi/foundryvtt-minimal-ui/issues"
   },
