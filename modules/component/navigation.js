@@ -16,14 +16,19 @@ export default class MinimalUINavigation {
         }
     }
 
+    static positionPreview() {
+        rootStyle.setProperty('--navithumbh', document.querySelector("#navigation").offsetHeight + 'px');
+    }
+
     static prepareScenePreview(i, sceneTab, sceneId) {
         if (sceneId) {
             let sceneThumbUrl = game.scenes.get(sceneId).data.thumb;
             if (sceneThumbUrl) {
                 new Image().src = sceneThumbUrl;
+                MinimalUINavigation.positionPreview();
                 $(sceneTab).append(
                     `
-                    <div style="position: fixed;">
+                    <div class="hover_preview_container">
                     <img
                       id="hover_preview_${i}"
                       class="navi-preview"
@@ -208,6 +213,10 @@ export default class MinimalUINavigation {
                 rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavBullseyeStart);
             }
 
+        });
+
+        Hooks.on('canvasPan', function() {
+            MinimalUINavigation.positionPreview();
         });
     }
     

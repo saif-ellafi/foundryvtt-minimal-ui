@@ -6,6 +6,7 @@
     --navilisttop: 16px;
     --navibuttonsize: 23px;
     --navithumbmarg: 10px;
+    --navithumbh: unset;
 }
 
 #navigation {
@@ -41,6 +42,11 @@
     border: 1px solid var(--bordercolor);
     border-bottom: 1px solid var(--bordercolor);
     box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
+}
+
+.hover_preview_container {
+    position: fixed;
+    top: var(--navithumbh);
 }
 
 /** COMPATIBILITY: Monks Scene Navigation */
