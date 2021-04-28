@@ -25,15 +25,7 @@ export default class MinimalUIMinimize {
     }
 
     static getTopPosition() {
-        const logoDisplay = game.settings.get('minimal-ui', 'foundryLogoSize');
-        const naviDisplay = game.settings.get('minimal-ui', 'sceneNavigation');
-        const naviSize = game.settings.get('minimal-ui', 'sceneNavigationSize');
-        if (logoDisplay === 'hidden' && naviDisplay === 'hidden')
-            return 10;
-        else if (logoDisplay === 'hidden' && naviSize !== 'big')
-            return 60;
-        else
-            return 70;
+        return document.querySelector("#navigation").offsetHeight + 15;
     }
 
     static setupTopPlacement() {
@@ -94,13 +86,18 @@ export default class MinimalUIMinimize {
         if ((force) || (minimizedApps.length === 0) || (minimizedApps.length === 1 && matchedStash)) {
             MinimalUIMinimize.minimizedStash = {};
             $("#minimized-bar").hide();
+            // TODO: HERE RE ADJUST MINIMIZED WINDOW OR HACK A WAY AROUND TO MOVE THE STUFF ON DEMAND
+            // TODO: CHECK ON renderSceneNavigation hook or canvasPan
         }
         MinimalUIMinimize.positionMinimizeBar();
     }
 
     static enrichStyling(app) {
-        app.element.find(".close").text('');
+        app.element.find(".close").empty();
         app.element.find(".close").append(`<a class="header-button close"><i class="fas fa-times"></i></a>`);
+        app.element.find(".minimize").empty();
+        app.element.find(".minimize").append(`<i class="far fa-window-restore"></i>`);
+        app.element.find(".minimize").show();
         if (game.settings.get('minimal-ui', 'enrichedMinimize') === 'enabled') {
             const header = app.element.find(".window-header");
             if (header.hasClass('minimized-was-pinned'))
@@ -124,9 +121,11 @@ export default class MinimalUIMinimize {
         }
     }
 
-    static unenrichStyling(app) {
-        app.element.find(".close").text('');
+    static unEnrichStyling(app) {
+        app.element.find(".close").empty();
         app.element.find(".close").append(`<i class="fas fa-times"></i>Close`);
+        app.element.find(".minimize").empty();
+        app.element.find(".minimize").append(`<i class="far fa-window-minimize"></i>Minimize`);
         if (game.settings.get('minimal-ui', 'enrichedMinimize') === 'enabled') {
             const header = app.element.find(".window-header");
             if (header.hasClass('minimized-pinned'))
@@ -209,8 +208,8 @@ export default class MinimalUIMinimize {
                     }
                     this.setPosition({left: targetPos ?? this.position.left});
                     const result = wrapped(...args);
-                    MinimalUIMinimize.enrichStyling(this);
                     await new Promise(waitABit => setTimeout(waitABit, 200));
+                    MinimalUIMinimize.enrichStyling(this);
                     if (['bottomBar', 'topBar'].includes(minimizedSetting)) {
                         MinimalUIMinimize.positionMinimizeBar();
                         $("#minimized-bar").show();
@@ -230,9 +229,26 @@ export default class MinimalUIMinimize {
                     this.setPosition({left: matchedStash?.oldLeft ?? this.position.left});
                     if (['bottomBar', 'topBar'].includes(minimizedSetting))
                         MinimalUIMinimize.cleanupMinimizeBar(this);
-                    MinimalUIMinimize.unenrichStyling(this);
+                    MinimalUIMinimize.unEnrichStyling(this);
                     targetHtml.show();
                     return result;
+                }, 'WRAPPER');
+
+                libWrapper.register('minimal-ui', 'Application.prototype._getHeaderButtons', function (wrapped, ...args) {
+                    let result = wrapped(...args);
+                    const minimizeButton = {
+                        label: "Minimize",
+                        class: "minimize",
+                        icon: "far fa-window-minimize",
+                        onclick: () => {
+                            if (this._minimized)
+                                this.maximize();
+                            else
+                                this.minimize();
+                        },
+                    }
+                    const final = [minimizeButton].concat(result);
+                    return final
                 }, 'WRAPPER');
 
                 switch (game.settings.get('minimal-ui', 'organizedMinimize')) {

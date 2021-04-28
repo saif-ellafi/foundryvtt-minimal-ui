@@ -24,6 +24,10 @@
     box-shadow: 0 0 var(--shadowstrength) 0 var(--shadowcolor);
 }
 
+.minimized.window-app .window-header a {
+    margin: 0 0 0 2px;
+}
+
 .minimized-highlight {
     background-color: var(--shadowcolor);
 }
