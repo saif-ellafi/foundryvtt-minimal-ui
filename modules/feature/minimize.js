@@ -5,76 +5,113 @@ export default class MinimalUIMinimize {
 
     static minimizedStash = {};
     static cssMinimizedSize = 150;
-    static cssTopBarLeftStart = 8;
+    static cssMinimizedBottomHotbar = 70;
+    static cssMinimizedBottomNoHotbar = 5;
+    static cssTopBarLeftStart = 120;
     static cssBottomBarLeftStart = 160;
 
-    static fixMinimizedRule(rule, measure) {
-        let stylesheet = document.querySelector('link[href*=minimalui]');
-
-        if( stylesheet ){
-            stylesheet = stylesheet.sheet;
-            stylesheet.insertRule(`
-                .minimized { 
-                    ${rule}: ${measure} !important;
-                    width: ${MinimalUIMinimize.cssMinimizedSize}px !important;
-                    height: 1px !important;
-                }
-                `, stylesheet.cssRules.length
-            );
+    static positionMinimizeBar() {
+        const setting = game.settings.get('minimal-ui', 'organizedMinimize');
+        switch (setting) {
+            case 'topBar': {
+                rootStyle.setProperty('--minibarbot', 'unset');
+                rootStyle.setProperty('--minibartop', (MinimalUIMinimize.getTopPosition()-4)+'px');
+                rootStyle.setProperty('--minibarleft', MinimalUIMinimize.cssTopBarLeftStart + 'px');
+                const minimizedBar = $(`<div id="minimized-bar" class="app"></div>`).hide();
+                minimizedBar.appendTo('body');
+                break;
+            }
+            case 'bottomBar': {
+                const hotbarSetting = game.settings.get('minimal-ui', 'hotbar');
+                if (hotbarSetting === 'hidden' || (hotbarSetting === 'onlygm' && !game.user?.isGM))
+                    rootStyle.setProperty('--minibarbot', MinimalUIMinimize.cssMinimizedBottomNoHotbar+'px');
+                else
+                    rootStyle.setProperty('--minibarbot', MinimalUIMinimize.cssMinimizedBottomHotbar+'px');
+                rootStyle.setProperty('--minibartop', 'unset');
+                rootStyle.setProperty('--minibarleft', MinimalUIMinimize.cssBottomBarLeftStart + 'px');
+                const minimizedBar = $(`<div id="minimized-bar" class="app"></div>`).hide();
+                minimizedBar.appendTo('body');
+                break;
+            }
         }
     }
 
     static getTopPosition() {
-        return document.querySelector("#navigation").offsetHeight + 15;
-    }
-
-    static setupTopPlacement() {
-        MinimalUIMinimize.fixMinimizedRule('top', MinimalUIMinimize.getTopPosition()+'px');
-    }
-
-    static setupBottomPlacement(includeBar) {
-        const hotbarSetting = game.settings.get('minimal-ui', 'hotbar');
-        if (hotbarSetting === 'hidden' || (hotbarSetting === 'onlygm' && !game.user?.isGM)) {
-            if (includeBar)
-                rootStyle.setProperty('--minimbot', '5px');
-            MinimalUIMinimize.fixMinimizedRule('bottom', '11px');
+        const minimizedSetting = game.settings.get('minimal-ui', 'organizedMinimize');
+        if (minimizedSetting === 'bottomBar') {
+            const hotbarSetting = game.settings.get('minimal-ui', 'hotbar');
+            let availableHeight = parseInt($("#board").css('height'));
+            if (hotbarSetting === 'hidden' || (hotbarSetting === 'onlygm' && !game.user?.isGM))
+                return availableHeight - MinimalUIMinimize.cssMinimizedBottomNoHotbar - 42;
+            else
+                return availableHeight - MinimalUIMinimize.cssMinimizedBottomHotbar - 42;
         } else {
-            if (includeBar)
-                rootStyle.setProperty('--minimbot', '70px');
-            MinimalUIMinimize.fixMinimizedRule('bottom', '76px');
+            const logoSetting = game.settings.get('minimal-ui', 'foundryLogoSize');
+            let offset = document.querySelector("#navigation").offsetHeight + 20;
+            // 65px is Rough estimate for standard logo size, to not overlap
+            if (logoSetting === 'standard')
+                offset = Math.max(65, offset);
+            return offset;
         }
-        MinimalUIMinimize.fixMinimizedRule('top', 'unset');
     }
 
-    static positionMinimizeBar() {
-        const setting = game.settings.get('minimal-ui', 'organizedMinimize');
-        let maxPosition = Math.max(
-            ...Object.entries(MinimalUIMinimize.minimizedStash)
-                .filter(([_, app]) => app.app.rendered)
-                .map(([pos, _]) => Number(pos))
-                .concat(0)
-        );
-        switch (setting) {
-            case 'topBar': {
-                maxPosition += maxPosition > 0 ? MinimalUIMinimize.cssMinimizedSize : MinimalUIMinimize.cssTopBarLeftStart;
-                rootStyle.setProperty('--minimw', maxPosition + 'px');
-                break;
-            }
-            case 'bottomBar': {
-                rootStyle.setProperty('--minimw', maxPosition + 'px');
+    static getLeftPosition(app) {
+        const minimizedSetting = game.settings.get('minimal-ui', 'organizedMinimize');
+        const minGap = ['top', 'topBar'].includes(minimizedSetting) ? MinimalUIMinimize.cssTopBarLeftStart + 10 : MinimalUIMinimize.cssBottomBarLeftStart + 10;
+        const sidebarGap = MinimalUIMinimize.cssMinimizedSize * 4;
+        const jumpGap = MinimalUIMinimize.cssMinimizedSize + 10;
+        const boardSize = parseInt($("#board").css('width'));
+        const maxGap = boardSize - sidebarGap;
+        let targetPos;
+        for (let i = minGap; i < maxGap + jumpGap; i = i + jumpGap) {
+            if (MinimalUIMinimize.minimizedStash[i]?.app.appId === app.appId) {
+                MinimalUIMinimize.minimizedStash[i].position = Object.assign({}, app.position);
+                targetPos = i;
+                break
+            } else if (!targetPos && !MinimalUIMinimize.minimizedStash[i]?.app.rendered) {
+                MinimalUIMinimize.minimizedStash[i] = {app: app, position: Object.assign({}, app.position)};
+                targetPos = i;
                 break;
             }
         }
+        return targetPos;
+    }
+
+    static setMinimizedPosition(app) {
+        const leftPos = MinimalUIMinimize.getLeftPosition(app);
+        const topPos = MinimalUIMinimize.getTopPosition();
+        app.setPosition({
+            left: leftPos ?? app.position.left,
+            top: topPos ?? app.position.top,
+            width: MinimalUIMinimize.cssMinimizedSize
+        });
+    }
+
+    static setRestoredPosition(app) {
+        const minimizedStash = Object.values(MinimalUIMinimize.minimizedStash);
+        const matchedStash = minimizedStash.find(a => a.app.appId === app?.appId);
+        app.setPosition(matchedStash?.position ?? app.position);
     }
 
     static refreshMinimizeBar() {
-        MinimalUIMinimize.positionMinimizeBar();
         const minimized = $(".minimized");
         const bar = $("#minimized-bar");
+        const stashSize = Object.keys(MinimalUIMinimize.minimizedStash).length;
         if (minimized.length === 0) {
             MinimalUIMinimize.minimizedStash = {};
             bar.hide();
-        } else {
+        } else if (stashSize > 0) {
+            const maxPosition = Math.max(
+                ...Object.entries(MinimalUIMinimize.minimizedStash)
+                    .filter(([_, app]) => app.app.rendered)
+                    .map(([pos, _]) => Number(pos))
+                    .concat(0)
+            );
+            const setting = game.settings.get('minimal-ui', 'organizedMinimize');
+            if (setting === 'topBar') {
+                rootStyle.setProperty('--minibarw', maxPosition + 40 + 'px');
+            } else
+                rootStyle.setProperty('--minibarw', maxPosition + 'px');
             minimized.show();
             bar.show();
         }
@@ -83,13 +120,13 @@ export default class MinimalUIMinimize {
     static cleanupMinimizeBar(app, force) {
         const minimizedApps = $(".minimized").toArray();
         const matchedStash = minimizedApps.find(a => $(a).attr('data-appid') == app?.appId);
-        if ((force) || (minimizedApps.length === 0) || (minimizedApps.length === 1 && matchedStash)) {
-            MinimalUIMinimize.minimizedStash = {};
+        if (force || (minimizedApps.length === 0) || (minimizedApps.length === 1 && matchedStash)) {
             $("#minimized-bar").hide();
-            // TODO: HERE RE ADJUST MINIMIZED WINDOW OR HACK A WAY AROUND TO MOVE THE STUFF ON DEMAND
-            // TODO: CHECK ON renderSceneNavigation hook or canvasPan
+            MinimalUIMinimize.minimizedStash = {};
+            MinimalUIMinimize.positionMinimizeBar();
+        } else if (matchedStash) {
+            MinimalUIMinimize.refreshMinimizeBar();
         }
-        MinimalUIMinimize.positionMinimizeBar();
     }
 
     static enrichStyling(app) {
@@ -184,53 +221,30 @@ export default class MinimalUIMinimize {
         });
 
         Hooks.once('ready', async function() {
-            if (game.settings.get('minimal-ui', 'organizedMinimize') !== 'disabled') {
+            const setting = game.settings.get('minimal-ui', 'organizedMinimize');
+            if (['topBar', 'bottomBar'].includes(setting))
+                MinimalUIMinimize.positionMinimizeBar();
+            if (setting !== 'disabled') {
 
                 libWrapper.register('minimal-ui', 'Application.prototype.minimize', async function (wrapped, ...args) {
-                    const minimizedSetting = game.settings.get('minimal-ui', 'organizedMinimize');
-                    const minGap = ['top', 'topBar'].includes(minimizedSetting) ? MinimalUIMinimize.cssTopBarLeftStart + 10 : MinimalUIMinimize.cssBottomBarLeftStart + 10;
-                    const sidebarGap = MinimalUIMinimize.cssMinimizedSize * 4;
-                    const jumpGap = MinimalUIMinimize.cssMinimizedSize + 10;
-                    const boardSize = parseInt($("#board").css('width'));
-                    const maxGap = boardSize - sidebarGap;
                     const targetHtml = $(`[data-appid='${this.appId}']`);
-                    targetHtml.hide();
-                    let targetPos;
-                    for (let i = minGap; i < maxGap + jumpGap; i = i + jumpGap) {
-                        if (MinimalUIMinimize.minimizedStash[i]?.app.appId === this.appId) {
-                            targetPos = i;
-                            break
-                        } else if (!targetPos && !MinimalUIMinimize.minimizedStash[i]?.app.rendered) {
-                            MinimalUIMinimize.minimizedStash[i] = {app: this, oldLeft: this.position.left};
-                            targetPos = i;
-                            break;
-                        }
-                    }
-                    this.setPosition({left: targetPos ?? this.position.left});
-                    const result = wrapped(...args);
-                    await new Promise(waitABit => setTimeout(waitABit, 200));
+                    targetHtml.css('visibility', 'hidden');
+                    const result = await wrapped(...args);
+                    MinimalUIMinimize.setMinimizedPosition(this);
                     MinimalUIMinimize.enrichStyling(this);
-                    if (['bottomBar', 'topBar'].includes(minimizedSetting)) {
-                        MinimalUIMinimize.positionMinimizeBar();
-                        $("#minimized-bar").show();
-                    }
-                    targetHtml.show();
+                    MinimalUIMinimize.refreshMinimizeBar();
+                    targetHtml.css('visibility', '');
                     return result;
                 }, 'WRAPPER');
 
                 libWrapper.register('minimal-ui', 'Application.prototype.maximize', async function (wrapped, ...args) {
-                    let targetHtml = $(`[data-appid='${this.appId}']`);
-                    targetHtml.hide();
-                    let result = wrapped(...args);
-                    await new Promise(waitABit => setTimeout(waitABit, 200));
-                    const minimizedSetting = game.settings.get('minimal-ui', 'organizedMinimize');
-                    const minimizedStash = Object.values(MinimalUIMinimize.minimizedStash);
-                    const matchedStash = minimizedStash.find(a => a.app.appId === this?.appId);
-                    this.setPosition({left: matchedStash?.oldLeft ?? this.position.left});
-                    if (['bottomBar', 'topBar'].includes(minimizedSetting))
-                        MinimalUIMinimize.cleanupMinimizeBar(this);
+                    const targetHtml = $(`[data-appid='${this.appId}']`);
+                    targetHtml.css('visibility', 'hidden');
+                    const result = await wrapped(...args);
+                    MinimalUIMinimize.setRestoredPosition(this);
+                    MinimalUIMinimize.refreshMinimizeBar();
                     MinimalUIMinimize.unEnrichStyling(this);
-                    targetHtml.show();
+                    targetHtml.css('visibility', '');
                     return result;
                 }, 'WRAPPER');
 
@@ -247,39 +261,8 @@ export default class MinimalUIMinimize {
                                 this.minimize();
                         },
                     }
-                    const final = [minimizeButton].concat(result);
-                    return final
+                    return [minimizeButton].concat(result)
                 }, 'WRAPPER');
-
-                switch (game.settings.get('minimal-ui', 'organizedMinimize')) {
-                    case 'top': {
-                        MinimalUIMinimize.setupTopPlacement();
-                        break;
-                    }
-                    case 'topBar': {
-                        rootStyle.setProperty('--minimbot', 'unset');
-                        rootStyle.setProperty('--minimtop', (MinimalUIMinimize.getTopPosition()-4)+'px');
-                        rootStyle.setProperty('--minileft', MinimalUIMinimize.cssTopBarLeftStart + 'px');
-                        const minimizedBar = $(`<div id="minimized-bar" class="app"></div>`);
-                        minimizedBar.appendTo('body');
-                        MinimalUIMinimize.refreshMinimizeBar();
-                        MinimalUIMinimize.setupTopPlacement();
-                        break;
-                    }
-                    case 'bottom': {
-                        MinimalUIMinimize.setupBottomPlacement();
-                        break;
-                    }
-                    case 'bottomBar': {
-                        rootStyle.setProperty('--minimtop', 'unset');
-                        rootStyle.setProperty('--minileft', MinimalUIMinimize.cssBottomBarLeftStart + 'px');
-                        const minimizedBar = $(`<div id="minimized-bar" class="app"></div>`).hide();
-                        minimizedBar.appendTo('body');
-                        MinimalUIMinimize.setupBottomPlacement(true);
-                        MinimalUIMinimize.refreshMinimizeBar();
-                        break;
-                    }
-                }
 
             }
 

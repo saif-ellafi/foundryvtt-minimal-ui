@@ -1,18 +1,18 @@
 :root {
-    --minimw: unset;
-    --minimbot: unset;
-    --minimtop: unset;
-    --minileft: unset;
+    --minibarw: unset;
+    --minibarbot: unset;
+    --minibartop: unset;
+    --minibarleft: unset;
 }
 
 #minimized-bar {
     position: absolute;
-    width: var(--minimw);
+    width: var(--minibarw);
     height: 40px;
-    bottom: var(--minimbot);
-    top: var(--minimtop);
+    bottom: var(--minibarbot);
+    top: var(--minibartop);
     border-radius: 5px;
-    left: var(--minileft);
+    left: var(--minibarleft);
     opacity: 50%;
     transition: 0.2s;
     border: 1px solid var(--bordercolor);

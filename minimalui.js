@@ -32,11 +32,16 @@ Hooks.once('init', () => {
     /** Initialize settings for Special Feature Functionality */
     MinimalUIDynamic.initSettings();
     MinimalUIDynamic.initHooks();
-    if (game.modules.get('lib-wrapper')?.active) {
+    if (!game.modules.get('lib-wrapper')?.active) {
+        MinimalUI.noLibWrapper = true;
+    }
+    if (game.modules.get('minimize-button')?.active) {
+        MinimalUI.externalMinimize = true;
+    }
+
+    if (!(MinimalUI.noLibWrapper || MinimalUI.externalMinimize)) {
         MinimalUIMinimize.initSettings();
         MinimalUIMinimize.initHooks();
-    } else {
-        MinimalUI.noLibWrapper = true;
     }
     /** ------------------------- */
 
@@ -74,5 +79,8 @@ Hooks.once('ready', () => {
 
     if (MinimalUI.noLibWrapper && game.user.isGM)
         ui.notifications.error("Minimal UI: Disabled Minimize Feature because 'lib-wrapper' module is not active.");
+
+    if (MinimalUI.externalMinimize && game.user.isGM)
+        ui.notifications.error("Minimal UI: Disabled Minimize Feature because 'Minimize Button' module is active and is not compatible.");
 
 })
