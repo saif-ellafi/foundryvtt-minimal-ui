@@ -38,7 +38,7 @@ export default class MinimalUIMinimize {
 
     static getTopPosition() {
         const minimizedSetting = game.settings.get('minimal-ui', 'organizedMinimize');
-        if (minimizedSetting === 'bottomBar') {
+        if (['bottomBar', 'bottom'].includes(minimizedSetting)) {
             const hotbarSetting = game.settings.get('minimal-ui', 'hotbar');
             let availableHeight = parseInt($("#board").css('height'));
             if (hotbarSetting === 'hidden' || (hotbarSetting === 'onlygm' && !game.user?.isGM))

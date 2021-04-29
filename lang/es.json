@@ -3,6 +3,7 @@
   "I18N.MAINTAINERS": "@Viriato139ac#0342",
 
   "MinimalUI.SettingsAlwaysVisible": "Siempre visible",
+  "MinimalUI.SettingsStartVisible": "Iniciar Visible",
   "MinimalUI.SettingsAutoHide": "Auto-ocultar",
   "MinimalUI.SettingsCollapsed": "Iniciar plegado",
   "MinimalUI.SettingsOnlyGM": "Visible solo al DM",
@@ -68,8 +69,10 @@
   "MinimalUI.NavigationPreviewHint": "Si debe mostrarse la previsualización o no en la barra superior de navegación",
   "MinimalUI.NavigationPreviewHover": "Al pasar el ratón",
 
-  "MinimalUI.PlayersBehaviourName": "Lista de jugadores",
+  "MinimalUI.PlayersBehaviourName": "Estilo de Lista de jugadores",
   "MinimalUI.PlayersBehaviourHint": "Personalizar UI para la lista de jugadores",
+  "MinimalUI.PlayersSizeName": "Tamaño de Lista de Jugadores",
+  "MinimalUI.PlayersSizeHint": "Elige entre tamaño pequeño o el estándar de Foundry",
   
   "MinimalUI.SidebarStyleName": "Comportamiento del panel lateral derecho",
   "MinimalUI.SidebarStyleHint": "Si se debe colapsar o no el panel lateral derecho",

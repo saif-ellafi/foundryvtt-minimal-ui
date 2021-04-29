@@ -12,10 +12,10 @@ export default class MinimalUISidebar {
             config: true,
             type: String,
             choices: {
-                "shown": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
+                "shown": game.i18n.localize("MinimalUI.SettingsStartVisible"),
                 "collapsed": game.i18n.localize("MinimalUI.SettingsCollapsed")
             },
-            default: "collapsed",
+            default: "shown",
             onChange: _ => {
                 window.location.reload()
             }

@@ -3,6 +3,7 @@
   "I18N.MAINTAINERS": "@JeansenVaars#2857",
 
   "MinimalUI.SettingsAlwaysVisible": "Always Visible",
+  "MinimalUI.SettingsStartVisible": "Start Visible",
   "MinimalUI.SettingsAutoHide": "Auto-Hide",
   "MinimalUI.SettingsCollapsed": "Start Collapsed",
   "MinimalUI.SettingsOnlyGM": "Visible to GM Only",
@@ -68,9 +69,11 @@
   "MinimalUI.NavigationPreviewHint": "Choose whether to show an image preview on the navigation top bar.",
   "MinimalUI.NavigationPreviewHover": "On Mouse Over",
 
-  "MinimalUI.PlayersBehaviourName": "Player List",
+  "MinimalUI.PlayersBehaviourName": "Player List Behaviour",
   "MinimalUI.PlayersBehaviourHint": "Customize Player List UI",
-  
+  "MinimalUI.PlayersSizeName": "Player List Size",
+  "MinimalUI.PlayersSizeHint": "Choose between standard size or the small version.",
+
   "MinimalUI.SidebarStyleName": "Right Side Panel Behaviour",
   "MinimalUI.SidebarStyleHint": "Whether the right side panel starts collapsed or not",
 

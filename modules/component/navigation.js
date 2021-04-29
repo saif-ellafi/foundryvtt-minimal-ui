@@ -77,7 +77,7 @@ export default class MinimalUINavigation {
             config: true,
             type: String,
             choices: {
-                "shown": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
+                "shown": game.i18n.localize("MinimalUI.SettingsStartVisible"),
                 "collapsed": game.i18n.localize("MinimalUI.SettingsCollapsed"),
                 "hidden": game.i18n.localize("MinimalUI.SettingsHide")
             },

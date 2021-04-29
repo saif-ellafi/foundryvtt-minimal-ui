@@ -16,7 +16,7 @@ export default class MinimalUIDynamic {
                 "enabled": game.i18n.localize("MinimalUI.Enabled"),
                 "disabled": game.i18n.localize("MinimalUI.Disabled")
             },
-            default: "enabled",
+            default: "disabled",
             onChange: _ => {
                 window.location.reload()
             }
@@ -29,7 +29,8 @@ export default class MinimalUIDynamic {
         Hooks.on('hoverToken', function() {
             if (game.settings.get('minimal-ui', 'dynamicMinimalUi') === 'enabled') {
                 if (game.time.serverTime - MinimalUIDynamic.lastHoverTime > 60000) {
-                    ui.sidebar.collapse();
+                    if (!ui.sidebar._collapsed)
+                        ui.sidebar.collapse();
                     if (game.settings.get('minimal-ui', 'controlsBehaviour') === 'autohide' && MinimalUIControls.controlsLocked) {
                         MinimalUIControls.lockControls(true);
                     }
@@ -39,8 +40,11 @@ export default class MinimalUIDynamic {
         });
 
         Hooks.on('canvasInit', function() {
-            if (game.settings.get('minimal-ui', 'dynamicMinimalUi') === 'enabled' && MinimalUIDynamic.lastHoverTime) {
-                ui.sidebar.collapse();
+            const sidebarInitState = game.settings.get('minimal-ui', 'rightcontrolsBehaviour');
+            const dynamicModeState = game.settings.get('minimal-ui', 'dynamicMinimalUi');
+            if (sidebarInitState === 'collapsed' && dynamicModeState === 'enabled' && MinimalUIDynamic.lastHoverTime) {
+                if (!ui.sidebar._collapsed)
+                    ui.sidebar.collapse();
                 if (game.settings.get('minimal-ui', 'controlsBehaviour') === 'autohide' && MinimalUIControls.controlsLocked) {
                     MinimalUIControls.lockControls(true);
                 }
@@ -50,8 +54,10 @@ export default class MinimalUIDynamic {
         Hooks.on('renderChatMessage', function() {
             if (game.settings.get('minimal-ui', 'dynamicMinimalUi') === 'enabled') {
                 MinimalUIDynamic.lastHoverTime = game.time.serverTime;
-                ui.sidebar.activateTab('chat');
-                ui.sidebar.expand();
+                if (ui.sidebar.activeTab !== 'chat')
+                    ui.sidebar.activateTab('chat');
+                if (ui.sidebar._collapsed)
+                    ui.sidebar.expand();
             }
         });
 

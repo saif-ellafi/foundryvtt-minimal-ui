@@ -3,8 +3,10 @@ import '../../styles/component/players.css';
 
 export default class MinimalUIPlayers {
 
-    static cssPlayersDefaultFontSize = '12px';
-    static cssPlayersDefaultWidth = '150px';
+    static cssPlayersSmallFontSize = '12px';
+    static cssPlayersSmallWidth = '150px';
+    static cssPlayersStandardFontSize = 'inherit';
+    static cssPlayersStandardWidth = '200px';
 
     static initSettings() {
         game.settings.register('minimal-ui', 'playerList', {
@@ -23,6 +25,22 @@ export default class MinimalUIPlayers {
                 window.location.reload()
             }
         });
+
+        game.settings.register('minimal-ui', 'playerListSize', {
+            name: game.i18n.localize("MinimalUI.PlayersSizeName"),
+            hint: game.i18n.localize("MinimalUI.PlayersSizeHint"),
+            scope: 'world',
+            config: true,
+            type: String,
+            choices: {
+                "small": game.i18n.localize("MinimalUI.SettingsSmall"),
+                "standard": game.i18n.localize("MinimalUI.SettingsStandard")
+            },
+            default: "small",
+            onChange: _ => {
+                window.location.reload()
+            }
+        });
     }
 
     static initHooks() {
@@ -31,11 +49,19 @@ export default class MinimalUIPlayers {
             const players = $("#players");
 
             players[0].val = "";
+            const plSize = game.settings.get('minimal-ui', 'playerListSize');
 
             switch(game.settings.get('minimal-ui', 'playerList')) {
                 case 'default': {
-                    rootStyle.setProperty('--playerfsize', MinimalUIPlayers.cssPlayersDefaultFontSize);
-                    rootStyle.setProperty('--playerwidth', MinimalUIPlayers.cssPlayersDefaultWidth);
+                    if (plSize === 'small') {
+                        rootStyle.setProperty('--playerfsize', MinimalUIPlayers.cssPlayersSmallFontSize);
+                        rootStyle.setProperty('--playerwidth', MinimalUIPlayers.cssPlayersSmallWidth);
+                    } else {
+                        rootStyle.setProperty('--playerfsize', MinimalUIPlayers.cssPlayersStandardFontSize);
+                        rootStyle.setProperty('--playerwidth', MinimalUIPlayers.cssPlayersStandardWidth);
+                        rootStyle.setProperty('--playerfsizehv', MinimalUIPlayers.cssPlayersStandardFontSize);
+                        rootStyle.setProperty('--playerwidthhv', MinimalUIPlayers.cssPlayersStandardWidth);
+                    }
                     rootStyle.setProperty('--playervis', 'visible');
                     // DnD UI Special Compatibility
                     if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
@@ -47,6 +73,12 @@ export default class MinimalUIPlayers {
                     break;
                 }
                 case 'autohide': {
+                    if (plSize === 'small') {
+                        rootStyle.setProperty('--playerfsizehv', MinimalUIPlayers.cssPlayersSmallFontSize);
+                    } else {
+                        rootStyle.setProperty('--playerfsizehv', MinimalUIPlayers.cssPlayersStandardFontSize);
+                        rootStyle.setProperty('--playerwidthhv', MinimalUIPlayers.cssPlayersStandardWidth);
+                    }
                     rootStyle.setProperty('--playervis', 'visible');
                     rootStyle.setProperty('--playerslh', '2px');
                     rootStyle.setProperty('--playerh3w', '0%');
@@ -86,9 +118,12 @@ export default class MinimalUIPlayers {
                     break;
                 }
             }
+            if (game.settings.get('minimal-ui', 'hotbar') === 'autohide') {
+                rootStyle.setProperty('--playerbot', '2px');
+            }
             // DnD UI Special Compatibility
             if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
-                rootStyle.setProperty('--playerwidthhv', '200px');
+                rootStyle.setProperty('--playerwidthhv', MinimalUIPlayers.cssPlayersStandardWidth);
             }
             // ---
         });

@@ -115,7 +115,7 @@ export default class MinimalUIHotbar {
             config: true,
             type: String,
             choices: {
-                "shown": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
+                "shown": game.i18n.localize("MinimalUI.SettingsStartVisible"),
                 "autohide": game.i18n.localize("MinimalUI.SettingsAutoHide"),
                 "collapsed": game.i18n.localize("MinimalUI.SettingsCollapsed"),
                 "onlygm": game.i18n.localize("MinimalUI.SettingsOnlyGM"),
