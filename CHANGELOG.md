@@ -1,7 +1,15 @@
-### 0.9.0 WIP
-* Enhancement: Module defaults revisited for a better new users experience
-* Bugfix: Minimized mode adjusted positioning on various setting combos
-
+### 0.9.0
+* Enhancement: Organized Minimize 2.0 Re-written for better performance and stability
+* Enhancement: Organized Minimize now includes a minimize button for better UX Experience
+* Enhancement: Organized Minimize no longer forces windows to stay on that Axis
+* Enhancement: Organized Minimize will now remember the original positions of all windows when restoring
+* Enhancement: Module defaults revisited for a better first impression (affects new users only)
+* Enhancement: Minimized mode now takes available space intelligently based on other settings
+* Enhancement: Scene Preview will no longer overlap with multiple scene rows in the navigation
+* Compatibility: If module "Minimize Button" is installed, Organized Minimize will be disabled
+* Bugfix: Color settings no longer visible for players
+* Bugfix: Fixed an issue with CORS blocking style sheets for minimized setting when hosting in the Forge (Thanks Noshei)
+* Bugfix: Better styling defaults overall for a cleaner first impression
 
 ### 0.8.8
 * Enhancement: Minimized mode will use bottom of screen when Macro Hotbar is hidden
