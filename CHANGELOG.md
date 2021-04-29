@@ -2,7 +2,7 @@
 * Compatibility: Fixed compatibility with Polyglot (Thank you Ghostdesu)
 * Enhancement: Player List has now an option for "Default Size" with bigger font (Thanks Klaus)
 * Bugfix: Fixed 'bottom' mode in Organized Minimize working as 'top' (Thanks JLtheking2)
-* Bugfix: Dynamic UI Mode disabled by default and sidebar shown by default
+* Bugfix: Dynamic UI Mode disabled by default
 * Bugfix: Sidebar initial visibility should always be effective, with and without Dynamic UI (Thanks Klaus)
 * Bugfix: Player List now has the same height as the Hotbar (Thanks Hauke)
 * Bugfix: Fixed settings text replacing "Always Visible" with "Start Visible" when according
