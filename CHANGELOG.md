@@ -1,3 +1,9 @@
+### 0.9.2
+* Enhancement: Organized Minimize mode removes text from close and minimize buttons
+* Bugfix: Improved clean up process should solve certain inconsistencies when minimizing windows in organized mode
+* Bugfix: Fixed a bug creating under certain circumstances undesired html elements with minimized bar
+* Bugfix: Improved 'escape' button handling with Organized Minimize mode
+
 ### 0.9.1
 * Compatibility: Fixed compatibility with Polyglot (Thank you Ghostdesu)
 * Enhancement: Player List has now an option for "Default Size" with bigger font (Thanks Klaus)
