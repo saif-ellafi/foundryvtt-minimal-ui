@@ -212,21 +212,22 @@ export default class MinimalUIMinimize {
 
     static initHooks() {
 
-        $(document).keydown((event) => {
-            // 27 == Escape
-            if (event.which === 27) {
-                if (Object.keys(MinimalUIMinimize.minimizedStash).length > 0) {
-                    MinimalUIMinimize.cleanupMinimizeBar(undefined, true);
-                }
-            }
-
-        });
-
         Hooks.once('ready', async function() {
             const setting = game.settings.get('minimal-ui', 'organizedMinimize');
             if (['topBar', 'bottomBar'].includes(setting))
                 MinimalUIMinimize.positionMinimizeBar();
             if (setting !== 'disabled') {
+
+                libWrapper.register('minimal-ui', 'KeyboardManager.prototype._onEscape', function (wrapped, ...args) {
+                    let [_, up, modifiers] = args;
+                    if ( up || modifiers.hasFocus ) return wrapped(...args);
+                    else if ( !(ui.context && ui.context.menu.length) ) {
+                        if (  Object.keys(MinimalUIMinimize.minimizedStash).length > 0) {
+                            MinimalUIMinimize.cleanupMinimizeBar(undefined, true);
+                        }
+                    }
+                    return wrapped(...args);
+                }, 'WRAPPER');
 
                 libWrapper.register('minimal-ui', 'Application.prototype.minimize', async function (wrapped, ...args) {
                     const targetHtml = $(`[data-appid='${this.appId}']`);
