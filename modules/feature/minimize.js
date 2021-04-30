@@ -69,16 +69,18 @@ export default class MinimalUIMinimize {
             if (MinimalUIMinimize.minimizedStash[i]?.app.appId === app.appId) {
                 MinimalUIMinimize.minimizedStash[i].position = Object.assign({}, app.position);
                 targetPos = i;
+                break;
             } else if (!targetPos && !MinimalUIMinimize.minimizedStash[i]?.app.rendered) {
                 MinimalUIMinimize.minimizedStash[i] = {app: app, position: Object.assign({}, app.position)};
                 targetPos = i;
-            } else if (targetPos && !MinimalUIMinimize.minimizedStash[i]?.app.rendered)
-                delete MinimalUIMinimize.minimizedStash[i];
+                break;
+            }
         }
         return targetPos;
     }
 
     static setMinimizedPosition(app) {
+        MinimalUIMinimize.cleanupStash();
         const leftPos = MinimalUIMinimize.getLeftPosition(app);
         const topPos = MinimalUIMinimize.getTopPosition();
         app.setPosition({
@@ -94,6 +96,18 @@ export default class MinimalUIMinimize {
         app.setPosition(matchedStash?.position ?? app.position);
     }
 
+    static cleanupStash() {
+        const appIds = [];
+        Object.keys(MinimalUIMinimize.minimizedStash).forEach(i => {
+            const stash = MinimalUIMinimize.minimizedStash[i];
+            if (!stash.app?.rendered || appIds.includes(stash.app?.appId)) {
+                delete MinimalUIMinimize.minimizedStash[i];
+            } else if (stash.app){
+                appIds.push(stash.app.appId);
+            }
+        });
+    }
+
     static refreshMinimizeBar() {
         const minimized = $(".minimized");
         const bar = $("#minimized-bar");
@@ -102,6 +116,7 @@ export default class MinimalUIMinimize {
             MinimalUIMinimize.minimizedStash = {};
             bar.hide();
         } else if (stashSize > 0) {
+            MinimalUIMinimize.cleanupStash();
             const maxPosition = Math.max(
                 ...Object.entries(MinimalUIMinimize.minimizedStash)
                     .filter(([_, app]) => app.app.rendered && app.app._minimized)
@@ -139,23 +154,23 @@ export default class MinimalUIMinimize {
         if (game.settings.get('minimal-ui', 'enrichedMinimize') === 'enabled') {
             const header = app.element.find(".window-header");
             if (header.hasClass('minimized-was-pinned'))
-                header.addClass('minimized-pinned')
+                header.addClass('minimized-pinned');
             header.on('contextmenu', function () {
                 if (header.hasClass('minimized-pinned')) {
-                    header.removeClass('minimized-pinned')
-                    header.removeClass('minimized-was-pinned')
+                    header.removeClass('minimized-pinned');
+                    header.removeClass('minimized-was-pinned');
                 }
                 else
-                    header.addClass('minimized-pinned')
+                    header.addClass('minimized-pinned');
             });
             header.hover(
                 function () {
-                    header.addClass('minimized-highlight')
+                    header.addClass('minimized-highlight');
                 },
                 function () {
-                    header.removeClass('minimized-highlight')
+                    header.removeClass('minimized-highlight');
                 }
-            )
+            );
         }
     }
 
@@ -189,7 +204,7 @@ export default class MinimalUIMinimize {
             },
             default: "topBar",
             onChange: _ => {
-                window.location.reload()
+                window.location.reload();
             }
         });
         game.settings.register('minimal-ui', 'enrichedMinimize', {
@@ -204,7 +219,7 @@ export default class MinimalUIMinimize {
             },
             default: "enabled",
             onChange: _ => {
-                window.location.reload()
+                window.location.reload();
             }
         });
     }
@@ -270,10 +285,6 @@ export default class MinimalUIMinimize {
 
             }
 
-        });
-
-        Hooks.on('canvasPan', function() {
-            MinimalUIMinimize.refreshMinimizeBar();
         });
 
         Hooks.on('closeSidebarTab', function(app) {
