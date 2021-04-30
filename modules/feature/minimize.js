@@ -162,9 +162,9 @@ export default class MinimalUIMinimize {
 
     static unEnrichStyling(app) {
         app.element.find(".close").empty();
-        app.element.find(".close").append(`<i class="fas fa-times"></i>Close`);
+        app.element.find(".close").append(`<i class="fas fa-times"></i>`);
         app.element.find(".minimize").empty();
-        app.element.find(".minimize").append(`<i class="far fa-window-minimize"></i>Minimize`);
+        app.element.find(".minimize").append(`<i class="far fa-window-minimize"></i>`);
         if (game.settings.get('minimal-ui', 'enrichedMinimize') === 'enabled') {
             const header = app.element.find(".window-header");
             if (header.hasClass('minimized-pinned'))
@@ -254,7 +254,7 @@ export default class MinimalUIMinimize {
                 libWrapper.register('minimal-ui', 'Application.prototype._getHeaderButtons', function (wrapped, ...args) {
                     let result = wrapped(...args);
                     const minimizeButton = {
-                        label: "Minimize",
+                        label: "",
                         class: "minimize",
                         icon: "far fa-window-minimize",
                         onclick: () => {
@@ -263,7 +263,9 @@ export default class MinimalUIMinimize {
                             else
                                 this.minimize();
                         },
-                    }
+                    };
+                    const close = result.find(b => b.class === 'close');
+                    close.label = '';
                     return [minimizeButton].concat(result)
                 }, 'WRAPPER');
 
