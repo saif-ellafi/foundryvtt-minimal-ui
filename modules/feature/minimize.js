@@ -12,13 +12,15 @@ export default class MinimalUIMinimize {
 
     static positionMinimizeBar() {
         const setting = game.settings.get('minimal-ui', 'organizedMinimize');
+        const bar = $('#minimized-bar').hide();
+        const barHtml = $(`<div id="minimized-bar" class="app" style="display: none;"></div>`);
         switch (setting) {
             case 'topBar': {
                 rootStyle.setProperty('--minibarbot', 'unset');
                 rootStyle.setProperty('--minibartop', (MinimalUIMinimize.getTopPosition()-4)+'px');
                 rootStyle.setProperty('--minibarleft', MinimalUIMinimize.cssTopBarLeftStart + 'px');
-                const minimizedBar = $(`<div id="minimized-bar" class="app"></div>`).hide();
-                minimizedBar.appendTo('body');
+                if (bar.length === 0)
+                    barHtml.appendTo('body');
                 break;
             }
             case 'bottomBar': {
@@ -29,8 +31,8 @@ export default class MinimalUIMinimize {
                     rootStyle.setProperty('--minibarbot', MinimalUIMinimize.cssMinimizedBottomHotbar+'px');
                 rootStyle.setProperty('--minibartop', 'unset');
                 rootStyle.setProperty('--minibarleft', MinimalUIMinimize.cssBottomBarLeftStart + 'px');
-                const minimizedBar = $(`<div id="minimized-bar" class="app"></div>`).hide();
-                minimizedBar.appendTo('body');
+                if (bar.length === 0)
+                    barHtml.appendTo('body');
                 break;
             }
         }
@@ -103,7 +105,7 @@ export default class MinimalUIMinimize {
         } else if (stashSize > 0) {
             const maxPosition = Math.max(
                 ...Object.entries(MinimalUIMinimize.minimizedStash)
-                    .filter(([_, app]) => app.app.rendered)
+                    .filter(([_, app]) => app.app.rendered && app.app._minimized)
                     .map(([pos, _]) => Number(pos))
                     .concat(0)
             );
