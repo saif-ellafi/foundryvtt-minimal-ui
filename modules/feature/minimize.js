@@ -67,11 +67,11 @@ export default class MinimalUIMinimize {
         let targetPos;
         for (let i = minGap; i < maxGap + jumpGap; i = i + jumpGap) {
             if (MinimalUIMinimize.minimizedStash[i]?.app.appId === app.appId) {
-                MinimalUIMinimize.minimizedStash[i].position = Object.assign({}, app.position);
+                MinimalUIMinimize.minimizedStash[i].oldPosition = Object.assign({}, app.position);
                 targetPos = i;
                 break;
             } else if (!targetPos && !MinimalUIMinimize.minimizedStash[i]?.app.rendered) {
-                MinimalUIMinimize.minimizedStash[i] = {app: app, position: Object.assign({}, app.position)};
+                MinimalUIMinimize.minimizedStash[i] = {app: app, oldPosition: Object.assign({}, app.position)};
                 targetPos = i;
                 break;
             }
@@ -93,7 +93,7 @@ export default class MinimalUIMinimize {
     static setRestoredPosition(app) {
         const minimizedStash = Object.values(MinimalUIMinimize.minimizedStash);
         const matchedStash = minimizedStash.find(a => a.app.appId === app?.appId);
-        app.setPosition(matchedStash?.position ?? app.position);
+        app.setPosition(matchedStash?.oldPosition ?? app.position);
     }
 
     static cleanupStash() {
@@ -116,6 +116,8 @@ export default class MinimalUIMinimize {
             MinimalUIMinimize.minimizedStash = {};
             bar.hide();
         } else if (stashSize > 0) {
+            if (stashSize === 1)
+                MinimalUIMinimize.positionMinimizeBar();
             MinimalUIMinimize.cleanupStash();
             const maxPosition = Math.max(
                 ...Object.entries(MinimalUIMinimize.minimizedStash)
@@ -149,7 +151,6 @@ export default class MinimalUIMinimize {
         if (force || (minimizedApps.length === 0) || (minimizedApps.length === 1 && matchedStash)) {
             $("#minimized-bar").hide();
             MinimalUIMinimize.minimizedStash = {};
-            MinimalUIMinimize.positionMinimizeBar();
         } else if (matchedStash) {
             MinimalUIMinimize.refreshMinimizeBar();
         }
@@ -238,8 +239,6 @@ export default class MinimalUIMinimize {
 
         Hooks.once('ready', async function() {
             const setting = game.settings.get('minimal-ui', 'organizedMinimize');
-            if (['topBar', 'bottomBar'].includes(setting))
-                MinimalUIMinimize.positionMinimizeBar();
             if (setting !== 'disabled') {
 
                 libWrapper.register('minimal-ui', 'KeyboardManager.prototype._onEscape', function (wrapped, ...args) {
