@@ -199,6 +199,15 @@ export default class MinimalUIMinimize {
         }
     }
 
+    static reapplyMaximize(app, h, w) {
+        app.setPosition({
+            width: w - (ui.sidebar._collapsed ? 25 : 325),
+            height: h - 15,
+            left: 10,
+            top: 3
+        });
+    }
+
     static maximizeWindow(app) {
         if (app._maximized) {
             app.setPosition(app._maximized);
@@ -213,13 +222,8 @@ export default class MinimalUIMinimize {
             const availableWidth = parseInt(board.css('width'));
             app._maximized = {};
             Object.assign(app._maximized, app.position);
-            app.setPosition({
-                width: availableWidth - (ui.sidebar._collapsed ? 25 : 350),
-                height: availableHeight - 10,
-                left: 5,
-                top: 10
-            });
-            app.setPosition({left: 5});
+            MinimalUIMinimize.reapplyMaximize(app, availableHeight, availableWidth);
+            MinimalUIMinimize.reapplyMaximize(app, availableHeight, availableWidth);
             app.element
                 .find(".fa-window-maximize")
                 .removeClass('fa-window-maximize')
