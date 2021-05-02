@@ -201,7 +201,7 @@ export default class MinimalUIMinimize {
 
     static reapplyMaximize(app, h, w) {
         app.setPosition({
-            width: w - (ui.sidebar._collapsed ? 25 : 325),
+            width: w - (ui.sidebar._collapsed ? 50 : 325),
             height: h - 15,
             left: 10,
             top: 3
