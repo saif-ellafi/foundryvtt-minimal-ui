@@ -90,13 +90,17 @@
 
   "MinimalUI.OrganizedMinimizeName": "MINIMAL UI Organized Minimize",
   "MinimalUI.OrganizedMinimizeHint": "Organize minimized windows by placing them either on a bottom line or top bar.",
+
   "MinimalUI.OrganizedMinimizeBottom": "Bottom",
   "MinimalUI.OrganizedMinimizeBottomBar": "Bottom with Bar",
   "MinimalUI.OrganizedMinimizeTop": "Top",
   "MinimalUI.OrganizedMinimizeTopBar": "Top with Bar",
 
   "MinimalUI.EnrichedMinimizeName": "MINIMAL UI Organized Minimize+",
-  "MinimalUI.EnrichedMinimizeHint": "Pin minimized windows with Right Click and highlight on mouse over",
+  "MinimalUI.EnrichedMinimizeHint": "Highlight the color of minimized windows with Right Click or on mouse over",
+
+  "MinimalUI.OrganizedMaximizeName": "MINIMAL UI Organized Maximize",
+  "MinimalUI.OrganizedMaximizeHint": "Add a maximize button on resizeable windows to expand them to the maximum available size",
 
   "MinimalUI.PinSidebar": "Pin Controls"
 

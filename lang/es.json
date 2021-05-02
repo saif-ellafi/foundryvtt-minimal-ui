@@ -88,15 +88,19 @@
   "MinimalUI.DynamicUIName": "Modo dinámico MINIMAL UI",
   "MinimalUI.DynamicUIHint": "Oculta automáticamente los elementos de la UI tras 60 segundos de inactividad cuando se está controlando algún icono o navegando entre escenas",
 
-  "MinimalUI.OrganizedMinimizeName": "Modo organizado MINIMAL",
+  "MinimalUI.OrganizedMinimizeName": "Modo organizado Minimizar",
   "MinimalUI.OrganizedMinimizeHint": "Organiza las ventanas que minimice, al colocarlas o bien en una franja en la parte inferior o superior",
+
   "MinimalUI.OrganizedMinimizeBottom": "Abajo",
   "MinimalUI.OrganizedMinimizeBottomBar": "Abajo con barra",
   "MinimalUI.OrganizedMinimizeTop": "Arriba",
   "MinimalUI.OrganizedMinimizeTopBar": "Arriba con barra",
 
   "MinimalUI.EnrichedMinimizeName": "Modo organizado MINIMAL+",
-  "MinimalUI.EnrichedMinimizeHint": "Fijar ventanas minimizadas con click derecho y resaltar al pasar por encima",
+  "MinimalUI.EnrichedMinimizeHint": "Resaltar el color de las ventanas minimizadas con click derecho o al pasar por encima",
+
+  "MinimalUI.OrganizedMaximizeName": "Modo organizado Maximizar",
+  "MinimalUI.OrganizedMaximizeHint": "Añade un boton para maximizar las ventanas al máximo tamaño posible",
 
   "MinimalUI.PinSidebar": "Controles de chincheta"
 

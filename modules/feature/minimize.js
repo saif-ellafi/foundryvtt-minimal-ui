@@ -199,6 +199,33 @@ export default class MinimalUIMinimize {
         }
     }
 
+    static maximizeWindow(app) {
+        if (app._maximized) {
+            app.setPosition(app._maximized);
+            app.element
+                .find(".fa-window-restore")
+                .removeClass('fa-window-restore')
+                .addClass('fa-window-maximize')
+            delete app._maximized;
+        } else {
+            const board = $("#board");
+            const availableHeight = parseInt(board.css('height'));
+            const availableWidth = parseInt(board.css('width'));
+            app._maximized = {};
+            Object.assign(app._maximized, app.position);
+            app.setPosition({
+                width: availableWidth - (ui.sidebar._collapsed ? 25 : 350),
+                height: availableHeight - 10,
+                left: 5,
+                top: 10
+            });
+            app.element
+                .find(".fa-window-maximize")
+                .removeClass('fa-window-maximize')
+                .addClass('fa-window-restore')
+        }
+    }
+
     static initSettings() {
         game.settings.register('minimal-ui', 'organizedMinimize', {
             name: game.i18n.localize("MinimalUI.OrganizedMinimizeName"),
@@ -231,6 +258,21 @@ export default class MinimalUIMinimize {
             default: "enabled",
             onChange: _ => {
                 window.location.reload();
+            }
+        });
+        game.settings.register('minimal-ui', 'organizedMaximize', {
+            name: game.i18n.localize("MinimalUI.OrganizedMaximizeName"),
+            hint: game.i18n.localize("MinimalUI.OrganizedMaximizeHint"),
+            scope: 'world',
+            config: true,
+            type: String,
+            choices: {
+                "enabled": game.i18n.localize("MinimalUI.Enabled"),
+                "disabled": game.i18n.localize("MinimalUI.Disabled")
+            },
+            default: "enabled",
+            onChange: _ => {
+                window.location.reload()
             }
         });
     }
@@ -276,6 +318,9 @@ export default class MinimalUIMinimize {
 
                 libWrapper.register('minimal-ui', 'Application.prototype._getHeaderButtons', function (wrapped, ...args) {
                     let result = wrapped(...args);
+                    const close = result.find(b => b.class === 'close');
+                    close.label = '';
+                    const newButtons = [];
                     const minimizeButton = {
                         label: "",
                         class: "minimize",
@@ -285,11 +330,22 @@ export default class MinimalUIMinimize {
                                 this.maximize();
                             else
                                 this.minimize();
-                        },
+                        }
                     };
-                    const close = result.find(b => b.class === 'close');
-                    close.label = '';
-                    return [minimizeButton].concat(result)
+                    newButtons.push(minimizeButton)
+                    const maximizeSetting = game.settings.get('minimal-ui', 'organizedMaximize');
+                    if (maximizeSetting === 'enabled' && this.options.resizable) {
+                        const maximizeButton = {
+                            label: "",
+                            class: "maximize",
+                            icon: "far fa-window-maximize",
+                            onclick: () => {
+                                MinimalUIMinimize.maximizeWindow(this)
+                            }
+                        }
+                        newButtons.push(maximizeButton)
+                    }
+                    return newButtons.concat(result)
                 }, 'WRAPPER');
 
             }
