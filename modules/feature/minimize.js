@@ -140,6 +140,11 @@ export default class MinimalUIMinimize {
             $(matchedStash).css('visibility', 'hidden');
             MinimalUIMinimize.setRestoredPosition(app);
             MinimalUIMinimize.unEnrichStyling(app);
+        } else if (force) {
+            Object.values(MinimalUIMinimize.minimizedStash).forEach(stashed => {
+                MinimalUIMinimize.setRestoredPosition(stashed.app);
+                MinimalUIMinimize.unEnrichStyling(stashed.app);
+            });
         }
         if (force || (minimizedApps.length === 0) || (minimizedApps.length === 1 && matchedStash)) {
             $("#minimized-bar").hide();
