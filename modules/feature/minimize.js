@@ -205,7 +205,7 @@ export default class MinimalUIMinimize {
             app.element
                 .find(".fa-window-restore")
                 .removeClass('fa-window-restore')
-                .addClass('fa-window-maximize')
+                .addClass('fa-window-maximize');
             delete app._maximized;
         } else {
             const board = $("#board");
@@ -219,10 +219,11 @@ export default class MinimalUIMinimize {
                 left: 5,
                 top: 10
             });
+            app.setPosition({left: 5});
             app.element
                 .find(".fa-window-maximize")
                 .removeClass('fa-window-maximize')
-                .addClass('fa-window-restore')
+                .addClass('fa-window-restore');
         }
     }
 

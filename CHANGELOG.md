@@ -1,3 +1,6 @@
+### 0.9.4
+* Bugfix: Maximize now works fine when sidebar is uncollapsed (moves to left)
+
 ### 0.9.3
 * Enhancement: New Maximize button available! (Default on, can be disabled)
 * Bugfix: Fixed a bug causing some minimized windows to restore incorrectly
