@@ -338,7 +338,7 @@ export default class MinimalUIMinimize {
                         const maximizeButton = {
                             label: "",
                             class: "maximize",
-                            icon: "far fa-window-maximize",
+                            icon: this._maximized ? "far fa-window-restore" : "far fa-window-maximize",
                             onclick: () => {
                                 MinimalUIMinimize.maximizeWindow(this)
                             }
