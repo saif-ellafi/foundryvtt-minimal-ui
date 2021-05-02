@@ -136,6 +136,11 @@ export default class MinimalUIMinimize {
     static cleanupMinimizeBar(app, force) {
         const minimizedApps = $(".minimized").toArray();
         const matchedStash = minimizedApps.find(a => $(a).attr('data-appid') == app?.appId);
+        if (matchedStash) {
+            $(matchedStash).css('visibility', 'hidden');
+            MinimalUIMinimize.setRestoredPosition(app);
+            MinimalUIMinimize.unEnrichStyling(app);
+        }
         if (force || (minimizedApps.length === 0) || (minimizedApps.length === 1 && matchedStash)) {
             $("#minimized-bar").hide();
             MinimalUIMinimize.minimizedStash = {};
