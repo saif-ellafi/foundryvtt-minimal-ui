@@ -1,3 +1,8 @@
+### 0.9.3
+* Enhancement: New Maximize button available! (Default on, can be disabled)
+* Bugfix: Fixed a bug causing some minimized windows to restore incorrectly
+* Bugfix: Fixed a bug triggered when closing minimized buttons by pressing escape
+
 ### 0.9.2
 * Enhancement: Organized Minimize mode removes text from close and minimize buttons
 * Bugfix: Improved clean up process should solve certain inconsistencies when minimizing windows in organized mode
