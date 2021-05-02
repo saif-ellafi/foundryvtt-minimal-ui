@@ -1,4 +1,7 @@
 ### 0.9.4
+* Bugfix: Fine-tuning of maximized window size values
+
+### 0.9.4
 * Bugfix: Maximize now works fine when sidebar is uncollapsed (moves to left)
 
 ### 0.9.3
