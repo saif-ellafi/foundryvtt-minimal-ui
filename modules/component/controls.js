@@ -10,8 +10,8 @@ export default class MinimalUIControls {
     static controlToolsHoverTransition;
 
     static cssControlsStartVisible = '0px';
-    static cssControlsHiddenPositionSmall = '-62px';
-    static cssControlsHiddenPositionStandard = '-72px';
+    static cssControlsHiddenPositionSmall = '-40px';
+    static cssControlsHiddenPositionStandard = '-50px';
 
     static cssControlsSubMenuSmall = '55px';
     static cssControlsSubMenuStandard = '65px';
@@ -21,8 +21,8 @@ export default class MinimalUIControls {
     static cssControlsPaddingHidden = '26px';
 
     static cssControlsSmallWidth = '25px';
-    static cssControlsSmallHeight = '28px';
-    static cssControlsSmallLineHeight = '30px';
+    static cssControlsSmallHeight = '24px';
+    static cssControlsSmallLineHeight = '25px';
     static cssControlsSmallFontSize = '15px';
 
     static revealControls() {
@@ -106,7 +106,7 @@ export default class MinimalUIControls {
             $(`
             <li id="sidebar-lock" class="scene-control"
             title="${game.i18n.localize("MinimalUI.PinSidebar")}">
-            <i class="fas ${locked}" style="color: red"></i>
+            <i class="fas ${locked} minui-lock"></i>
             </li>
             `)
         if (game.settings.get('minimal-ui', 'controlsBehaviour') === 'autohide') {
@@ -144,7 +144,7 @@ export default class MinimalUIControls {
                 "small": game.i18n.localize("MinimalUI.SettingsSmall"),
                 "standard": game.i18n.localize("MinimalUI.SettingsStandard")
             },
-            default: "small",
+            default: "standard",
             onChange: _ => {
                 window.location.reload()
             }

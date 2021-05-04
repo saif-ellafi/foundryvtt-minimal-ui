@@ -4,8 +4,8 @@
     --controlsypos: 20vmin;
     --controlspad: 7px;
     --controlsw: 36px;
-    --controlsh: 36px;
-    --controlslh: 36px;
+    --controlsh: 30px;
+    --controlslh: 30px;
     --controlsfs: 24px;
     --controlssubleft: 60px;
     --controlssubstyle: contents;
@@ -18,7 +18,6 @@
     border-right: 1px solid var(--bordercolor);
     box-shadow: 3px 0 var(--shadowstrength) 0 var(--shadowcolor);
     transition: 0.5s;
-    padding-right: var(--controlspad);
     background: #0000003b;
 }
 
@@ -28,40 +27,28 @@
 
 #controls .control-tool.toggle {
     background: var(--shadowcolor);
-    border: 0 solid var(--bordercolor);
 }
 
 #controls .control-tool.toggle:hover {
     background: var(--bordercolor);
     box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
+    border: 1px solid transparent;
 }
 
 #controls .control-tool.toggle.active {
     background: var(--bordercolor);
     box-shadow: 0 0 var(--shadowstrength) var(--bordercolor);
-}
-
-#controls .scene-control, #controls .control-tool {
-    margin: 0 0 2px;
+    border: 1px solid transparent;
 }
 
 #controls .scene-control.active, #controls .scene-control:hover {
     border: 1px solid transparent;
     color: orange;
     box-shadow: 1px 0 var(--shadowstrength) 0 var(--shadowcolor);
-    padding-right: 2px;
-    padding-left: 1px;
-}
-
-#controls .control-tool.toggle.active, #controls .control-tool.toggle:hover {
-    padding-right: 0;
-    padding-left: 1px;
 }
 
 #controls .control-tool.active, #controls .control-tool {
     border: 0 solid transparent;
-    padding-right: 0;
-    padding-left: 1px;
 }
 
 #controls .control-tool.active, #controls .control-tool:hover {
@@ -75,8 +62,7 @@
     height: var(--controlsh);
     line-height: var(--controlslh);
     font-size: var(--controlsfs);
-    padding-right: 0;
-    padding-left: 1px;
+    border: 1px solid transparent;
 }
 
 
@@ -85,9 +71,9 @@
     left: var(--controlssubleft);
     transition: 0.5s;
     background: #00000059;
-    border: solid 1px var(--bordercolor);
     box-shadow: 1px 0 var(--shadowstrength) 0 var(--shadowcolor);
     border-radius: 3px;
+    padding: 5px;
 }
 
 #controls:hover .active .control-tools {

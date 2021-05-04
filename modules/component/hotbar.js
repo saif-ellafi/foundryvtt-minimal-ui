@@ -19,7 +19,7 @@ export default class MinimalUIHotbar {
 
     static htmlHotbarLockButton =
         `
-        <a id="bar-lock">
+        <a class="minui-lock" id="bar-lock">
           <i class="fas fa-lock-open"></i>
         </a>
         `

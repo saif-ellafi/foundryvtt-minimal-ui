@@ -260,7 +260,7 @@ export default class MinimalUIMinimize {
                 "enabled": game.i18n.localize("MinimalUI.Enabled"),
                 "disabled": game.i18n.localize("MinimalUI.Disabled")
             },
-            default: "enabled",
+            default: "disabled",
             onChange: _ => {
                 window.location.reload();
             }
@@ -275,7 +275,7 @@ export default class MinimalUIMinimize {
                 "enabled": game.i18n.localize("MinimalUI.Enabled"),
                 "disabled": game.i18n.localize("MinimalUI.Disabled")
             },
-            default: "enabled",
+            default: "disabled",
             onChange: _ => {
                 window.location.reload()
             }

@@ -78,9 +78,9 @@
   "MinimalUI.SidebarStyleHint": "Whether the right side panel starts collapsed or not",
 
   "MinimalUI.BorderColorName": "Border Colors",
-  "MinimalUI.BorderColorHint": "Default: #ff4900bd",
+  "MinimalUI.BorderColorHint": "Color of borders for sidebars and buttons",
   "MinimalUI.ShadowColorName": "Shadow Colors",
-  "MinimalUI.ShadowColorHint": "Default: #ff4900bd",
+  "MinimalUI.ShadowColorHint": "Color for shadows around borders and buttons",
   "MinimalUI.ShadowStrengthName": "Shadow Strength",
   "MinimalUI.ShadowStrengthHint": "How gloomy and shadow are the borders? Default: 5",
   "MinimalUI.ColorPicker": "Color Picker",
@@ -100,7 +100,7 @@
   "MinimalUI.EnrichedMinimizeHint": "Highlight the color of minimized windows with Right Click or on mouse over",
 
   "MinimalUI.OrganizedMaximizeName": "MINIMAL UI Organized Maximize",
-  "MinimalUI.OrganizedMaximizeHint": "Add a maximize button on resizeable windows to expand them to the maximum available size",
+  "MinimalUI.OrganizedMaximizeHint": "Add a maximize button on resizeable windows. May not work well with all systems",
 
   "MinimalUI.PinSidebar": "Pin Controls"
 

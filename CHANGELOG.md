@@ -1,4 +1,11 @@
-### 0.9.4
+### 0.9.6
+* Compatibility: Default setting values prioritize a smoother first-experience and compatibility with other modules
+* Compatibility: Adjusted styles for left control buttons to behave more predictable with external modules that alter them
+* Bugfix: Lock button now uses Minimal UI colors
+* Bugfix: Some Minimize optional features now disabled by default
+* Bugfix: Better explained setting descriptions
+
+### 0.9.5
 * Bugfix: Fine-tuning of maximized window size values
 
 ### 0.9.4

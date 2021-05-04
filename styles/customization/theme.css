@@ -3,3 +3,7 @@
     --shadowcolor: #ff4900bd;
     --shadowstrength: 10px;
 }
+
+.minui-lock {
+    color: var(--shadowcolor);
+}
