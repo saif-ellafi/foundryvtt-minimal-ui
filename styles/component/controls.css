@@ -45,6 +45,7 @@
     border: 1px solid transparent;
     color: orange;
     box-shadow: 1px 0 var(--shadowstrength) 0 var(--shadowcolor);
+    padding-right: 1px;
 }
 
 #controls .control-tool.active, #controls .control-tool {

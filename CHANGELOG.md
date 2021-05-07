@@ -1,3 +1,6 @@
+### 0.9.7 (WIP)
+* Bugfix: Fixed style border overlap in single column mode
+
 ### 0.9.6
 * Compatibility: Default setting values prioritize a smoother first-experience and compatibility with other modules
 * Compatibility: Adjusted styles for left control buttons to behave more predictable with external modules that alter them
