@@ -96,8 +96,8 @@
   "MinimalUI.OrganizedMinimizeTop": "Top",
   "MinimalUI.OrganizedMinimizeTopBar": "Top with Bar",
 
-  "MinimalUI.EnrichedMinimizeName": "MINIMAL UI Organized Minimize+",
-  "MinimalUI.EnrichedMinimizeHint": "Highlight the color of minimized windows with Right Click or on mouse over",
+  "MinimalUI.EnrichedMinimizeName": "MINIMAL UI Organized Pinned",
+  "MinimalUI.EnrichedMinimizeHint": "Add a pin button on windows. If clicked, such windows may not be closed, only minimized.",
 
   "MinimalUI.OrganizedMaximizeName": "MINIMAL UI Organized Maximize",
   "MinimalUI.OrganizedMaximizeHint": "Add a maximize button on resizeable windows. May not work well with all systems",

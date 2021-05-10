@@ -157,45 +157,30 @@ export default class MinimalUIMinimize {
     }
 
     static enrichStyling(app) {
-        app.element.find(".close").empty();
-        app.element.find(".close").append(`<a class="header-button close"><i class="fas fa-times"></i></a>`);
         app.element.find(".minimize").empty();
         app.element.find(".minimize").append(`<i class="far fa-window-restore"></i>`);
         app.element.find(".minimize").show();
-        if (game.settings.get('minimal-ui', 'enrichedMinimize') === 'enabled') {
-            const header = app.element.find(".window-header");
-            if (header.hasClass('minimized-was-pinned'))
-                header.addClass('minimized-pinned');
-            header.on('contextmenu', function () {
-                if (header.hasClass('minimized-pinned')) {
-                    header.removeClass('minimized-pinned');
-                    header.removeClass('minimized-was-pinned');
-                }
-                else
-                    header.addClass('minimized-pinned');
-            });
-            header.hover(
-                function () {
-                    header.addClass('minimized-highlight');
-                },
-                function () {
-                    header.removeClass('minimized-highlight');
-                }
-            );
-        }
     }
 
     static unEnrichStyling(app) {
-        app.element.find(".close").empty();
-        app.element.find(".close").append(`<i class="fas fa-times"></i>`);
         app.element.find(".minimize").empty();
         app.element.find(".minimize").append(`<i class="far fa-window-minimize"></i>`);
-        if (game.settings.get('minimal-ui', 'enrichedMinimize') === 'enabled') {
-            const header = app.element.find(".window-header");
-            if (header.hasClass('minimized-pinned'))
-                header.addClass('minimized-was-pinned');
+    }
+
+    static applyEnrichedMinimize(app) {
+        const header = app.element.find(".window-header");
+        if (header.hasClass('minimized-pinned')) {
             header.removeClass('minimized-pinned');
-            header.off();
+            app.close = app.closeBKP;
+            delete app.closeBKP;
+            app.element.find(".window-header")
+                .append($(`<a class="header-button close"><i class="fas fa-times"></i></a>`)
+                    .click(function() {app.close()}));
+        } else {
+            header.addClass('minimized-pinned');
+            app.element.find(".close").remove();
+            app.closeBKP = app.close;
+            app.close = function() {if (!app._minimized) app.minimize()};
         }
     }
 
@@ -291,7 +276,7 @@ export default class MinimalUIMinimize {
                 libWrapper.register('minimal-ui', 'KeyboardManager.prototype._onEscape', function (wrapped, ...args) {
                     let [_, up, modifiers] = args;
                     if ( up || modifiers.hasFocus ) return wrapped(...args);
-                    else if ( !(ui.context && ui.context.menu.length) ) {
+                    else if ( $(".minimized-pinned").length === 0 && !(ui.context && ui.context.menu.length) ) {
                         if (  Object.keys(MinimalUIMinimize.minimizedStash).length > 0) {
                             MinimalUIMinimize.cleanupMinimizeBar(undefined, true);
                         }
@@ -349,6 +334,17 @@ export default class MinimalUIMinimize {
                             }
                         }
                         newButtons.push(maximizeButton)
+                    }
+                    if (game.settings.get('minimal-ui', 'enrichedMinimize') === 'enabled') {
+                        const pinButton = {
+                            label: "",
+                            class: "pin",
+                            icon: "fas fa-map-pin",
+                            onclick: () => {
+                                MinimalUIMinimize.applyEnrichedMinimize(this)
+                            }
+                        }
+                        newButtons.push(pinButton)
                     }
                     return newButtons.concat(result)
                 }, 'WRAPPER');

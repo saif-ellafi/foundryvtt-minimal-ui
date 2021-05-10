@@ -28,10 +28,6 @@
     margin: 0 0 0 2px;
 }
 
-.minimized-highlight {
-    background-color: var(--shadowcolor);
-}
-
 .minimized-pinned {
     background-color: var(--bordercolor);
 }

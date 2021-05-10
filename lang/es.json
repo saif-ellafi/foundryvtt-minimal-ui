@@ -96,11 +96,11 @@
   "MinimalUI.OrganizedMinimizeTop": "Arriba",
   "MinimalUI.OrganizedMinimizeTopBar": "Arriba con barra",
 
-  "MinimalUI.EnrichedMinimizeName": "Modo organizado MINIMAL+",
-  "MinimalUI.EnrichedMinimizeHint": "Resaltar el color de las ventanas minimizadas con click derecho o al pasar por encima",
+  "MinimalUI.EnrichedMinimizeName": "Modo organizado Fijado",
+  "MinimalUI.EnrichedMinimizeHint": "Añade un botón para fijar las ventanas. Al activarlo, dichas ventanas no podrán ser cerradas.",
 
   "MinimalUI.OrganizedMaximizeName": "Modo organizado Maximizar",
-  "MinimalUI.OrganizedMaximizeHint": "Añade un boton para maximizar las ventanas. Puede no funcionar correctamente en todos los sistemas.",
+  "MinimalUI.OrganizedMaximizeHint": "Añade un botón para maximizar las ventanas. Puede no funcionar correctamente en todos los sistemas.",
 
   "MinimalUI.PinSidebar": "Controles de chincheta"
 

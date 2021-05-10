@@ -51,15 +51,18 @@ export default class MinimalUIDynamic {
             }
         });
 
-        Hooks.on('renderChatMessage', function() {
-            if (game.settings.get('minimal-ui', 'dynamicMinimalUi') === 'enabled') {
-                MinimalUIDynamic.lastHoverTime = game.time.serverTime;
-                if (ui.sidebar.activeTab !== 'chat')
-                    ui.sidebar.activateTab('chat');
-                if (ui.sidebar._collapsed)
-                    ui.sidebar.expand();
-            }
-        });
+        if (!game.modules.get('chat-notifications')?.active) {
+            Hooks.on('renderChatMessage', function () {
+                if (game.settings.get('minimal-ui', 'dynamicMinimalUi') === 'enabled') {
+                    MinimalUIDynamic.lastHoverTime = game.time.serverTime;
+                    if (ui.sidebar._collapsed) {
+                        if (ui.sidebar.activeTab !== 'chat')
+                            ui.sidebar.activateTab('chat');
+                        ui.sidebar.expand();
+                    }
+                }
+            });
+        }
 
         Hooks.on('sidebarCollapse', function(_, collapsed) {
             if (game.settings.get('minimal-ui', 'dynamicMinimalUi') === 'enabled' && !collapsed) {
