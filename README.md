@@ -17,9 +17,10 @@ This allows making up space intelligently for you to save space during actual ga
 without having to manually hide unwanted elements.
 
 ### Organized Minimize (Default: ON)
+(For Foundry 0.8.x This feature will become its own module)
 Intelligently positions minimized windows in a dedicated horizontal area, and 
 allows displaying a taskbar for it. This helps to find minimized windows quickly.
-Organized Minimize+ Setting allows colouring minimized windows to find them quicker
+Further, options allow for maximizing windows, or pinning windows, so they're never closed and lost!
 
 ## Foundry Logo
 * Custom logo image can be provided
