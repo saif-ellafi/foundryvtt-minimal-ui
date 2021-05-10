@@ -1,7 +1,8 @@
-### 0.9.7 (WIP)
+### 0.9.7
 * Enhancement: New Organized Pinned mode. When pinned, windows may never be closed, but minimized. Useful for not accidentally closing windows!
 * Bugfix: Fixed style border overlap in single column mode
 * Bugfix: Fixed an issue with Dynamic Mode causing the tab to switch to Chat unintentionally
+* Bugfix: Dynamic Mode chat will not expand if "Chat Notifications" module is installed
 
 ### 0.9.6
 * Compatibility: Default setting values prioritize a smoother first-experience and compatibility with other modules
