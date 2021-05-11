@@ -30,8 +30,9 @@ export default class MinimalUISidebar {
                     break;
                 }
                 case 'collapsed': {
+                    await new Promise(waitABit => setTimeout(waitABit, 100));
                     await ui.sidebar.collapse();
-                    await new Promise(waitABit => setTimeout(waitABit, 500));
+                    await new Promise(waitABit => setTimeout(waitABit, 400));
                     rootStyle.setProperty('--controlsvis', 'visible');
                     break;
                 }
