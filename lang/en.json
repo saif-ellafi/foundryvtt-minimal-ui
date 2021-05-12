@@ -44,6 +44,7 @@
   "MinimalUI.ControlsPositionUpperLeft": "Center Upper Left",
   "MinimalUI.ControlsPositionLowerLeft": "Center Lower Left",
   "MinimalUI.ControlsPositionBottomLeft": "Bottom Left",
+  "MinimalUI.ControlsPinSidebar": "Pin Controls",
 
   "MinimalUI.HotbarStyleName": "Macro Hotbar",
   "MinimalUI.HotbarStyleHint": "Customize Hotbar UI. Auto-Hide Ignored when using Custom Hotbar module.",
@@ -100,8 +101,6 @@
   "MinimalUI.EnrichedMinimizeHint": "Add a pin button on windows. If clicked, such windows may not be closed, only minimized.",
 
   "MinimalUI.OrganizedMaximizeName": "MINIMAL UI Organized Maximize",
-  "MinimalUI.OrganizedMaximizeHint": "Add a maximize button on resizeable windows. May not work well with all systems",
-
-  "MinimalUI.PinSidebar": "Pin Controls"
+  "MinimalUI.OrganizedMaximizeHint": "Add a maximize button on resizeable windows. May not work well with all systems"
 
 }

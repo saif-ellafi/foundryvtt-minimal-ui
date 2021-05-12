@@ -44,6 +44,7 @@
   "MinimalUI.ControlsPositionUpperLeft": "Centrado superior izquierdo",
   "MinimalUI.ControlsPositionLowerLeft": "Centrado inferior izquierdo",
   "MinimalUI.ControlsPositionBottomLeft": "Abajo izquierda",
+  "MinimalUI.ControlsPinSidebar": "Controles de chincheta",
 
   "MinimalUI.HotbarStyleName": "Barra de macros",
   "MinimalUI.HotbarStyleHint": "Personaliza la UI de la barra de accesos directos. Se ignorará el auto-ocultar cuando se use el módulo 'Custom Hotbar'",
@@ -100,8 +101,6 @@
   "MinimalUI.EnrichedMinimizeHint": "Añade un botón para fijar las ventanas. Al activarlo, dichas ventanas no podrán ser cerradas.",
 
   "MinimalUI.OrganizedMaximizeName": "Modo organizado Maximizar",
-  "MinimalUI.OrganizedMaximizeHint": "Añade un botón para maximizar las ventanas. Puede no funcionar correctamente en todos los sistemas.",
-
-  "MinimalUI.PinSidebar": "Controles de chincheta"
+  "MinimalUI.OrganizedMaximizeHint": "Añade un botón para maximizar las ventanas. Puede no funcionar correctamente en todos los sistemas."
 
 }

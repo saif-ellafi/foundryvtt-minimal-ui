@@ -9,6 +9,10 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V14D3AH)
 
+## Check out my other modules!
+* Minimal Window Controls
+* Super Select
+
 ## Special Minimal UI Features
 
 ### Dynamic Mode (Default: OFF)
@@ -16,11 +20,9 @@ Auto-Hides UI elements after Chat inactivity or when switching scenes.
 This allows making up space intelligently for you to save space during actual game
 without having to manually hide unwanted elements.
 
-### Organized Minimize (Default: ON)
-(For Foundry 0.8.x This feature will become its own module)
-Intelligently positions minimized windows in a dedicated horizontal area, and 
-allows displaying a taskbar for it. This helps to find minimized windows quickly.
-Further, options allow for maximizing windows, or pinning windows, so they're never closed and lost!
+### Organized Minimize (Moved to its own module! Search for: Minimal Window Controls)
+Since Foundry VTT 0.8.x, Organized Minimize features (Minimize, Maximize and Pin windows) are going to be on their own module
+__Minimal Window Controls__
 
 ## Foundry Logo
 * Custom logo image can be provided
@@ -67,7 +69,6 @@ Build Script: `npm run build`
 
 # Appreciations
 * Thanks to colorsettings by ardittristan: Minimal UI has a color picker!
-* Thanks to libWrapper by ruipin: Minimal UI is less prone to conflicts!
 * Thanks to vance in the FoundryVTT Discord: Minimal UI is better written!
 * Thanks to the FoundryVTT Discord community for the amazing issue reports and feedback.
 
