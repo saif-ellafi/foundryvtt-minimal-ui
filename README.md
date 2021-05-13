@@ -4,6 +4,8 @@ Configurable UI module, allows the user to hide, collapse or auto-hide component
 
 This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Bar.
 
+![Example GIF](./examplegif-long3.gif)
+
 ## Special Minimal UI Features
 
 ### Dynamic Mode (Default: OFF)
@@ -73,7 +75,6 @@ Build Script: `npm run build`
 * Thanks to vance in the FoundryVTT Discord: Minimal UI is better written!
 * Thanks to the FoundryVTT Discord community for the amazing issue reports and feedback.
 
-![Example GIF](./examplegif-long3.gif)
 ![Example Image](./example12.jpg)
 
 # License
