@@ -10,7 +10,7 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V14D3AH)
 
 ## Check out my other modules!
-* Minimal Window Controls (Recommended combination)
+* Window Controls (Recommended combination!)
 * Super Select
 
 ## Special Minimal UI Features
