@@ -21,8 +21,8 @@
   "MinimalUI.LogoStyleHint": "Tamaño y visibilidad del logo de Foundry",
   "MinimalUI.LogoBehaviourName": "Comportamiento del logo de Foundry",
   "MinimalUI.LogoBehaviourHint": "Usar el logo de Foundry para conmutar elementos visuales (cuando esté activo).",
-  "MinimalUI.LogoBehaviourToggle": "Logo para ocultar la UI",
-  "MinimalUI.LogoBehaviourToggleNoChat": "El logo conmuta la ocultación completa de toda la UI excepto el chat",
+  "MinimalUI.LogoBehaviourToggle": "Clickear el logo oculta toda la UI",
+  "MinimalUI.LogoBehaviourToggleNoChat": "Clickear el logo oculta toda la UI excepto el chat",
   "MinimalUI.LogoImageName": "Imagen del logo de Foundry",
   "MinimalUI.LogoImageHint": "La imagen debe tener un tamaño de 100x50 píxeles",
 
