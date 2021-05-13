@@ -4,15 +4,6 @@ Configurable UI module, allows the user to hide, collapse or auto-hide component
 
 This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Bar.
 
-## By JeansenVaars
-![JVLogo](logo-small-black.png)
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V14D3AH)
-
-## Check out my other modules!
-* Window Controls (Recommended combination!)
-* Super Select
-
 ## Special Minimal UI Features
 
 ### Dynamic Mode (Default: OFF)
@@ -57,6 +48,16 @@ __Window Controls__
 * Default settings target a balance between gaining space and functionality
 * Colors of borders and shadows and their strength customizable
 * Position of elements in the UI can be modified
+
+## By JeansenVaars
+![JVLogo](logo-small-black.png)
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V14D3AH)
+
+## Check out my other modules!
+* Window Controls (Recommended combination!)
+* Scene Preview (Recommended combination!)
+* Super Select
 
 # Support with Systems and Modules
 MinimalUI is made as agnostic as possible. Yet, it is impossible to ensure maximum compatibility.
