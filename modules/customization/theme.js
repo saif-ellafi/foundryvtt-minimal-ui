@@ -16,6 +16,9 @@ export default class MinimalUITheme {
                 if (game.modules.get('minimal-window-controls')?.active) {
                     rootStyle.setProperty('--wcbordercolor', game.settings.get('minimal-ui', 'borderColor'));
                 }
+                if (game.modules.get('scene-preview')?.active) {
+                    rootStyle.setProperty('--spbordercolor', game.settings.get('minimal-ui', 'borderColor'));
+                }
             }
         });
 
@@ -32,6 +35,9 @@ export default class MinimalUITheme {
                 if (game.modules.get('minimal-window-controls')?.active) {
                     rootStyle.setProperty('--wcshadowcolor', game.settings.get('minimal-ui', 'borderColor'));
                 }
+                if (game.modules.get('scene-preview')?.active) {
+                    rootStyle.setProperty('--spshadowcolor', game.settings.get('minimal-ui', 'borderColor'));
+                }
             }
         });
 
@@ -46,6 +52,9 @@ export default class MinimalUITheme {
                 rootStyle.setProperty('--shadowstrength', game.settings.get('minimal-ui', 'shadowStrength') + 'px');
                 if (game.modules.get('minimal-window-controls')?.active) {
                     rootStyle.setProperty('--wcshadowstrength', game.settings.get('minimal-ui', 'borderColor'));
+                }
+                if (game.modules.get('scene-preview')?.active) {
+                    rootStyle.setProperty('--spshadowstrength', game.settings.get('minimal-ui', 'borderColor'));
                 }
             }
         });

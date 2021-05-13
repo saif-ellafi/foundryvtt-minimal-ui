@@ -14,7 +14,6 @@ import MinimalUIPatch from "./modules/patch.js";
 
 class MinimalUI {
     static noColorSettings = false;
-    static externalMinimize = false;
 }
 
 Hooks.once('init', () => {

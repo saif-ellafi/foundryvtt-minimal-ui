@@ -66,9 +66,6 @@
   "MinimalUI.NavigationStyleHint": "Customize scene navigation behaviour. Consider 'DF Scene Enhancement' when hidden.",
   "MinimalUI.NavigationSizeName": "Scene Navigation Size",
   "MinimalUI.NavigationSizeHint": "Customize scene navigation Size, when visible.",
-  "MinimalUI.NavigationPreviewName": "Scene Navigation Preview",
-  "MinimalUI.NavigationPreviewHint": "Choose whether to show an image preview on the navigation top bar.",
-  "MinimalUI.NavigationPreviewHover": "On Mouse Over",
 
   "MinimalUI.PlayersBehaviourName": "Player List Behaviour",
   "MinimalUI.PlayersBehaviourHint": "Customize Player List UI",
@@ -87,20 +84,6 @@
   "MinimalUI.ColorPicker": "Color Picker",
 
   "MinimalUI.DynamicUIName": "MINIMAL UI Dynamic Mode",
-  "MinimalUI.DynamicUIHint": "Auto hides UI elements after 60 seconds of chat inactivity when controlling tokens or changing scenes.",
-
-  "MinimalUI.OrganizedMinimizeName": "MINIMAL UI Organized Minimize",
-  "MinimalUI.OrganizedMinimizeHint": "Organize minimized windows by placing them either on a bottom line or top bar.",
-
-  "MinimalUI.OrganizedMinimizeBottom": "Bottom",
-  "MinimalUI.OrganizedMinimizeBottomBar": "Bottom with Bar",
-  "MinimalUI.OrganizedMinimizeTop": "Top",
-  "MinimalUI.OrganizedMinimizeTopBar": "Top with Bar",
-
-  "MinimalUI.EnrichedMinimizeName": "MINIMAL UI Organized Pinned",
-  "MinimalUI.EnrichedMinimizeHint": "Add a pin button on windows. If clicked, such windows may not be closed, only minimized.",
-
-  "MinimalUI.OrganizedMaximizeName": "MINIMAL UI Organized Maximize",
-  "MinimalUI.OrganizedMaximizeHint": "Add a maximize button on resizeable windows. May not work well with all systems"
+  "MinimalUI.DynamicUIHint": "Auto hides UI elements after 60 seconds of chat inactivity when controlling tokens or changing scenes."
 
 }
