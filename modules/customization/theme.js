@@ -13,6 +13,9 @@ export default class MinimalUITheme {
             defaultColor: "#ff490080",
             onChange: _ => {
                 rootStyle.setProperty('--bordercolor', game.settings.get('minimal-ui', 'borderColor'));
+                if (game.modules.get('minimal-window-controls')?.active) {
+                    rootStyle.setProperty('--wcbordercolor', game.settings.get('minimal-ui', 'borderColor'));
+                }
             }
         });
 
@@ -26,6 +29,9 @@ export default class MinimalUITheme {
             type: String,
             onChange: _ => {
                 rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
+                if (game.modules.get('minimal-window-controls')?.active) {
+                    rootStyle.setProperty('--wcshadowcolor', game.settings.get('minimal-ui', 'borderColor'));
+                }
             }
         });
 
@@ -38,6 +44,9 @@ export default class MinimalUITheme {
             type: String,
             onChange: _ => {
                 rootStyle.setProperty('--shadowstrength', game.settings.get('minimal-ui', 'shadowStrength') + 'px');
+                if (game.modules.get('minimal-window-controls')?.active) {
+                    rootStyle.setProperty('--wcshadowstrength', game.settings.get('minimal-ui', 'borderColor'));
+                }
             }
         });
     }
