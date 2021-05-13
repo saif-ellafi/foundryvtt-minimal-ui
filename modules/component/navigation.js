@@ -39,27 +39,31 @@ export default class MinimalUINavigation {
                 $(sceneTab).hover(
                     function() {
                         if (!$(sceneTab).hasClass('view')) {
-                            const minimized = game.settings.get('minimal-ui', 'organizedMinimize');
                             $(`#hover_preview_${i}`).show();
                             clearTimeout(MinimalUINavigation.naviHoverTransition);
-                            if (['top', 'topBar'].includes(minimized)) {
-                                $("#minimized-bar")?.hide();
-                                $(".minimized").hide();
+                            if (game.modules.get('minimal-window-controls')?.active) {
+                                const minimized = game.settings.get('minimal-window-controls', 'organizedMinimize');
+                                if (['top', 'topBar'].includes(minimized)) {
+                                    $("#minimized-bar")?.hide();
+                                    $(".minimized").hide();
+                                }
                             }
                         }
                     },
                     function() {
                         if (!$(sceneTab).hasClass('view')) {
-                            const minimized = game.settings.get('minimal-ui', 'organizedMinimize');
                             $(`#hover_preview_${i}`).hide();
-                            if (['top', 'topBar'].includes(minimized)) {
-                                MinimalUINavigation.naviHoverTransition = setTimeout(function() {
-                                    const minimizedApps = $(".minimized");
-                                    if (minimizedApps.length > 0) {
-                                        $("#minimized-bar")?.fadeIn('fast');
-                                        minimizedApps.fadeIn('fast');
-                                    }
-                                }, 500)
+                            if (game.modules.get('minimal-window-controls')?.active) {
+                                const minimized = game.settings.get('minimal-window-controls', 'organizedMinimize');
+                                if (['top', 'topBar'].includes(minimized)) {
+                                    MinimalUINavigation.naviHoverTransition = setTimeout(function () {
+                                        const minimizedApps = $(".minimized");
+                                        if (minimizedApps.length > 0) {
+                                            $("#minimized-bar")?.fadeIn('fast');
+                                            minimizedApps.fadeIn('fast');
+                                        }
+                                    }, 500)
+                                }
                             }
                         }
                     }

@@ -144,7 +144,7 @@ export default class MinimalUIControls {
                 "small": game.i18n.localize("MinimalUI.SettingsSmall"),
                 "standard": game.i18n.localize("MinimalUI.SettingsStandard")
             },
-            default: "standard",
+            default: "small",
             onChange: _ => {
                 window.location.reload()
             }
