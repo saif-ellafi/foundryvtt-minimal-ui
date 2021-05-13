@@ -20,9 +20,9 @@ Auto-Hides UI elements after Chat inactivity or when switching scenes.
 This allows making up space intelligently for you to save space during actual game
 without having to manually hide unwanted elements.
 
-### Organized Minimize (Moved to its own module! Search for: Minimal Window Controls)
-Since Foundry VTT 0.8.x, Organized Minimize features (Minimize, Maximize and Pin windows) are going to be on their own module
-__Minimal Window Controls__
+### Organized Minimize (Moved to its own module! Search for module: Window Controls)
+Since Foundry VTT 0.8.3+, Organized Minimize features (Minimize, Maximize and Pin windows) are on Window Controls module:
+__Window Controls__
 
 ## Foundry Logo
 * Custom logo image can be provided
