@@ -14,8 +14,7 @@ This allows making up space intelligently for you to save space during actual ga
 without having to manually hide unwanted elements.
 
 ### Organized Minimize (Moved to its own module! Search for module: Window Controls)
-Since Foundry VTT 0.8.3+, Organized Minimize features (Minimize, Maximize and Pin windows) are on Window Controls module:
-__Window Controls__
+Note: Now located on its own module **Window Controls**: https://github.com/saif-ellafi/foundryvtt-window-controls
 
 ## Foundry Logo
 * Custom logo image can be provided
@@ -24,13 +23,15 @@ __Window Controls__
   
 ## Player List
 * Players list may be hidden completely, shown on mouse over or shown normally
+* Small or standard sizes available
 
 ## Right Side Panel
 * May be collapsed by default
+* Use with Dynamic Mode for a pseudo auto-hide experience
   
 ## Scene Navigation
-* Scene Navigation allows preview the map on mouse over (GM Only)
 * Allows Hiding or having the scene navigation collapsed by default
+Note: Scene Navigation Preview is now on a separate module, look for **Scene Preview**: https://github.com/saif-ellafi/foundryvtt-scene-preview
 
 ## Macro Hotbar
 * Macro Bar may be hidden, collapsed, auto-hidden (default) or shown
@@ -48,8 +49,8 @@ __Window Controls__
   
 ## Customization
 * Default settings target a balance between gaining space and functionality
-* Colors of borders and shadows and their strength customizable
-* Position of elements in the UI can be modified
+* Colors of borders and shadows and their strength customizable across all Foundry VTT
+* Check the settings to customize your experience!
 
 ## By JeansenVaars
 ![JVLogo](logo-small-black.png)
