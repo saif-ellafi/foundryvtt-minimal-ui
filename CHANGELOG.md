@@ -1,3 +1,7 @@
+### 1.0.0
+* Compatibility: Foundry VTT 0.8.3+
+* Core: Organized Minimize features moved into self module (Minimal Window Controls)
+
 ### 0.9.7
 * Enhancement: New Organized Pinned mode. When pinned, windows may never be closed, but minimized. Useful for not accidentally closing windows!
 * Bugfix: Fixed style border overlap in single column mode
