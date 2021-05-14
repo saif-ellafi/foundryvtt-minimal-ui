@@ -14,7 +14,8 @@ This allows making up space intelligently for you to save space during actual ga
 without having to manually hide unwanted elements.
 
 ### Organized Minimize (Moved to its own module! Search for module: Window Controls)
-Note: Now located on its own module **Window Controls**: https://github.com/saif-ellafi/foundryvtt-window-controls
+* Minimize Windows to a horizontal taskbar, also may include maximize and window pin button.
+Note: Since Foundry 0.8.x located on its own module **Window Controls**: https://github.com/saif-ellafi/foundryvtt-window-controls
 
 ## Foundry Logo
 * Custom logo image can be provided
@@ -31,7 +32,8 @@ Note: Now located on its own module **Window Controls**: https://github.com/saif
   
 ## Scene Navigation
 * Allows Hiding or having the scene navigation collapsed by default
-Note: Scene Navigation Preview is now on a separate module, look for **Scene Preview**: https://github.com/saif-ellafi/foundryvtt-scene-preview
+* Preview scenes when moving your mouse over the scenes
+Note: Since Foundry 0.8.x Scene Navigation Preview is on a separate module, look for **Scene Preview**: https://github.com/saif-ellafi/foundryvtt-scene-preview
 
 ## Macro Hotbar
 * Macro Bar may be hidden, collapsed, auto-hidden (default) or shown
