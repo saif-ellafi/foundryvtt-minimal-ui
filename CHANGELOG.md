@@ -1,3 +1,6 @@
+### 1.0.1 WIP
+* Bugfix: Adjusted collapsed sidebar app behavior to Foundry 0.8.4+, to maximize or open sidebar apps accordingly, even if minimized or closed, when already active.
+
 ### 1.0.0
 * Compatibility: Foundry VTT 0.8.3+
 * Core: Organized Minimize features moved into its own module (Window Controls)
