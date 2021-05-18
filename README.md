@@ -29,6 +29,7 @@ Note: Since Foundry 0.8.x located on its own module **Window Controls**: https:/
 ## Right Side Panel
 * May be collapsed by default
 * Use with Dynamic Mode for a pseudo auto-hide experience
+* Improves FoundryVTT collapsed sidebar behavior when clicking again already opened apps, that are minimized or active
   
 ## Scene Navigation
 * Allows Hiding or having the scene navigation collapsed by default
