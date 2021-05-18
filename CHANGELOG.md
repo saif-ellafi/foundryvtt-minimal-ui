@@ -1,4 +1,7 @@
-### 0.9.7 (WIP)
+### 0.9.8
+* Special: Release to put back on track 0.7.9 People (sorry for inconvenience)
+
+### 0.9.7
 * Enhancement: New Organized Pinned mode. When pinned, windows may never be closed, but minimized. Useful for not accidentally closing windows!
 * Bugfix: Fixed style border overlap in single column mode
 * Bugfix: Fixed an issue with Dynamic Mode causing the tab to switch to Chat unintentionally
