@@ -1,3 +1,7 @@
+### 1.0.2
+* Bugfix: Floating chat fixed behaviour on collapsed sidebar
+* Bugfix: Removed Dynamic mode feature
+
 ### 1.0.1
 * Bugfix: Adjusted collapsed sidebar app behavior to Foundry 0.8.4+
 * Bugfix: Maximize or open sidebar apps accordingly, even when minimized, closed or already active in 0.8.4
