@@ -1,12 +1,23 @@
-import {rootStyle} from '../util.js';
+import {debouncedReload, rootStyle} from '../util.js';
 import '../../styles/component/logo.css';
 
 export default class MinimalUILogo {
 
     static hiddenInterface = false;
 
-    static hideAll(alsoChat) {
+    static hideAll() {
         $('#logo').click(_ => {
+            let alsoChat;
+            switch (game.settings.get('minimal-ui', 'foundryLogoBehaviour')) {
+                case 'toggleAll': {
+                    alsoChat = true;
+                    break;
+                }
+                case 'toggleButChat': {
+                    alsoChat = false;
+                    break;
+                }
+            }
             if (!MinimalUILogo.hiddenInterface) {
                 if (alsoChat) {
                     $('#sidebar').hide();
@@ -58,9 +69,7 @@ export default class MinimalUILogo {
                 "standard": game.i18n.localize("MinimalUI.SettingsStandard")
             },
             default: "hidden",
-            onChange: _ => {
-                window.location.reload()
-            }
+            onChange: debouncedReload
         });
 
         game.settings.register('minimal-ui', 'foundryLogoBehaviour', {
@@ -73,10 +82,7 @@ export default class MinimalUILogo {
                 "toggleAll": game.i18n.localize("MinimalUI.LogoBehaviourToggle"),
                 "toggleButChat": game.i18n.localize("MinimalUI.LogoBehaviourToggleNoChat")
             },
-            default: "toggleButChat",
-            onChange: _ => {
-                window.location.reload()
-            }
+            default: "toggleButChat"
         });
 
         game.settings.register('minimal-ui', 'foundryLogoImage', {
@@ -101,16 +107,7 @@ export default class MinimalUILogo {
         Hooks.once('ready', async function() {
 
             if (game.settings.get('minimal-ui', 'foundryLogoSize') !== 'hidden') {
-                switch (game.settings.get('minimal-ui', 'foundryLogoBehaviour')) {
-                    case 'toggleAll': {
-                        MinimalUILogo.hideAll(true);
-                        break;
-                    }
-                    case 'toggleButChat': {
-                        MinimalUILogo.hideAll(false);
-                        break;
-                    }
-                }
+                MinimalUILogo.hideAll();
             }
 
             switch (game.settings.get('minimal-ui', 'foundryLogoSize')) {

@@ -1,4 +1,4 @@
-import {rootStyle} from '../util.js';
+import {debouncedReload, rootStyle} from '../util.js';
 import '../../styles/component/navigation.css';
 
 export default class MinimalUINavigation {
@@ -28,9 +28,7 @@ export default class MinimalUINavigation {
                 "hidden": game.i18n.localize("MinimalUI.SettingsHide")
             },
             default: "shown",
-            onChange: _ => {
-                window.location.reload()
-            }
+            onChange: debouncedReload
         });
 
         game.settings.register('minimal-ui', 'sceneNavigationSize', {
@@ -45,9 +43,7 @@ export default class MinimalUINavigation {
                 "big": game.i18n.localize("MinimalUI.SettingsBig")
             },
             default: "small",
-            onChange: _ => {
-                window.location.reload()
-            }
+            onChange: debouncedReload
         });
         
     }

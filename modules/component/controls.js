@@ -1,4 +1,4 @@
-import {rootStyle} from '../util.js';
+import {rootStyle, debouncedReload} from '../util.js';
 import '../../styles/component/controls.css';
 
 export default class MinimalUIControls {
@@ -19,6 +19,11 @@ export default class MinimalUIControls {
 
     static cssControlsPaddingDefault = '7px';
     static cssControlsPaddingHidden = '26px';
+
+    static cssControlsStandardWidth = '36px';
+    static cssControlsStandardHeight = '30px';
+    static cssControlsStandardLineHeight = '30px';
+    static cssControlsStandardFontSize = '24px';
 
     static cssControlsSmallWidth = '25px';
     static cssControlsSmallHeight = '24px';
@@ -116,6 +121,29 @@ export default class MinimalUIControls {
         }
     }
 
+    static sizeControls() {
+        if (game.settings.get('minimal-ui', 'controlsSize') === 'small') {
+            rootStyle.setProperty('--controlsw', MinimalUIControls.cssControlsSmallWidth);
+            rootStyle.setProperty('--controlsh', MinimalUIControls.cssControlsSmallHeight);
+            rootStyle.setProperty('--controlslh', MinimalUIControls.cssControlsSmallLineHeight);
+            rootStyle.setProperty('--controlsfs', MinimalUIControls.cssControlsSmallFontSize);
+        } else {
+            rootStyle.setProperty('--controlsw', MinimalUIControls.cssControlsStandardWidth);
+            rootStyle.setProperty('--controlsh', MinimalUIControls.cssControlsStandardHeight);
+            rootStyle.setProperty('--controlslh', MinimalUIControls.cssControlsStandardLineHeight);
+            rootStyle.setProperty('--controlsfs', MinimalUIControls.cssControlsStandardFontSize);
+        }
+        MinimalUIControls.positionSidebar();
+        const controlSettings = game.settings.get('minimal-ui', 'controlsBehaviour');
+        if (MinimalUIControls.controlsLocked) {
+            MinimalUIControls.revealControls();
+            MinimalUIControls.revealControlTools();
+        } else if (controlSettings === 'autohide') {
+            MinimalUIControls.hideControls();
+            MinimalUIControls.hideControlTools();
+        }
+    }
+
     static initSettings() {
 
         game.settings.register('minimal-ui', 'controlsBehaviour', {
@@ -129,9 +157,7 @@ export default class MinimalUIControls {
                 "autohide": game.i18n.localize("MinimalUI.SettingsAutoHide")
             },
             default: "autohide",
-            onChange: _ => {
-                window.location.reload()
-            }
+            onChange: debouncedReload
         });
 
         game.settings.register('minimal-ui', 'controlsSize', {
@@ -145,9 +171,7 @@ export default class MinimalUIControls {
                 "standard": game.i18n.localize("MinimalUI.SettingsStandard")
             },
             default: "small",
-            onChange: _ => {
-                window.location.reload()
-            }
+            onChange: MinimalUIControls.sizeControls
         });
 
         game.settings.register('minimal-ui', 'controlsStyle', {
@@ -161,9 +185,7 @@ export default class MinimalUIControls {
                 "column": game.i18n.localize("MinimalUI.ControlsStyleSingleColumn")
             },
             default: "default",
-            onChange: _ => {
-                window.location.reload()
-            }
+            onChange: debouncedReload
         });
 
         game.settings.register('minimal-ui', 'controlsPosition', {
@@ -179,22 +201,14 @@ export default class MinimalUIControls {
                 "bottom": game.i18n.localize("MinimalUI.ControlsPositionBottomLeft")
             },
             default: "center",
-            onChange: _ => {
-                window.location.reload()
-            }
+            onChange: MinimalUIControls.positionSidebar
         });
 
     }
 
     static initHooks() {
         Hooks.once('renderSceneControls', async function() {
-            if (game.settings.get('minimal-ui', 'controlsSize') === 'small') {
-                rootStyle.setProperty('--controlsw', MinimalUIControls.cssControlsSmallWidth);
-                rootStyle.setProperty('--controlsh', MinimalUIControls.cssControlsSmallHeight);
-                rootStyle.setProperty('--controlslh', MinimalUIControls.cssControlsSmallLineHeight);
-                rootStyle.setProperty('--controlsfs', MinimalUIControls.cssControlsSmallFontSize);
-            }
-            MinimalUIControls.positionSidebar();
+            MinimalUIControls.sizeControls();
         })
 
         Hooks.on('canvasPan', function() {

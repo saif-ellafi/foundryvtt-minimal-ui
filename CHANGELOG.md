@@ -1,3 +1,6 @@
+### 1.0.3
+* Compatibility: Changing multiple settings now works fine in 0.8.3+
+
 ### 1.0.2
 * Compatibility: Foundry 0.8.3+
 * Bugfix: Floating chat fixed behaviour on collapsed sidebar

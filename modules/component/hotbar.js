@@ -1,4 +1,4 @@
-import {rootStyle} from '../util.js';
+import {rootStyle, debouncedReload} from '../util.js';
 import '../../styles/component/hotbar.css';
 
 export default class MinimalUIHotbar {
@@ -72,6 +72,29 @@ export default class MinimalUIHotbar {
         }
     }
 
+    static setHotbarSlots() {
+        switch(game.settings.get('minimal-ui', 'hotbarSize')) {
+            case "slots_3": {
+                $("#macro-list > li").each(function(i, slot) {
+                    if (i > 2) {
+                        rootStyle.setProperty('--hotbarwf', '152px');
+                        $(slot).remove();
+                    }
+                });
+                break;
+            }
+            case "slots_6": {
+                $("#macro-list > li").each(function(i, slot) {
+                    if (i > 5) {
+                        rootStyle.setProperty('--hotbarwf', '302px');
+                        $(slot).remove();
+                    }
+                });
+                break;
+            }
+        }
+    }
+
     static configureHotbar() {
         switch(game.settings.get('minimal-ui', 'hotbar')) {
             case 'collapsed': {
@@ -122,9 +145,7 @@ export default class MinimalUIHotbar {
                 "hidden": game.i18n.localize("MinimalUI.SettingsHide")
             },
             default: "autohide",
-            onChange: _ => {
-                window.location.reload()
-            }
+            onChange: debouncedReload
         });
 
         game.settings.register('minimal-ui', 'hotbarSize', {
@@ -139,9 +160,7 @@ export default class MinimalUIHotbar {
                 "slots_10":game.i18n.localize("MinimalUI.HotbarSlots10")
             },
             default: "slots_10",
-            onChange: _ => {
-                window.location.reload()
-            }
+            onChange: debouncedReload
         });
 
         game.settings.register('minimal-ui', 'hotbarPosition', {
@@ -158,9 +177,7 @@ export default class MinimalUIHotbar {
                 "manual": game.i18n.localize("MinimalUI.HotbarPositionManual")
             },
             default: "center",
-            onChange: _ => {
-                MinimalUIHotbar.positionHotbar();
-            }
+            onChange: MinimalUIHotbar.positionHotbar
         });
 
         game.settings.register('minimal-ui', 'hotbarPixelPosition', {
@@ -170,9 +187,7 @@ export default class MinimalUIHotbar {
             config: true,
             type: String,
             default: "400",
-            onChange: _ => {
-                MinimalUIHotbar.positionHotbar();
-            }
+            onChange: MinimalUIHotbar.positionHotbar
         });
     }
 
@@ -200,26 +215,7 @@ export default class MinimalUIHotbar {
 
             MinimalUIHotbar.configureHotbar();
 
-            switch(game.settings.get('minimal-ui', 'hotbarSize')) {
-                case "slots_3": {
-                    $("#macro-list > li").each(function(i, slot) {
-                        if (i > 2) {
-                            rootStyle.setProperty('--hotbarwf', '152px');
-                            $(slot).remove();
-                        }
-                    });
-                    break;
-                }
-                case "slots_6": {
-                    $("#macro-list > li").each(function(i, slot) {
-                        if (i > 5) {
-                            rootStyle.setProperty('--hotbarwf', '302px');
-                            $(slot).remove();
-                        }
-                    });
-                    break;
-                }
-            }
+            MinimalUIHotbar.setHotbarSlots();
 
         })
 

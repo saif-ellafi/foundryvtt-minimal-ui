@@ -1,3 +1,5 @@
+import {debouncedReload} from '../util.js';
+
 export default class MinimalUICamera {
     static initSettings() {
         game.settings.register("minimal-ui", "hidePlayerCameras", {
@@ -11,9 +13,7 @@ export default class MinimalUICamera {
                 "default": game.i18n.localize("MinimalUI.SettingsDefault"),
                 "hidden": game.i18n.localize("MinimalUI.HidePlayerCameraSetting")
             },
-            onChange: _ => {
-                window.location.reload()
-            }
+            onChange: debouncedReload
         });
     }
 

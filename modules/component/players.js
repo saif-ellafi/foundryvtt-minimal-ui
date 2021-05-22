@@ -1,4 +1,4 @@
-import {rootStyle} from '../util.js';
+import {debouncedReload, rootStyle} from '../util.js';
 import '../../styles/component/players.css';
 
 export default class MinimalUIPlayers {
@@ -21,9 +21,7 @@ export default class MinimalUIPlayers {
                 "hidden": game.i18n.localize("MinimalUI.SettingsHide")
             },
             default: "autohide",
-            onChange: _ => {
-                window.location.reload()
-            }
+            onChange: debouncedReload
         });
 
         game.settings.register('minimal-ui', 'playerListSize', {
@@ -37,9 +35,7 @@ export default class MinimalUIPlayers {
                 "standard": game.i18n.localize("MinimalUI.SettingsStandard")
             },
             default: "small",
-            onChange: _ => {
-                window.location.reload()
-            }
+            onChange: debouncedReload
         });
     }
 
