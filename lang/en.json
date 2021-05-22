@@ -81,9 +81,6 @@
   "MinimalUI.ShadowColorHint": "Color for shadows around borders and buttons",
   "MinimalUI.ShadowStrengthName": "Shadow Strength",
   "MinimalUI.ShadowStrengthHint": "How gloomy and shadow are the borders? Default: 5",
-  "MinimalUI.ColorPicker": "Color Picker",
-
-  "MinimalUI.DynamicUIName": "MINIMAL UI Dynamic Mode",
-  "MinimalUI.DynamicUIHint": "Auto hides UI elements after 60 seconds of chat inactivity when controlling tokens or changing scenes."
+  "MinimalUI.ColorPicker": "Color Picker"
 
 }

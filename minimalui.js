@@ -8,8 +8,6 @@ import MinimalUISidebar from './modules/component/sidebar.js'
 
 import MinimalUITheme from './modules/customization/theme.js'
 
-import MinimalUIDynamic from './modules/feature/dynamic.js'
-
 import MinimalUIPatch from "./modules/patch.js";
 
 class MinimalUI {
@@ -25,11 +23,6 @@ Hooks.once('init', () => {
     } else {
         MinimalUI.noColorSettings = true;
     }
-    /** ------------------------- */
-
-    /** Initialize settings for Special Feature Functionality */
-    MinimalUIDynamic.initSettings();
-    MinimalUIDynamic.initHooks();
     /** ------------------------- */
 
     /** Initialize settings for Core Component Functionality */

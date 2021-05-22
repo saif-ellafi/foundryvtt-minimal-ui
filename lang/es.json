@@ -81,9 +81,6 @@
   "MinimalUI.ShadowColorHint": "Color de las sombras al rededor de paneles y botones",
   "MinimalUI.ShadowStrengthName": "Fuerza sombreado",
   "MinimalUI.ShadowStrengthHint": "Grado de sombreado y oscuridad de los bordes. Por defecto: 5",
-  "MinimalUI.ColorPicker": "Escoger color",
-
-  "MinimalUI.DynamicUIName": "Modo dinámico MINIMAL UI",
-  "MinimalUI.DynamicUIHint": "Oculta automáticamente los elementos de la UI tras 60 segundos de inactividad cuando se está controlando algún icono o navegando entre escenas"
+  "MinimalUI.ColorPicker": "Escoger color"
 
 }
