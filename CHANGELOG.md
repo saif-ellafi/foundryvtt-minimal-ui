@@ -1,4 +1,5 @@
 ### 1.0.2
+* Compatibility: Foundry 0.8.3+
 * Bugfix: Floating chat fixed behaviour on collapsed sidebar
 * Bugfix: Removed Dynamic mode feature
 
