@@ -9,9 +9,8 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 ## Special Minimal UI Features
 
 ### Dynamic Mode (Default: OFF)
-Auto-Hides UI elements after Chat inactivity or when switching scenes.
-This allows making up space intelligently for you to save space during actual game
-without having to manually hide unwanted elements.
+* Auto-Hides UI elements after Chat inactivity or when switching scenes.
+Note: Since Foundry 0.8.x this feature will be no longer available 
 
 ### Organized Minimize (Moved to its own module! Search for module: Window Controls)
 * Minimize Windows to a horizontal taskbar, also may include maximize and window pin button.
