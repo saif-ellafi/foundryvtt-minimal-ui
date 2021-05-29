@@ -69,14 +69,17 @@ export default class MinimalUIMinimize {
             if (MinimalUIMinimize.minimizedStash[i]?.app.appId === app.appId) {
                 MinimalUIMinimize.minimizedStash[i].oldPosition = Object.assign({}, app.position);
                 targetPos = i;
-                break;
+                return targetPos;
             } else if (!targetPos && !MinimalUIMinimize.minimizedStash[i]?.app.rendered) {
                 MinimalUIMinimize.minimizedStash[i] = {app: app, oldPosition: Object.assign({}, app.position)};
                 targetPos = i;
-                break;
+                return targetPos;
             }
         }
-        return targetPos;
+        let appI = app.position.left;
+        while (appI in MinimalUIMinimize.minimizedStash) appI += 20;
+        MinimalUIMinimize.minimizedStash[appI] = {app: app, oldPosition: Object.assign({}, app.position)};
+        return appI;
     }
 
     static setMinimizedPosition(app) {

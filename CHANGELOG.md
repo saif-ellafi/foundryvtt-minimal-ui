@@ -1,3 +1,6 @@
+### 0.9.9
+* Bugfix: Fixed windows restoring to a wrong size when exceeding taskbar width
+
 ### 0.9.8
 * Special: Release to put back on track 0.7.9 People (sorry for inconvenience)
 
