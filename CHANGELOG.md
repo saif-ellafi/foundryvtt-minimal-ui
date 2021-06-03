@@ -1,3 +1,6 @@
+### 1.0.4
+* Nothing new. Dummy release to trigger the appropriate latest release for Minimal UI
+
 ### 1.0.3
 * Compatibility: Changing multiple settings now works fine in 0.8.3+
 
