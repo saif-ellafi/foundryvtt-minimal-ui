@@ -19,6 +19,7 @@
     box-shadow: 3px 0 var(--shadowstrength) 0 var(--shadowcolor);
     transition: 0.5s;
     background: #0000003b;
+    padding: 6px 2px 6px 6px;
 }
 
 #controls:hover {
@@ -44,18 +45,19 @@
 #controls .scene-control.active, #controls .scene-control:hover {
     border: 1px solid transparent;
     color: orange;
-    box-shadow: 1px 0 var(--shadowstrength) 0 var(--shadowcolor);
+    box-shadow: 0 0 var(--shadowstrength) 1px var(--shadowcolor);
     padding-right: 1px;
 }
 
 #controls .control-tool.active, #controls .control-tool {
     border: 0 solid transparent;
+    margin: 6px 0;
 }
 
 #controls .control-tool.active, #controls .control-tool:hover {
     border: 0 solid transparent;
     color: yellow;
-    box-shadow: 1px 0 var(--shadowstrength) 0 var(--shadowcolor);
+    box-shadow: 0 0 var(--shadowstrength) 1px var(--shadowcolor);
 }
 
 #controls > li:nth-child(n), #controls > li.scene-control > ol > li.control-tool {
@@ -75,6 +77,7 @@
     box-shadow: 1px 0 var(--shadowstrength) 0 var(--shadowcolor);
     border-radius: 3px;
     padding: 5px;
+    height: auto;
 }
 
 #controls:hover .active .control-tools {

@@ -1,3 +1,6 @@
+### 1.0.5
+* Compatibility: Foundry 0.8.9
+
 ### 1.0.4
 * Nothing new. Dummy release to trigger the appropriate latest release for Minimal UI
 
