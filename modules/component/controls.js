@@ -10,8 +10,8 @@ export default class MinimalUIControls {
     static controlToolsHoverTransition;
 
     static cssControlsStartVisible = '0px';
-    static cssControlsHiddenPositionSmall = '-40px';
-    static cssControlsHiddenPositionStandard = '-50px';
+    static cssControlsHiddenPositionSmall = '-36px';
+    static cssControlsHiddenPositionStandard = '-46px';
 
     static cssControlsSubMenuSmall = '55px';
     static cssControlsSubMenuStandard = '65px';
