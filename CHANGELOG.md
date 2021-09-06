@@ -1,3 +1,6 @@
+### 1.0.6
+* Bugfix: Chat logs should not expand the sidebar when collapsed by default (Thanks Brimcon)
+
 ### 1.0.5
 * Compatibility: Foundry 0.8.9
 
