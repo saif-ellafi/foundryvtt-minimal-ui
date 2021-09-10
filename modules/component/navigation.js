@@ -7,8 +7,8 @@ export default class MinimalUINavigation {
     static cssSceneNavSmallLogoStart = '75px';
     static cssSceneNavBullseyeStart = '125px';
 
-    static collapseNavigation(toggleId) {
-        let target = document.getElementById(toggleId);
+    static collapseNavigation() {
+        let target = document.getElementById("nav-toggle");
         if (target) {
             target.click();
         }
@@ -60,8 +60,10 @@ export default class MinimalUINavigation {
 
             switch(game.settings.get('minimal-ui', 'sceneNavigation')) {
                 case 'collapsed': {
+                    await new Promise(waitABit => setTimeout(waitABit, 10));
+                    MinimalUINavigation.collapseNavigation();
+                    await new Promise(waitABit => setTimeout(waitABit, 250));
                     rootStyle.setProperty('--navivis', 'visible');
-                    MinimalUINavigation.collapseNavigation("nav-toggle");
                     break;
                 }
                 case 'shown': {

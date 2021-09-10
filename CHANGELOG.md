@@ -1,3 +1,6 @@
+### 1.0.7
+* Bugfix: Fixed scene navigation collapsed mode broken in Foundry 0.8.9 (Thanks Merudo)
+
 ### 1.0.6
 * Bugfix: Chat logs should not expand the sidebar when collapsed by default (Thanks Brimcon)
 
