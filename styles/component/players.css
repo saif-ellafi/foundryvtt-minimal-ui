@@ -50,3 +50,7 @@
 .bennies-count {
     display: var(--playerbennies);
 }
+
+.pingLogger_pingSpan {
+    display: None;
+}

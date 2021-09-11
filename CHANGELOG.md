@@ -1,3 +1,7 @@
+### 1.0.9
+* Compatibility: Savage Worlds will show bennies on hover of auto-hide player list
+* Compatibility: Ping Logger will show ping only on hover of auto-hide player list (Thanks Merudo)
+
 ### 1.0.8
 * Compatibility: Ping Logger player list now works correctly (Thanks Merudo for contributing!)
 * Compatibility: Player List now 15% bigger when in small mode

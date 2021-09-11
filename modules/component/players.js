@@ -106,14 +106,20 @@ export default class MinimalUIPlayers {
 
                     // Compatibility for Ping Logger module
                     if (game.modules.has('ping-logger') && game.modules.get('ping-logger').active) {
-                        playerWidthPixel += 35;
-                        rootStyle.setProperty('--playerslh', '20px');
+                        players.hover(
+                            function() {
+                                $(".pingLogger_pingSpan").show();
+                            },
+                            function () {
+                                $(".pingLogger_pingSpan").hide();
+                            }
+                        );
                     }
 
                     rootStyle.setProperty('--playerwidth', `${playerWidthPixel}px`);
                     // SWADE Special Compatibility
                     rootStyle.setProperty('--playerbennies', 'none');
-                    if (game.system.data.name === 'swede') {
+                    if (game.system.data.name === 'swade') {
                         players.hover(
                             function() {
                                 $(".bennies-count").show();
