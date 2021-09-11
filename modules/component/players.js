@@ -3,8 +3,9 @@ import '../../styles/component/players.css';
 
 export default class MinimalUIPlayers {
 
+    static cssPlayersHiddenWidth = '25px';
     static cssPlayersSmallFontSize = '12px';
-    static cssPlayersSmallWidth = '150px';
+    static cssPlayersSmallWidth = '175px';
     static cssPlayersStandardFontSize = 'inherit';
     static cssPlayersStandardWidth = '200px';
 
@@ -52,10 +53,11 @@ export default class MinimalUIPlayers {
                     if (plSize === 'small') {
                         rootStyle.setProperty('--playerfsize', MinimalUIPlayers.cssPlayersSmallFontSize);
                         rootStyle.setProperty('--playerwidth', MinimalUIPlayers.cssPlayersSmallWidth);
+                        rootStyle.setProperty('--playerwidthhv', MinimalUIPlayers.cssPlayersSmallWidth);
                     } else {
                         rootStyle.setProperty('--playerfsize', MinimalUIPlayers.cssPlayersStandardFontSize);
-                        rootStyle.setProperty('--playerwidth', MinimalUIPlayers.cssPlayersStandardWidth);
                         rootStyle.setProperty('--playerfsizehv', MinimalUIPlayers.cssPlayersStandardFontSize);
+                        rootStyle.setProperty('--playerwidth', MinimalUIPlayers.cssPlayersStandardWidth);
                         rootStyle.setProperty('--playerwidthhv', MinimalUIPlayers.cssPlayersStandardWidth);
                     }
                     rootStyle.setProperty('--playervis', 'visible');
@@ -71,6 +73,7 @@ export default class MinimalUIPlayers {
                 case 'autohide': {
                     if (plSize === 'small') {
                         rootStyle.setProperty('--playerfsizehv', MinimalUIPlayers.cssPlayersSmallFontSize);
+                        rootStyle.setProperty('--playerwidthhv', MinimalUIPlayers.cssPlayersSmallWidth);
                     } else {
                         rootStyle.setProperty('--playerfsizehv', MinimalUIPlayers.cssPlayersStandardFontSize);
                         rootStyle.setProperty('--playerwidthhv', MinimalUIPlayers.cssPlayersStandardWidth);
@@ -94,21 +97,20 @@ export default class MinimalUIPlayers {
                         );
                     }
                     // Compatibility for Raise Hand module
-                    let playerWidthPixel = 22;
+                    let playerWidthPixel = parseInt(MinimalUIPlayers.cssPlayersHiddenWidth);
+
                     if (game.modules.has('raise-my-hand') && game.modules.get('raise-my-hand').active) {
-                        playerWidthPixel += 20;
+                        playerWidthPixel += 22;
                         rootStyle.setProperty('--playerslh', '20px');
                     }
 
                     // Compatibility for Ping Logger module
                     if (game.modules.has('ping-logger') && game.modules.get('ping-logger').active) {
-                        playerWidthPixel += 50;
+                        playerWidthPixel += 35;
                         rootStyle.setProperty('--playerslh', '20px');
                     }
 
-                    if (playerWidthPixel > 22){
-                        rootStyle.setProperty('--playerwidth', `${playerWidthPixel}px`);
-                    }
+                    rootStyle.setProperty('--playerwidth', `${playerWidthPixel}px`);
                     // SWADE Special Compatibility
                     rootStyle.setProperty('--playerbennies', 'none');
                     if (game.system.data.name === 'swede') {

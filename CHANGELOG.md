@@ -1,3 +1,7 @@
+### 1.0.8
+* Compatibility: Ping Logger player list now works correctly (Thanks Merudo for contributing!)
+* Compatibility: Player List now 15% bigger when in small mode
+
 ### 1.0.7
 * Bugfix: Fixed scene navigation collapsed mode broken in Foundry 0.8.9 (Thanks Merudo)
 
