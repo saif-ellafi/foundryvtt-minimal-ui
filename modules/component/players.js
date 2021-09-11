@@ -94,9 +94,20 @@ export default class MinimalUIPlayers {
                         );
                     }
                     // Compatibility for Raise Hand module
+                    let playerWidthPixel = 22;
                     if (game.modules.has('raise-my-hand') && game.modules.get('raise-my-hand').active) {
-                        rootStyle.setProperty('--playerwidth', '42px');
+                        playerWidthPixel += 20;
                         rootStyle.setProperty('--playerslh', '20px');
+                    }
+
+                    // Compatibility for Ping Logger module
+                    if (game.modules.has('ping-logger') && game.modules.get('ping-logger').active) {
+                        playerWidthPixel += 50;
+                        rootStyle.setProperty('--playerslh', '20px');
+                    }
+
+                    if (playerWidthPixel > 22){
+                        rootStyle.setProperty('--playerwidth', `${playerWidthPixel}px`);
                     }
                     // SWADE Special Compatibility
                     rootStyle.setProperty('--playerbennies', 'none');
