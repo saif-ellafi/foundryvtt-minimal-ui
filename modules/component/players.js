@@ -38,6 +38,23 @@ export default class MinimalUIPlayers {
             default: "small",
             onChange: debouncedReload
         });
+
+        // Ping Logger compatibility setting
+        if (game.modules.get('ping-logger')?.active) {
+            game.settings.register('minimal-ui', 'playerShowPing', {
+                name: game.i18n.localize("MinimalUI.PlayersShowPingName"),
+                hint: game.i18n.localize("MinimalUI.PlayersShowPingHint"),
+                scope: 'world',
+                config: true,
+                type: String,
+                choices: {
+                    "showPing": game.i18n.localize("MinimalUI.PlayersShowPing"),
+                    "hidePing": game.i18n.localize("MinimalUI.PlayersHidePing"),
+                },
+                default: "hidePing",
+                onChange: debouncedReload
+            });
+        }
     }
 
     static initHooks() {
@@ -104,9 +121,24 @@ export default class MinimalUIPlayers {
                         rootStyle.setProperty('--playerslh', '20px');
                     }
                     // Compatibility for Ping Logger module
-                    if (game.modules.has('ping-logger') && game.modules.get('ping-logger').active) {
-                        playerWidthPixel += 36;
-                        rootStyle.setProperty('--playerslh', '20px');
+                    if (game.modules.get('ping-logger')?.active) {
+                        if (game.settings.get('minimal-ui', 'playerShowPing') === "showPing"){
+                            // Increase width and height to display ping
+                            rootStyle.setProperty('--playerpingdisplay', 'initial');
+                            rootStyle.setProperty('--playerslh', '20px');
+                            playerWidthPixel += 36;
+                        } else {
+                            // Hide the ping, and only display on hover
+                            rootStyle.setProperty('--playerpingdisplay', 'none');
+                            players.hover(
+                                function() {
+                                    $(".pingLogger_pingSpan").show();
+                                },
+                                function () {
+                                    $(".pingLogger_pingSpan").hide();
+                                }
+                            );	
+                        }
                     }
 
                     rootStyle.setProperty('--playerwidth', `${playerWidthPixel}px`);

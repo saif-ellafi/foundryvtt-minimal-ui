@@ -8,6 +8,7 @@
     --playerbennies: none;
     --playerh3w: unset;
     --playerbot: 10px;
+    --playerpingdisplay: initial;
 }
 
 #players:hover {
@@ -54,6 +55,10 @@
 
 .raised-hand {
     font-size: 12px;
+}
+
+.pingLogger_pingSpan {
+    display: var(--playerpingdisplay);
 }
 
 .bennies-count {
