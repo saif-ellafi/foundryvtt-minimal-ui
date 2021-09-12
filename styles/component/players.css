@@ -16,12 +16,21 @@
 }
 
 #players {
-    width: var(--playerwidth);
+    width: auto;
+    min-width: var(--playerwidth);
     left: 5px;
     bottom: var(--playerbot);
     font-size: var(--playerfsize);
     visibility: var(--playervis);
     background: #0000003b;
+}
+
+#players ol .player-name {
+    overflow: visible;
+}
+
+#players ol .player.flexrow {
+    flex-wrap: nowrap;
 }
 
 #players ol li.player {
@@ -49,8 +58,4 @@
 
 .bennies-count {
     display: var(--playerbennies);
-}
-
-.pingLogger_pingSpan {
-    display: None;
 }
