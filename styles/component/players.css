@@ -8,6 +8,7 @@
     --playerbennies: none;
     --playerh3w: unset;
     --playerbot: 10px;
+    --playerpingdisplay: initial;
 }
 
 #players:hover {
@@ -16,12 +17,21 @@
 }
 
 #players {
-    width: var(--playerwidth);
+    width: auto;
+    min-width: var(--playerwidth);
     left: 5px;
     bottom: var(--playerbot);
     font-size: var(--playerfsize);
     visibility: var(--playervis);
     background: #0000003b;
+}
+
+#players ol .player-name {
+    overflow: visible;
+}
+
+#players ol .player.flexrow {
+    flex-wrap: nowrap;
 }
 
 #players ol li.player {
@@ -47,10 +57,10 @@
     font-size: 12px;
 }
 
-.bennies-count {
-    display: var(--playerbennies);
+.pingLogger_pingSpan {
+    display: var(--playerpingdisplay);
 }
 
-.pingLogger_pingSpan {
-    display: None;
+.bennies-count {
+    display: var(--playerbennies);
 }
