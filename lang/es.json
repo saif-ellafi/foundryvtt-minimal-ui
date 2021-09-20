@@ -71,7 +71,12 @@
   "MinimalUI.PlayersBehaviourHint": "Personalizar UI para la lista de jugadores",
   "MinimalUI.PlayersSizeName": "Tamaño de Lista de Jugadores",
   "MinimalUI.PlayersSizeHint": "Elige entre tamaño pequeño o el estándar de Foundry",
-  
+
+  "MinimalUI.PlayersShowPingName" : "Comportamiento de Ping Logger con Minimal UI",
+  "MinimalUI.PlayersShowPingHint" : "Customiza el modo en que se muestra el ping en listas de jugadores auto escondidas",
+  "MinimalUI.PlayersShowPing"  : "Mostrar",
+  "MinimalUI.PlayersHidePing"  : "Esconder",
+
   "MinimalUI.SidebarStyleName": "Comportamiento del panel lateral derecho",
   "MinimalUI.SidebarStyleHint": "Si se debe colapsar o no el panel lateral derecho",
 
