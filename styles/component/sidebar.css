@@ -2,6 +2,16 @@
     visibility: var(--controlsvis);
 }
 
+#sidebar.collapsed {
+    opacity: var(--transparency);
+    transition: 0.05s ease-out 0.5s;
+}
+
+#sidebar.collapsed:hover {
+    opacity: 100%;
+    transition: 0.05s;
+}
+
 #sidebar-tabs {
     border-bottom: 1px solid var(--bordercolor);
     box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);

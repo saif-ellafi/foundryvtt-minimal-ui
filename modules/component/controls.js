@@ -13,8 +13,8 @@ export default class MinimalUIControls {
     static cssControlsHiddenPositionSmall = '-36px';
     static cssControlsHiddenPositionStandard = '-46px';
 
-    static cssControlsSubMenuSmall = '55px';
-    static cssControlsSubMenuStandard = '65px';
+    static cssControlsSubMenuSmall = '50px';
+    static cssControlsSubMenuStandard = '60px';
     static cssControlsSubMenuDndUi = '65px';
 
     static cssControlsPaddingDefault = '7px';

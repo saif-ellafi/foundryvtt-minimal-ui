@@ -1,3 +1,8 @@
+### 1.1.0
+* Enhancement: Added transparency (Configurable) until hover to various elements (Let me know your feedback!)
+* Enhancement: Raised auto-hide macro bar slightly enough to make it more convenient
+* Bugfix: Reduced distance between first and second left side control columns
+
 ### 1.0.10
 * Compatibility: Ping Logger now works correctly and can be further customized (thanks @Merudo for contributing!!!)
 

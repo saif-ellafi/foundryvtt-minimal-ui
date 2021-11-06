@@ -5,7 +5,7 @@ export default class MinimalUIHotbar {
 
     static hotbarLocked = false;
 
-    static cssHotbarHidden = '-48px';
+    static cssHotbarHidden = '-32px';
     static cssHotbarReveal = '1px';
     static cssHotbarShown = '10px';
 

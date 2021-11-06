@@ -58,6 +58,21 @@ export default class MinimalUITheme {
                 }
             }
         });
+
+        game.settings.register("minimal-ui", "transparencyPercentage", {
+            name: game.i18n.localize("MinimalUI.TransparencyPercentageName"),
+            hint: game.i18n.localize("MinimalUI.TransparencyPercentageHint"),
+            scope: "world",
+            config: true,
+            default: 25,
+            type: Number,
+            onChange: _ => {
+                const transparency = game.settings.get('minimal-ui', 'transparencyPercentage');
+                if (transparency >= 0 && transparency <= 100) {
+                    rootStyle.setProperty('--transparency', transparency.toString() + '%');
+                }
+            }
+        });
     }
 
     static initHooks() {
@@ -65,6 +80,10 @@ export default class MinimalUITheme {
             rootStyle.setProperty('--bordercolor', game.settings.get('minimal-ui', 'borderColor'));
             rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
             rootStyle.setProperty('--shadowstrength', game.settings.get('minimal-ui', 'shadowStrength') + 'px');
+            const transparency = game.settings.get('minimal-ui', 'transparencyPercentage');
+            if (transparency >= 0 && transparency <= 100) {
+                rootStyle.setProperty('--transparency', transparency.toString() + '%');
+            }
         })
     }
 }

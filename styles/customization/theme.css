@@ -2,6 +2,7 @@
     --bordercolor: #ff4900bd;
     --shadowcolor: #ff4900bd;
     --shadowstrength: 10px;
+    --transparency: 25%;
 }
 
 .minui-lock {

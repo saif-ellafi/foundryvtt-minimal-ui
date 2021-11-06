@@ -14,6 +14,7 @@
 #players:hover {
     width: var(--playerwidthhv);
     font-size: var(--playerfsizehv);
+    opacity: 100%;
 }
 
 #players {
@@ -24,6 +25,7 @@
     font-size: var(--playerfsize);
     visibility: var(--playervis);
     background: #0000003b;
+    opacity: var(--transparency);
 }
 
 #players ol .player-name {
@@ -63,4 +65,12 @@
 
 .bennies-count {
     display: var(--playerbennies);
+}
+
+#destiny-tracker {
+    opacity: var(--transparency);
+}
+
+#destiny-tracker:hover {
+    opacity: 100%;
 }

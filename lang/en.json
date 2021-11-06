@@ -86,6 +86,8 @@
   "MinimalUI.ShadowColorHint": "Color for shadows around borders and buttons",
   "MinimalUI.ShadowStrengthName": "Shadow Strength",
   "MinimalUI.ShadowStrengthHint": "How gloomy and shadow are the borders? Default: 5",
+  "MinimalUI.TransparencyPercentageName": "Hover Transparency Percentage",
+  "MinimalUI.TransparencyPercentageHint": "How Transparent are components until we hover with the mouse? Default: 25",
   "MinimalUI.ColorPicker": "Color Picker"
 
 }
