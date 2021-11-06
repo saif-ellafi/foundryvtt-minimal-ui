@@ -52,6 +52,7 @@ Note: Since Foundry 0.8.x Scene Navigation Preview is on a separate module, look
 ## Customization
 * Default settings target a balance between gaining space and functionality
 * Colors of borders and shadows and their strength customizable across all Foundry VTT
+* Define Transparency when moving the mouse over components!
 * Check the settings to customize your experience!
 
 ## By JeansenVaars
