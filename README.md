@@ -1,20 +1,23 @@
 # Minimal UI for FoundryVTT
 
-Configurable UI module, allows the user to hide, collapse or auto-hide components separately.
+Extremely Configurable UI module, allows the user to hide, collapse or auto-hide components separately.
 
 This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Bar.
 
+If you like my work, please [invite me a Coffee](#by-jeansenvaars) :)
+
 ![Example GIF](./examplegif-long3.gif)
 
-## Special Minimal UI Features
+## Special Minimal UI Companions
 
-### Dynamic Mode (Default: OFF)
-* Auto-Hides UI elements after Chat inactivity or when switching scenes.
-Note: Since Foundry 0.8.x this feature will be no longer available 
+### Window Controls
+* Let your windows have Minimize, Maximize, Close and Pin Buttons to finally find that character among the many windows open you have
+* Organize both minimized and open windows in a lean (invisible when not used) window bar
+[Check it out](https://foundryvtt.com/packages/window-controls)
 
-### Organized Minimize (Moved to its own module! Search for module: Window Controls)
-* Minimize Windows to a horizontal taskbar, also may include maximize and window pin button.
-Note: Since Foundry 0.8.x located on its own module **Window Controls**: https://github.com/saif-ellafi/foundryvtt-window-controls
+### Scene Preview
+* Take a quick look at your inactive scenes by moving your mouse over the navigation panel
+[Check it out](https://foundryvtt.com/packages/scene-preview)
 
 ## Foundry Logo
 * Custom logo image can be provided
