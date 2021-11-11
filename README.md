@@ -82,6 +82,7 @@ Build Script: `npm run build`
 * Thanks to vance in the FoundryVTT Discord: Minimal UI is better written!
 * Thanks to the FoundryVTT Discord community for the amazing issue reports and feedback.
 * Thanks to Merudo for being the first code contributor to Minimal UI as an open source module!
+* Thanks to Greayhead for German Translations
 
 ![Example Image](./example12.jpg)
 
