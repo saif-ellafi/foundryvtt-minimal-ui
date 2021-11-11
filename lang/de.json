@@ -1,6 +1,6 @@
 {
   "I18N.LANGUAGE": "Deutsch",
-  "I18N.MAINTAINERS": "@JeansenVaars#2857",
+  "I18N.MAINTAINERS": "@Grayhead#7822",
 
   "MinimalUI.SettingsAlwaysVisible": "Immer sichtbar",
   "MinimalUI.SettingsStartVisible": "Starte sichtbar",
@@ -17,7 +17,7 @@
   "MinimalUI.Enabled": "Angeschaltet",
   "MinimalUI.Disabled": "Ausgeschaltet",
 
-  "MinimalUI.LogoStyleName": "Anzeige des Foundry Logo",
+  "MinimalUI.LogoStyleName": "Anzeige des Foundry Logos",
   "MinimalUI.LogoStyleHint": "Sichtbarkeit und Größe des Foundry Logos einstellen",
   "MinimalUI.LogoBehaviourName": "Verhalten des Foundry Logos",
   "MinimalUI.LogoBehaviourHint": "Nutze das Foundry Logo, um visuelle Elemente ein- und auszuschalten (wenn überhaupt sichtbar).",
