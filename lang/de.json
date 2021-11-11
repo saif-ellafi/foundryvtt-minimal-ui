@@ -72,8 +72,8 @@
   "MinimalUI.PlayersSizeName": "Größe der Spielerliste",
   "MinimalUI.PlayersSizeHint": "Wähle zwischen der normalen Größe und einer kleineren Version.",
 
-  "MinimalUI.PlayersShowPingName" : "Online Anzeige auch in minimierter Ansicht",
-  "MinimalUI.PlayersShowPingHint" : "Online Status zeigen, selbst wenn die Spielerliste auf 'Automatisch verstecken' eingestellt ist.",
+  "MinimalUI.PlayersShowPingName" : "Ping Logger in minimierter Spielerliste",
+  "MinimalUI.PlayersShowPingHint" : "Ping trotz automatisch versteckter Spielerliste anzeigen?",
   "MinimalUI.PlayersShowPing"  : "Zeigen",
   "MinimalUI.PlayersHidePing"  : "Verstecken",
 
