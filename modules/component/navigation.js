@@ -13,7 +13,7 @@ export default class MinimalUINavigation {
             target.click();
         }
     }
-    
+
     static initSettings() {
 
         game.settings.register('minimal-ui', 'sceneNavigation', {
@@ -45,20 +45,20 @@ export default class MinimalUINavigation {
             default: "small",
             onChange: debouncedReload
         });
-        
+
     }
-    
+
     static initHooks() {
 
-        Hooks.once('ready', async function() {
-            switch(game.settings.get('minimal-ui', 'foundryLogoSize')) {
+        Hooks.once('ready', async function () {
+            switch (game.settings.get('minimal-ui', 'foundryLogoSize')) {
                 case 'small': {
                     rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavSmallLogoStart);
                     break;
                 }
             }
 
-            switch(game.settings.get('minimal-ui', 'sceneNavigation')) {
+            switch (game.settings.get('minimal-ui', 'sceneNavigation')) {
                 case 'collapsed': {
                     await new Promise(waitABit => setTimeout(waitABit, 10));
                     MinimalUINavigation.collapseNavigation();
@@ -78,9 +78,9 @@ export default class MinimalUINavigation {
             }
         });
 
-        Hooks.once('renderSceneNavigation', async function() {
+        Hooks.once('renderSceneNavigation', async function () {
 
-            switch(game.settings.get('minimal-ui', 'sceneNavigationSize')) {
+            switch (game.settings.get('minimal-ui', 'sceneNavigationSize')) {
                 case 'standard': {
                     rootStyle.setProperty('--navilh', '32px');
                     rootStyle.setProperty('--navifs', '16px');
@@ -98,10 +98,10 @@ export default class MinimalUINavigation {
             }
 
         });
-        
-        Hooks.on('renderSceneNavigation', async function() {
 
-            switch(game.settings.get('minimal-ui', 'foundryLogoSize')) {
+        Hooks.on('renderSceneNavigation', async function () {
+
+            switch (game.settings.get('minimal-ui', 'foundryLogoSize')) {
                 case 'hidden': {
                     rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStart);
                     break;
@@ -120,5 +120,5 @@ export default class MinimalUINavigation {
         });
 
     }
-    
+
 }

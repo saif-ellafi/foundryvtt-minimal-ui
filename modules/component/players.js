@@ -59,13 +59,13 @@ export default class MinimalUIPlayers {
 
     static initHooks() {
 
-        Hooks.on('renderPlayerList', async function() {
+        Hooks.on('renderPlayerList', async function () {
             const players = $("#players");
 
             players[0].val = "";
             const plSize = game.settings.get('minimal-ui', 'playerListSize');
 
-            switch(game.settings.get('minimal-ui', 'playerList')) {
+            switch (game.settings.get('minimal-ui', 'playerList')) {
                 case 'default': {
                     if (plSize === 'small') {
                         rootStyle.setProperty('--playerfsize', MinimalUIPlayers.cssPlayersSmallFontSize);
@@ -103,11 +103,11 @@ export default class MinimalUIPlayers {
                         players.css('border-image', 'none');
                         players.css('border-color', 'black');
                         players.hover(
-                            function() {
+                            function () {
                                 players.css('border-image', '');
                                 players.css('border-color', '');
                             },
-                            function() {
+                            function () {
                                 players.css('border-image', 'none');
                                 players.css('border-color', 'black');
                             }
@@ -122,7 +122,7 @@ export default class MinimalUIPlayers {
                     }
                     // Compatibility for Ping Logger module
                     if (game.modules.get('ping-logger')?.active) {
-                        if (game.settings.get('minimal-ui', 'playerShowPing') === "showPing"){
+                        if (game.settings.get('minimal-ui', 'playerShowPing') === "showPing") {
                             // Increase width and height to display ping
                             rootStyle.setProperty('--playerpingdisplay', 'initial');
                             rootStyle.setProperty('--playerslh', '20px');
@@ -131,13 +131,13 @@ export default class MinimalUIPlayers {
                             // Hide the ping, and only display on hover
                             rootStyle.setProperty('--playerpingdisplay', 'none');
                             players.hover(
-                                function() {
+                                function () {
                                     $(".pingLogger_pingSpan").show();
                                 },
                                 function () {
                                     $(".pingLogger_pingSpan").hide();
                                 }
-                            );	
+                            );
                         }
                     }
 
@@ -146,10 +146,10 @@ export default class MinimalUIPlayers {
                     rootStyle.setProperty('--playerbennies', 'none');
                     if (game.system.data.name === 'swade') {
                         players.hover(
-                            function() {
+                            function () {
                                 $(".bennies-count").show();
                             },
-                            function() {
+                            function () {
                                 $(".bennies-count").hide();
                             }
                         );

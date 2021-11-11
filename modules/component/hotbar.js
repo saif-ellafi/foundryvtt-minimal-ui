@@ -1,4 +1,4 @@
-import {rootStyle, debouncedReload} from '../util.js';
+import {debouncedReload, rootStyle} from '../util.js';
 import '../../styles/component/hotbar.css';
 
 export default class MinimalUIHotbar {
@@ -48,34 +48,34 @@ export default class MinimalUIHotbar {
 
     static positionHotbar() {
         let availableWidth = parseInt($("#board").css('width'));
-        switch(game.settings.get('minimal-ui', 'hotbarPosition')) {
+        switch (game.settings.get('minimal-ui', 'hotbarPosition')) {
             case 'default': {
                 rootStyle.setProperty('--hotbarxpos', '220px');
                 break;
             }
             case 'left': {
-                rootStyle.setProperty('--hotbarxpos', ((availableWidth/2.5)-(availableWidth/9)-(availableWidth/9))+'px');
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - (availableWidth / 9)) + 'px');
                 break;
             }
             case 'center': {
-                rootStyle.setProperty('--hotbarxpos', ((availableWidth/2.5)-(availableWidth/9))+'px');
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9)) + 'px');
                 break;
             }
             case 'right': {
-                rootStyle.setProperty('--hotbarxpos', ((availableWidth/2.5))+'px');
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5)) + 'px');
                 break;
             }
             case 'manual': {
-                rootStyle.setProperty('--hotbarxpos', game.settings.get('minimal-ui', 'hotbarPixelPosition')+'px');
+                rootStyle.setProperty('--hotbarxpos', game.settings.get('minimal-ui', 'hotbarPixelPosition') + 'px');
                 break;
             }
         }
     }
 
     static setHotbarSlots() {
-        switch(game.settings.get('minimal-ui', 'hotbarSize')) {
+        switch (game.settings.get('minimal-ui', 'hotbarSize')) {
             case "slots_3": {
-                $("#macro-list > li").each(function(i, slot) {
+                $("#macro-list > li").each(function (i, slot) {
                     if (i > 2) {
                         rootStyle.setProperty('--hotbarwf', '152px');
                         $(slot).remove();
@@ -84,7 +84,7 @@ export default class MinimalUIHotbar {
                 break;
             }
             case "slots_6": {
-                $("#macro-list > li").each(function(i, slot) {
+                $("#macro-list > li").each(function (i, slot) {
                     if (i > 5) {
                         rootStyle.setProperty('--hotbarwf', '302px');
                         $(slot).remove();
@@ -96,7 +96,7 @@ export default class MinimalUIHotbar {
     }
 
     static configureHotbar() {
-        switch(game.settings.get('minimal-ui', 'hotbar')) {
+        switch (game.settings.get('minimal-ui', 'hotbar')) {
             case 'collapsed': {
                 MinimalUIHotbar.collapseHotbar("bar-toggle");
                 if (game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active) {
@@ -117,8 +117,12 @@ export default class MinimalUIHotbar {
                     rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarAutoHideHeight);
                     rootStyle.setProperty('--hotbarshp', MinimalUIHotbar.cssHotbarAutoHideShadow);
                     $("#hotbar-directory-controls").append(MinimalUIHotbar.htmlHotbarLockButton);
-                    $("#macro-directory").click(function() {MinimalUIHotbar.lockHotbar(false)});
-                    $("#bar-lock").click(function() {MinimalUIHotbar.lockHotbar(true)});
+                    $("#macro-directory").click(function () {
+                        MinimalUIHotbar.lockHotbar(false)
+                    });
+                    $("#bar-lock").click(function () {
+                        MinimalUIHotbar.lockHotbar(true)
+                    });
                     if (MinimalUIHotbar.hotbarLocked) {
                         MinimalUIHotbar.lockHotbar(false);
                     }
@@ -128,7 +132,7 @@ export default class MinimalUIHotbar {
             }
         }
     }
-    
+
     static initSettings() {
 
         game.settings.register('minimal-ui', 'hotbar', {
@@ -157,7 +161,7 @@ export default class MinimalUIHotbar {
             choices: {
                 "slots_3": game.i18n.localize("MinimalUI.HotbarSlots3"),
                 "slots_6": game.i18n.localize("MinimalUI.HotbarSlots6"),
-                "slots_10":game.i18n.localize("MinimalUI.HotbarSlots10")
+                "slots_10": game.i18n.localize("MinimalUI.HotbarSlots10")
             },
             default: "slots_10",
             onChange: debouncedReload
@@ -192,11 +196,11 @@ export default class MinimalUIHotbar {
     }
 
     static initHooks() {
-        Hooks.on('canvasPan', function() {
+        Hooks.on('canvasPan', function () {
             MinimalUIHotbar.positionHotbar();
         });
 
-        Hooks.once('ready', async function() {
+        Hooks.once('ready', async function () {
 
             MinimalUIHotbar.positionHotbar();
 
@@ -211,7 +215,7 @@ export default class MinimalUIHotbar {
 
         });
 
-        Hooks.on('renderHotbar', async function() {
+        Hooks.on('renderHotbar', async function () {
 
             MinimalUIHotbar.configureHotbar();
 

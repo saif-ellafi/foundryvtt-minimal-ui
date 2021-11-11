@@ -20,8 +20,8 @@ export default class MinimalUISidebar {
     }
 
     static initHooks() {
-        Hooks.once('renderChatLog', async function() {
-            switch(game.settings.get('minimal-ui', 'rightcontrolsBehaviour')) {
+        Hooks.once('renderChatLog', async function () {
+            switch (game.settings.get('minimal-ui', 'rightcontrolsBehaviour')) {
                 case 'shown': {
                     rootStyle.setProperty('--controlsvis', 'visible');
                     break;

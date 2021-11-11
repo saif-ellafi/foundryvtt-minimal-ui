@@ -1,4 +1,4 @@
-import {rootStyle, debouncedReload} from '../util.js';
+import {debouncedReload, rootStyle} from '../util.js';
 import '../../styles/component/controls.css';
 
 export default class MinimalUIControls {
@@ -85,21 +85,21 @@ export default class MinimalUIControls {
 
     static positionSidebar() {
         let availableHeight = parseInt($("#board").css('height'));
-        switch(true) {
+        switch (true) {
             case (game.settings.get('minimal-ui', 'controlsPosition') === 'top' || game.settings.get('minimal-ui', 'controlsStyle') === 'column'): {
-                rootStyle.setProperty('--controlsypos', ((availableHeight/3)-(availableHeight/9)-(availableHeight/9))+'px');
+                rootStyle.setProperty('--controlsypos', ((availableHeight / 3) - (availableHeight / 9) - (availableHeight / 9)) + 'px');
                 break;
             }
             case (game.settings.get('minimal-ui', 'controlsPosition') === 'center'): {
-                rootStyle.setProperty('--controlsypos', ((availableHeight/3)-(availableHeight/9))+'px');
+                rootStyle.setProperty('--controlsypos', ((availableHeight / 3) - (availableHeight / 9)) + 'px');
                 break;
             }
-            case (game.settings.get('minimal-ui', 'controlsPosition') ===  'lower'): {
-                rootStyle.setProperty('--controlsypos', ((availableHeight/3))+'px');
+            case (game.settings.get('minimal-ui', 'controlsPosition') === 'lower'): {
+                rootStyle.setProperty('--controlsypos', ((availableHeight / 3)) + 'px');
                 break;
             }
-            case (game.settings.get('minimal-ui', 'controlsPosition') ===  'bottom'): {
-                rootStyle.setProperty('--controlsypos', ((availableHeight/3)+(availableHeight/9))+'px');
+            case (game.settings.get('minimal-ui', 'controlsPosition') === 'bottom'): {
+                rootStyle.setProperty('--controlsypos', ((availableHeight / 3) + (availableHeight / 9)) + 'px');
                 break;
             }
         }
@@ -207,17 +207,17 @@ export default class MinimalUIControls {
     }
 
     static initHooks() {
-        Hooks.once('renderSceneControls', async function() {
+        Hooks.once('renderSceneControls', async function () {
             MinimalUIControls.sizeControls();
         })
 
-        Hooks.on('canvasPan', function() {
+        Hooks.on('canvasPan', function () {
             MinimalUIControls.positionSidebar();
         });
 
-        Hooks.once('renderSceneControls', async function() {
+        Hooks.once('renderSceneControls', async function () {
 
-            switch(game.settings.get('minimal-ui', 'controlsStyle')) {
+            switch (game.settings.get('minimal-ui', 'controlsStyle')) {
                 case 'default': {
                     rootStyle.setProperty('--controlssubstyle', 'block');
                     break;
@@ -230,7 +230,7 @@ export default class MinimalUIControls {
 
         });
 
-        Hooks.on('renderSceneControls', async function() {
+        Hooks.on('renderSceneControls', async function () {
 
             const controls = $("#controls");
             const controlSettings = game.settings.get('minimal-ui', 'controlsBehaviour');
@@ -278,13 +278,13 @@ export default class MinimalUIControls {
             // Give a little time for other modules to add their controls first, and reapply changes
             await new Promise(waitABit => setTimeout(waitABit, 1));
 
-            $("#controls > li.scene-control").on('click', function() {
+            $("#controls > li.scene-control").on('click', function () {
                 MinimalUIControls.lockControls(false);
-                $("#controls > li.scene-control.active > ol > li").on('click', function() {
+                $("#controls > li.scene-control.active > ol > li").on('click', function () {
                     MinimalUIControls.lockControls(false)
                 });
             });
-            $("#controls > li.scene-control.active > ol > li").on('click', function() {
+            $("#controls > li.scene-control.active > ol > li").on('click', function () {
                 MinimalUIControls.lockControls(false);
             });
 
@@ -298,7 +298,7 @@ export default class MinimalUIControls {
 
             // Support for Simple Dice Roller
             if (game.modules.has('simple-dice-roller') && game.modules.get('simple-dice-roller').active) {
-                $("#controls > li.scene-control.sdr-scene-control").click(function() {
+                $("#controls > li.scene-control.sdr-scene-control").click(function () {
                     let olControl = $("#controls > li.scene-control.sdr-scene-control.active > ol")[0];
                     if (olControl) {
                         olControl.style.setProperty('display', 'inherit');

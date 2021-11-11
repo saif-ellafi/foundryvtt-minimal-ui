@@ -41,36 +41,37 @@
 
 /** COMPATIBILITY: Monks Scene Navigation */
 
-#navigation .monks-scene-navigation{
+#navigation .monks-scene-navigation {
     flex: 0 0 var(--navilh);
     height: var(--navilh);
 }
 
-#navigation .monks-scene-navigation .scene-list > li.nav-item{
+#navigation .monks-scene-navigation .scene-list > li.nav-item {
     height: var(--navilh);
 }
 
-#navigation .monks-scene-navigation .scene-list > li.nav-item a{
+#navigation .monks-scene-navigation .scene-list > li.nav-item a {
     line-height: var(--navilh);
     height: var(--navilh);
     font-size: var(--navifs);
-    padding:0 4px;
+    padding: 0 4px;
 }
 
-#navigation .monks-scene-navigation .scene-list > li.nav-item ul.scene-players{
+#navigation .monks-scene-navigation .scene-list > li.nav-item ul.scene-players {
     top: var(--navilisttop);
 }
 
-#navigation .monks-scene-navigation .scene-list > li.nav-item.folder a{
-    padding-top:0;
-    border-top:1px;
+#navigation .monks-scene-navigation .scene-list > li.nav-item.folder a {
+    padding-top: 0;
+    border-top: 1px;
 }
 
-#navigation .monks-scene-navigation .scene-list > li.nav-item.folder.expanded a{
-    height:calc(var(--navilh) + 6px);
+#navigation .monks-scene-navigation .scene-list > li.nav-item.folder.expanded a {
+    height: calc(var(--navilh) + 2px);
+    margin-top: 4px;
 }
 
-#navigation .monks-scene-navigation .scene-list > li.nav-item.folder-header{
+#navigation .monks-scene-navigation .scene-list > li.nav-item.folder-header {
     line-height: var(--navilh);
 }
 

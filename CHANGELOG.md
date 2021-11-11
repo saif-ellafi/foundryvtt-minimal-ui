@@ -1,3 +1,7 @@
+### 1.1.1
+* Localization: Thank you @Grayhead for adding German language to Window Controls!
+* Compatibility: Thanks @ironmonk88 for submitting updates for compatibility with their modules
+
 ### 1.1.0
 * Enhancement: Added transparency (Configurable) until hover to various elements (Let me know your feedback!)
 * Enhancement: Raised auto-hide macro bar slightly enough to make it more convenient

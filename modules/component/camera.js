@@ -18,10 +18,10 @@ export default class MinimalUICamera {
     }
 
     static initHooks() {
-        Hooks.on('renderCameraViews', async function() {
-            switch(game.settings.get('minimal-ui', 'hidePlayerCameras')) {
+        Hooks.on('renderCameraViews', async function () {
+            switch (game.settings.get('minimal-ui', 'hidePlayerCameras')) {
                 case 'hidden': {
-                    $("#camera-views > div").each(function(i, box) {
+                    $("#camera-views > div").each(function (i, box) {
                         if (!game.users.get($(box).attr("data-user")).isGM) {
                             $(box).remove();
                         }

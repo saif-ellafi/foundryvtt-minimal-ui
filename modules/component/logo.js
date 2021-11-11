@@ -74,7 +74,7 @@ export default class MinimalUILogo {
 
         game.settings.register('minimal-ui', 'foundryLogoBehaviour', {
             name: game.i18n.localize("MinimalUI.LogoBehaviourName"),
-            hint:  game.i18n.localize("MinimalUI.LogoBehaviourHint"),
+            hint: game.i18n.localize("MinimalUI.LogoBehaviourHint"),
             scope: 'world',
             config: true,
             type: String,
@@ -100,11 +100,11 @@ export default class MinimalUILogo {
 
     static initHooks() {
 
-        Hooks.once('renderSceneNavigation', async function() {
+        Hooks.once('renderSceneNavigation', async function () {
             MinimalUILogo.updateImageSrc(game.settings.get('minimal-ui', 'foundryLogoImage'));
         });
 
-        Hooks.once('ready', async function() {
+        Hooks.once('ready', async function () {
 
             if (game.settings.get('minimal-ui', 'foundryLogoSize') !== 'hidden') {
                 MinimalUILogo.hideAll();
