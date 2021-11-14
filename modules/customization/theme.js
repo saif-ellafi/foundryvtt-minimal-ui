@@ -64,7 +64,7 @@ export default class MinimalUITheme {
             hint: game.i18n.localize("MinimalUI.TransparencyPercentageHint"),
             scope: "world",
             config: true,
-            default: 25,
+            default: 75,
             type: Number,
             onChange: _ => {
                 const transparency = game.settings.get('minimal-ui', 'transparencyPercentage');
