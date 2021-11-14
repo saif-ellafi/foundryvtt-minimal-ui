@@ -69,7 +69,7 @@ export default class MinimalUITheme {
             onChange: _ => {
                 const transparency = game.settings.get('minimal-ui', 'transparencyPercentage');
                 if (transparency >= 0 && transparency <= 100) {
-                    rootStyle.setProperty('--transparency', transparency.toString() + '%');
+                    rootStyle.setProperty('--opacity', transparency.toString() + '%');
                 }
             }
         });
@@ -82,7 +82,7 @@ export default class MinimalUITheme {
             rootStyle.setProperty('--shadowstrength', game.settings.get('minimal-ui', 'shadowStrength') + 'px');
             const transparency = game.settings.get('minimal-ui', 'transparencyPercentage');
             if (transparency >= 0 && transparency <= 100) {
-                rootStyle.setProperty('--transparency', transparency.toString() + '%');
+                rootStyle.setProperty('--opacity', transparency.toString() + '%');
             }
         })
     }
