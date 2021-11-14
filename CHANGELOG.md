@@ -1,3 +1,6 @@
+### 1.1.4
+* Bugfix: Default setting for opacity was not correctly set (5am coding is not healthy)
+
 ### 1.1.3
 * Bugfix: Fixed a mistake in 1.1.2 caused opacity setting to be ignored
 
