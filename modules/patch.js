@@ -7,7 +7,10 @@ export default class MinimalUIPatch {
     static initHooks() {
         Hooks.on('changeSidebarTab', function (app) {
             const target = Object.values(ui.windows).find(a => a.tabName === app.tabName);
-            if (target && target._minimized) target.maximize();
+            if (target && target._minimized)
+                target.maximize();
+            else if (target)
+                target.bringToTop();
         });
 
         Hooks.once('ready', async function () {

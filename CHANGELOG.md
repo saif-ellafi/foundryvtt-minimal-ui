@@ -1,3 +1,6 @@
+### 1.1.5
+* Enhancement: Patched foundry so already opened windows are brought to the front if they are behind other windows when reopened
+
 ### 1.1.4
 * Bugfix: Default setting for opacity was not correctly set (5am coding is not healthy)
 
