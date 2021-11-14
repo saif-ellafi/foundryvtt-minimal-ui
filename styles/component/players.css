@@ -25,7 +25,7 @@
     font-size: var(--playerfsize);
     visibility: var(--playervis);
     background: #0000003b;
-    opacity: var(--transparency);
+    opacity: var(--opacity);
 }
 
 #players ol .player-name {
@@ -68,7 +68,7 @@
 }
 
 #destiny-tracker {
-    opacity: var(--transparency);
+    opacity: var(--opacity);
 }
 
 #destiny-tracker:hover {

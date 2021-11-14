@@ -22,7 +22,7 @@
     bottom: var(--hotbarypos);
     visibility: var(--hotbarvis);
     transition: 0.05s ease-out 0.5s;
-    opacity: var(--transparency);
+    opacity: var(--opacity);
 }
 
 #hotbar .bar-controls {

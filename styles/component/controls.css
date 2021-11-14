@@ -20,7 +20,7 @@
     transition: 0.5s;
     background: #0000003b;
     padding: 6px 2px 6px 6px;
-    opacity: var(--transparency);
+    opacity: var(--opacity);
 }
 
 #controls:hover {

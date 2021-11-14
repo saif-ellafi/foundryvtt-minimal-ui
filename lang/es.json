@@ -87,7 +87,7 @@
   "MinimalUI.ShadowStrengthName": "Fuerza sombreado",
   "MinimalUI.ShadowStrengthHint": "Grado de sombreado y oscuridad de los bordes. Por defecto: 5",
   "MinimalUI.TransparencyPercentageName": "Porcentaje de Transparencia",
-  "MinimalUI.TransparencyPercentageHint": "Grado de transparencia de los components previo al paso del raton? Default: 25",
+  "MinimalUI.TransparencyPercentageHint": "Grado de transparencia de los components previo al paso del raton? Por defecto: 75",
   "MinimalUI.ColorPicker": "Escoger color"
 
 }

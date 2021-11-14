@@ -10,7 +10,7 @@
 #navigation {
     left: var(--navixpos);
     visibility: var(--navivis);
-    opacity: var(--transparency);
+    opacity: var(--opacity);
     transition: 0.05s ease-out 0.5s;
 }
 

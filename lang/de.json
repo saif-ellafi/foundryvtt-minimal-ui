@@ -87,7 +87,7 @@
   "MinimalUI.ShadowStrengthName": "Schattenstärke",
   "MinimalUI.ShadowStrengthHint": "Wie düster und schattig sollen die Ränder sein? Standard: 5",
   "MinimalUI.TransparencyPercentageName": "Transparenz ohne Überstreichung",
-  "MinimalUI.TransparencyPercentageHint": "Wie transparent sollen die Steuerelemente sein, bis sie mit der Maus überstrichen werden? Standard: 25",
+  "MinimalUI.TransparencyPercentageHint": "Wie transparent sollen die Steuerelemente sein, bis sie mit der Maus überstrichen werden? Standard: 75",
   "MinimalUI.ColorPicker": "Farbwahl"
 
 }

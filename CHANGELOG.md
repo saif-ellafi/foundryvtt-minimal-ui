@@ -1,3 +1,7 @@
+### 1.1.2
+* Localization: Fixed some typos and corrections in settings
+* Bugfix: Switched default opacity from 25% to 75%
+
 ### 1.1.1
 * Localization: Thank you @Grayhead for adding German language to Window Controls!
 * Compatibility: Thanks @ironmonk88 for submitting updates for compatibility with their modules

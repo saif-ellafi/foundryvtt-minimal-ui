@@ -3,7 +3,7 @@
 }
 
 #sidebar.collapsed {
-    opacity: var(--transparency);
+    opacity: var(--opacity);
     transition: 0.05s ease-out 0.5s;
 }
 
