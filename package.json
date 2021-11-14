@@ -4,7 +4,7 @@
   "description": "Minimal UI allows customizing Foundry interface, by hiding, collapsing or resizing specific parts.",
   "main": "minimalui.js",
   "scripts": {
-    "copy": "cp ./module.json dist/ && cp ./THANKS.txt dist/ && cp ./LICENSE.md.txt dist/ && cp ./README.md dist/ && cp -r ./lang dist/",
+    "copy": "cp ./module.json dist/ && cp ./THANKS.txt dist/ && cp ./LICENSE.md dist/ && cp ./README.md dist/ && cp -r ./lang dist/",
     "copyWin": "copy module.json dist && copy THANKS.txt dist && copy LICENSE.md dist && copy README.md dist && xcopy /Y /I lang dist\\lang",
     "build": "rollup --config ./rollup.config.js && npm run copy",
     "buildWin": "rollup --config ./rollup.config.js && npm run copyWin",

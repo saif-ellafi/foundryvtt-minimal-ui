@@ -62,7 +62,7 @@ Note: Since Foundry 0.8.x Scene Navigation Preview is on a separate module, look
 These are bugs in FoundryVTT that are not currently addressed, Minimal UI fixes them because they are more obvious here
 * When clicking on a sidebar menu that was opened but then closed, clicking on it will open it again instead of doing nothing
 * If a window is minimized, when reopened, it would be maximized instead of doing nothing
-* If a window is open, but behind other windows, it would be brought ot the front when reopened, instead doing of nothing
+* If a window is open, but behind other windows, it would be brought to the front when reopened, instead doing of nothing
 
 ## By JeansenVaars
 ![JVLogo](logo-small-black.png)
