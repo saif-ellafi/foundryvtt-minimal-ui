@@ -1,3 +1,6 @@
+### 1.1.3
+* Bugfix: Fixed a mistake in 1.1.2 caused opacity setting to be ignored
+
 ### 1.1.2
 * Localization: Fixed some typos and corrections in settings
 * Bugfix: Switched default opacity from 25% to 75%
