@@ -7,11 +7,8 @@ export default class MinimalUINavigation {
     static cssSceneNavSmallLogoStart = '75px';
     static cssSceneNavBullseyeStart = '125px';
 
-    static collapseNavigation() {
-        let target = document.getElementById("nav-toggle");
-        if (target) {
-            target.click();
-        }
+    static async collapseNavigation() {
+        await ui.nav.collapse();
     }
 
     static initSettings() {
@@ -58,11 +55,17 @@ export default class MinimalUINavigation {
                 }
             }
 
+            // Compatibility Workaround for bullseye module
+            if (game.modules.has('bullseye') && game.modules.get('bullseye').active) {
+                rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavBullseyeStart);
+            }
+        });
+
+        Hooks.once('renderSceneNavigation', async function () {
+
             switch (game.settings.get('minimal-ui', 'sceneNavigation')) {
                 case 'collapsed': {
-                    await new Promise(waitABit => setTimeout(waitABit, 10));
                     MinimalUINavigation.collapseNavigation();
-                    await new Promise(waitABit => setTimeout(waitABit, 250));
                     rootStyle.setProperty('--navivis', 'visible');
                     break;
                 }
@@ -71,14 +74,6 @@ export default class MinimalUINavigation {
                     break;
                 }
             }
-
-            // Compatibility Workaround for bullseye module
-            if (game.modules.has('bullseye') && game.modules.get('bullseye').active) {
-                rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavBullseyeStart);
-            }
-        });
-
-        Hooks.once('renderSceneNavigation', async function () {
 
             switch (game.settings.get('minimal-ui', 'sceneNavigationSize')) {
                 case 'standard': {

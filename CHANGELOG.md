@@ -1,3 +1,10 @@
+### 1.1.7
+* Bugfix: Fixed Macro Hotbar forgetting position after setting change broken in 1.1.6
+
+### 1.1.6
+* Bugfix: Made first time launch transitions smoother and less bumpy
+* Bugfix: Minor event order corrections and optimizations
+
 ### 1.1.5
 * Enhancement: Patched foundry so already opened windows are brought to the front if they are behind other windows when reopened
 

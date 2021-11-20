@@ -24,11 +24,8 @@ export default class MinimalUIHotbar {
         </a>
         `
 
-    static collapseHotbar(toggleId) {
-        let target = document.getElementById(toggleId);
-        if (target) {
-            target.click();
-        }
+    static async collapseHotbar(toggleId) {
+        await ui.hotbar.collapse();
     }
 
     static lockHotbar(unlock) {
@@ -47,7 +44,7 @@ export default class MinimalUIHotbar {
     }
 
     static positionHotbar() {
-        let availableWidth = parseInt($("#board").css('width'));
+        let availableWidth = canvas.app.screen.width;
         switch (game.settings.get('minimal-ui', 'hotbarPosition')) {
             case 'default': {
                 rootStyle.setProperty('--hotbarxpos', '220px');
@@ -142,7 +139,7 @@ export default class MinimalUIHotbar {
             config: true,
             type: String,
             choices: {
-                "shown": game.i18n.localize("MinimalUI.SettingsStartVisible"),
+                "shown": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
                 "autohide": game.i18n.localize("MinimalUI.SettingsAutoHide"),
                 "collapsed": game.i18n.localize("MinimalUI.SettingsCollapsed"),
                 "onlygm": game.i18n.localize("MinimalUI.SettingsOnlyGM"),
@@ -196,14 +193,9 @@ export default class MinimalUIHotbar {
     }
 
     static initHooks() {
-        Hooks.on('canvasPan', function () {
+        Hooks.on('ready', async function() {
+            ui.hotbar.element.hide();
             MinimalUIHotbar.positionHotbar();
-        });
-
-        Hooks.once('ready', async function () {
-
-            MinimalUIHotbar.positionHotbar();
-
             if (game.settings.get('minimal-ui', 'hotbar') !== 'hidden') {
                 const gmCondition = game.settings.get('minimal-ui', 'hotbar') === 'onlygm';
                 if (gmCondition) {
@@ -212,16 +204,16 @@ export default class MinimalUIHotbar {
                 } else
                     rootStyle.setProperty('--hotbarvis', 'visible');
             }
-
+            // Give time to auto-hide initial animations to finish
+            if (game.settings.get('minimal-ui', 'playerList') === 'autohide')
+                await new Promise(waitABit => setTimeout(waitABit, 50));
+            ui.hotbar.element.show();
         });
 
-        Hooks.on('renderHotbar', async function () {
-
+        Hooks.on('renderHotbar', function () {
             MinimalUIHotbar.configureHotbar();
-
             MinimalUIHotbar.setHotbarSlots();
-
-        })
+        });
 
     }
 

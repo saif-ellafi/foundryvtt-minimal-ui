@@ -207,15 +207,12 @@ export default class MinimalUIControls {
     }
 
     static initHooks() {
-        Hooks.once('renderSceneControls', async function () {
-            MinimalUIControls.sizeControls();
+        Hooks.once('ready', function () {
+            MinimalUIControls.positionSidebar();
         })
 
-        Hooks.on('canvasPan', function () {
-            MinimalUIControls.positionSidebar();
-        });
-
-        Hooks.once('renderSceneControls', async function () {
+        Hooks.once('renderSceneControls', function () {
+            MinimalUIControls.sizeControls();
 
             switch (game.settings.get('minimal-ui', 'controlsStyle')) {
                 case 'default': {
