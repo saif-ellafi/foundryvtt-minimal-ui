@@ -36,14 +36,24 @@ export default class MinimalUIControls {
     }
 
     static revealControlTools() {
+        const controlSettings = game.settings.get('minimal-ui', 'controlsBehaviour');
         if (game.settings.get('minimal-ui', 'controlsSize') === 'small') {
-            rootStyle.setProperty('--controlssubleft', MinimalUIControls.cssControlsSubMenuSmall);
+            if (controlSettings === 'partial')
+                rootStyle.setProperty('--controlssubleft', MinimalUIControls.cssControlsHiddenPositionSmall);
+            else
+                rootStyle.setProperty('--controlssubleft', MinimalUIControls.cssControlsSubMenuSmall);
+            rootStyle.setProperty('--controlssubsubleft', MinimalUIControls.cssControlsSubMenuSmall);
         } else {
-            rootStyle.setProperty('--controlssubleft', MinimalUIControls.cssControlsSubMenuStandard);
+            if (controlSettings === 'partial')
+                rootStyle.setProperty('--controlssubleft', MinimalUIControls.cssControlsHiddenPositionStandard);
+            else
+                rootStyle.setProperty('--controlssubleft', MinimalUIControls.cssControlsSubMenuStandard);
+            rootStyle.setProperty('--controlssubsubleft', MinimalUIControls.cssControlsSubMenuStandard);
         }
         // Special compatibility DnD-UI
         if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
             rootStyle.setProperty('--controlssubleft', MinimalUIControls.cssControlsSubMenuDndUi);
+            rootStyle.setProperty('--controlssubsubleft', MinimalUIControls.cssControlsSubMenuDndUi);
         }
         // ---
     }
@@ -60,8 +70,10 @@ export default class MinimalUIControls {
     static hideControlTools() {
         if (game.settings.get('minimal-ui', 'controlsSize') === 'small') {
             rootStyle.setProperty('--controlssubleft', MinimalUIControls.cssControlsHiddenPositionSmall);
+            rootStyle.setProperty('--controlssubsubleft', MinimalUIControls.cssControlsHiddenPositionSmall);
         } else {
             rootStyle.setProperty('--controlssubleft', MinimalUIControls.cssControlsHiddenPositionStandard);
+            rootStyle.setProperty('--controlssubsubleft', MinimalUIControls.cssControlsHiddenPositionStandard);
         }
     }
 
@@ -154,6 +166,7 @@ export default class MinimalUIControls {
             type: String,
             choices: {
                 "always": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
+                "partial": game.i18n.localize("MinimalUI.SettingsPartiallyVisible"),
                 "autohide": game.i18n.localize("MinimalUI.SettingsAutoHide")
             },
             default: "autohide",

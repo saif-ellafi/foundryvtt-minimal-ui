@@ -4,6 +4,7 @@
 
   "MinimalUI.SettingsAlwaysVisible": "Always Visible",
   "MinimalUI.SettingsStartVisible": "Start Visible",
+  "MinimalUI.SettingsPartiallyVisible": "Partially Visible",
   "MinimalUI.SettingsAutoHide": "Auto-Hide",
   "MinimalUI.SettingsCollapsed": "Start Collapsed",
   "MinimalUI.SettingsOnlyGM": "Visible to GM Only",

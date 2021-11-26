@@ -44,8 +44,8 @@ Note: Since Foundry 0.8.x Scene Navigation Preview is on a separate module, look
 * Macro Bar may be repositioned along the X-Axis
 
 ## Left Side Control Buttons
+* May be shown normally, partially visible or auto-hide mode on mouse over
 * Left controls may be collapsed into a single column (or not)
-* May be shown normally or auto-hide mode on mouse over 
 * Left controls may be standard or small size
 * Left controls may be repositioned along the Y-Axis
 

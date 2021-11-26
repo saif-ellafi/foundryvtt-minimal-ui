@@ -1,3 +1,6 @@
+### 1.1.8
+* Enhancement: New Left Controls Behavior - Partially Visible, hides the second column of left side buttons
+
 ### 1.1.7
 * Bugfix: Fixed Macro Hotbar forgetting position after setting change broken in 1.1.6
 

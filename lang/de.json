@@ -4,6 +4,7 @@
 
   "MinimalUI.SettingsAlwaysVisible": "Immer sichtbar",
   "MinimalUI.SettingsStartVisible": "Starte sichtbar",
+  "MinimalUI.SettingsPartiallyVisible": "Teilweise sichtbar",
   "MinimalUI.SettingsAutoHide": "Automatisch verstecken",
   "MinimalUI.SettingsCollapsed": "Starte eingeklappt",
   "MinimalUI.SettingsOnlyGM": "Nur für die SL sichtbar",

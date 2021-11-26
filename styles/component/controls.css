@@ -8,6 +8,7 @@
     --controlslh: 30px;
     --controlsfs: 24px;
     --controlssubleft: 60px;
+    --controlssubsubleft: 60px;
     --controlssubstyle: contents;
 }
 
@@ -83,5 +84,6 @@
 }
 
 #controls:hover .active .control-tools {
+    left: var(--controlssubsubleft);
     display: var(--controlssubstyle);
 }

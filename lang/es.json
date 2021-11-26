@@ -4,6 +4,7 @@
 
   "MinimalUI.SettingsAlwaysVisible": "Siempre visible",
   "MinimalUI.SettingsStartVisible": "Iniciar Visible",
+  "MinimalUI.SettingsPartiallyVisible": "Parcialmente Visible",
   "MinimalUI.SettingsAutoHide": "Auto-ocultar",
   "MinimalUI.SettingsCollapsed": "Iniciar plegado",
   "MinimalUI.SettingsOnlyGM": "Visible solo al DM",
