@@ -3,7 +3,7 @@ import '../../styles/component/navigation.css';
 
 export default class MinimalUINavigation {
 
-    static cssSceneNavNoLogoStart = '5px';
+    static cssSceneNavNoLogoStart = '20px';
     static cssSceneNavSmallLogoStart = '75px';
     static cssSceneNavBullseyeStart = '125px';
 

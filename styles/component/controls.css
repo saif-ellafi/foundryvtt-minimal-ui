@@ -1,69 +1,17 @@
 :root {
-    --controlsvis: hidden;
-    --controlsxpos: 0px;
-    --controlsypos: 20vmin;
-    --controlspad: 7px;
     --controlsw: 36px;
     --controlsh: 30px;
     --controlslh: 30px;
     --controlsfs: 24px;
-    --controlssubleft: 60px;
-    --controlssubsubleft: 60px;
-    --controlssubstyle: contents;
+    --controlssubmargin: 0;
+    --controlssubop: 100%;
 }
 
-#controls {
-    left: var(--controlsxpos);
-    top: 10px;
-    margin-top: var(--controlsypos);
-    border-right: 1px solid var(--bordercolor);
-    box-shadow: 3px 0 var(--shadowstrength) 0 var(--shadowcolor);
-    transition: 0.5s;
-    background: #0000003b;
-    padding: 6px 2px 6px 6px;
-    opacity: var(--opacity);
+#controls ol.main-controls {
+    overflow: visible;
 }
 
-#controls:hover {
-    transition: 0.5s;
-    opacity: 100%;
-}
-
-#controls .control-tool.toggle {
-    background: var(--shadowcolor);
-}
-
-#controls .control-tool.toggle:hover {
-    background: var(--bordercolor);
-    box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
-    border: 1px solid transparent;
-}
-
-#controls .control-tool.toggle.active {
-    background: var(--bordercolor);
-    box-shadow: 0 0 var(--shadowstrength) var(--bordercolor);
-    border: 1px solid transparent;
-}
-
-#controls .scene-control.active, #controls .scene-control:hover {
-    border: 1px solid transparent;
-    color: orange;
-    box-shadow: 0 0 var(--shadowstrength) 1px var(--shadowcolor);
-    padding-right: 1px;
-}
-
-#controls .control-tool.active, #controls .control-tool {
-    border: 0 solid transparent;
-    margin: 6px 0;
-}
-
-#controls .control-tool.active, #controls .control-tool:hover {
-    border: 0 solid transparent;
-    color: yellow;
-    box-shadow: 0 0 var(--shadowstrength) 1px var(--shadowcolor);
-}
-
-#controls > li:nth-child(n), #controls > li.scene-control > ol > li.control-tool {
+#controls ol .scene-control, #controls ol .control-tool {
     width: var(--controlsw);
     height: var(--controlsh);
     line-height: var(--controlslh);
@@ -71,19 +19,18 @@
     border: 1px solid transparent;
 }
 
-
-#controls .active .control-tools {
-    display: var(--controlssubstyle);
-    left: var(--controlssubleft);
-    transition: 0.5s;
-    background: #00000059;
-    box-shadow: 1px 0 var(--shadowstrength) 0 var(--shadowcolor);
-    border-radius: 3px;
-    padding: 5px;
-    height: auto;
+#controls ol .scene-control.active, #controls ol .control-tool.active, #controls ol .scene-control:hover, #controls ol .control-tool:hover {
+    border: 1px solid var(--bordercolor);
+    box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
 }
 
-#controls:hover .active .control-tools {
-    left: var(--controlssubsubleft);
-    display: var(--controlssubstyle);
+#controls ol.sub-controls.active {
+    margin-left: var(--controlssubmargin);
+    transition: 2s;
+    opacity: var(--controlssubop);
+}
+
+#controls:hover ol.sub-controls.active {
+    transition: 0.5s;
+    opacity: 100%;
 }

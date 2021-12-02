@@ -12,6 +12,7 @@
     visibility: var(--navivis);
     opacity: var(--opacity);
     transition: 0.05s ease-out 0.5s;
+    position: absolute;
 }
 
 #navigation:hover {

@@ -69,18 +69,18 @@ export default class MinimalUIPlayers {
                 case 'default': {
                     if (plSize === 'small') {
                         rootStyle.setProperty('--playerfsize', MinimalUIPlayers.cssPlayersSmallFontSize);
-                        rootStyle.setProperty('--playerwidth', MinimalUIPlayers.cssPlayersSmallWidth);
+                        rootStyle.setProperty('--players-width', MinimalUIPlayers.cssPlayersSmallWidth);
                         rootStyle.setProperty('--playerwidthhv', MinimalUIPlayers.cssPlayersSmallWidth);
                     } else {
                         rootStyle.setProperty('--playerfsize', MinimalUIPlayers.cssPlayersStandardFontSize);
                         rootStyle.setProperty('--playerfsizehv', MinimalUIPlayers.cssPlayersStandardFontSize);
-                        rootStyle.setProperty('--playerwidth', MinimalUIPlayers.cssPlayersStandardWidth);
+                        rootStyle.setProperty('--players-width', MinimalUIPlayers.cssPlayersStandardWidth);
                         rootStyle.setProperty('--playerwidthhv', MinimalUIPlayers.cssPlayersStandardWidth);
                     }
                     rootStyle.setProperty('--playervis', 'visible');
                     // DnD UI Special Compatibility
                     if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
-                        rootStyle.setProperty('--playerwidth', '200px');
+                        rootStyle.setProperty('--players-width', '200px');
                     }
                     // SWADE Special Compatibility
                     rootStyle.setProperty('--playerbennies', 'inline');
@@ -141,7 +141,7 @@ export default class MinimalUIPlayers {
                         }
                     }
 
-                    rootStyle.setProperty('--playerwidth', `${playerWidthPixel}px`);
+                    rootStyle.setProperty('--players-width', `${playerWidthPixel}px`);
                     // SWADE Special Compatibility
                     rootStyle.setProperty('--playerbennies', 'none');
                     if (game.system.data.name === 'swade') {

@@ -2,7 +2,6 @@
     --playervis: hidden;
     --playerfsize: 0px;
     --playerfsizehv: 12px;
-    --playerwidth: 25px;
     --playerwidthhv: 150px;
     --playerslh: 20px;
     --playerbennies: none;
@@ -18,14 +17,14 @@
 }
 
 #players {
-    width: auto;
-    min-width: var(--playerwidth);
-    left: 5px;
     bottom: var(--playerbot);
     font-size: var(--playerfsize);
     visibility: var(--playervis);
     background: #0000003b;
     opacity: var(--opacity);
+    box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
+    position: absolute;
+    border: 1px solid var(--bordercolor);
 }
 
 #players ol .player-name {

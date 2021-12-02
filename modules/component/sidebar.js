@@ -21,6 +21,9 @@ export default class MinimalUISidebar {
 
     static initHooks() {
         Hooks.once('renderChatLog', async function () {
+            const sidebarElem = $("#sidebar-tabs");
+            const newHeight = parseInt(sidebarElem.css('--sidebar-tab-height')) / 1.25;
+            sidebarElem.css('--sidebar-tab-height', newHeight + 'px');
             switch (game.settings.get('minimal-ui', 'rightcontrolsBehaviour')) {
                 case 'shown': {
                     rootStyle.setProperty('--controlsvis', 'visible');
