@@ -42,7 +42,6 @@ export default class MinimalUIHotbar {
     }
 
     static positionHotbar() {
-        console.log(ui.sidebar._collapsed);
         let availableWidth = canvas.app.screen.width + (ui.sidebar._collapsed ? (ui.sidebar.position.width/2) : 0);
         switch (game.settings.get('minimal-ui', 'hotbarPosition')) {
             case 'default': {
