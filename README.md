@@ -1,3 +1,5 @@
+![GitHub all releases](https://img.shields.io/github/downloads/saif-ellafi/foundryvtt-minimal-ui/total?logo=GitHub)
+
 # Minimal UI for FoundryVTT
 
 Extremely Configurable UI module, allows the user to hide, collapse or auto-hide components separately.
