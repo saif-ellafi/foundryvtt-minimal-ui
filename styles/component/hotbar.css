@@ -7,7 +7,6 @@
     --hotbarhv: 10px;
     --hotbarmg: 0px;
     --hotbarhh: 100%;
-    --hotbarwf: 502px;
     --hotbarshp: 0px;
 }
 
@@ -21,8 +20,9 @@
     left: var(--hotbarxpos);
     bottom: var(--hotbarypos);
     visibility: var(--hotbarvis);
-    transition: 0.05s ease-out 0.5s;
+    transition: 0.5s ease-out 0.5s;
     opacity: var(--opacity);
+    position: absolute;
 }
 
 #hotbar .bar-controls {
@@ -52,7 +52,6 @@
 #hotbar #macro-list {
     border-top: 1px solid var(--bordercolor);
     box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
-    flex: 0 0 var(--hotbarwf);
     transition: 0.05s ease-out 0.5s;
 }
 

@@ -1,12 +1,18 @@
+:root {
+    --controlsvis: hidden;
+}
+
 #sidebar {
     visibility: var(--controlsvis);
 }
 
 #sidebar.collapsed {
+    transition: 0.5s;
     opacity: var(--opacity);
 }
 
 #sidebar.collapsed:hover {
+    transition: 0.5s;
     opacity: 100%;
 }
 

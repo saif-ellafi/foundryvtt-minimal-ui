@@ -1,3 +1,13 @@
+### 1.2.0
+* Support: Foundry VTT V9
+* Enhancement: Left Controls reduced to one (but new) setting: auto-hide submenu
+* Enhancement: Hotbar Macro positioning now adjusts on right sidebar collapse status
+* Enhancement: Overall UI Cleaned by taking advantage of new Foundry styles
+* Enhancement: Significantly improved transparency behavior
+* Bugfix: Fixed Macro Hotbar not locking when switching between macro pages
+* Bugfix: Restored old players background as it can be handled better through transparency
+* Deprecations: Left Controls Autohide and Position, Hotbar slots, Camera hiding, among other features are no longer available
+
 ### 1.1.8
 * Enhancement: New Left Controls Behavior - Partially Visible, hides the second column of left side buttons
 
