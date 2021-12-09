@@ -8,7 +8,7 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 
 If you like my work, please [invite me a Coffee](#by-jeansenvaars) :)
 
-![Example GIF](./examplegif-long3.gif)
+![Example Image](./example13.png)
 
 ## Special Minimal UI Companions
 
@@ -91,8 +91,6 @@ Build Script: `npm run build`
 * Thanks to the FoundryVTT Discord community for the amazing issue reports and feedback.
 * Thanks to Merudo for being the first code contributor to Minimal UI as an open source module!
 * Thanks to Greayhead for German Translations
-
-![Example Image](./example12.jpg)
 
 # License
 [MIT License](./LICENSE.md)
