@@ -4,11 +4,22 @@
     --controlslh: 30px;
     --controlsfs: 24px;
     --controlssubmargin: 0;
+    --opacitycontrols: 75%;
     --controlssubop: 100%;
 }
 
 #controls ol.main-controls {
     overflow: visible;
+}
+
+#controls {
+    opacity: var(--opacitycontrols);
+    transition: 2s;
+}
+
+#controls:hover {
+    opacity: 100%;
+    transition: 0.5s;
 }
 
 #controls ol .scene-control, #controls ol .control-tool {

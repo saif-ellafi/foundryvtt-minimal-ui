@@ -95,6 +95,9 @@ export default class MinimalUIHotbar {
                     $("#bar-lock").click(function () {
                         MinimalUIHotbar.lockHotbar(true)
                     });
+                    $(".page-control").click(function () {
+                        MinimalUIHotbar.lockHotbar(false)
+                    });
                     if (MinimalUIHotbar.hotbarLocked) {
                         MinimalUIHotbar.lockHotbar(false);
                     }

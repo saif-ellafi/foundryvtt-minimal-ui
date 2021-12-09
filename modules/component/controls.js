@@ -71,5 +71,17 @@ export default class MinimalUIControls {
             MinimalUIControls.showSubControls();
             MinimalUIControls.sizeControls();
         });
+        Hooks.on('renderSceneControls', function() {
+            if (game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide') {
+                $('#controls li').click(() => {
+                    rootStyle.setProperty('--controlssubop', '100%');
+                    rootStyle.setProperty('--opacitycontrols', '100%');
+                    setTimeout(() => {
+                        rootStyle.setProperty('--controlssubop', '0%');
+                        rootStyle.setProperty('--opacitycontrols', game.settings.get("minimal-ui", "transparencyPercentage") + '%');
+                    }, 3000);
+                });
+            }
+        });
     };
 }
