@@ -33,7 +33,7 @@ If you like my work, please [invite me a Coffee](#by-jeansenvaars) :)
 ## Right Side Panel
 * May be collapsed by default
 * Use with Dynamic Mode for a pseudo auto-hide experience
-* Improves FoundryVTT collapsed sidebar behavior when clicking again already opened apps, that are minimized or active
+* Improves Workflow on working with floating windows
   
 ## Scene Navigation
 * Allows Hiding or having the scene navigation collapsed by default
@@ -42,17 +42,17 @@ Note: Since Foundry 0.8.x Scene Navigation Preview is on a separate module, look
 
 ## Macro Hotbar
 * Macro Bar may be hidden, collapsed, auto-hidden (default) or shown
-* Macro Bar may be customized to 3 slots, 6 or default 10
+* Macro Bar may be customized to 3 slots, 6 or default 10 (Deprecated in V9)
 * Macro Bar may be repositioned along the X-Axis
 
 ## Left Side Control Buttons
-* May be shown normally, partially visible or auto-hide mode on mouse over
-* Left controls may be collapsed into a single column (or not)
+* May be shown normally, partially visible or auto-hide mode on mouse over (Only Partially visible in V9)
+* Left controls may be collapsed into a single column (or not) (Deprecated in V9)
 * Left controls may be standard or small size
-* Left controls may be repositioned along the Y-Axis
+* Left controls may be repositioned along the Y-Axis (Deprecated in V9)
 
-## Camera/Audio Controls
-* Allows hiding player camera boxes, showing only GMs
+## Camera/Audio Controls (Deprecated in V9)
+* Allows hiding player camera boxes, showing only GMs (Deprecated in V9)
   
 ## Customization
 * Default settings target a balance between gaining space and functionality
@@ -61,7 +61,7 @@ Note: Since Foundry 0.8.x Scene Navigation Preview is on a separate module, look
 * Check the settings to customize your experience!
 
 ## Patches to Foundry
-These are bugs in FoundryVTT that are not currently addressed, Minimal UI fixes them because they are more obvious here
+These are bugs in FoundryVTT that are not currently addressed but are more obvious when using Minimal UI
 * When clicking on a sidebar menu that was opened but then closed, clicking on it will open it again instead of doing nothing
 * If a window is minimized, when reopened, it would be maximized instead of doing nothing
 * If a window is open, but behind other windows, it would be brought to the front when reopened, instead doing of nothing
