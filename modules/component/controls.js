@@ -77,7 +77,8 @@ export default class MinimalUIControls {
         }
     }
 
-    static lockControls(unlock) {
+    static lockControls(unlock, clickEvent) {
+        if (clickEvent.isTrigger) return; // For compatibility purposes - do not lock if click is not an actual click
         const sidebarLock = $("#sidebar-lock > i");
         if (!MinimalUIControls.controlsLocked) {
             MinimalUIControls.controlsLocked = true;
@@ -128,7 +129,7 @@ export default class MinimalUIControls {
             `)
         if (game.settings.get('minimal-ui', 'controlsBehaviour') === 'autohide') {
             SidebarLockButton
-                .click(() => MinimalUIControls.lockControls(true))
+                .click((clickEvent) => MinimalUIControls.lockControls(true, clickEvent))
                 .appendTo("#controls");
         }
     }
@@ -288,14 +289,11 @@ export default class MinimalUIControls {
             // Give a little time for other modules to add their controls first, and reapply changes
             await new Promise(waitABit => setTimeout(waitABit, 1));
 
-            $("#controls > li.scene-control").on('click', function () {
-                MinimalUIControls.lockControls(false);
-                $("#controls > li.scene-control.active > ol > li").on('click', function () {
-                    MinimalUIControls.lockControls(false)
-                });
+            $("#controls > li.scene-control").on('click', function (clickEvent) {
+                MinimalUIControls.lockControls(false, clickEvent);
             });
-            $("#controls > li.scene-control.active > ol > li").on('click', function () {
-                MinimalUIControls.lockControls(false);
+            $("#controls > li.scene-control.active > ol > li").on('click', function (clickEvent) {
+                MinimalUIControls.lockControls(false, clickEvent);
             });
 
             // Delete and add lock button if needed, so the lock is always at the bottom

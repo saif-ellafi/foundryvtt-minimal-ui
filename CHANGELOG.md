@@ -1,3 +1,6 @@
+### 1.1.9
+* Compatibility: Argon Combat UI or any module that triggers click() events should no longer open the left sidebar
+
 ### 1.1.8
 * Enhancement: New Left Controls Behavior - Partially Visible, hides the second column of left side buttons
 
