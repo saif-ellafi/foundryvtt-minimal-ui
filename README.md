@@ -8,6 +8,7 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 
 If you like my work, please [invite me a Coffee](#by-jeansenvaars) :)
 
+(The following image is the default look and feel for upcoming Foundry V9)
 ![Example Image](./example13.png)
 
 ## Special Minimal UI Companions
