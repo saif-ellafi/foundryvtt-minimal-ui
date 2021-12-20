@@ -1,13 +1,11 @@
 ![GitHub all releases](https://img.shields.io/github/downloads/saif-ellafi/foundryvtt-minimal-ui/total?logo=GitHub) ![GitHub release (latest by date)](https://img.shields.io/github/downloads/saif-ellafi/foundryvtt-minimal-ui/latest/total) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/saif-ellafi/foundryvtt-minimal-ui) ![GitHub issues](https://img.shields.io/github/issues-raw/saif-ellafi/foundryvtt-minimal-ui) ![GitHub](https://img.shields.io/github/license/saif-ellafi/foundryvtt-minimal-ui)
 
 # Minimal UI for FoundryVTT
-### _Created by: JeansenVaars_
+### _Created by: JeansenVaars_ - If you like this, [invite me a Coffee](#by-jeansenvaars) :)
 
 Extremely Configurable UI module, allows the user to hide, collapse or auto-hide components separately.
 
 This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Bar.
-
-If you like my work, please [invite me a Coffee](#by-jeansenvaars) :)
 
 (The following image is the default look and feel for upcoming Foundry V9)
 ![Example Image](./example13.png)
