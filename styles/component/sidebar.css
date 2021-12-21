@@ -1,5 +1,6 @@
 :root {
     --controlsvis: hidden;
+    --fpsvis: hidden;
 }
 
 #sidebar {
@@ -36,4 +37,10 @@
 
 #sidebar-tabs > a:nth-child(n):hover {
     text-shadow: 0 0 var(--shadowstrength) var(--bordercolor);
+}
+
+#fps {
+    position: absolute;
+    right: var(--fpsposx);
+    visibility: var(--fpsvis);
 }

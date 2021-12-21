@@ -6,6 +6,8 @@
     --controlssubmargin: 0;
     --opacitycontrols: 75%;
     --controlssubop: 100%;
+    --controlssubopna: 100%;
+    --controlssubdisna: block;
 }
 
 #controls {
@@ -33,15 +35,26 @@
     border: 1px solid transparent;
 }
 
+#controls ol .scene-control:not(.active), #controls ol .control-tool:not(.active) {
+    transition: 2s;
+    opacity: var(--controlssubopna);
+    display: var(--controlssubdisna);
+}
+
+#controls:hover ol .scene-control:not(.active), #controls:hover ol .control-tool:not(.active) {
+    transition: 0.5s;
+    opacity: 100%;
+}
+
 #controls ol .scene-control.active, #controls ol .control-tool.active, #controls ol .scene-control:hover, #controls ol .control-tool:hover {
     border: 1px solid var(--bordercolor);
     box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
 }
 
 #controls ol.sub-controls.active {
+    opacity: var(--controlssubop);
     margin-left: var(--controlssubmargin);
     transition: 2s;
-    opacity: var(--controlssubop);
     display: grid;
 }
 

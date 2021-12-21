@@ -3,6 +3,7 @@
     --shadowcolor: #ff4900bd;
     --shadowstrength: 10px;
     --opacity: 75%;
+    --fpsposx: 300px;
 }
 
 .minui-lock {

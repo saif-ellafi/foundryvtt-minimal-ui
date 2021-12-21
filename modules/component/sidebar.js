@@ -26,6 +26,7 @@ export default class MinimalUISidebar {
             sidebarElem.css('--sidebar-tab-height', newHeight + 'px');
             switch (game.settings.get('minimal-ui', 'rightcontrolsBehaviour')) {
                 case 'shown': {
+                    rootStyle.setProperty('--fpsvis', 'unset');
                     rootStyle.setProperty('--controlsvis', 'visible');
                     break;
                 }
@@ -39,11 +40,21 @@ export default class MinimalUISidebar {
                     break;
                 }
                 default: {
+                    rootStyle.setProperty('--fpsvis', 'unset');
                     rootStyle.setProperty('--controlsvis', 'visible');
                     break;
                 }
             }
         });
-
+        Hooks.on('collapseSidebar', function(_, isCollapsing) {
+            console.log(isCollapsing);
+            if (isCollapsing) {
+                rootStyle.setProperty('--fpsposx', '-5px');
+                rootStyle.setProperty('--fpsvis', 'unset');
+            } else {
+                rootStyle.setProperty('--fpsposx', '300px');
+                rootStyle.setProperty('--fpsvis', 'unset');
+            }
+        });
     }
 }

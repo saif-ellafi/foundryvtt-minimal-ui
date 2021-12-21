@@ -1,3 +1,8 @@
+### 1.3.1
+* Enhancement: New Left Controls Behavior (experimental) - Auto-Hide Plus hides all non-active sub controls
+* Bugfix: Fixed FPS Indicator on the wrong position (Thanks GambitTV)
+* Bugfix: Fixed Macro Hotbar position when not in auto hide mode
+
 ### 1.3.0
 * Enhancement: Adjusted all components to be closer to the edge of the screen
 * Enhancement: Revised defaults for a refreshing minimal look and feel (See Screenshot)

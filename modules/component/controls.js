@@ -3,6 +3,8 @@ import '../../styles/component/controls.css';
 
 export default class MinimalUIControls {
 
+    static delayedProcessing = false;
+
     static cssControlsStandardWidth = '36px';
     static cssControlsStandardHeight = '30px';
     static cssControlsStandardLineHeight = '30px';
@@ -19,6 +21,8 @@ export default class MinimalUIControls {
     static showSubControls() {
         if (game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide') {
             rootStyle.setProperty('--controlssubop', '0%');
+        } else if (game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide-plus') {
+            rootStyle.setProperty('--controlssubopna', '0%');
         }
     }
 
@@ -60,6 +64,7 @@ export default class MinimalUIControls {
             type: String,
             choices: {
                 "autohide": game.i18n.localize("MinimalUI.SettingsAutoHide"),
+                "autohide-plus": game.i18n.localize("MinimalUI.SettingsAutoHidePlus"),
                 "visible": game.i18n.localize("MinimalUI.SettingsAlwaysVisible")
             },
             default: "autohide",
@@ -72,15 +77,41 @@ export default class MinimalUIControls {
             MinimalUIControls.sizeControls();
         });
         Hooks.on('renderSceneControls', function() {
-            if (game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide') {
+            function controlsSubHoverRefresh() {
+                setTimeout(() => {
+                    const activeElement = $('#controls');
+                    if (activeElement.length && !activeElement.is(':hover') && game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide-plus') {
+                        rootStyle.setProperty('--controlssubdisna', 'none');
+                        MinimalUIControls.delayedProcessing = false;
+                    } else controlsSubHoverRefresh();
+                }, 6000)
+            }
+            function controlsSubClickRefresh() {
+                setTimeout(() => {
+                    if (game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide')
+                        rootStyle.setProperty('--controlssubop', '0%');
+                    if (game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide-plus') {
+                        controlsSubHoverRefresh();
+                    }
+                    rootStyle.setProperty('--opacitycontrols', game.settings.get("minimal-ui", "transparencyPercentage") + '%');
+                }, 3000)
+            }
+            if (['autohide', 'autohide-plus'].includes(game.settings.get('minimal-ui', 'controlsSubHide'))) {
                 $('#controls li').click(() => {
                     rootStyle.setProperty('--controlssubop', '100%');
+                    rootStyle.setProperty('--controlssubopna', '100%');
                     rootStyle.setProperty('--opacitycontrols', '100%');
-                    setTimeout(() => {
-                        rootStyle.setProperty('--controlssubop', '0%');
-                        rootStyle.setProperty('--opacitycontrols', game.settings.get("minimal-ui", "transparencyPercentage") + '%');
-                    }, 3000);
+                    rootStyle.setProperty('--controlssubdisna', 'block');
+                    controlsSubClickRefresh();
                 });
+                if (game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide-plus') {
+                    $('#controls li').hover(() => {
+                        if (MinimalUIControls.delayedProcessing) return;
+                        MinimalUIControls.delayedProcessing = true;
+                        rootStyle.setProperty('--controlssubdisna', 'block');
+                        controlsSubHoverRefresh();
+                    });
+                }
             }
         });
     };
