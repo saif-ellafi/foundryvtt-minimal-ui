@@ -1,3 +1,6 @@
+### 1.3.2
+* Bugfix: Fixed transparency not being set on left side controls after refresh (Thank you Brimcon)
+
 ### 1.3.1
 * Enhancement: New Left Controls Behavior (experimental) - Auto-Hide Plus hides all non-active sub controls
 * Bugfix: Fixed FPS Indicator on the wrong position (Thanks GambitTV)

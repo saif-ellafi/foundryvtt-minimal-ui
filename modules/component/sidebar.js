@@ -47,7 +47,6 @@ export default class MinimalUISidebar {
             }
         });
         Hooks.on('collapseSidebar', function(_, isCollapsing) {
-            console.log(isCollapsing);
             if (isCollapsing) {
                 rootStyle.setProperty('--fpsposx', '-5px');
                 rootStyle.setProperty('--fpsvis', 'unset');

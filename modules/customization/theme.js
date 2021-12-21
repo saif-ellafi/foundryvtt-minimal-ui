@@ -85,6 +85,8 @@ export default class MinimalUITheme {
             const transparency = game.settings.get('minimal-ui', 'transparencyPercentage');
             if (transparency >= 0 && transparency <= 100) {
                 rootStyle.setProperty('--opacity', transparency.toString() + '%');
+                // Need one separate for controls to handle some click events - there is probably a better way
+                rootStyle.setProperty('--opacitycontrols', transparency.toString() + '%');
             }
         })
     }
