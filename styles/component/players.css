@@ -6,7 +6,8 @@
     --playerslh: 20px;
     --playerbennies: none;
     --playerh3w: unset;
-    --playerbot: 10px;
+    --playerbot: -8px;
+    --playerleft: -8px;
     --playerpingdisplay: initial;
 }
 
@@ -18,6 +19,7 @@
 
 #players {
     bottom: var(--playerbot);
+    left: var(--playerleft);
     font-size: var(--playerfsize);
     visibility: var(--playervis);
     opacity: var(--opacity);

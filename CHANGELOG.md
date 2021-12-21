@@ -1,5 +1,7 @@
-### 1.2.1
-* Enhancement: Small quality of life improvement, displays the hotbar (if hidden) when opening macro compendiums 
+### 1.3.0
+* Enhancement: Adjusted all components to be closer to the edge of the screen
+* Enhancement: Revised defaults for a refreshing minimal look and feel (See Screenshot)
+* Enhancement: Display the Macro Hotbar (if hidden) when opening macro compendiums to be ready for Drag & Drop
 
 ### 1.2.0
 * Support: Foundry VTT V9 Support (Not backwards Compatible)

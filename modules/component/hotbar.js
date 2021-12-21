@@ -11,7 +11,7 @@ export default class MinimalUIHotbar {
     static cssHotbarRightControlsLineHeight = '12px';
     static cssHotbarRightControlsLineHeightDnDUi = '10px';
     static cssHotbarControlsAutoHideHeight = '100%';
-    static cssHotbarAutoHideHeight = '5px';
+    static cssHotbarAutoHideHeight = '-5px';
     static cssHotbarAutoHideShadow = '-1px';
     static cssHotbarControlsMargin = '0px';
 
@@ -140,7 +140,7 @@ export default class MinimalUIHotbar {
                 "right": game.i18n.localize("MinimalUI.HotbarPositionCenterRight"),
                 "manual": game.i18n.localize("MinimalUI.HotbarPositionManual")
             },
-            default: "center",
+            default: "default",
             onChange: MinimalUIHotbar.positionHotbar
         });
 

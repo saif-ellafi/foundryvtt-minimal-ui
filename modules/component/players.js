@@ -35,7 +35,7 @@ export default class MinimalUIPlayers {
                 "small": game.i18n.localize("MinimalUI.SettingsSmall"),
                 "standard": game.i18n.localize("MinimalUI.SettingsStandard")
             },
-            default: "small",
+            default: "standard",
             onChange: debouncedReload
         });
 
@@ -157,9 +157,6 @@ export default class MinimalUIPlayers {
                     // ---
                     break;
                 }
-            }
-            if (game.settings.get('minimal-ui', 'hotbar') === 'autohide') {
-                rootStyle.setProperty('--playerbot', '2px');
             }
             // DnD UI Special Compatibility
             if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {

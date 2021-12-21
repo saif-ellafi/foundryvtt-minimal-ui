@@ -8,18 +8,21 @@
     --controlssubop: 100%;
 }
 
-#controls ol.main-controls {
-    overflow: visible;
-}
-
 #controls {
     opacity: var(--opacitycontrols);
     transition: 2s;
+    position: absolute;
+    top: 75px;
+    left: -10px;
 }
 
 #controls:hover {
     opacity: 100%;
     transition: 0.5s;
+}
+
+#controls ol.main-controls {
+    overflow: visible;
 }
 
 #controls ol .scene-control, #controls ol .control-tool {
@@ -39,6 +42,7 @@
     margin-left: var(--controlssubmargin);
     transition: 2s;
     opacity: var(--controlssubop);
+    display: grid;
 }
 
 #controls:hover ol.sub-controls.active {
