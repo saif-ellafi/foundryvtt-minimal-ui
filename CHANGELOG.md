@@ -1,3 +1,6 @@
+### 1.2.1
+* Enhancement: Small quality of life improvement, displays the hotbar (if hidden) when opening macro compendiums 
+
 ### 1.2.0
 * Support: Foundry VTT V9 Support (Not backwards Compatible)
 * Enhancement: Left Controls new partial-auto-hide setting

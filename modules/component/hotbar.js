@@ -180,6 +180,11 @@ export default class MinimalUIHotbar {
         Hooks.on('collapseSidebar', function() {
             MinimalUIHotbar.positionHotbar();
         });
+
+        Hooks.on('renderCompendium', function(compendium) {
+            if (compendium.metadata.type === 'Macro')
+                MinimalUIHotbar.lockHotbar(false)
+        })
     }
 
 }
