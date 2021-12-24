@@ -7,6 +7,8 @@ Extremely Configurable UI module, allows the user to hide, collapse or auto-hide
 
 This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Bar.
 
+### [This module was made for free, with joy, hard work, to be shared with a wonderful community, and tons of Coffee :D!](https://ko-fi.com/jeansenvaars)
+
 (The following image is the default look and feel for upcoming Foundry V9)
 ![Example Image](./example16.png)
 
