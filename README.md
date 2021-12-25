@@ -12,7 +12,23 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 (The following image is the default look and feel for upcoming Foundry V9)
 ![Example Image](./example16.png)
 
-## Special Minimal UI Companions
+## Compatibility issues?
+
+I work on Minimal UI based on my personal preferences, and of course share it to others that share my preferences too!.
+Having this said, I only use a small limited subset of modules, and making it work with all of them out there takes work, which I am usually honestly not motivated to do. Do consider inviting me a Coffee and let me know which one doesn't work for you, I'll be more inspired afterwards :)
+
+Of course a second option is that you support Minimal UI and submit a Pull Request over here, absolutely welcome and more than glad to accept it! Most of Minimal UI settings are applied through CSS properties.
+
+Having said that, if you are a Module developer, do consider being Minimal UI Friendly. In terms of colors, this snippet may help you when sharing the colors that Minimal UI settings apply:
+```
+if (game.modules.get('minimal-ui')?.active) {
+  const rootStyle = document.querySelector(':root').style;
+  rootStyle.setProperty('--any1-color-property', game.settings.get('minimal-ui', 'shadowColor'));
+  rootStyle.setProperty('--any2-color-property', game.settings.get('minimal-ui', 'borderColor'));
+}
+```
+
+## Special Minimal UI Module Companions
 
 ### Window Controls
 * Let your windows have Minimize, Maximize, Close and Pin Buttons to finally find that character among the many windows open you have
@@ -22,6 +38,8 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 ### Scene Preview
 * Take a quick look at your inactive scenes by moving your mouse over the navigation panel
 [Check it out](https://foundryvtt.com/packages/scene-preview)
+
+## Minimal UI Features
 
 ## Foundry Logo
 * Custom logo image can be provided
@@ -34,27 +52,18 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 
 ## Right Side Panel
 * May be collapsed by default
-* Use with Dynamic Mode for a pseudo auto-hide experience
-* Improves Workflow on working with floating windows
+* Improves User Experience Workflow when using floating windows
   
 ## Scene Navigation
-* Allows Hiding or having the scene navigation collapsed by default
-* Preview scenes when moving your mouse over the scenes
-Note: Since Foundry 0.8.x Scene Navigation Preview is on a separate module, look for **Scene Preview**: https://github.com/saif-ellafi/foundryvtt-scene-preview
+* Allows Completely Hiding or having the scene navigation collapsed by default
 
 ## Macro Hotbar
 * Macro Bar may be hidden, collapsed, auto-hidden (default) or shown
-* Macro Bar may be customized to 3 slots, 6 or default 10 (Deprecated in V9)
 * Macro Bar may be repositioned along the X-Axis
 
 ## Left Side Control Buttons
-* May be shown normally, partially visible or auto-hide mode on mouse over (Only Partially visible in V9)
-* Left controls may be collapsed into a single column (or not) (Deprecated in V9)
-* Left controls may be standard or small size
-* Left controls may be repositioned along the Y-Axis (Deprecated in V9)
-
-## Camera/Audio Controls (Deprecated in V9)
-* Allows hiding player camera boxes, showing only GMs (Deprecated in V9)
+* May be shown normally, Auto-Hide or Auto-Hide-Plus
+* Left controls buttons may be standard or small size
   
 ## Customization
 * Default settings target a balance between gaining space and functionality
