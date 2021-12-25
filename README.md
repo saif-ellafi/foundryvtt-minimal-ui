@@ -41,6 +41,10 @@ if (game.modules.get('minimal-ui')?.active) {
 * Take a quick look at your inactive scenes by moving your mouse over the navigation panel
 [Check it out](https://foundryvtt.com/packages/scene-preview)
 
+### Sidebar and Chat Resizer
+* Resize everything to your liking
+[Check it out](https://github.com/saif-ellafi/foundryvtt-sidebar-resizer)
+
 ## Minimal UI Features
 
 ## Foundry Logo
