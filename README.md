@@ -17,6 +17,8 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 I work on Minimal UI based on my personal preferences, and of course share it to others that share my preferences too!.
 Having this said, I only use a small limited subset of modules, and making it work with all of them out there takes work, which I am usually honestly not motivated to do. Do consider inviting me a Coffee and let me know which one doesn't work for you, I'll be more inspired afterwards :)
 
+One Exception: I won't support any modules behind a paycheck or a subscription. It just does not follow my philosophy. Sorry about that!
+
 Of course a second option is that you support Minimal UI and submit a Pull Request over here, absolutely welcome and more than glad to accept it! Most of Minimal UI settings are applied through CSS properties.
 
 Having said that, if you are a Module developer, do consider being Minimal UI Friendly. In terms of colors, this snippet may help you when sharing the colors that Minimal UI settings apply:
