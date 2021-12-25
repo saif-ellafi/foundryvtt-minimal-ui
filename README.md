@@ -14,7 +14,7 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 
 ## Compatibility issues?
 
-I work on Minimal UI based on my personal preferences, and of course share it to others that share my preferences too!.
+I work on Minimal UI based on my personal preferences, and of course share it with others because I love doing so!
 Having this said, I only use a small limited subset of modules, and making it work with all of them out there takes work, which I am usually honestly not motivated to do. Do consider inviting me a Coffee and let me know which one doesn't work for you, I'll be more inspired afterwards :)
 
 One Exception: I won't support any modules behind a paycheck or a subscription. I believe paid modules should be the ones supporting free modules, and not the other way around. Sorry about that!
