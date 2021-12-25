@@ -14,14 +14,14 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 
 ## Compatibility issues?
 
-I work on Minimal UI based on my personal preferences, and of course share it with others because I love doing so!
-Having this said, I only use a small limited subset of modules, and making it work with all of them out there takes work, which I am usually honestly not motivated to do. Do consider inviting me a Coffee and let me know which one doesn't work for you, I'll be more inspired afterwards :)
+I work on this module based on my personal preferences, and of course share it with others because I love doing so!
 
-One Exception: I won't support any modules behind a paycheck or a subscription. I believe paid modules should be the ones supporting free modules, and not the other way around. Sorry about that!
+Having said that, I only use a small limited subset of modules myself, and making modules work with others out there takes work,
+which I am usually honestly not motivated to do. Do consider inviting me a Coffee and let me know which one doesn't work for you, I'll be more inspired afterwards :)
 
-Of course a second option is that you support Minimal UI and submit a Pull Request over here, absolutely welcome and more than glad to accept it! Most of Minimal UI settings are applied through CSS properties.
+Do track the issue however, it is good that it is not forgotten, or of course feel welcome to submit a pull request that makes it work and I'll happily accept it and give credits.
 
-Having said that, if you are a Module developer, do consider being Minimal UI Friendly. In terms of colors, this snippet may help you when sharing the colors that Minimal UI settings apply:
+If you are a Module developer, do consider being Minimal UI Friendly. In terms of colors, this snippet may help you when sharing the colors that Minimal UI settings apply:
 ```
 if (game.modules.get('minimal-ui')?.active) {
   const rootStyle = document.querySelector(':root').style;
