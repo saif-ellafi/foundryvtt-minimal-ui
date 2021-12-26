@@ -56,7 +56,7 @@ export default class MinimalUINavigation {
             }
 
             // Compatibility Workaround for bullseye module
-            if (game.modules.has('bullseye') && game.modules.get('bullseye').active) {
+            if (game.modules.get('bullseye') && game.modules.get('bullseye').active) {
                 rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavBullseyeStart);
             }
         });
@@ -108,7 +108,7 @@ export default class MinimalUINavigation {
             }
 
             // Compatibility Workaround for bullseye module
-            if (game.modules.has('bullseye') && game.modules.get('bullseye').active) {
+            if (game.modules.get('bullseye') && game.modules.get('bullseye').active) {
                 rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavBullseyeStart);
             }
 

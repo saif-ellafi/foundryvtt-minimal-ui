@@ -124,7 +124,7 @@ export default class MinimalUILogo {
             }
 
             // Compatibility Workaround for bullseye module
-            if (game.modules.has('bullseye') && game.modules.get('bullseye').active) {
+            if (game.modules.get('bullseye') && game.modules.get('bullseye').active) {
                 rootStyle.setProperty('--logovis', 'visible');
                 rootStyle.setProperty('--logoh', '50px');
                 rootStyle.setProperty('--logow', '100px');

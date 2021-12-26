@@ -14,6 +14,7 @@ export default class MinimalUIHotbar {
     static cssHotbarAutoHideHeight = '-5px';
     static cssHotbarAutoHideShadow = '-1px';
     static cssHotbarControlsMargin = '0px';
+    static cssHotbarCustomHotbarCompatHover = '10px';
 
     static htmlHotbarLockButton =
         `
@@ -71,17 +72,14 @@ export default class MinimalUIHotbar {
         switch (game.settings.get('minimal-ui', 'hotbar')) {
             case 'collapsed': {
                 MinimalUIHotbar.collapseHotbar();
-                if (game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active) {
-                    MinimalUIHotbar.collapseHotbar();
-                }
                 break;
             }
             case 'autohide': {
-                if (!(game.modules.has("custom-hotbar") && game.modules.get('custom-hotbar').active)) {
+                if (!(game.modules.get("custom-hotbar")?.active)) {
                     rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarHidden);
                     rootStyle.setProperty('--hotbarlh1', MinimalUIHotbar.cssHotbarLeftControlsLineHeight);
                     rootStyle.setProperty('--hotbarlh2', MinimalUIHotbar.cssHotbarRightControlsLineHeight);
-                    if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
+                    if (game.modules.get('dnd-ui')?.active) {
                         rootStyle.setProperty('--hotbarlh2', MinimalUIHotbar.cssHotbarRightControlsLineHeightDnDUi);
                     }
                     rootStyle.setProperty('--hotbarmg', MinimalUIHotbar.cssHotbarControlsMargin);
@@ -101,8 +99,8 @@ export default class MinimalUIHotbar {
                     if (MinimalUIHotbar.hotbarLocked) {
                         MinimalUIHotbar.lockHotbar(false);
                     }
+                    $("#bar-toggle").remove();
                 }
-                $("#bar-toggle").remove();
                 break;
             }
         }
@@ -173,9 +171,17 @@ export default class MinimalUIHotbar {
             ui.hotbar.element.show();
         });
 
-        Hooks.on('renderHotbar', function () {
+        Hooks.once('renderHotbar', function () {
             MinimalUIHotbar.configureHotbar();
+            if (game.modules.get('custom-hotbar')?.active)
+                rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarCustomHotbarCompatHover);
         });
+
+        Hooks.once('renderCustomHotbar', function() {
+            if (game.modules.get("custom-hotbar")?.active && game.settings.get('minimal-ui', 'hotbar') === 'collapsed') {
+                ui.customHotbar?.collapse()
+            }
+        })
 
         Hooks.on('collapseSidebar', function() {
             MinimalUIHotbar.positionHotbar();

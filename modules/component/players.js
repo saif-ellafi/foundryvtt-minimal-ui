@@ -116,7 +116,7 @@ export default class MinimalUIPlayers {
                     // Compatibility for Raise Hand module
                     let playerWidthPixel = parseInt(MinimalUIPlayers.cssPlayersHiddenWidth);
 
-                    if (game.modules.has('raise-my-hand') && game.modules.get('raise-my-hand').active) {
+                    if (game.modules.get('raise-my-hand') && game.modules.get('raise-my-hand').active) {
                         playerWidthPixel += 14;
                         rootStyle.setProperty('--playerslh', '20px');
                     }

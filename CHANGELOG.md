@@ -1,3 +1,6 @@
+### 1.3.3
+* Compatibility: For V9 compatibility with Custom-Hotbar, Raise your Hand 
+
 ### 1.3.2
 * Bugfix: Fixed transparency not being set on left side controls after refresh (Thank you Brimcon)
 
