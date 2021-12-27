@@ -1,3 +1,6 @@
+### 1.4.1 (WIP)
+* Bugfix: Put back players panel if switching hotbar position other than to extreme left without need to refresh
+
 ### 1.4.0
 * Enhancement: Achieve a new level of minimalism with new Minimal UI defaults and settings
 * Enhancement: New Hotbar Setting "Extreme Left" (Default) position for Macro, pushes the players list above it

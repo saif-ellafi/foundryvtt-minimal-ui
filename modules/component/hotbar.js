@@ -47,6 +47,7 @@ export default class MinimalUIHotbar {
         switch (game.settings.get('minimal-ui', 'hotbarPosition')) {
             case 'default': {
                 rootStyle.setProperty('--hotbarxpos', '220px');
+                rootStyle.setProperty('--playerbot', '-8px');
                 break;
             }
             case 'extremeLeft': {
@@ -58,18 +59,22 @@ export default class MinimalUIHotbar {
             }
             case 'left': {
                 rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - (availableWidth / 9)) + 'px');
+                rootStyle.setProperty('--playerbot', '-8px');
                 break;
             }
             case 'center': {
                 rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9)) + 'px');
+                rootStyle.setProperty('--playerbot', '-8px');
                 break;
             }
             case 'right': {
                 rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5)) + 'px');
+                rootStyle.setProperty('--playerbot', '-8px');
                 break;
             }
             case 'manual': {
                 rootStyle.setProperty('--hotbarxpos', game.settings.get('minimal-ui', 'hotbarPixelPosition') + 'px');
+                rootStyle.setProperty('--playerbot', '-8px');
                 break;
             }
         }
