@@ -1,6 +1,6 @@
 ### 1.4.0
 * Enhancement: Achieve a new level of minimalism with new Minimal UI defaults and settings
-* Enhancement: New Setting "Extreme Default" (Default) position for Macro, pushes the players list above it
+* Enhancement: New Hotbar Setting "Extreme Left" (Default) position for Macro, pushes the players list above it
 * Enhancement: Hotbar controls now have border radius and color as the rest of minimal ui components
 * Bugfix: Fixed an issue with hotbar on changing pages
 * Bugfix: Adjusted misaligned components in the players panel
