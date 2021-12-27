@@ -37,7 +37,7 @@
 }
 
 #players ol li.player {
-    padding: 1px 6px;
+    padding: 1px 10px;
     line-height: var(--playerslh);
 }
 
@@ -50,7 +50,7 @@
 }
 
 #players h3 {
-    margin: 0 -2px;
+    margin: 0 1px;
     border-bottom: 0;
     width: var(--playerh3w);
 }

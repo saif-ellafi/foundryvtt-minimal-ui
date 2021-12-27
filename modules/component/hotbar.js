@@ -11,7 +11,7 @@ export default class MinimalUIHotbar {
     static cssHotbarRightControlsLineHeight = '12px';
     static cssHotbarRightControlsLineHeightDnDUi = '10px';
     static cssHotbarControlsAutoHideHeight = '100%';
-    static cssHotbarAutoHideHeight = '-5px';
+    static cssHotbarAutoHideHeight = '-8px';
     static cssHotbarAutoHideShadow = '-1px';
     static cssHotbarControlsMargin = '0px';
     static cssHotbarCustomHotbarCompatHover = '10px';
@@ -49,6 +49,13 @@ export default class MinimalUIHotbar {
                 rootStyle.setProperty('--hotbarxpos', '220px');
                 break;
             }
+            case 'extremeLeft': {
+                if (!(game.modules.get("custom-hotbar")?.active) && !(game.modules.get('monks-hotbar-expansion')?.active)) {
+                    rootStyle.setProperty('--hotbarxpos', '5px');
+                    rootStyle.setProperty('--playerbot', '55px');
+                }
+                break;
+            }
             case 'left': {
                 rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - (availableWidth / 9)) + 'px');
                 break;
@@ -75,7 +82,7 @@ export default class MinimalUIHotbar {
                 break;
             }
             case 'autohide': {
-                if (!(game.modules.get("custom-hotbar")?.active)) {
+                if (!(game.modules.get("custom-hotbar")?.active) && !(game.modules.get('monks-hotbar-expansion')?.active)) {
                     rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarHidden);
                     rootStyle.setProperty('--hotbarlh1', MinimalUIHotbar.cssHotbarLeftControlsLineHeight);
                     rootStyle.setProperty('--hotbarlh2', MinimalUIHotbar.cssHotbarRightControlsLineHeight);
@@ -121,7 +128,7 @@ export default class MinimalUIHotbar {
                 "onlygm": game.i18n.localize("MinimalUI.SettingsOnlyGM"),
                 "hidden": game.i18n.localize("MinimalUI.SettingsHide")
             },
-            default: "autohide",
+            default: "collapsed",
             onChange: debouncedReload
         });
 
@@ -133,12 +140,13 @@ export default class MinimalUIHotbar {
             type: String,
             choices: {
                 "default": game.i18n.localize("MinimalUI.HotbarPositionMaxLeft"),
+                "extremeLeft": game.i18n.localize("MinimalUI.HotbarPositionExtremeLeft"),
                 "left": game.i18n.localize("MinimalUI.HotbarPositionCenterLeft"),
                 "center": game.i18n.localize("MinimalUI.HotbarPositionCenter"),
                 "right": game.i18n.localize("MinimalUI.HotbarPositionCenterRight"),
                 "manual": game.i18n.localize("MinimalUI.HotbarPositionManual")
             },
-            default: "default",
+            default: "extremeLeft",
             onChange: MinimalUIHotbar.positionHotbar
         });
 
@@ -171,7 +179,8 @@ export default class MinimalUIHotbar {
             ui.hotbar.element.show();
         });
 
-        Hooks.once('renderHotbar', function () {
+        // Needs to be .on so changing hotbar pages also applies
+        Hooks.on('renderHotbar', function () {
             MinimalUIHotbar.configureHotbar();
             if (game.modules.get('custom-hotbar')?.active)
                 rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarCustomHotbarCompatHover);

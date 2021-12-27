@@ -29,6 +29,9 @@
     background: #191919;
     height: var(--hotbarhh);
     margin: var(--hotbarmg) 2px;
+    box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
+    border: 1px solid var(--bordercolor);
+    border-radius: 5px;
 }
 
 #hotbar .bar-controls a.page-control {
@@ -61,4 +64,10 @@
 
 #hotbar #hotbar-directory-controls a {
     line-height: var(--hotbarlh1);
+}
+
+#hotbar-page-controls, #hotbar-directory-controls {
+    box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
+    border: 1px solid var(--bordercolor);
+    border-radius: 5px;
 }

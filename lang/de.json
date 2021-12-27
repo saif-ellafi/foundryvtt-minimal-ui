@@ -38,6 +38,7 @@
   "MinimalUI.HotbarPositionName": "Position Makro Hotbar",
   "MinimalUI.HotbarPositionHint": "Horizontale Position der Makro Hotbar",
   "MinimalUI.HotbarPositionMaxLeft": "Links (Standard in Foundry)",
+  "MinimalUI.HotbarPositionExtremeLeft": "Ganz links",
   "MinimalUI.HotbarPositionCenterLeft": "Links zentriert",
   "MinimalUI.HotbarPositionCenter": "Zentriert",
   "MinimalUI.HotbarPositionCenterRight": "Rechts zentriert",

@@ -37,6 +37,7 @@
   "MinimalUI.HotbarStyleHint": "Customize Hotbar UI. Auto-Hide Ignored when using Custom Hotbar module.",
   "MinimalUI.HotbarPositionName": "Macro Hotbar Position",
   "MinimalUI.HotbarPositionHint": "Horizontal position of the Macro Hotbar",
+  "MinimalUI.HotbarPositionExtremeLeft": "Extreme Left",
   "MinimalUI.HotbarPositionMaxLeft": "Left (Foundry Default)",
   "MinimalUI.HotbarPositionCenterLeft": "Center Left",
   "MinimalUI.HotbarPositionCenter": "Center",

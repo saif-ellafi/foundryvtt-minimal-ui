@@ -10,8 +10,7 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 #### [This module was made for free, with joy, hard work, to be shared with a wonderful community, and tons of Coffee :D!](https://ko-fi.com/jeansenvaars)
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V14D3AH)
 
-(The following image is the default look and feel for upcoming Foundry V9)
-![Example Image](./example16.png)
+![Example](example17.png)
 
 ## Compatibility issues?
 

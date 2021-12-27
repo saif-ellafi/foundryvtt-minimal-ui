@@ -38,6 +38,7 @@
   "MinimalUI.HotbarPositionName": "Posición de la barra de macros",
   "MinimalUI.HotbarPositionHint": "Posición horizontal de la barra de macros",
   "MinimalUI.HotbarPositionMaxLeft": "A la izquierda (Por defecto en Foundry)",
+  "MinimalUI.HotbarPositionExtremeLeft": "Extremo a la izquierda",
   "MinimalUI.HotbarPositionCenterLeft": "Centrado a la izquierda",
   "MinimalUI.HotbarPositionCenter": "Centrado",
   "MinimalUI.HotbarPositionCenterRight": "Centrado a la derecha",

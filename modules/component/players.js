@@ -3,7 +3,7 @@ import '../../styles/component/players.css';
 
 export default class MinimalUIPlayers {
 
-    static cssPlayersHiddenWidth = '28px';
+    static cssPlayersHiddenWidth = '32px';
     static cssPlayersSmallFontSize = '12px';
     static cssPlayersSmallWidth = '175px';
     static cssPlayersStandardFontSize = 'inherit';
