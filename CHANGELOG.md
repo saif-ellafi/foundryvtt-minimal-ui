@@ -1,4 +1,4 @@
-### 1.1.9
+### 1.1.10
 * Compatibility: Brought upstream patches for compatibility with Custom Hotbar, Monk's Hotbar and Sidebar Expansion
 
 ### 1.1.8
