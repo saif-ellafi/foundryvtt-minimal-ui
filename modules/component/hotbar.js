@@ -23,11 +23,9 @@ export default class MinimalUIHotbar {
         </a>
         `
 
-    static async collapseHotbar() {
-        await ui.hotbar.collapse();
-    }
-
     static lockHotbar(unlock) {
+        if ((game.modules.get("custom-hotbar")?.active) || (game.modules.get('monks-hotbar-expansion')?.active))
+            return;
         const barLock = $("#bar-lock > i");
         if (MinimalUIHotbar.hotbarLocked && unlock) {
             rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarHidden);
@@ -83,7 +81,7 @@ export default class MinimalUIHotbar {
     static configureHotbar() {
         switch (game.settings.get('minimal-ui', 'hotbar')) {
             case 'collapsed': {
-                MinimalUIHotbar.collapseHotbar();
+                ui.hotbar.collapse();
                 break;
             }
             case 'autohide': {

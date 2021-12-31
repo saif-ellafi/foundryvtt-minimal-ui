@@ -1,5 +1,7 @@
-### 1.4.1 (WIP)
+### 1.4.1
+* Compatibility: Sidebar Expander
 * Bugfix: Put back players panel if switching hotbar position other than to extreme left without need to refresh
+* Bugfix: Removed unnecessary deprecated code
 
 ### 1.4.0
 * Enhancement: Achieve a new level of minimalism with new Minimal UI defaults and settings
