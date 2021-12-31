@@ -210,11 +210,28 @@ export default class MinimalUIHotbar {
             ui.hotbar.element.show();
         });
 
+        // Needs to be .on so changing hotbar pages also applies
         Hooks.on('renderHotbar', function () {
             MinimalUIHotbar.configureHotbar();
             MinimalUIHotbar.setHotbarSlots();
+            if (game.modules.get('custom-hotbar')?.active)
+                rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarCustomHotbarCompatHover);
         });
 
+        Hooks.once('renderCustomHotbar', function() {
+            if (game.modules.get("custom-hotbar")?.active && game.settings.get('minimal-ui', 'hotbar') === 'collapsed') {
+                ui.customHotbar?.collapse()
+            }
+        })
+
+        Hooks.on('collapseSidebar', function() {
+            MinimalUIHotbar.positionHotbar();
+        });
+
+        Hooks.on('renderCompendium', function(compendium) {
+            if (compendium.metadata.type === 'Macro')
+                MinimalUIHotbar.lockHotbar(false)
+        })
     }
 
 }

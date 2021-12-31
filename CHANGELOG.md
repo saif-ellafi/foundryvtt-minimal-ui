@@ -1,3 +1,6 @@
+### 1.1.9
+* Compatibility: Brought upstream patches for compatibility with Custom Hotbar, Monk's Hotbar and Sidebar Expansion
+
 ### 1.1.8
 * Enhancement: New Left Controls Behavior - Partially Visible, hides the second column of left side buttons
 

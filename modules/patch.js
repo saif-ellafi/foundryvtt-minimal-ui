@@ -13,15 +13,17 @@ export default class MinimalUIPatch {
                 target.bringToTop();
         });
 
-        Hooks.once('ready', async function () {
-            $("#sidebar-tabs > a:nth-child(n)").click(function (eve) {
-                if (eve.currentTarget.classList.contains('collapse')) return;
-                const tabName = jQuery(eve.currentTarget).attr('data-tab');
-                if (ui.sidebar._collapsed) {
-                    ui.sidebar.activateTab(tabName);
-                }
+        if (!game.modules.get('sidebar-expander')?.active) {
+            Hooks.once('ready', async function () {
+                $("#sidebar-tabs > a:nth-child(n)").click(function (eve) {
+                    if (eve.currentTarget.classList.contains('collapse')) return;
+                    const tabName = jQuery(eve.currentTarget).attr('data-tab');
+                    if (ui.sidebar._collapsed) {
+                        ui.sidebar.activateTab(tabName);
+                    }
+                });
             });
-        });
+        }
     }
 
 }
