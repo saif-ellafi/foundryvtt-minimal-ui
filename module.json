@@ -26,6 +26,11 @@
 			"lang": "de",
 			"name": "Deutsch",
 			"path": "lang/de.json"
+		},
+		{
+			"lang": "ja",
+			"name": "日本語",
+			"path": "lang/ja.json"
 		}
 	],
 	"url": "https://github.com/saif-ellafi/foundryvtt-minimal-ui.git",
