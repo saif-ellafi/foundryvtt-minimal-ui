@@ -1,3 +1,7 @@
+### 1.4.3
+* Bugfix: Fixed hotbar collapsing on pager switch in collapsed mode setting
+* Bugfix: Fixed hotbar shaking on collapsed mode setting
+
 ### 1.4.2
 * Enhancement: New setting and default for player lists: Click to Toggle
 

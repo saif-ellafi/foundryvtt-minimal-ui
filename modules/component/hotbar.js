@@ -32,7 +32,7 @@ export default class MinimalUIHotbar {
             barLock.removeClass("fa-lock");
             barLock.addClass("fa-lock-open");
             MinimalUIHotbar.hotbarLocked = false;
-        } else {
+        } else if (game.settings.get('minimal-ui', 'hotbar') === 'autohide') {
             rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarAutoHideHeight);
             barLock.removeClass("fa-lock-open");
             barLock.addClass("fa-lock");
@@ -79,39 +79,32 @@ export default class MinimalUIHotbar {
     }
 
     static configureHotbar() {
-        switch (game.settings.get('minimal-ui', 'hotbar')) {
-            case 'collapsed': {
-                ui.hotbar.collapse();
-                break;
-            }
-            case 'autohide': {
-                if (!(game.modules.get("custom-hotbar")?.active) && !(game.modules.get('monks-hotbar-expansion')?.active)) {
-                    rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarHidden);
-                    rootStyle.setProperty('--hotbarlh1', MinimalUIHotbar.cssHotbarLeftControlsLineHeight);
-                    rootStyle.setProperty('--hotbarlh2', MinimalUIHotbar.cssHotbarRightControlsLineHeight);
-                    if (game.modules.get('dnd-ui')?.active) {
-                        rootStyle.setProperty('--hotbarlh2', MinimalUIHotbar.cssHotbarRightControlsLineHeightDnDUi);
-                    }
-                    rootStyle.setProperty('--hotbarmg', MinimalUIHotbar.cssHotbarControlsMargin);
-                    rootStyle.setProperty('--hotbarhh', MinimalUIHotbar.cssHotbarControlsAutoHideHeight);
-                    rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarAutoHideHeight);
-                    rootStyle.setProperty('--hotbarshp', MinimalUIHotbar.cssHotbarAutoHideShadow);
-                    $("#hotbar-directory-controls").append(MinimalUIHotbar.htmlHotbarLockButton);
-                    $("#macro-directory").click(function () {
-                        MinimalUIHotbar.lockHotbar(false)
-                    });
-                    $("#bar-lock").click(function () {
-                        MinimalUIHotbar.lockHotbar(true)
-                    });
-                    $(".page-control").click(function () {
-                        MinimalUIHotbar.lockHotbar(false)
-                    });
-                    if (MinimalUIHotbar.hotbarLocked) {
-                        MinimalUIHotbar.lockHotbar(false);
-                    }
-                    $("#bar-toggle").remove();
+        if (game.settings.get('minimal-ui', 'hotbar') === 'autohide') {
+            if (!(game.modules.get("custom-hotbar")?.active) && !(game.modules.get('monks-hotbar-expansion')?.active)) {
+                rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarHidden);
+                rootStyle.setProperty('--hotbarlh1', MinimalUIHotbar.cssHotbarLeftControlsLineHeight);
+                rootStyle.setProperty('--hotbarlh2', MinimalUIHotbar.cssHotbarRightControlsLineHeight);
+                if (game.modules.get('dnd-ui')?.active) {
+                    rootStyle.setProperty('--hotbarlh2', MinimalUIHotbar.cssHotbarRightControlsLineHeightDnDUi);
                 }
-                break;
+                rootStyle.setProperty('--hotbarmg', MinimalUIHotbar.cssHotbarControlsMargin);
+                rootStyle.setProperty('--hotbarhh', MinimalUIHotbar.cssHotbarControlsAutoHideHeight);
+                rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarAutoHideHeight);
+                rootStyle.setProperty('--hotbarshp', MinimalUIHotbar.cssHotbarAutoHideShadow);
+                $("#hotbar-directory-controls").append(MinimalUIHotbar.htmlHotbarLockButton);
+                $("#macro-directory").click(function () {
+                    MinimalUIHotbar.lockHotbar(false)
+                });
+                $("#bar-lock").click(function () {
+                    MinimalUIHotbar.lockHotbar(true)
+                });
+                $(".page-control").click(function () {
+                    MinimalUIHotbar.lockHotbar(false)
+                });
+                if (MinimalUIHotbar.hotbarLocked) {
+                    MinimalUIHotbar.lockHotbar(false);
+                }
+                $("#bar-toggle").remove();
             }
         }
     }
@@ -188,6 +181,11 @@ export default class MinimalUIHotbar {
             if (game.modules.get('custom-hotbar')?.active)
                 rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarCustomHotbarCompatHover);
         });
+
+        Hooks.once('renderHotbar', function() {
+            if (game.settings.get('minimal-ui', 'hotbar') === 'collapsed')
+                ui.hotbar.collapse();
+        })
 
         Hooks.once('renderCustomHotbar', function() {
             if (game.modules.get("custom-hotbar")?.active && game.settings.get('minimal-ui', 'hotbar') === 'collapsed') {
