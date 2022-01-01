@@ -1,3 +1,6 @@
+### 1.1.11
+* Compatibility: Issue in 1.1.10 that broke support with Custom Hotbar
+
 ### 1.1.10
 * Compatibility: Brought upstream patches for compatibility with Custom Hotbar, Monk's Hotbar and Sidebar Expansion
 
