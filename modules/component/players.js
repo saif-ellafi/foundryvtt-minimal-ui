@@ -19,9 +19,10 @@ export default class MinimalUIPlayers {
             choices: {
                 "default": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
                 "autohide": game.i18n.localize("MinimalUI.SettingsAutoHide"),
+                "clicktoggle": game.i18n.localize("MinimalUI.SettingsClickToggle"),
                 "hidden": game.i18n.localize("MinimalUI.SettingsHide")
             },
-            default: "autohide",
+            default: "clicktoggle",
             onChange: debouncedReload
         });
 
@@ -64,8 +65,9 @@ export default class MinimalUIPlayers {
 
             players[0].val = "";
             const plSize = game.settings.get('minimal-ui', 'playerListSize');
+            const plSetting = game.settings.get('minimal-ui', 'playerList');
 
-            switch (game.settings.get('minimal-ui', 'playerList')) {
+            switch (plSetting) {
                 case 'default': {
                     if (plSize === 'small') {
                         rootStyle.setProperty('--playerfsize', MinimalUIPlayers.cssPlayersSmallFontSize);
@@ -87,7 +89,7 @@ export default class MinimalUIPlayers {
                     // ---
                     break;
                 }
-                case 'autohide': {
+                case 'autohide': case 'clicktoggle': {
                     if (plSize === 'small') {
                         rootStyle.setProperty('--playerfsizehv', MinimalUIPlayers.cssPlayersSmallFontSize);
                         rootStyle.setProperty('--playerwidthhv', MinimalUIPlayers.cssPlayersSmallWidth);
@@ -155,6 +157,38 @@ export default class MinimalUIPlayers {
                         );
                     }
                     // ---
+                    if (plSetting === 'autohide') {
+                        players.hover(
+                          () => {
+                              players.css('width', 'var(--playerwidthhv)');
+                              players.css('font-size', 'var(--playerfsizehv)');
+                              players.css('opacity', '100%');
+                              $("#players ol li.player").css('line-height', '20px');
+                          },
+                          () => {
+                              players.css('width', '');
+                              players.css('font-size', 'var(--playerfsize)');
+                              players.css('opacity', 'var(--opacity)');
+                              $("#players ol li.player").css('line-height', '2px');
+                          })
+                    } else {
+                        let state = 0;
+                        $("#player-list").click(() => {
+                            if (state === 0) {
+                                players.css('width', 'var(--playerwidthhv)');
+                                players.css('font-size', 'var(--playerfsizehv)');
+                                players.css('opacity', '100%');
+                                $("#players ol li.player").css('line-height', '20px');
+                                state = 1;
+                            } else {
+                                players.css('width', '');
+                                players.css('font-size', 'var(--playerfsize)');
+                                players.css('opacity', 'var(--opacity)');
+                                $("#players ol li.player").css('line-height', '2px');
+                                state = 0;
+                            }
+                        })
+                    }
                     break;
                 }
             }

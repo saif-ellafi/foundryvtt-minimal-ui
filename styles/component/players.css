@@ -11,12 +11,6 @@
     --playerpingdisplay: initial;
 }
 
-#players:hover {
-    width: var(--playerwidthhv);
-    font-size: var(--playerfsizehv);
-    opacity: 100%;
-}
-
 #players {
     bottom: var(--playerbot);
     left: var(--playerleft);
@@ -28,31 +22,9 @@
     border: 1px solid var(--bordercolor);
 }
 
-#players ol .player-name {
-    overflow: visible;
-}
-
-#players ol .player.flexrow {
-    flex-wrap: nowrap;
-}
-
 #players ol li.player {
     padding: 1px 10px;
     line-height: var(--playerslh);
-}
-
-#players:hover ol li.player {
-    line-height: 20px;
-}
-
-#players:hover h3 {
-    width: unset;
-}
-
-#players h3 {
-    margin: 0 1px;
-    border-bottom: 0;
-    width: var(--playerh3w);
 }
 
 .raised-hand {

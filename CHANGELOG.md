@@ -1,3 +1,6 @@
+### 1.4.2
+* Enhancement: New setting and default for player lists: Click to Toggle
+
 ### 1.4.1
 * Compatibility: Sidebar Expander
 * Bugfix: Put back players panel if switching hotbar position other than to extreme left without need to refresh
