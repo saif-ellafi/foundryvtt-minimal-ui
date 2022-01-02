@@ -18,6 +18,12 @@ export default class MinimalUIControls {
     static cssControlSubMarginSmall = '-10px';
     static cssControlSubMarginStandard = '0';
 
+    static positionControls() {
+        if (game.modules.get('window-controls')?.active && ['top', 'topBar', 'persistentTop'].includes(game.settings.get('window-controls', 'organizedMinimize'))) {
+            rootStyle.setProperty('--controlstop', '120px');
+        }
+    }
+
     static showSubControls() {
         if (game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide') {
             rootStyle.setProperty('--controlssubop', '0%');
@@ -73,6 +79,7 @@ export default class MinimalUIControls {
     };
     static initHooks() {
         Hooks.once('renderSceneControls', function () {
+            MinimalUIControls.positionControls();
             MinimalUIControls.showSubControls();
             MinimalUIControls.sizeControls();
         });

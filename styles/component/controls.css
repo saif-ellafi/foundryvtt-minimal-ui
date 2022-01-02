@@ -3,6 +3,7 @@
     --controlsh: 30px;
     --controlslh: 30px;
     --controlsfs: 24px;
+    --controlstop: 75px;
     --controlssubmargin: 0;
     --opacitycontrols: 75%;
     --controlssubop: 100%;
@@ -14,7 +15,7 @@
     opacity: var(--opacitycontrols);
     transition: 2s;
     position: absolute;
-    top: 75px;
+    top: var(--controlstop);
     left: -10px;
 }
 
