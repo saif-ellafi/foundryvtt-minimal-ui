@@ -1,4 +1,5 @@
-### 1.4.4 (WIP)
+### 1.4.4
+* Translation: Japanese - Thank you SO much @BrotherSharper
 * Bugfix: Adjusted players arrow icon margin
 
 ### 1.4.3

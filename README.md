@@ -30,6 +30,14 @@ if (game.modules.get('minimal-ui')?.active) {
 }
 ```
 
+# Appreciations
+* Thanks to colorsettings by ardittristan: Minimal UI has a color picker!
+* Thanks to vance in the FoundryVTT Discord: Minimal UI is better written!
+* Thanks to the FoundryVTT Discord community for the amazing issue reports and feedback.
+* Thanks to Merudo for being the first code contributor to Minimal UI as an open source module!
+* Thanks to Greayhead for German Translations
+* Thanks to BrotherSharper for the wonderful Japanese Translations
+
 ## Special Minimal UI Module Companions
 
 ### Window Controls
@@ -101,13 +109,6 @@ Also do share systems and modules Minimal UI already works with too!
 # Build from Source
 Plugins: `rollup`, `rollup-plugin-css-porter`, `npm-build-zip`
 Build Script: `npm run build`
-
-# Appreciations
-* Thanks to colorsettings by ardittristan: Minimal UI has a color picker!
-* Thanks to vance in the FoundryVTT Discord: Minimal UI is better written!
-* Thanks to the FoundryVTT Discord community for the amazing issue reports and feedback.
-* Thanks to Merudo for being the first code contributor to Minimal UI as an open source module!
-* Thanks to Greayhead for German Translations
 
 # License
 [MIT License](./LICENSE.md)
