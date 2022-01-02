@@ -1,0 +1,79 @@
+{
+    "I18N.LANGUAGE": "日本語",
+    "I18N.MAINTAINERS": "Brother Sharp#6921",
+  
+    "MinimalUI.SettingsAlwaysVisible": "常に表示",
+    "MinimalUI.SettingsStartVisible": "表示状態で開始",
+    "MinimalUI.SettingsPartiallyVisible": "部分的に表示",
+    "MinimalUI.SettingsAutoHide": "子ツール自動非表示",
+    "MinimalUI.SettingsAutoHidePlus": "選択ツール以外自動非表示",
+    "MinimalUI.SettingsClickToggle": "クリックで切替",
+    "MinimalUI.SettingsCollapsed": "折りたたまれて表示",
+    "MinimalUI.SettingsOnlyGM": "GMのみ可視化",
+    "MinimalUI.SettingsHide": "完全に非表示",
+  
+    "MinimalUI.SettingsSmall": "小",
+    "MinimalUI.SettingsDefault": "デフォルト",
+    "MinimalUI.SettingsStandard": "中",
+    "MinimalUI.SettingsBig": "大",
+  
+    "MinimalUI.Enabled": "有効化",
+    "MinimalUI.Disabled": "無効化",
+  
+    "MinimalUI.LogoStyleName": "オンセ工房ロゴの表示設定",
+    "MinimalUI.LogoStyleHint": "オンセ工房ロゴの表示設定と大きさの設定を行います。",
+    "MinimalUI.LogoBehaviourName": "オンセ工房ロゴの挙動",
+    "MinimalUI.LogoBehaviourHint": "表示されている場合、オンセ工房ロゴをクリックして表示の設定を切り替えることができます。",
+    "MinimalUI.LogoBehaviourToggle": "ロゴクリック全UI表示切り替え",
+    "MinimalUI.LogoBehaviourToggleNoChat": "ロゴクリックでチャット以外の全UI表示切り替え",
+    "MinimalUI.LogoImageName": "オンセ工房ロゴ画像",
+    "MinimalUI.LogoImageHint": "画像サイズは100×50ピクセルが最適です。",
+  
+    "MinimalUI.ControlsSizeName": "左サイドパネルの大きさ",
+    "MinimalUI.ControlsSizeHint": "左のサイドパネルのツールアイコンの好きな大きさを選んでください。",
+    "MinimalUI.ControlsSubHideName": "左サイドパネルの子ツールの表示設定",
+    "MinimalUI.ControlsSubHideHint": "設定によって自動的に非表示の方法とマウスホバーのときの表示方法を設定できます。",
+  
+    "MinimalUI.HotbarStyleName": "マクロとホットバーの表示設定",
+    "MinimalUI.HotbarStyleHint": "ホットバーのUIをカスタマイズ｡カスタム･ホットバーモジュールを使用する場合､自動非表示は無視されます｡",
+    "MinimalUI.HotbarPositionName": "マクロとホットバーの位置",
+    "MinimalUI.HotbarPositionHint": "マクロ･ホットバーの水平位置",
+    "MinimalUI.HotbarPositionExtremeLeft": "一番左",
+    "MinimalUI.HotbarPositionMaxLeft": "左 （初期位置）",
+    "MinimalUI.HotbarPositionCenterLeft": "中央左",
+    "MinimalUI.HotbarPositionCenter": "中央",
+    "MinimalUI.HotbarPositionCenterRight": "中央右",
+    "MinimalUI.HotbarPositionManual": "手動",
+    "MinimalUI.HotbarPPositionName": "マクロ･ホットバー手動位置",
+    "MinimalUI.HotbarPPositionHint": "水平方向の位置（ピクセル単位）をマクロ位置が｢手動｣の場合にのみ設定できます。",
+  
+    "MinimalUI.NavigationStyleName": "シーンナビゲーションの表示設定",
+    "MinimalUI.NavigationStyleHint": "シーンナビゲーションの表示方法を設定します｡非表示の場合は｢DF Scene Enhancement｣のModの設定も引き継ぎます。",
+    "MinimalUI.NavigationSizeName": "シーンナビゲーションの大きさ",
+    "MinimalUI.NavigationSizeHint": "シーンナビゲーションの大きさを調整できます。（表示時のみ）",
+  
+    "MinimalUI.PlayersBehaviourName": "プレイヤーリストの挙動",
+    "MinimalUI.PlayersBehaviourHint": "プレイヤーリストUIの表示方法等を設定します。",
+    "MinimalUI.PlayersSizeName": "プレイヤーリストの大きさ",
+    "MinimalUI.PlayersSizeHint": "「中」または「小」のどちらかを選べます｡",
+  
+    "MinimalUI.PlayersShowPingName" : "Minimal UI ModとPing Logger Modの相互設定",
+    "MinimalUI.PlayersShowPingHint" : "「表示」時はプレイヤーリストが非表示状態でも必ずPing Loggerの遅延表示を行います。",
+    "MinimalUI.PlayersShowPing"  : "表示",
+    "MinimalUI.PlayersHidePing"  : "非表示",
+  
+    "MinimalUI.SidebarStyleName": "右サイドパネルの動作",
+    "MinimalUI.SidebarStyleHint": "右のサイドパネルが折りたたまれた状態で表示されるかどうかを設定します。",
+  
+    "MinimalUI.BorderColorName": "ツール縁の色",
+    "MinimalUI.BorderColorHint": "サイドパネルのツールアイコンの縁の色",
+    "MinimalUI.ShadowColorName": "縁の影の色",
+    "MinimalUI.ShadowColorHint": "ツールアイコンにかかる影の色",
+    "MinimalUI.ShadowStrengthName": "縁の影の強さ",
+    "MinimalUI.ShadowStrengthHint": "縁の影はどれだけ暗いかを設定します。デフォルト: 5",
+    "MinimalUI.TransparencyPercentageName": "ホバー時の透明化率",
+    "MinimalUI.TransparencyPercentageHint": "マウスホバーをしたときのUIの透明度を設定します。デフォルト: 75",
+    "MinimalUI.ColorPicker": "色選択"
+  
+  }
+  
