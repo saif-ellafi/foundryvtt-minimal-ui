@@ -24,7 +24,7 @@ export default class MinimalUINavigation {
                 "collapsed": game.i18n.localize("MinimalUI.SettingsCollapsed"),
                 "hidden": game.i18n.localize("MinimalUI.SettingsHide")
             },
-            default: "collapsed",
+            default: "hidden",
             onChange: debouncedReload
         });
 

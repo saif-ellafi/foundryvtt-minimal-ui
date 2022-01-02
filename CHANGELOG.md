@@ -1,3 +1,8 @@
+### 1.4.5
+* Enhancement: Adjust left controls X position based on logo and navigation settings
+* Enhancement: Play nicer with Window Controls module
+* Default: Scene Navigation now defaults to hidden (we can survive with Scene from right-side panel)
+
 ### 1.4.4
 * Translation: Japanese - Thank you SO much @BrotherSharper
 * Bugfix: Adjusted players arrow icon margin

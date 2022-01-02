@@ -18,6 +18,21 @@ export default class MinimalUIControls {
     static cssControlSubMarginSmall = '-10px';
     static cssControlSubMarginStandard = '0';
 
+    static positionControls() {
+        const logoSettings = game.settings.get('minimal-ui', 'foundryLogoSize');
+        const navSettings = game.settings.get('minimal-ui', 'sceneNavigation');
+        const navSizeSettings = game.settings.get('minimal-ui', 'sceneNavigationSize');
+        if (logoSettings === 'hidden' && navSettings === 'hidden') {
+            rootStyle.setProperty('--controlstop', '0px');
+        } else if (navSizeSettings === 'big') {
+            rootStyle.setProperty('--controlstop', '115px');
+        } else if (navSizeSettings === 'standard') {
+            rootStyle.setProperty('--controlstop', '100px');
+        } else if (logoSettings !== 'standard') {
+            rootStyle.setProperty('--controlstop', '75px');
+        }
+    }
+
     static showSubControls() {
         if (game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide') {
             rootStyle.setProperty('--controlssubop', '0%');
@@ -73,6 +88,7 @@ export default class MinimalUIControls {
     };
     static initHooks() {
         Hooks.once('renderSceneControls', function () {
+            MinimalUIControls.positionControls();
             MinimalUIControls.showSubControls();
             MinimalUIControls.sizeControls();
         });
