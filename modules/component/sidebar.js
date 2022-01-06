@@ -15,7 +15,7 @@ export default class MinimalUISidebar {
                 "shown": game.i18n.localize("MinimalUI.SettingsStartVisible"),
                 "collapsed": game.i18n.localize("MinimalUI.SettingsCollapsed")
             },
-            default: "collapsed"
+            default: "shown"
         });
     }
 
