@@ -11,7 +11,7 @@ This includes hiding Foundry's Logo, Players List, Scene Navigation and Macro Ba
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V14D3AH)
 
 (Minimal UI + Window Controls)
-![img.png](example19.png)
+![img.png](example20.png)
 
 ## Compatibility issues?
 
