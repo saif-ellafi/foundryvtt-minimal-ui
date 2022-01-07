@@ -178,8 +178,10 @@ export default class MinimalUIHotbar {
         // Needs to be .on so changing hotbar pages also applies
         Hooks.on('renderHotbar', function () {
             MinimalUIHotbar.configureHotbar();
-            if (game.modules.get('custom-hotbar')?.active)
+            if (game.modules.get('custom-hotbar')?.active) {
                 rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarCustomHotbarCompatHover);
+                $("#hotbar").css('margin-bottom', '-6px');
+            }
         });
 
         Hooks.once('renderHotbar', function() {

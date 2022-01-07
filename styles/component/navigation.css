@@ -1,6 +1,7 @@
 :root {
     --navivis: hidden;
-    --navixpos: 125px;
+    --navixpos: 100px;
+    --navixmg: 75px;
     --navilh: 20px;
     --navifs: 14px;
     --navilisttop: 16px;
@@ -12,7 +13,7 @@
     visibility: var(--navivis);
     opacity: var(--opacity);
     transition: 0.5s ease-out 0.5s;
-    position: absolute;
+    position: relative;
 }
 
 #navigation:hover {
@@ -28,6 +29,10 @@
 #navigation #nav-toggle {
     height: var(--navibuttonsize);
     background: #292929bd;
+}
+
+#navigation #scene-list {
+    margin-right: var(--navixmg);
 }
 
 #navigation #scene-list .scene ul.scene-players {

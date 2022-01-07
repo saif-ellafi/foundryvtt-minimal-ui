@@ -1,7 +1,12 @@
+### 1.4.7
+* Enhancement: Controls will be on the very top left corner if navigation and logo are hidden
+* Bugfix: Bug where scene navigation wouldn't overflow correctly (thanks smturg)
+* Compatibility: Again some more Custom Hotbar support
+
 ### 1.4.6
-* Bugfix: Transitions of the players menu now more consistent
+* Bugfix: Transitions of players menu now more consistent
 * Bugfix: Hover effects with scene navigation delay corrected
-* Default: Sidebar is now shown by default, as opposed to previous collapsed
+* Default: Sidebar now shown by default, as opposed to previous collapsed
 
 ### 1.4.5
 * Enhancement: Adjust left controls X position based on logo and navigation settings

@@ -4,8 +4,8 @@ import '../../styles/component/navigation.css';
 export default class MinimalUINavigation {
 
     static cssSceneNavNoLogoStart = '8px';
-    static cssSceneNavSmallLogoStart = '75px';
-    static cssSceneNavBullseyeStart = '125px';
+    static cssSceneNavSmallLogoStart = '50px';
+    static cssSceneNavBullseyeStart = '100px';
 
     static async collapseNavigation() {
         await ui.nav.collapse();
@@ -62,6 +62,17 @@ export default class MinimalUINavigation {
         });
 
         Hooks.once('renderSceneNavigation', async function () {
+
+            switch (game.settings.get('minimal-ui', 'foundryLogoSize')) {
+                case 'small': {
+                    rootStyle.setProperty('--navixmg', '25px');
+                    break;
+                }
+                case 'hidden': {
+                    rootStyle.setProperty('--navixmg', '10px');
+                    break;
+                }
+            }
 
             switch (game.settings.get('minimal-ui', 'sceneNavigation')) {
                 case 'collapsed': {

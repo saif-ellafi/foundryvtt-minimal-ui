@@ -23,7 +23,7 @@ export default class MinimalUIControls {
         const navSettings = game.settings.get('minimal-ui', 'sceneNavigation');
         const navSizeSettings = game.settings.get('minimal-ui', 'sceneNavigationSize');
         if (logoSettings === 'hidden' && navSettings === 'hidden') {
-            rootStyle.setProperty('--controlstop', '0px');
+            rootStyle.setProperty('--controlstop', '-65px');
         } else if (navSizeSettings === 'big') {
             rootStyle.setProperty('--controlstop', '115px');
         } else if (navSizeSettings === 'standard') {
