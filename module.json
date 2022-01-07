@@ -5,7 +5,7 @@
 	"description": "Minimal UI allows customizing Foundry interface, by hiding, collapsing or resizing specific parts.",
 	"version": "1.4.6",
 	"minimumCoreVersion": "9.233",
-	"compatibleCoreVersion": "9.238",
+	"compatibleCoreVersion": "9.241",
 	"dependencies": [
 		{"name": "colorsettings"}
 	],
