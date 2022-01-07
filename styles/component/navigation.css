@@ -11,13 +11,13 @@
     left: var(--navixpos);
     visibility: var(--navivis);
     opacity: var(--opacity);
-    transition: 0.05s ease-out 0.5s;
+    transition: 0.5s ease-out 0.5s;
     position: absolute;
 }
 
 #navigation:hover {
     opacity: 100%;
-    transition: 0.05s;
+    transition: 0.5s;
 }
 
 #navigation .nav-item {

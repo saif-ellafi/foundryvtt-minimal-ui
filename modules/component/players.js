@@ -69,6 +69,7 @@ export default class MinimalUIPlayers {
 
             switch (plSetting) {
                 case 'default': {
+                    players.css('transition', 'ease-out 0.5s');
                     if (plSize === 'small') {
                         rootStyle.setProperty('--playerfsize', MinimalUIPlayers.cssPlayersSmallFontSize);
                         rootStyle.setProperty('--players-width', MinimalUIPlayers.cssPlayersSmallWidth);
@@ -172,22 +173,34 @@ export default class MinimalUIPlayers {
                               $("#players ol li.player").css('line-height', '2px');
                           })
                     } else {
+                        players.css('transition', 'ease-out 0.5s');
                         let state = 0;
                         $("#player-list").click(() => {
                             if (state === 0) {
+                                players.css('transition', '');
                                 players.css('width', 'var(--playerwidthhv)');
                                 players.css('font-size', 'var(--playerfsizehv)');
                                 players.css('opacity', '100%');
                                 $("#players ol li.player").css('line-height', '20px');
                                 state = 1;
+                                setTimeout(() => {if (state === 1 ) players.css('transition', 'ease-out 0.5s')}, 100);
                             } else {
+                                players.css('transition', '')
                                 players.css('width', '');
                                 players.css('font-size', 'var(--playerfsize)');
                                 players.css('opacity', 'var(--opacity)');
                                 $("#players ol li.player").css('line-height', '2px');
                                 state = 0;
+                                setTimeout(() => {if (state === 0 ) players.css('transition', 'ease-out 0.5s')}, 100);
                             }
-                        })
+                        });
+                        players.hover(
+                          () => {
+                              players.css('opacity', '100%');
+                          },
+                          () => {
+                              players.css('opacity', 'var(--opacity)');
+                          })
                     }
                     break;
                 }

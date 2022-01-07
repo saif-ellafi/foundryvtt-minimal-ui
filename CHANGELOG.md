@@ -1,3 +1,8 @@
+### 1.4.6
+* Bugfix: Transitions of the players menu now more consistent
+* Bugfix: Hover effects with scene navigation delay corrected
+* Default: Sidebar is now shown by default, as opposed to previous collapsed
+
 ### 1.4.5
 * Enhancement: Adjust left controls X position based on logo and navigation settings
 * Enhancement: Play nicer with Window Controls module

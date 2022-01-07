@@ -22,6 +22,10 @@
     border: 1px solid var(--bordercolor);
 }
 
+#players:hover {
+    opacity: 100%;
+}
+
 #players ol li.player {
     padding: 1px 10px;
     line-height: var(--playerslh);
