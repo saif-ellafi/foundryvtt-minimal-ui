@@ -35,6 +35,10 @@
     margin: 1px;
 }
 
+#players #context-menu {
+    font-size: 14px;
+}
+
 .raised-hand {
     font-size: 12px;
 }

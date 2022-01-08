@@ -1,3 +1,6 @@
+### 1.4.8
+* Bugfix: Fixed right-clicking on players list in toggle mode
+
 ### 1.4.7
 * Enhancement: Controls will be on the very top left corner if navigation and logo are hidden
 * Bugfix: Bug where scene navigation wouldn't overflow correctly (thanks smturg)
