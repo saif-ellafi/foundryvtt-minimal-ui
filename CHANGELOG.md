@@ -1,3 +1,9 @@
+### 1.4.9
+* Bugfix: Fixed adjustment issues between logo and scene navigation configurations
+* Bugfix: Fixed adjustment issues between logo and left controls margins
+* Bugfix: Fixed wrong transparency to opacity term
+* Defaults: Defaults changed towards a more conservative beginner-friendly first impression
+
 ### 1.4.8
 * Bugfix: Fixed right-clicking on players list in toggle mode
 

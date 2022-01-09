@@ -3,8 +3,8 @@ import '../../styles/component/navigation.css';
 
 export default class MinimalUINavigation {
 
-    static cssSceneNavNoLogoStart = '8px';
-    static cssSceneNavSmallLogoStart = '50px';
+    static cssSceneNavNoLogoStart = '-10px';
+    static cssSceneNavSmallLogoStart = '75px';
     static cssSceneNavBullseyeStart = '100px';
 
     static async collapseNavigation() {
@@ -24,7 +24,7 @@ export default class MinimalUINavigation {
                 "collapsed": game.i18n.localize("MinimalUI.SettingsCollapsed"),
                 "hidden": game.i18n.localize("MinimalUI.SettingsHide")
             },
-            default: "hidden",
+            default: "collapsed",
             onChange: debouncedReload
         });
 

@@ -71,8 +71,8 @@
     "MinimalUI.ShadowColorHint": "ツールアイコンにかかる影の色",
     "MinimalUI.ShadowStrengthName": "縁の影の強さ",
     "MinimalUI.ShadowStrengthHint": "縁の影はどれだけ暗いかを設定します。デフォルト: 5",
-    "MinimalUI.TransparencyPercentageName": "ホバー時の透明化率",
-    "MinimalUI.TransparencyPercentageHint": "マウスホバーをしたときのUIの透明度を設定します。デフォルト: 75",
+    "MinimalUI.TransparencyPercentageName": "ホバー時の不透明度",
+    "MinimalUI.TransparencyPercentageHint": "マウスホバー時のUIの不透明度を設定します。デフォルト：100",
     "MinimalUI.ColorPicker": "色選択"
   
   }
