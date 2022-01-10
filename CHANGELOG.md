@@ -1,3 +1,6 @@
+### 1.4.10
+* Compatibility: Sidebar Macros
+
 ### 1.4.9
 * Bugfix: Fixed adjustment issues between logo and scene navigation configurations
 * Bugfix: Fixed adjustment issues between logo and left controls margins

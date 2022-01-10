@@ -11,7 +11,7 @@ export default class MinimalUIHotbar {
     static cssHotbarRightControlsLineHeight = '12px';
     static cssHotbarRightControlsLineHeightDnDUi = '10px';
     static cssHotbarControlsAutoHideHeight = '100%';
-    static cssHotbarAutoHideHeight = '-8px';
+    static cssHotbarAutoHideHeight = '-5px';
     static cssHotbarAutoHideShadow = '-1px';
     static cssHotbarControlsMargin = '0px';
     static cssHotbarCustomHotbarCompatHover = '10px';
@@ -49,7 +49,7 @@ export default class MinimalUIHotbar {
                 break;
             }
             case 'extremeLeft': {
-                if (!(game.modules.get("custom-hotbar")?.active) && !(game.modules.get('monks-hotbar-expansion')?.active)) {
+                if (!(game.modules.get('sidebar-macros')?.active) && !(game.modules.get("custom-hotbar")?.active) && !(game.modules.get('monks-hotbar-expansion')?.active)) {
                     rootStyle.setProperty('--hotbarxpos', '5px');
                     rootStyle.setProperty('--playerbot', '55px');
                 }
@@ -159,20 +159,7 @@ export default class MinimalUIHotbar {
 
     static initHooks() {
         Hooks.on('ready', async function() {
-            ui.hotbar.element.hide();
             MinimalUIHotbar.positionHotbar();
-            if (game.settings.get('minimal-ui', 'hotbar') !== 'hidden') {
-                const gmCondition = game.settings.get('minimal-ui', 'hotbar') === 'onlygm';
-                if (gmCondition) {
-                    if (game.user.isGM)
-                        rootStyle.setProperty('--hotbarvis', 'visible');
-                } else
-                    rootStyle.setProperty('--hotbarvis', 'visible');
-            }
-            // Give time to auto-hide initial animations to finish
-            if (game.settings.get('minimal-ui', 'playerList') === 'autohide')
-                await new Promise(waitABit => setTimeout(waitABit, 50));
-            ui.hotbar.element.show();
         });
 
         // Needs to be .on so changing hotbar pages also applies
@@ -185,9 +172,15 @@ export default class MinimalUIHotbar {
         });
 
         Hooks.once('renderHotbar', function() {
-            if (game.settings.get('minimal-ui', 'hotbar') === 'collapsed')
+            const hotbarSetting = game.settings.get('minimal-ui', 'hotbar');
+            if (hotbarSetting === 'collapsed')
                 ui.hotbar.collapse();
-        })
+            else if (hotbarSetting === 'onlygm') {
+                if (!game.user.isGM)
+                    rootStyle.setProperty('--hotbarvis', 'hidden');
+            } else if (hotbarSetting === 'hidden')
+                rootStyle.setProperty('--hotbarvis', 'hidden');
+        });
 
         Hooks.once('renderCustomHotbar', function() {
             if (game.modules.get("custom-hotbar")?.active && game.settings.get('minimal-ui', 'hotbar') === 'collapsed') {
