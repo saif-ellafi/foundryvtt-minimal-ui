@@ -11,7 +11,7 @@ export default class MinimalUIHotbar {
     static cssHotbarRightControlsLineHeight = '12px';
     static cssHotbarRightControlsLineHeightDnDUi = '10px';
     static cssHotbarControlsAutoHideHeight = '100%';
-    static cssHotbarAutoHideHeight = '-5px';
+    static cssHotbarAutoHideHeight = '-6px';
     static cssHotbarAutoHideShadow = '-1px';
     static cssHotbarControlsMargin = '0px';
     static cssHotbarCustomHotbarCompatHover = '10px';
