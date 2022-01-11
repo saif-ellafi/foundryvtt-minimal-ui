@@ -50,7 +50,6 @@ export default class MinimalUIHotbar {
             }
             case 'extremeLeft': {
                 if (
-                  !(game.modules.get('sidebar-macros')?.active) &&
                   !(game.modules.get("custom-hotbar")?.active) &&
                   !(game.modules.get('monks-hotbar-expansion')?.active) &&
                   availableWidth >= 1200
