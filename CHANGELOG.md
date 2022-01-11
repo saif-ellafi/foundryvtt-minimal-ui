@@ -1,3 +1,8 @@
+### 1.4.11
+* Bugfix: Removed slight hotbar shaking
+* Bugfix: Ignore Extreme Left setting if screen width is too thin
+* Deprecation: Hotbar position no longer considers sidebar collapse status
+
 ### 1.4.10
 * Compatibility: Sidebar Macros
 

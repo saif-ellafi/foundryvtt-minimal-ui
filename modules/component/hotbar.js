@@ -41,7 +41,7 @@ export default class MinimalUIHotbar {
     }
 
     static positionHotbar() {
-        let availableWidth = canvas.app.screen.width + (ui.sidebar._collapsed ? (ui.sidebar.position.width/2) : 0);
+        let availableWidth = canvas.app.screen.width;
         switch (game.settings.get('minimal-ui', 'hotbarPosition')) {
             case 'default': {
                 rootStyle.setProperty('--hotbarxpos', '220px');
@@ -49,7 +49,12 @@ export default class MinimalUIHotbar {
                 break;
             }
             case 'extremeLeft': {
-                if (!(game.modules.get('sidebar-macros')?.active) && !(game.modules.get("custom-hotbar")?.active) && !(game.modules.get('monks-hotbar-expansion')?.active)) {
+                if (
+                  !(game.modules.get('sidebar-macros')?.active) &&
+                  !(game.modules.get("custom-hotbar")?.active) &&
+                  !(game.modules.get('monks-hotbar-expansion')?.active) &&
+                  availableWidth >= 1200
+                ) {
                     rootStyle.setProperty('--hotbarxpos', '5px');
                     rootStyle.setProperty('--playerbot', '55px');
                 }
@@ -187,10 +192,6 @@ export default class MinimalUIHotbar {
                 ui.customHotbar?.collapse()
             }
         })
-
-        Hooks.on('collapseSidebar', function() {
-            MinimalUIHotbar.positionHotbar();
-        });
 
         Hooks.on('renderCompendium', function(compendium) {
             if (compendium.metadata.type === 'Macro')
