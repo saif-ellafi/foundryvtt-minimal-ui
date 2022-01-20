@@ -1,3 +1,8 @@
+### 1.4.12
+* Compatibility: Sidebar Macros support improved detecting when it shows the hotbar
+* Bugfix: Added border and color to the scene navigation toggle, making it consistent with other elements
+* Build: Marked as compatible with any V9
+
 ### 1.4.11
 * Bugfix: Removed slight hotbar shaking
 * Bugfix: Ignore Extreme Left setting if screen width is too thin

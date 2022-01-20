@@ -29,6 +29,9 @@
 #navigation #nav-toggle {
     height: var(--navibuttonsize);
     background: #292929bd;
+    border: 1px solid var(--bordercolor);
+    border-bottom: 1px solid var(--bordercolor);
+    box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
 }
 
 #navigation #scene-list {

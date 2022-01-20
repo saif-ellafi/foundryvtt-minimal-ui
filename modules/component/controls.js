@@ -100,7 +100,7 @@ export default class MinimalUIControls {
             function controlsSubHoverRefresh() {
                 setTimeout(() => {
                     const activeElement = $('#controls');
-                    if (activeElement.length && !activeElement.is(':hover') && game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide-plus') {
+                    if (activeElement.length && !activeElement.is(':hover')) {
                         rootStyle.setProperty('--controlssubdisna', 'none');
                         MinimalUIControls.delayedProcessing = false;
                     } else controlsSubHoverRefresh();
@@ -110,7 +110,7 @@ export default class MinimalUIControls {
                 setTimeout(() => {
                     if (game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide')
                         rootStyle.setProperty('--controlssubop', '0%');
-                    if (game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide-plus') {
+                    else if (game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide-plus') {
                         controlsSubHoverRefresh();
                     }
                     rootStyle.setProperty('--opacitycontrols', game.settings.get("minimal-ui", "transparencyPercentage") + '%');

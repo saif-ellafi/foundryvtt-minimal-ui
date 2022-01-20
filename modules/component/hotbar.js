@@ -55,7 +55,8 @@ export default class MinimalUIHotbar {
                   availableWidth >= 1200
                 ) {
                     rootStyle.setProperty('--hotbarxpos', '5px');
-                    rootStyle.setProperty('--playerbot', '55px');
+                    if (!(game.modules.get('sidebar-macros')?.active && game.settings.get('sidebar-macros', 'hideMacroHotbar')))
+                        rootStyle.setProperty('--playerbot', '55px');
                 }
                 break;
             }
