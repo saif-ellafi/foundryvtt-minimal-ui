@@ -51,7 +51,6 @@ export default class MinimalUIHotbar {
             case 'extremeLeft': {
                 if (
                   !(game.modules.get("custom-hotbar")?.active) &&
-                  !(game.modules.get('monks-hotbar-expansion')?.active) &&
                   availableWidth >= 1200
                 ) {
                     rootStyle.setProperty('--hotbarxpos', '5px');
@@ -85,7 +84,7 @@ export default class MinimalUIHotbar {
 
     static configureHotbar() {
         if (game.settings.get('minimal-ui', 'hotbar') === 'autohide') {
-            if (!(game.modules.get("custom-hotbar")?.active) && !(game.modules.get('monks-hotbar-expansion')?.active)) {
+            if (!(game.modules.get("custom-hotbar")?.active)) {
                 rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarHidden);
                 rootStyle.setProperty('--hotbarlh1', MinimalUIHotbar.cssHotbarLeftControlsLineHeight);
                 rootStyle.setProperty('--hotbarlh2', MinimalUIHotbar.cssHotbarRightControlsLineHeight);
@@ -173,6 +172,9 @@ export default class MinimalUIHotbar {
             if (game.modules.get('custom-hotbar')?.active) {
                 rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarCustomHotbarCompatHover);
                 $("#hotbar").css('margin-bottom', '-6px');
+            }
+            if (game.modules.get('monks-hotbar-expansion')?.active) {
+                $("#hotbar").css('position', 'absolute');
             }
         });
 

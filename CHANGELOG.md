@@ -1,3 +1,7 @@
+### 1.4.13
+* Compatibility: Monk's Hotbar Expansion, Macros repositioning now works
+* Bugfix: Adjusted height of scene navigation bar to squeeze some pixels on top
+
 ### 1.4.12
 * Compatibility: Sidebar Macros support improved detecting when it shows the hotbar
 * Bugfix: Added border and color to the scene navigation toggle, making it consistent with other elements
