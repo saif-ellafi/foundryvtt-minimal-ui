@@ -2,7 +2,7 @@
 * Bugfix: Adjusted various margins for better consistency
 * Bugfix: Added missing shadow to navigation toggle
 * Bugfix: Removed color from autohide lock in Hotbar
-* Change: Reduced colors by default to a more inoquous default
+* Change: Reduced colors by default to a more innocuous default
 
 ### 1.4.13
 * Compatibility: Monk's Hotbar Expansion, Macros repositioning now works
