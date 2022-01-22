@@ -1,3 +1,9 @@
+### 1.4.14
+* Bugfix: Adjusted various margins for better consistency
+* Bugfix: Added missing shadow to navigation toggle
+* Bugfix: Removed color from autohide lock in Hotbar
+* Change: Reduced colors by default to a more inoquous default
+
 ### 1.4.13
 * Compatibility: Monk's Hotbar Expansion, Macros repositioning now works
 * Bugfix: Adjusted height of scene navigation bar to squeeze some pixels on top

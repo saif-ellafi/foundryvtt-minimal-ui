@@ -1,10 +1,10 @@
 :root {
     --hotbarvis: visible;
-    --hotbarypos: -6px;
+    --hotbarypos: -5px;
     --hotbarxpos: 400px;
     --hotbarlh1: 24px;
     --hotbarlh2: 8px;
-    --hotbarhv: -6px;
+    --hotbarhv: -5px;
     --hotbarmg: 0px;
     --hotbarhh: 100%;
     --hotbarshp: 0px;

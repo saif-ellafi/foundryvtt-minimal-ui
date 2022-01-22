@@ -15,7 +15,7 @@
     opacity: var(--opacitycontrols);
     transition: 2s;
     margin-top: var(--controlstop);
-    margin-left: -10px;
+    margin-left: -14px;
 }
 
 #controls:hover {

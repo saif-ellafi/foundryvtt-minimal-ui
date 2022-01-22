@@ -1,11 +1,7 @@
 :root {
-    --bordercolor: #ff4900bd;
-    --shadowcolor: #ff4900bd;
+    --bordercolor: #00000080;
+    --shadowcolor: #7c7c7c40;
     --shadowstrength: 10px;
     --opacity: 75%;
     --fpsposx: 300px;
-}
-
-.minui-lock {
-    color: var(--shadowcolor);
 }

@@ -11,7 +11,7 @@ export default class MinimalUIHotbar {
     static cssHotbarRightControlsLineHeight = '12px';
     static cssHotbarRightControlsLineHeightDnDUi = '10px';
     static cssHotbarControlsAutoHideHeight = '100%';
-    static cssHotbarAutoHideHeight = '-6px';
+    static cssHotbarAutoHideHeight = '-5px';
     static cssHotbarAutoHideShadow = '-1px';
     static cssHotbarControlsMargin = '0px';
     static cssHotbarCustomHotbarCompatHover = '10px';
@@ -84,7 +84,7 @@ export default class MinimalUIHotbar {
 
     static configureHotbar() {
         if (game.settings.get('minimal-ui', 'hotbar') === 'autohide') {
-            if (!(game.modules.get("custom-hotbar")?.active)) {
+            if (!(game.modules.get("custom-hotbar")?.active || game.modules.get('monks-hotbar-expansion')?.active)) {
                 rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarHidden);
                 rootStyle.setProperty('--hotbarlh1', MinimalUIHotbar.cssHotbarLeftControlsLineHeight);
                 rootStyle.setProperty('--hotbarlh2', MinimalUIHotbar.cssHotbarRightControlsLineHeight);
@@ -171,7 +171,7 @@ export default class MinimalUIHotbar {
             MinimalUIHotbar.configureHotbar();
             if (game.modules.get('custom-hotbar')?.active) {
                 rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarCustomHotbarCompatHover);
-                $("#hotbar").css('margin-bottom', '-6px');
+                $("#hotbar").css('margin-bottom', '-5px');
             }
             if (game.modules.get('monks-hotbar-expansion')?.active) {
                 $("#hotbar").css('position', 'absolute');

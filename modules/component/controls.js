@@ -86,7 +86,7 @@ export default class MinimalUIControls {
                 "autohide-plus": game.i18n.localize("MinimalUI.SettingsAutoHidePlus"),
                 "visible": game.i18n.localize("MinimalUI.SettingsAlwaysVisible")
             },
-            default: "autohide-plus",
+            default: "visible",
             onChange: debouncedReload
         });
     };

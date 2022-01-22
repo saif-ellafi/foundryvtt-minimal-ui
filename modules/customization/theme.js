@@ -10,7 +10,7 @@ export default class MinimalUITheme {
             label: game.i18n.localize("MinimalUI.ColorPicker"),
             scope: "world",
             restricted: true,
-            defaultColor: "#ff490080",
+            defaultColor: "#00000080",
             onChange: _ => {
                 rootStyle.setProperty('--bordercolor', game.settings.get('minimal-ui', 'borderColor'));
                 if (game.modules.get('minimal-window-controls')?.active) {
@@ -28,7 +28,7 @@ export default class MinimalUITheme {
             label: game.i18n.localize("MinimalUI.ColorPicker"),
             scope: "world",
             restricted: true,
-            defaultColor: "#ff000060",
+            defaultColor: "#7c7c7c40",
             type: String,
             onChange: _ => {
                 rootStyle.setProperty('--shadowcolor', game.settings.get('minimal-ui', 'shadowColor'));
