@@ -1,3 +1,8 @@
+### 1.4.15
+* Enhancement: Macro Hotbar now has the same background style as the players list (Foundry's metallic transparent texture)
+* Bugfix: When a sidebar app is already open in floating mode, right-click should bring it to front of other windows
+* Bugfix: When a sidebar app is already open in floating mode, do not bring it to front if sidebar expanded
+
 ### 1.4.14
 * Bugfix: Adjusted various margins for better consistency
 * Bugfix: Added missing shadow to navigation toggle

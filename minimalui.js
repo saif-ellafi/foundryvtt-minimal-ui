@@ -54,4 +54,6 @@ Hooks.once('ready', () => {
     if (MinimalUI.noColorSettings && game.user.isGM)
         ui.notifications.error("Minimal UI: Disabled color features because 'lib - colorsettings' module is not active.");
 
+    MinimalUIPatch.readyHooks();
+
 })
