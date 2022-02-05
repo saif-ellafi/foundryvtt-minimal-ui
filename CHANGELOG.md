@@ -1,3 +1,6 @@
+### 1.4.16 (WIP)
+* Bugfix: Autohide-plus controls now sets toggle controls styles correctly on startup
+
 ### 1.4.15
 * Enhancement: Macro Hotbar now has the same background style as the players list (Foundry's metallic transparent texture)
 * Bugfix: When a sidebar app is already open in floating mode, right-click should bring it to front of other windows

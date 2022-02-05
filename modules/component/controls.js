@@ -37,6 +37,7 @@ export default class MinimalUIControls {
         if (game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide') {
             rootStyle.setProperty('--controlssubop', '0%');
         } else if (game.settings.get('minimal-ui', 'controlsSubHide') === 'autohide-plus') {
+            rootStyle.setProperty('--controlssubdisna', 'none');
             rootStyle.setProperty('--controlssubopna', '0%');
         }
     }
