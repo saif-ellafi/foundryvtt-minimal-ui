@@ -1,4 +1,4 @@
-### 1.4.16 (WIP)
+### 1.4.16
 * Bugfix: Autohide-plus controls now sets toggle controls styles correctly on startup
 
 ### 1.4.15
