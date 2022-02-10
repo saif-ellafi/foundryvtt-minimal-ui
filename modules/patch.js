@@ -33,7 +33,6 @@ export default class MinimalUIPatch {
         }
         $("#sidebar-tabs > a").contextmenu((e) => {
             const tab = ui[$(e.currentTarget).attr('data-tab')];
-            console.log(tab);
             if (tab?._popout?._minimized)
                 tab._popout.maximize();
         });
