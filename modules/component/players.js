@@ -116,13 +116,8 @@ export default class MinimalUIPlayers {
                             }
                         );
                     }
-                    // Compatibility for Raise Hand module
                     let playerWidthPixel = parseInt(MinimalUIPlayers.cssPlayersHiddenWidth);
 
-                    if (game.modules.get('raise-my-hand') && game.modules.get('raise-my-hand').active) {
-                        playerWidthPixel += 14;
-                        rootStyle.setProperty('--playerslh', '20px');
-                    }
                     // Compatibility for Ping Logger module
                     if (game.modules.get('ping-logger')?.active) {
                         if (game.settings.get('minimal-ui', 'playerShowPing') === "showPing") {

@@ -7,7 +7,7 @@ export default class MinimalUIPatch {
     static initHooks() {
         Hooks.on('changeSidebarTab', function (app) {
             const target = Object.values(ui.windows).find(a => a.tabName === app.tabName);
-            if (target && target._minimized)
+            if (ui.sidebar._collapsed && target?._minimized)
                 target.maximize();
             else if (ui.sidebar._collapsed && target?.popOut)
                 target.bringToTop();
@@ -21,7 +21,7 @@ export default class MinimalUIPatch {
 
     static readyHooks() {
         // For some reason, the chat pop out does not trigger a changeSidebarTab nor renderSidebarTab. Apply exceptionally.
-        const chatTab = ui.sidebar.element.find('[data-tab="chat"]')
+        const chatTab = ui.sidebar.element.find('[data-tab="chat"]');
         if (chatTab?.length) {
             chatTab.click(() => {
                 if (ui.sidebar._collapsed)
@@ -31,6 +31,12 @@ export default class MinimalUIPatch {
                 ui.chat._popout?.bringToTop();
             });
         }
+        $("#sidebar-tabs > a").contextmenu((e) => {
+            const tab = ui[$(e.currentTarget).attr('data-tab')];
+            console.log(tab);
+            if (tab?._popout?._minimized)
+                tab._popout.maximize();
+        });
     }
 
 }

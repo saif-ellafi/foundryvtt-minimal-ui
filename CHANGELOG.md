@@ -1,3 +1,7 @@
+### 1.4.17
+* Bugfix: Minimized sidebar tabs should now maximize if right-clicked
+* Compatibility: Updated compatibility with raise my hand module
+
 ### 1.4.16
 * Bugfix: Autohide-plus controls now sets toggle controls styles correctly on startup
 

@@ -40,7 +40,8 @@
 }
 
 .raised-hand {
-    font-size: 12px;
+    font-size: 20px;
+    position: fixed;
 }
 
 .pingLogger_pingSpan {
