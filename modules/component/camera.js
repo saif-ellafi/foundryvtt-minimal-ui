@@ -42,7 +42,7 @@ export default class MinimalUICamera {
   }
 
   static initHooks() {
-    Hooks.on('rtcSettingsChanged', function() {
+    Hooks.on('ready', function() {
       MinimalUICamera.updateCameraSettings();
     });
   }
