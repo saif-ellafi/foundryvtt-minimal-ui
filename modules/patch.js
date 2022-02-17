@@ -17,25 +17,25 @@ export default class MinimalUIPatch {
             if (app?.popOut)
                 app.bringToTop();
         });
-    }
 
-    static readyHooks() {
-        // For some reason, the chat pop out does not trigger a changeSidebarTab nor renderSidebarTab. Apply exceptionally.
-        const chatTab = ui.sidebar.element.find('[data-tab="chat"]');
-        if (chatTab?.length) {
-            chatTab.click(() => {
-                if (ui.sidebar._collapsed)
+        Hooks.on('ready', function(app) {
+            // For some reason, the chat pop out does not trigger a changeSidebarTab nor renderSidebarTab. Apply exceptionally.
+            const chatTab = ui.sidebar.element.find('[data-tab="chat"]');
+            if (chatTab?.length) {
+                chatTab.click(() => {
+                    if (ui.sidebar._collapsed)
+                        ui.chat._popout?.bringToTop();
+                });
+                chatTab.contextmenu(() => {
                     ui.chat._popout?.bringToTop();
+                });
+            }
+            $("#sidebar-tabs > a").contextmenu((e) => {
+                const tab = ui[$(e.currentTarget).attr('data-tab')];
+                if (tab?._popout?._minimized)
+                    tab._popout.maximize();
             });
-            chatTab.contextmenu(() => {
-                ui.chat._popout?.bringToTop();
-            });
-        }
-        $("#sidebar-tabs > a").contextmenu((e) => {
-            const tab = ui[$(e.currentTarget).attr('data-tab')];
-            if (tab?._popout?._minimized)
-                tab._popout.maximize();
-        });
+        })
     }
 
 }

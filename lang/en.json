@@ -48,7 +48,7 @@
   "MinimalUI.HotbarPPositionHint": "Horizontal position in pixels. If Macro Position is 'Manual'",
 
   "MinimalUI.NavigationStyleName": "Scene Navigation Style",
-  "MinimalUI.NavigationStyleHint": "Customize scene navigation behaviour. Consider 'DF Scene Enhancement' when hidden.",
+  "MinimalUI.NavigationStyleHint": "Customize scene navigation behaviour",
   "MinimalUI.NavigationSizeName": "Scene Navigation Size",
   "MinimalUI.NavigationSizeHint": "Customize scene navigation Size, when visible.",
 
@@ -62,7 +62,7 @@
   "MinimalUI.PlayersShowPing"  : "Show",
   "MinimalUI.PlayersHidePing"  : "Hide",
 
-  "MinimalUI.SidebarStyleName": "Right Side Panel Behaviour",
+  "MinimalUI.SidebarStyleName": "Right Side Panel Behavior",
   "MinimalUI.SidebarStyleHint": "Whether the right side panel starts collapsed or not",
 
   "MinimalUI.BorderColorName": "Border Colors",
@@ -73,6 +73,11 @@
   "MinimalUI.ShadowStrengthHint": "How gloomy and shadow are the borders? Default: 5",
   "MinimalUI.TransparencyPercentageName": "Hover Opacity Percentage",
   "MinimalUI.TransparencyPercentageHint": "How Opaque are components until we hover with the mouse? Default: 100",
-  "MinimalUI.ColorPicker": "Color Picker"
+  "MinimalUI.ColorPicker": "Color Picker",
+
+  "MinimalUI.NoCameraBehaviorName": "No Camera Behavior",
+  "MinimalUI.NoCameraBehaviorHint": "What to do with players with cameras turned off?",
+  "MinimalUI.NoCameraBehaviorReduced": "Reduced",
+  "MinimalUI.NoCameraBehaviorHidden": "Hidden"
 
 }

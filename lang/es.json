@@ -73,6 +73,11 @@
   "MinimalUI.ShadowStrengthHint": "Grado de sombreado y oscuridad de los bordes. Por defecto: 5",
   "MinimalUI.TransparencyPercentageName": "Porcentaje de Opacidad",
   "MinimalUI.TransparencyPercentageHint": "Grado de opacidad de los components previo al paso del raton? Por defecto: 75",
-  "MinimalUI.ColorPicker": "Escoger color"
+  "MinimalUI.ColorPicker": "Escoger color",
+
+  "MinimalUI.NoCameraBehaviorName": "Comportamiento de Camaras apagadas",
+  "MinimalUI.NoCameraBehaviorHint": "¿Qué hacer con los jugadores con las cámaras apagadas?",
+  "MinimalUI.NoCameraBehaviorReduced": "Reducido",
+  "MinimalUI.NoCameraBehaviorHidden": "Oculto"
 
 }

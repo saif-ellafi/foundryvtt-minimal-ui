@@ -1,0 +1,25 @@
+:root {
+    --novid: inherit;
+    --noviddis: inherit;
+    --novidleftflex: inherit;
+    --novidlefttop: inherit;
+    --novidleftleft: inherit;
+}
+
+.no-video {
+    display: var(--novid);
+}
+
+.no-video > .video-container {
+    display: var(--noviddis);
+}
+
+.no-video > .notification-bar {
+    display: var(--noviddis);
+}
+
+.no-video > .control-bar.left {
+    flex-direction: var(--novidleftflex);
+    top: var(--novidlefttop);
+    left: var(--novidleftleft);
+}

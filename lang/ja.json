@@ -73,6 +73,11 @@
     "MinimalUI.ShadowStrengthHint": "縁の影はどれだけ暗いかを設定します。デフォルト: 5",
     "MinimalUI.TransparencyPercentageName": "ホバー時の不透明度",
     "MinimalUI.TransparencyPercentageHint": "マウスホバー時のUIの不透明度を設定します。デフォルト：100",
-    "MinimalUI.ColorPicker": "色選択"
+    "MinimalUI.ColorPicker": "色選択",
+
+    "MinimalUI.NoCameraBehaviorName": "「カメラなしビヘイビア",
+    "MinimalUI.NoCameraBehaviorHint": "カメラをオフにしたプレーヤーをどうするか？",
+    "MinimalUI.NoCameraBehaviorReduced": "削減",
+    "MinimalUI.NoCameraBehaviorHidden": "ヒドゥン"
   
   }

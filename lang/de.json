@@ -73,6 +73,11 @@
   "MinimalUI.ShadowStrengthHint": "Wie düster und schattig sollen die Ränder sein? Standard: 5",
   "MinimalUI.TransparencyPercentageName": "Opazität ohne Überstreichung",
   "MinimalUI.TransparencyPercentageHint": "Wie opak sollen die Steuerelemente sein, bis sie mit der Maus überstrichen werden? Standard: 75",
-  "MinimalUI.ColorPicker": "Farbwahl"
+  "MinimalUI.ColorPicker": "Farbwahl",
+
+  "MinimalUI.NoCameraBehaviorName": "Kein Kamera-Verhalten",
+  "MinimalUI.NoCameraBehaviorHint": "Was tun bei Spielern mit ausgeschalteter Kamera?",
+  "MinimalUI.NoCameraBehaviorReduced": "Reduziert",
+  "MinimalUI.NoCameraBehaviorHidden": "Versteckt"
 
 }
