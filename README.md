@@ -79,6 +79,9 @@ if (game.modules.get('minimal-ui')?.active) {
 ## Left Side Control Buttons
 * May be shown normally, Auto-Hide or Auto-Hide-Plus
 * Left controls buttons may be standard or small size
+
+## Camera Panel
+* May be reduced or hidden when players don't have cameras turned on
   
 ## Customization
 * Default settings target a balance between gaining space and functionality

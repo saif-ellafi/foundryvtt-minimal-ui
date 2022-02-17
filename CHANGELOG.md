@@ -1,3 +1,6 @@
+### 1.4.18
+* Feature: New Camera Panel settings allow to reduce or hide Camera boxes for players with camera disabled
+
 ### 1.4.17
 * Bugfix: Minimized sidebar tabs should now maximize if right-clicked
 * Compatibility: Updated compatibility with raise my hand module
