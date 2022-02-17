@@ -1,4 +1,5 @@
 import {debouncedReload, rootStyle} from "../util";
+import '../../styles/component/camera.css';
 
 export default class MinimalUICamera {
 
