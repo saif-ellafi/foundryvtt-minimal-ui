@@ -6,19 +6,19 @@
     --novidleftleft: inherit;
 }
 
-.no-video {
+:not(.camera-view-popout) > .no-video {
     display: var(--novid);
 }
 
-.no-video > .video-container {
+:not(.camera-view-popout) > .no-video > .video-container {
     display: var(--noviddis);
 }
 
-.no-video > .notification-bar {
+:not(.camera-view-popout) > .no-video > .notification-bar {
     display: var(--noviddis);
 }
 
-.no-video > .control-bar.left {
+:not(.camera-view-popout) > .no-video > .control-bar.left {
     flex-direction: var(--novidleftflex);
     top: var(--novidlefttop);
     left: var(--novidleftleft);

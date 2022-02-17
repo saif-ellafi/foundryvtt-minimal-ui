@@ -1,3 +1,6 @@
+### 1.4.19
+
+
 ### 1.4.18
 * Feature: New Camera Panel settings allow to reduce or hide Camera boxes for players with camera disabled
 
