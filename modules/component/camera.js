@@ -5,6 +5,14 @@ export default class MinimalUICamera {
 
   static updateCameraSettings() {
     switch (game.settings.get('minimal-ui', 'cameraBehavior')) {
+      case 'default': {
+        rootStyle.setProperty('--novid', 'inherit');
+        rootStyle.setProperty('--noviddis', 'inherit');
+        rootStyle.setProperty('--novidleftflex', 'inherit');
+        rootStyle.setProperty('--novidlefttop', 'inherit');
+        rootStyle.setProperty('--novidleftleft', 'inherit');
+        break;
+      }
       case 'reduced': {
         rootStyle.setProperty('--novid', 'inherit');
         rootStyle.setProperty('--noviddis', 'none');
