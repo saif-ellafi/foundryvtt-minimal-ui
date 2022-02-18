@@ -76,7 +76,7 @@
   "MinimalUI.ColorPicker": "Farbwahl",
 
   "MinimalUI.NoCameraBehaviorName": "Kein Kamera-Verhalten",
-  "MinimalUI.NoCameraBehaviorHint": "Was tun bei Spielern mit ausgeschalteter Kamera?",
+  "MinimalUI.NoCameraBehaviorHint": "Was macht man mit Spielern, deren Kamera ausgeschaltet ist? Hinweis: Hidden Mod erlaubt es nicht, die Kamera ein- und auszuschalten. Sobald die Kamera deaktiviert ist, kann sie nicht wieder aktiviert werden, es sei denn, man wechselt in einen anderen Modus. Verwenden Sie den Standard- oder den reduzierten Modus zum Umschalten.",
   "MinimalUI.NoCameraBehaviorReduced": "Reduziert",
   "MinimalUI.NoCameraBehaviorHidden": "Versteckt"
 

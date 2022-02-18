@@ -76,7 +76,7 @@
     "MinimalUI.ColorPicker": "色選択",
 
     "MinimalUI.NoCameraBehaviorName": "「カメラなしビヘイビア",
-    "MinimalUI.NoCameraBehaviorHint": "カメラをオフにしたプレーヤーをどうするか？",
+    "MinimalUI.NoCameraBehaviorHint": "カメラをオフにしたプレイヤーをどうするか？注意：Hidden modはカメラのオンオフを切り替えることができません。一度無効にすると、他のモードに切り替えない限り、カメラを再び有効にすることはできません。トグルにはDefaultかReducedモードを使ってください。",
     "MinimalUI.NoCameraBehaviorReduced": "削減",
     "MinimalUI.NoCameraBehaviorHidden": "ヒドゥン"
   

@@ -76,7 +76,7 @@
   "MinimalUI.ColorPicker": "Escoger color",
 
   "MinimalUI.NoCameraBehaviorName": "Comportamiento de Camaras apagadas",
-  "MinimalUI.NoCameraBehaviorHint": "¿Qué hacer con los jugadores con las cámaras apagadas?",
+  "MinimalUI.NoCameraBehaviorHint": "¿Qué hacer con los jugadores con las cámaras apagadas? Nota: El mod oculto no permite activar y desactivar la cámara. Una vez desactivada, no podrás volver a activar la cámara a menos que cambies a un modo diferente. Utiliza el modo predeterminado o reducido para alternar.",
   "MinimalUI.NoCameraBehaviorReduced": "Reducido",
   "MinimalUI.NoCameraBehaviorHidden": "Oculto"
 
