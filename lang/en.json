@@ -76,7 +76,7 @@
   "MinimalUI.ColorPicker": "Color Picker",
 
   "MinimalUI.NoCameraBehaviorName": "No Camera Behavior",
-  "MinimalUI.NoCameraBehaviorHint": "What to do with players with cameras turned off?",
+  "MinimalUI.NoCameraBehaviorHint": "What to do with players with cameras turned off?. <b>Careful:</b> Hidden mode is meant for disabled cameras. If you plan on toggling cameras on and off, use Reduced mode instead.",
   "MinimalUI.NoCameraBehaviorReduced": "Reduced",
   "MinimalUI.NoCameraBehaviorHidden": "Hidden"
 

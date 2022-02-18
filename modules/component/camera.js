@@ -53,6 +53,10 @@ export default class MinimalUICamera {
     Hooks.on('ready', function() {
       MinimalUICamera.updateCameraSettings();
     });
+    Hooks.on('rtcSettingsChanged', function(act, cl) {
+      if (cl.client.users[game.user.id].hidden !== undefined)
+        game.webrtc.render();
+    });
   }
 
 }
