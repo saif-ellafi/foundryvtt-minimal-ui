@@ -1,5 +1,8 @@
 ### 1.4.19
-
+* Bugfix: Switching Camera Behavior modes no longer requires a full refresh
+* Bugfix: Removed ghost window when a player disables camera while another has it in floating mode (Thanks G.O.D. for reporting)
+* Bugfix: Toggle camera mode in Camera Reduced mode will now immediately hide the widget for the player doing it
+* Bugfix: Floating camera mode does not follow the normal patterns and will always display as per Foundry defaults
 
 ### 1.4.18
 * Feature: New Camera Panel settings allow to reduce or hide Camera boxes for players with camera disabled
