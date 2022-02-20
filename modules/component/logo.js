@@ -91,6 +91,7 @@ export default class MinimalUILogo {
             scope: 'world',
             config: true,
             type: String,
+            filePicker: 'file',
             default: "icons/fvtt.png",
             onChange: _ => {
                 MinimalUILogo.updateImageSrc(game.settings.get('minimal-ui', 'foundryLogoImage'));

@@ -1,3 +1,7 @@
+### 1.4.20
+* Bugfix: Logo image setting has now a filepicker to choose logo easily
+* Bugfix: Fixed a WebRTC error where rtc client might have not yet loaded
+
 ### 1.4.19
 * Bugfix: Switching Camera Behavior modes no longer requires a full refresh
 * Bugfix: Removed ghost window when a player disables camera while another has it in floating mode (Thanks G.O.D. for reporting)
