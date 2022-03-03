@@ -4,7 +4,6 @@
     --controlslh: 30px;
     --controlsfs: 24px;
     --controlstop: 75px;
-    --controlssubmargin: 0;
     --opacitycontrols: 75%;
     --controlssubop: 100%;
     --controlssubopna: 100%;
@@ -15,7 +14,6 @@
     opacity: var(--opacitycontrols);
     transition: 2s;
     margin-top: var(--controlstop);
-    margin-left: -14px;
 }
 
 #controls:hover {
@@ -27,7 +25,7 @@
     overflow: visible;
 }
 
-#controls ol .scene-control, #controls ol .control-tool {
+#controls > ol.main-controls > li.scene-control, #controls > ol.sub-controls > li {
     width: var(--controlsw);
     height: var(--controlsh);
     line-height: var(--controlslh);
@@ -53,7 +51,6 @@
 
 #controls ol.sub-controls.active {
     opacity: var(--controlssubop);
-    margin-left: var(--controlssubmargin);
     transition: 2s;
 }
 

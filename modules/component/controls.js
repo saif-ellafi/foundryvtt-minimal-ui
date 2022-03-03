@@ -6,17 +6,14 @@ export default class MinimalUIControls {
     static delayedProcessing = false;
 
     static cssControlsStandardWidth = '36px';
-    static cssControlsStandardHeight = '30px';
-    static cssControlsStandardLineHeight = '30px';
+    static cssControlsStandardHeight = '36px';
+    static cssControlsStandardLineHeight = '36px';
     static cssControlsStandardFontSize = '24px';
 
     static cssControlsSmallWidth = '25px';
     static cssControlsSmallHeight = '24px';
     static cssControlsSmallLineHeight = '25px';
     static cssControlsSmallFontSize = '15px';
-
-    static cssControlSubMarginSmall = 0;
-    static cssControlSubMarginStandard = 10;
 
     static positionControls() {
         const logoSettings = game.settings.get('minimal-ui', 'foundryLogoSize');
@@ -43,22 +40,16 @@ export default class MinimalUIControls {
     }
 
     static sizeControls() {
-        const logoSettings = game.settings.get('minimal-ui', 'foundryLogoSize');
         if (game.settings.get('minimal-ui', 'controlsSize') === 'small') {
             rootStyle.setProperty('--controlsw', MinimalUIControls.cssControlsSmallWidth);
             rootStyle.setProperty('--controlsh', MinimalUIControls.cssControlsSmallHeight);
             rootStyle.setProperty('--controlslh', MinimalUIControls.cssControlsSmallLineHeight);
             rootStyle.setProperty('--controlsfs', MinimalUIControls.cssControlsSmallFontSize);
-            if (logoSettings === 'small')
-                rootStyle.setProperty('--controlssubmargin', MinimalUIControls.cssControlSubMarginSmall + 'px');
-            else
-                rootStyle.setProperty('--controlssubmargin', (MinimalUIControls.cssControlSubMarginSmall - 10) + 'px');
         } else {
             rootStyle.setProperty('--controlsw', MinimalUIControls.cssControlsStandardWidth);
             rootStyle.setProperty('--controlsh', MinimalUIControls.cssControlsStandardHeight);
             rootStyle.setProperty('--controlslh', MinimalUIControls.cssControlsStandardLineHeight);
             rootStyle.setProperty('--controlsfs', MinimalUIControls.cssControlsStandardFontSize);
-            rootStyle.setProperty('--controlssubmargin', MinimalUIControls.cssControlSubMarginStandard + 'px');
         }
     }
 

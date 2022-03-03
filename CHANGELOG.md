@@ -1,3 +1,6 @@
+### 1.4.21
+* Compatibility: Foundry 9.251+ Patch 3 Support
+
 ### 1.4.20
 * Bugfix: Logo image setting has now a filepicker to choose logo easily
 * Bugfix: Fixed a WebRTC error where rtc client might have not yet loaded
