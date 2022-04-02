@@ -1,6 +1,6 @@
 {
   "name": "foundryvtt-minimal-ui",
-  "version": "1.4.21",
+  "version": "1.4.22",
   "description": "Minimal UI allows customizing Foundry interface, by hiding, collapsing or resizing specific parts.",
   "main": "minimalui.js",
   "scripts": {

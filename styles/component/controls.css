@@ -44,7 +44,7 @@
     opacity: 100%;
 }
 
-#controls ol .scene-control.active, #controls ol .control-tool.active, #controls ol .scene-control:hover, #controls ol .control-tool:hover {
+#controls ol.control-tools > li.active, #controls ol.control-tools > li:hover {
     border: 1px solid var(--bordercolor);
     box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
 }

@@ -1,3 +1,6 @@
+### 1.4.22
+* Bugfix: Support Foundry 9.255+ Patch 4 Support (Fixed colors)
+
 ### 1.4.21
 * Compatibility: Foundry 9.251+ Patch 3 Support
 
