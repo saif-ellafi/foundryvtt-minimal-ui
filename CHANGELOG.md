@@ -1,3 +1,7 @@
+### 1.4.23
+Not my fault :) I hope Foundry stops renaming CSS class names across minor builds. But well.
+* Bugfix: Support Foundry 9.268
+
 ### 1.4.22
 * Bugfix: Support Foundry 9.255+ Patch 4 Support (Fixed colors)
 

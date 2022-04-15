@@ -6,20 +6,24 @@
     --novidleftleft: inherit;
 }
 
-:not(.camera-view-popout) > .no-video {
+:not(.camera-view) > .no-video {
     display: var(--novid);
 }
 
-:not(.camera-view-popout) > .no-video > .video-container {
+:not(.camera-view) > .no-video > .video-container {
     display: var(--noviddis);
 }
 
-:not(.camera-view-popout) > .no-video > .notification-bar {
+:not(.camera-view) > .no-video > .notification-bar {
     display: var(--noviddis);
 }
 
-:not(.camera-view-popout) > .no-video > .control-bar.left {
+:not(.camera-view) > .no-video > .control-bar.left {
     flex-direction: var(--novidleftflex);
     top: var(--novidlefttop);
     left: var(--novidleftleft);
+}
+
+#camera-views {
+    margin: 0 0 65px 110px;
 }
