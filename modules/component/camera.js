@@ -7,10 +7,10 @@ export default class MinimalUICamera {
     switch (game.settings.get('minimal-ui', 'cameraBehavior')) {
       case 'default': {
         rootStyle.setProperty('--novid', 'inherit');
-        rootStyle.setProperty('--noviddis', 'inherit');
-        rootStyle.setProperty('--novidleftflex', 'inherit');
-        rootStyle.setProperty('--novidlefttop', 'inherit');
-        rootStyle.setProperty('--novidleftleft', 'inherit');
+        rootStyle.setProperty('--noviddis', 'block');
+        rootStyle.setProperty('--novidleftflex', 'unset');
+        rootStyle.setProperty('--novidlefttop', '0');
+        rootStyle.setProperty('--novidleftleft', '0');
         break;
       }
       case 'reduced': {

@@ -1,24 +1,24 @@
 :root {
     --novid: inherit;
-    --noviddis: inherit;
-    --novidleftflex: inherit;
-    --novidlefttop: inherit;
-    --novidleftleft: inherit;
+    --noviddis: block;
+    --novidleftflex: unset;
+    --novidlefttop: 0;
+    --novidleftleft: 0;
 }
 
-:not(.camera-view) > .no-video {
+:not(.camera-view-popout) > .no-video {
     display: var(--novid);
 }
 
-:not(.camera-view) > .no-video > .video-container {
+:not(.camera-view-popout) > .no-video > .video-container {
     display: var(--noviddis);
 }
 
-:not(.camera-view) > .no-video > .notification-bar {
+:not(.camera-view-popout) > .no-video > .notification-bar {
     display: var(--noviddis);
 }
 
-:not(.camera-view) > .no-video > .control-bar.left {
+:not(.camera-view-popout) > .no-video > .control-bar.left {
     flex-direction: var(--novidleftflex);
     top: var(--novidlefttop);
     left: var(--novidleftleft);
