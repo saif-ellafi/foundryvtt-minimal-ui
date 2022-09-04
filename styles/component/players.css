@@ -6,8 +6,8 @@
     --playerslh: 20px;
     --playerbennies: none;
     --playerh3w: unset;
-    --playerbot: -8px;
-    --playerleft: -8px;
+    --playerbot: 0;
+    --playerleft: 0;
     --playerpingdisplay: initial;
 }
 

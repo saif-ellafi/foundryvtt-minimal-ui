@@ -1,3 +1,6 @@
+### 1.5.0
+* Support: Foundry V10 (feedback welcome)
+
 ### 1.4.24
 * Bugfix: Fixed Camera settings for Foundry 9.268
 

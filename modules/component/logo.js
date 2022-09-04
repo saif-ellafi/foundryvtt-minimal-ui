@@ -65,7 +65,6 @@ export default class MinimalUILogo {
             type: String,
             choices: {
                 "hidden": game.i18n.localize("MinimalUI.SettingsHide"),
-                "small": game.i18n.localize("MinimalUI.SettingsSmall"),
                 "standard": game.i18n.localize("MinimalUI.SettingsStandard")
             },
             default: "hidden",
@@ -112,23 +111,10 @@ export default class MinimalUILogo {
             }
 
             switch (game.settings.get('minimal-ui', 'foundryLogoSize')) {
-                case 'small': {
-                    rootStyle.setProperty('--logovis', 'visible');
-                    rootStyle.setProperty('--logoh', '25px');
-                    rootStyle.setProperty('--logow', '50px');
-                    break;
-                }
                 case 'standard': {
                     rootStyle.setProperty('--logovis', 'visible');
                     break;
                 }
-            }
-
-            // Compatibility Workaround for bullseye module
-            if (game.modules.get('bullseye') && game.modules.get('bullseye').active) {
-                rootStyle.setProperty('--logovis', 'visible');
-                rootStyle.setProperty('--logoh', '50px');
-                rootStyle.setProperty('--logow', '100px');
             }
 
         });

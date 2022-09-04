@@ -3,9 +3,7 @@ import '../../styles/component/navigation.css';
 
 export default class MinimalUINavigation {
 
-    static cssSceneNavNoLogoStart = '-14px';
-    static cssSceneNavSmallLogoStart = '75px';
-    static cssSceneNavBullseyeStart = '100px';
+    static cssSceneNavNoLogoStart = '-6px';
 
     static async collapseNavigation() {
         await ui.nav.collapse();
@@ -46,20 +44,6 @@ export default class MinimalUINavigation {
     }
 
     static initHooks() {
-
-        Hooks.once('ready', async function () {
-            switch (game.settings.get('minimal-ui', 'foundryLogoSize')) {
-                case 'small': {
-                    rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavSmallLogoStart);
-                    break;
-                }
-            }
-
-            // Compatibility Workaround for bullseye module
-            if (game.modules.get('bullseye') && game.modules.get('bullseye').active) {
-                rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavBullseyeStart);
-            }
-        });
 
         Hooks.once('renderSceneNavigation', async function () {
 
@@ -112,15 +96,6 @@ export default class MinimalUINavigation {
                     rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStart);
                     break;
                 }
-                case 'small': {
-                    rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavSmallLogoStart);
-                    break;
-                }
-            }
-
-            // Compatibility Workaround for bullseye module
-            if (game.modules.get('bullseye') && game.modules.get('bullseye').active) {
-                rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavBullseyeStart);
             }
 
         });

@@ -22,7 +22,7 @@
     visibility: var(--hotbarvis);
     transition: 0.5s ease-out 0.5s;
     opacity: var(--opacity);
-    position: absolute;
+    position: relative;
 }
 
 #hotbar .bar-controls {

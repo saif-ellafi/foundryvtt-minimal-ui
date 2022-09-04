@@ -25,6 +25,7 @@
 #navigation .nav-item {
     line-height: var(--navilh);
     font-size: var(--navifs);
+    top: 5px;
 }
 
 #navigation #nav-toggle {
@@ -33,6 +34,7 @@
     border: 1px solid var(--bordercolor);
     border-bottom: 1px solid var(--bordercolor);
     box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
+    top: 5px;
 }
 
 #navigation #scene-list {
@@ -47,6 +49,7 @@
     border: 1px solid var(--bordercolor);
     border-bottom: 1px solid var(--bordercolor);
     box-shadow: 0 0 var(--shadowstrength) var(--shadowcolor);
+    top: 5px;
 }
 
 /** COMPATIBILITY: Monks Scene Navigation */
