@@ -16,6 +16,7 @@
 		"verified": "10.284",
 		"maximum": "10"
 	},
+	"minimumCoreVersion": "10",
 	"dependencies": [
 		{"name": "colorsettings"}
 	],
