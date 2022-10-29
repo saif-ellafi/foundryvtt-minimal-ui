@@ -64,8 +64,12 @@ export default class MinimalUIPlayers {
             const players = $("#players");
 
             players[0].val = "";
-            const plSize = game.settings.get('minimal-ui', 'playerListSize');
-            const plSetting = game.settings.get('minimal-ui', 'playerList');
+            let plSize = game.settings.get('minimal-ui', 'playerListSize');
+            let plSetting = game.settings.get('minimal-ui', 'playerList');
+            if (ui.webrtc?.rendered) { // Disable everything with cameras on. It's complicated and I'm lazy
+                plSize = 'standard';
+                plSetting = 'default';
+            }
 
             switch (plSetting) {
                 case 'default': {

@@ -8,7 +8,6 @@ import MinimalUISidebar from './modules/component/sidebar.js'
 import MinimalUITheme from './modules/customization/theme.js'
 
 import MinimalUIPatch from "./modules/patch.js";
-import MinimalUICamera from "./modules/component/camera";
 
 class MinimalUI {
     static noColorSettings = false;
@@ -32,7 +31,6 @@ Hooks.once('init', () => {
     MinimalUIHotbar.initSettings();
     MinimalUISidebar.initSettings();
     MinimalUIPlayers.initSettings();
-    MinimalUICamera.initSettings();
     /** ------------------------- */
 
     /** Initialize hooks for Core Component Functionality */
@@ -42,7 +40,6 @@ Hooks.once('init', () => {
     MinimalUIHotbar.initHooks();
     MinimalUISidebar.initHooks();
     MinimalUIPlayers.initHooks();
-    MinimalUICamera.initHooks();
     /** ------------------------- */
 
     /** Initialize Foundry UI Patches */

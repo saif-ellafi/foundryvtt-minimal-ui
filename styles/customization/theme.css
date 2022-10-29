@@ -5,3 +5,8 @@
     --opacity: 75%;
     --fpsposx: 300px;
 }
+
+div#camera-views.camera-position-left, div#camera-views.camera-position-right {
+    min-width: 130px;
+    --av-width: auto;
+}

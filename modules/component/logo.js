@@ -117,6 +117,10 @@ export default class MinimalUILogo {
                 }
             }
 
+            if (ui.webrtc?.rendered && game.webrtc.settings.client.dockPosition === 'left') { // I'm lazy to fix this now
+                rootStyle.setProperty('--logovis', 'visible');
+            }
+
         });
 
     }
