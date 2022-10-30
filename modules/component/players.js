@@ -1,5 +1,6 @@
 import {debouncedReload, rootStyle} from '../util.js';
 import '../../styles/component/players.css';
+import MinimalUIHotbar from "./hotbar";
 
 export default class MinimalUIPlayers {
 
@@ -66,10 +67,13 @@ export default class MinimalUIPlayers {
             players[0].val = "";
             let plSize = game.settings.get('minimal-ui', 'playerListSize');
             let plSetting = game.settings.get('minimal-ui', 'playerList');
-            if (game.webrtc?.mode > 0) { // Disable everything with cameras on. It's complicated and I'm lazy
+            if (plSetting !== 'hidden' && !ui.webrtc?.hidden) { // Disable everything with cameras on. It's complicated and I'm lazy
                 plSize = 'standard';
                 plSetting = 'default';
             }
+
+            if (game.webrtc?.mode > 0)
+                MinimalUIHotbar.positionHotbar();
 
             switch (plSetting) {
                 case 'default': {
@@ -85,6 +89,7 @@ export default class MinimalUIPlayers {
                         rootStyle.setProperty('--playerwidthhv', MinimalUIPlayers.cssPlayersStandardWidth);
                     }
                     rootStyle.setProperty('--playervis', 'visible');
+                    rootStyle.setProperty('--playerslh', '20px');
                     // DnD UI Special Compatibility
                     if (game.modules.get('dnd-ui') && game.modules.get('dnd-ui').active) {
                         rootStyle.setProperty('--players-width', '200px');
@@ -102,6 +107,7 @@ export default class MinimalUIPlayers {
                         rootStyle.setProperty('--playerfsizehv', MinimalUIPlayers.cssPlayersStandardFontSize);
                         rootStyle.setProperty('--playerwidthhv', MinimalUIPlayers.cssPlayersStandardWidth);
                     }
+                    rootStyle.setProperty('--playerfsize', '0');
                     rootStyle.setProperty('--playervis', 'visible');
                     rootStyle.setProperty('--playerslh', '2px');
                     rootStyle.setProperty('--playerh3w', '0%');

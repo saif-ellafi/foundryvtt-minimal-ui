@@ -6,7 +6,7 @@
     --playerslh: 20px;
     --playerbennies: none;
     --playerh3w: unset;
-    --playerbot: 0;
+    --playerbot: -8px;
     --playerleft: 0;
     --playerpingdisplay: initial;
 }

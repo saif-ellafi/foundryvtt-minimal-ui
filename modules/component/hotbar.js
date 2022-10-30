@@ -41,11 +41,16 @@ export default class MinimalUIHotbar {
     }
 
     static positionHotbar() {
-        let availableWidth = canvas.app.screen.width;
+        let availableWidth = canvas.app?.screen.width;
+        if (!availableWidth)
+            return;
         switch (game.settings.get('minimal-ui', 'hotbarPosition')) {
             case 'default': {
-                rootStyle.setProperty('--hotbarxpos', '220px');
-                rootStyle.setProperty('--playerbot', '-8px');
+                rootStyle.setProperty('--hotbarxpos', (220 - ui.webrtc.position.width)+'px');
+                if (ui.webrtc?.hidden)
+                    rootStyle.setProperty('--playerbot', '-8px');
+                else
+                    rootStyle.setProperty('--playerbot', '55px');
                 break;
             }
             case 'extremeLeft': {
@@ -60,26 +65,39 @@ export default class MinimalUIHotbar {
                 break;
             }
             case 'left': {
-                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - (availableWidth / 9)) + 'px');
-                rootStyle.setProperty('--playerbot', '-8px');
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - (availableWidth / 9) - ui.webrtc.position.width) + 'px');
+                if (ui.webrtc?.hidden)
+                    rootStyle.setProperty('--playerbot', '-8px');
+                else
+                    rootStyle.setProperty('--playerbot', '55px');
                 break;
             }
             case 'center': {
-                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9)) + 'px');
-                rootStyle.setProperty('--playerbot', '-8px');
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - ui.webrtc.position.width) + 'px');
+                if (ui.webrtc?.hidden)
+                    rootStyle.setProperty('--playerbot', '-8px');
+                else
+                    rootStyle.setProperty('--playerbot', '55px');
                 break;
             }
             case 'right': {
-                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5)) + 'px');
-                rootStyle.setProperty('--playerbot', '-8px');
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - ui.webrtc.position.width) + 'px');
+                if (ui.webrtc?.hidden)
+                    rootStyle.setProperty('--playerbot', '-8px');
+                else
+                    rootStyle.setProperty('--playerbot', '55px');
                 break;
             }
             case 'manual': {
-                rootStyle.setProperty('--hotbarxpos', game.settings.get('minimal-ui', 'hotbarPixelPosition') + 'px');
-                rootStyle.setProperty('--playerbot', '-8px');
+                rootStyle.setProperty('--hotbarxpos', (game.settings.get('minimal-ui', 'hotbarPixelPosition') - ui.webrtc.position.width) + 'px');
+                if (ui.webrtc?.hidden)
+                    rootStyle.setProperty('--playerbot', '-8px');
+                else
+                    rootStyle.setProperty('--playerbot', '55px');
                 break;
             }
         }
+
     }
 
     static configureHotbar() {

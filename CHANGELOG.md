@@ -1,3 +1,9 @@
+### 1.5.3
+* Bugfix: Fixed issue of misplacement of players list relative to hotbar with camera
+* Bugfix: Fixed hotbar location based on camera enabled or not
+* Bugfix: Fixed hiding players list when camera dock is on or not
+* Bugfix: Better behavior of players list when Camera dock is present
+
 ### 1.5.2
 * Bugfix: Warning of deprecation removed
 * Bugfix: Logo with camera dock enabled fixed
