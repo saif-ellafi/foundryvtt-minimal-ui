@@ -67,13 +67,13 @@ export default class MinimalUIPlayers {
             players[0].val = "";
             let plSize = game.settings.get('minimal-ui', 'playerListSize');
             let plSetting = game.settings.get('minimal-ui', 'playerList');
-            if (plSetting !== 'hidden' && !ui.webrtc?.hidden) { // Disable everything with cameras on. It's complicated and I'm lazy
-                plSize = 'standard';
-                plSetting = 'default';
-            }
-
-            if (game.webrtc?.mode > 0)
+            if (game.webrtc?.mode > 0) {
+                if (plSetting !== 'hidden' && !ui.webrtc?.hidden) {
+                    plSize = 'standard';
+                    plSetting = 'default';
+                }
                 MinimalUIHotbar.positionHotbar();
+            }
 
             switch (plSetting) {
                 case 'default': {

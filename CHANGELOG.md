@@ -1,3 +1,6 @@
+### 1.5.4
+* Bugfix: More camera, hotbar and playerlist issues fixed
+
 ### 1.5.3
 * Bugfix: Fixed issue of misplacement of players list relative to hotbar with camera
 * Bugfix: Fixed hotbar location based on camera enabled or not

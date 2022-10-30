@@ -44,10 +44,13 @@ export default class MinimalUIHotbar {
         let availableWidth = canvas.app?.screen.width;
         if (!availableWidth)
             return;
+        let webtrcAdjust = 0;
+        if (game.webrtc.mode > 0)
+            webtrcAdjust = (ui.webrtc.hidden ? 0 : ui.webrtc.position.width)
         switch (game.settings.get('minimal-ui', 'hotbarPosition')) {
             case 'default': {
-                rootStyle.setProperty('--hotbarxpos', (220 - ui.webrtc.position.width)+'px');
-                if (ui.webrtc?.hidden)
+                rootStyle.setProperty('--hotbarxpos', (220 - webtrcAdjust)+'px');
+                if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
                     rootStyle.setProperty('--playerbot', '-8px');
                 else
                     rootStyle.setProperty('--playerbot', '55px');
@@ -65,32 +68,32 @@ export default class MinimalUIHotbar {
                 break;
             }
             case 'left': {
-                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - (availableWidth / 9) - ui.webrtc.position.width) + 'px');
-                if (ui.webrtc?.hidden)
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - (availableWidth / 9) - webtrcAdjust) + 'px');
+                if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
                     rootStyle.setProperty('--playerbot', '-8px');
                 else
                     rootStyle.setProperty('--playerbot', '55px');
                 break;
             }
             case 'center': {
-                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - ui.webrtc.position.width) + 'px');
-                if (ui.webrtc?.hidden)
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - webtrcAdjust) + 'px');
+                if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
                     rootStyle.setProperty('--playerbot', '-8px');
                 else
                     rootStyle.setProperty('--playerbot', '55px');
                 break;
             }
             case 'right': {
-                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - ui.webrtc.position.width) + 'px');
-                if (ui.webrtc?.hidden)
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - webtrcAdjust) + 'px');
+                if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
                     rootStyle.setProperty('--playerbot', '-8px');
                 else
                     rootStyle.setProperty('--playerbot', '55px');
                 break;
             }
             case 'manual': {
-                rootStyle.setProperty('--hotbarxpos', (game.settings.get('minimal-ui', 'hotbarPixelPosition') - ui.webrtc.position.width) + 'px');
-                if (ui.webrtc?.hidden)
+                rootStyle.setProperty('--hotbarxpos', (game.settings.get('minimal-ui', 'hotbarPixelPosition') - webtrcAdjust) + 'px');
+                if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
                     rootStyle.setProperty('--playerbot', '-8px');
                 else
                     rootStyle.setProperty('--playerbot', '55px');
