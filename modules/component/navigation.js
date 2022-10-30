@@ -4,6 +4,7 @@ import '../../styles/component/navigation.css';
 export default class MinimalUINavigation {
 
     static cssSceneNavNoLogoStart = '-6px';
+    static cssSceneNavNoLogoStartRtc = '-112px';
 
     static async collapseNavigation() {
         await ui.nav.collapse();
@@ -93,7 +94,10 @@ export default class MinimalUINavigation {
 
             switch (game.settings.get('minimal-ui', 'foundryLogoSize')) {
                 case 'hidden': {
-                    rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStart);
+                    if (ui.webrtc?.rendered && game.webrtc.settings.client.dockPosition === 'left')
+                        rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStartRtc);
+                    else
+                        rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStart);
                     break;
                 }
             }

@@ -66,7 +66,7 @@ export default class MinimalUIPlayers {
             players[0].val = "";
             let plSize = game.settings.get('minimal-ui', 'playerListSize');
             let plSetting = game.settings.get('minimal-ui', 'playerList');
-            if (ui.webrtc?.rendered) { // Disable everything with cameras on. It's complicated and I'm lazy
+            if (game.webrtc?.mode > 0) { // Disable everything with cameras on. It's complicated and I'm lazy
                 plSize = 'standard';
                 plSetting = 'default';
             }
@@ -146,7 +146,7 @@ export default class MinimalUIPlayers {
                     rootStyle.setProperty('--players-width', `${playerWidthPixel}px`);
                     // SWADE Special Compatibility
                     rootStyle.setProperty('--playerbennies', 'none');
-                    if (game.system.data.name === 'swade') {
+                    if (game.system.id === 'swade') {
                         players.hover(
                             function () {
                                 $(".bennies-count").show();

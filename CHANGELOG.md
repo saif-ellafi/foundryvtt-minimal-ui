@@ -1,3 +1,7 @@
+### 1.5.2
+* Bugfix: Warning of deprecation removed
+* Bugfix: Logo with camera dock enabled fixed
+
 ### 1.5.1
 * Bugfix: Disabled player features when camera dock is enabled
 * Enhancement: Camera docks can be thinne (smaller) - Thanks @brunocalado and CaosFR
