@@ -1,5 +1,5 @@
 {
-	"name": "minimal-ui",
+	"id": "minimal-ui",
 	"title": "Minimal UI",
 	"author": "JeansenVaars#2857",
 	"authors": [
@@ -17,9 +17,12 @@
 		"maximum": "10"
 	},
 	"minimumCoreVersion": "10",
-	"dependencies": [
-		{"name": "colorsettings"}
-	],
+	"relationships": {
+		"requires": [{
+			"id": "colorsettings",
+			"type": "module"
+		}]
+	},
 	"esmodules": [ "minimalui.js" ],
 	"styles": [ "minimalui.css" ],
 	"languages": [
