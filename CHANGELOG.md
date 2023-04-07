@@ -1,3 +1,7 @@
+### 1.5.5
+* Bugfix: Adjust broken player box position after foundry update
+* Bugfix: Fixed warning abouot dependencies. Thank you @tom-bell
+
 ### 1.5.4
 * Bugfix: More camera, hotbar and playerlist issues fixed
 

@@ -58,3 +58,7 @@
     transition: 0.5s;
     opacity: 100%;
 }
+
+#ui-left {
+    left: -9px;
+}
