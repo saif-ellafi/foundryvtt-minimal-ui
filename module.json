@@ -13,7 +13,7 @@
 	"version": "1.5.5",
 	"compatibility": {
 		"minimum": "10",
-		"verified": "10.284",
+		"verified": "10.291",
 		"maximum": "10"
 	},
 	"minimumCoreVersion": "10",
