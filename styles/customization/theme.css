@@ -3,7 +3,7 @@
     --shadowcolor: #7c7c7c40;
     --shadowstrength: 10px;
     --opacity: 75%;
-    --fpsposx: 300px;
+    --fpsposx: 0;
 }
 
 div#camera-views.camera-position-left, div#camera-views.camera-position-right {

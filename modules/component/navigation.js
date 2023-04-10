@@ -3,8 +3,9 @@ import '../../styles/component/navigation.css';
 
 export default class MinimalUINavigation {
 
-    static cssSceneNavNoLogoStart = '-6px';
-    static cssSceneNavNoLogoStartRtc = '-112px';
+    static cssSceneNavNoLogoStart = '-9px';
+    static cssSceneNavNoLogoStartStarfinder = '-2px';
+    static cssSceneNavNoLogoStartRtc = '-115px';
 
     static async collapseNavigation() {
         await ui.nav.collapse();
@@ -96,6 +97,8 @@ export default class MinimalUINavigation {
                 case 'hidden': {
                     if (ui.webrtc?.rendered && game.webrtc.settings.client.dockPosition === 'left')
                         rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStartRtc);
+                    else if (game.system.id === 'sfrpg') // starfinder has something, ugly fix
+                        rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStartStarfinder);
                     else
                         rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStart);
                     break;

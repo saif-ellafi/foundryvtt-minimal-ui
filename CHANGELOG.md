@@ -1,6 +1,11 @@
+### 1.5.6
+* Bugfix: FPS indicator position
+* Bugfix: Packed ui elements to the left correctly
+* Compatibility: Starfinder was wonky with Minimal UI settings
+
 ### 1.5.5
 * Bugfix: Adjust broken player box position after foundry update
-* Bugfix: Fixed warning abouot dependencies. Thank you @tom-bell
+* Bugfix: Fixed warning about dependencies. Thank you @tom-bell
 
 ### 1.5.4
 * Bugfix: More camera, hotbar and playerlist issues fixed

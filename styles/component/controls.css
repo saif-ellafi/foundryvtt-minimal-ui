@@ -10,6 +10,10 @@
     --controlssubdisna: block;
 }
 
+#ui-left {
+    left: -5px;
+}
+
 #controls {
     opacity: var(--opacitycontrols);
     transition: 2s;
@@ -57,8 +61,4 @@
 #controls:hover ol.sub-controls.active {
     transition: 0.5s;
     opacity: 100%;
-}
-
-#ui-left {
-    left: -9px;
 }

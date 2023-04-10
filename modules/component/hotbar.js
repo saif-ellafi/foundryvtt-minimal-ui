@@ -51,7 +51,7 @@ export default class MinimalUIHotbar {
             case 'default': {
                 rootStyle.setProperty('--hotbarxpos', (220 - webtrcAdjust)+'px');
                 if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
-                    rootStyle.setProperty('--playerbot', '-8px');
+                    rootStyle.setProperty('--playerbot', '-5px');
                 else
                     rootStyle.setProperty('--playerbot', '55px');
                 break;
@@ -61,7 +61,10 @@ export default class MinimalUIHotbar {
                   !(game.modules.get("custom-hotbar")?.active) &&
                   availableWidth >= 1200
                 ) {
-                    rootStyle.setProperty('--hotbarxpos', '-97px');
+                    if (game.system.id === 'sfrpg')
+                        rootStyle.setProperty('--hotbarxpos', '-93px');
+                    else
+                        rootStyle.setProperty('--hotbarxpos', '-102px');
                     if (!(game.modules.get('sidebar-macros')?.active && game.settings.get('sidebar-macros', 'hideMacroHotbar')))
                         rootStyle.setProperty('--playerbot', '55px');
                 }
@@ -70,7 +73,7 @@ export default class MinimalUIHotbar {
             case 'left': {
                 rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - (availableWidth / 9) - webtrcAdjust) + 'px');
                 if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
-                    rootStyle.setProperty('--playerbot', '-8px');
+                    rootStyle.setProperty('--playerbot', '-5px');
                 else
                     rootStyle.setProperty('--playerbot', '55px');
                 break;
@@ -78,7 +81,7 @@ export default class MinimalUIHotbar {
             case 'center': {
                 rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - webtrcAdjust) + 'px');
                 if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
-                    rootStyle.setProperty('--playerbot', '-8px');
+                    rootStyle.setProperty('--playerbot', '-5px');
                 else
                     rootStyle.setProperty('--playerbot', '55px');
                 break;
@@ -86,7 +89,7 @@ export default class MinimalUIHotbar {
             case 'right': {
                 rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - webtrcAdjust) + 'px');
                 if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
-                    rootStyle.setProperty('--playerbot', '-8px');
+                    rootStyle.setProperty('--playerbot', '-5px');
                 else
                     rootStyle.setProperty('--playerbot', '55px');
                 break;
@@ -94,7 +97,7 @@ export default class MinimalUIHotbar {
             case 'manual': {
                 rootStyle.setProperty('--hotbarxpos', (game.settings.get('minimal-ui', 'hotbarPixelPosition') - webtrcAdjust) + 'px');
                 if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
-                    rootStyle.setProperty('--playerbot', '-8px');
+                    rootStyle.setProperty('--playerbot', '-5px');
                 else
                     rootStyle.setProperty('--playerbot', '55px');
                 break;
