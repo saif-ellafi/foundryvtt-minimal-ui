@@ -57,8 +57,8 @@
     "MinimalUI.PlayersSizeName": "プレイヤーリストの大きさ",
     "MinimalUI.PlayersSizeHint": "「中」または「小」のどちらかを選べます｡",
   
-    "MinimalUI.PlayersShowPingName" : "Minimal UI ModとPing Logger Modの相互設定",
-    "MinimalUI.PlayersShowPingHint" : "「表示」時はプレイヤーリストが非表示状態でも必ずPing Loggerの遅延表示を行います。",
+    "MinimalUI.PlayersShowPingName" : "Minimal UI ModとUser Latency Modの相互設定",
+    "MinimalUI.PlayersShowPingHint" : "「表示」時はプレイヤーリストが非表示状態でも必ずUser Latencyの遅延表示を行います。",
     "MinimalUI.PlayersShowPing"  : "表示",
     "MinimalUI.PlayersHidePing"  : "非表示",
   
