@@ -41,7 +41,7 @@ export default class MinimalUIPlayers {
             onChange: debouncedReload
         });
 
-        // Ping Logger compatibility setting
+        // Ping Logger compatibility setting 
         if (game.modules.get('ping-logger')?.active) {
             game.settings.register('minimal-ui', 'playerShowPing', {
                 name: game.i18n.localize("MinimalUI.PlayersShowPingName"),
