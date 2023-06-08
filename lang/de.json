@@ -57,7 +57,7 @@
   "MinimalUI.PlayersSizeName": "Größe der Spielerliste",
   "MinimalUI.PlayersSizeHint": "Wähle zwischen der normalen Größe und einer kleineren Version.",
 
-  "MinimalUI.PlayersShowPingName" : "Ping Logger in minimierter Spielerliste",
+  "MinimalUI.PlayersShowPingName" : "User Latency in minimierter Spielerliste",
   "MinimalUI.PlayersShowPingHint" : "Ping trotz automatisch versteckter Spielerliste anzeigen?",
   "MinimalUI.PlayersShowPing"  : "Zeigen",
   "MinimalUI.PlayersHidePing"  : "Verstecken",
