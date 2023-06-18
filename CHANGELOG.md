@@ -1,3 +1,6 @@
+### 1.6.1
+* Bugfix: Fixed auto-hide sliding in V11 (thanks @andy-jones)
+
 ### 1.6.0
 * Compatibility: Foundry V11 (thank you @paranoicsan)
 * Compatibility: User Latency (thank you @Shuggaloaf) 

@@ -49,7 +49,7 @@ export default class MinimalUIHotbar {
             webtrcAdjust = (ui.webrtc.hidden ? 0 : ui.webrtc.position.width)
         switch (game.settings.get('minimal-ui', 'hotbarPosition')) {
             case 'default': {
-                rootStyle.setProperty('--hotbarxpos', (220 - webtrcAdjust)+'px');
+                rootStyle.setProperty('--hotbarxpos', (330 - webtrcAdjust)+'px');
                 if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
                     rootStyle.setProperty('--playerbot', '-5px');
                 else
@@ -62,9 +62,9 @@ export default class MinimalUIHotbar {
                   availableWidth >= 1200
                 ) {
                     if (game.system.id === 'sfrpg')
-                        rootStyle.setProperty('--hotbarxpos', '-93px');
+                        rootStyle.setProperty('--hotbarxpos', '17px');
                     else
-                        rootStyle.setProperty('--hotbarxpos', '-102px');
+                        rootStyle.setProperty('--hotbarxpos', '8px');
                     if (!(game.modules.get('sidebar-macros')?.active && game.settings.get('sidebar-macros', 'hideMacroHotbar')))
                         rootStyle.setProperty('--playerbot', '55px');
                 }

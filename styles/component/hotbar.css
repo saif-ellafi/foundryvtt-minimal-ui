@@ -1,7 +1,7 @@
 :root {
     --hotbarvis: visible;
     --hotbarypos: -5px;
-    --hotbarxpos: 400px;
+    --hotbarxpos: 510px;
     --hotbarlh1: 24px;
     --hotbarlh2: 8px;
     --hotbarhv: -5px;
@@ -22,7 +22,7 @@
     visibility: var(--hotbarvis);
     transition: 0.5s ease-out 0.5s;
     opacity: var(--opacity);
-    position: relative;
+    position: fixed;
 }
 
 #hotbar .bar-controls {
