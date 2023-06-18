@@ -57,7 +57,7 @@
   "MinimalUI.PlayersSizeName": "Tamaño de Lista de Jugadores",
   "MinimalUI.PlayersSizeHint": "Elige entre tamaño pequeño o el estándar de Foundry",
 
-  "MinimalUI.PlayersShowPingName" : "Comportamiento de Ping Logger con Minimal UI",
+  "MinimalUI.PlayersShowPingName" : "Comportamiento de User Latency con Minimal UI",
   "MinimalUI.PlayersShowPingHint" : "Mostrar el Ping independientemente de si la lista de jugadores se auto-esconde",
   "MinimalUI.PlayersShowPing"  : "Mostrar",
   "MinimalUI.PlayersHidePing"  : "Esconder",

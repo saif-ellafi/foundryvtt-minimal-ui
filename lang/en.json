@@ -57,7 +57,7 @@
   "MinimalUI.PlayersSizeName": "Player List Size",
   "MinimalUI.PlayersSizeHint": "Choose between standard size or the small version.",
 
-  "MinimalUI.PlayersShowPingName" : "Ping Logger with Minimal UI Behavior",
+  "MinimalUI.PlayersShowPingName" : "User Latency with Minimal UI Behavior",
   "MinimalUI.PlayersShowPingHint" : "Show ping regardless of auto-hide player lists",
   "MinimalUI.PlayersShowPing"  : "Show",
   "MinimalUI.PlayersHidePing"  : "Hide",
