@@ -1,3 +1,7 @@
+### 1.6.0
+* Compatibility: Foundry V11 (thank you @paranoicsan)
+* Compatibility: User Latency (thank you @Shuggaloaf) 
+
 ### 1.5.6
 * Bugfix: FPS indicator position
 * Bugfix: Packed ui elements to the left correctly

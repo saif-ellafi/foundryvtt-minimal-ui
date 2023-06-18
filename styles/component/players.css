@@ -33,6 +33,7 @@
 
 #players h3 {
     margin: 1px;
+    padding-left: 2px;
 }
 
 #players #context-menu {
