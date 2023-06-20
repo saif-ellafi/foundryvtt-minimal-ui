@@ -1,3 +1,6 @@
+### 1.6.2
+* Bugfix: Adjusted hotbar positioning and starfinder support
+
 ### 1.6.1
 * Bugfix: Fixed auto-hide sliding in V11 (thanks @andy-jones)
 
