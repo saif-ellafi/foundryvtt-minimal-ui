@@ -1,3 +1,6 @@
+### 1.6.3
+* Bugfix: Adjusted hotbar (again) and Window Controls support
+
 ### 1.6.2
 * Bugfix: Adjusted hotbar positioning and starfinder support
 
