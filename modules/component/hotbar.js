@@ -7,9 +7,7 @@ export default class MinimalUIHotbar {
 
     static cssHotbarHidden = '-50px';
     static cssHotbarAutoHideHeight = '-5px';
-
-    static cssHotbarWinControlsModBottom = '33px';
-    static cssHotbarWinControlsModTop = '1px';
+    static cssHotbarAutoHideHeightWinTop = '1px';
 
     static cssHotbarLeftControlsLineHeight = '24px';
     static cssHotbarRightControlsLineHeight = '12px';
@@ -123,12 +121,8 @@ export default class MinimalUIHotbar {
     static configureHotbar() {
         if (game.modules.get('window-controls')?.active &&
             game.settings.get('window-controls', 'organizedMinimize') === 'persistentBottom') {
-            rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarWinControlsModBottom);
-            rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarWinControlsModBottom);
-        } else if (game.modules.get('window-controls')?.active &&
-            game.settings.get('window-controls', 'organizedMinimize') === 'persistentTop') {
-            rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarWinControlsModTop);
-            rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarWinControlsModTop);
+            rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarPlayerBottomWinBottom);
+            rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarPlayerBottomWinBottom);
         } else if (game.settings.get('minimal-ui', 'hotbar') === 'autohide') {
             if (!(game.modules.get("custom-hotbar")?.active || game.modules.get('monks-hotbar-expansion')?.active)) {
                 rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarHidden);
@@ -139,7 +133,11 @@ export default class MinimalUIHotbar {
                 }
                 rootStyle.setProperty('--hotbarmg', MinimalUIHotbar.cssHotbarControlsMargin);
                 rootStyle.setProperty('--hotbarhh', MinimalUIHotbar.cssHotbarControlsAutoHideHeight);
-                rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarAutoHideHeight);
+                if (game.modules.get('window-controls')?.active &&
+                    game.settings.get('window-controls', 'organizedMinimize') === 'persistentTop')
+                    rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarAutoHideHeightWinTop);
+                else
+                    rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarAutoHideHeight);
                 rootStyle.setProperty('--hotbarshp', MinimalUIHotbar.cssHotbarAutoHideShadow);
                 $("#hotbar-directory-controls").append(MinimalUIHotbar.htmlHotbarLockButton);
                 $("#macro-directory").click(function () {
