@@ -6,15 +6,20 @@ export default class MinimalUIHotbar {
     static hotbarLocked = false;
 
     static cssHotbarHidden = '-50px';
+    static cssHotbarAutoHideHeight = '-5px';
+
+    static cssHotbarWinControlsMod = '35px';
 
     static cssHotbarLeftControlsLineHeight = '24px';
     static cssHotbarRightControlsLineHeight = '12px';
     static cssHotbarRightControlsLineHeightDnDUi = '10px';
     static cssHotbarControlsAutoHideHeight = '100%';
-    static cssHotbarAutoHideHeight = '-5px';
     static cssHotbarAutoHideShadow = '-1px';
     static cssHotbarControlsMargin = '0px';
     static cssHotbarCustomHotbarCompatHover = '10px';
+
+    static cssHotbarPlayerBottom = '-5px';
+    static cssHotbarPlayerBottomAdj = '55px'
 
     static htmlHotbarLockButton =
         `
@@ -51,9 +56,9 @@ export default class MinimalUIHotbar {
             case 'default': {
                 rootStyle.setProperty('--hotbarxpos', (330 - webtrcAdjust)+'px');
                 if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
-                    rootStyle.setProperty('--playerbot', '-5px');
+                    rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottom);
                 else
-                    rootStyle.setProperty('--playerbot', '55px');
+                    rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottomAdj);
                 break;
             }
             case 'extremeLeft': {
@@ -61,45 +66,42 @@ export default class MinimalUIHotbar {
                   !(game.modules.get("custom-hotbar")?.active) &&
                   availableWidth >= 1200
                 ) {
-                    if (game.system.id === 'sfrpg')
-                        rootStyle.setProperty('--hotbarxpos', '-93px');
-                    else
-                        rootStyle.setProperty('--hotbarxpos', '-102px');
+                    rootStyle.setProperty('--hotbarxpos', '8px');
                     if (!(game.modules.get('sidebar-macros')?.active && game.settings.get('sidebar-macros', 'hideMacroHotbar')))
-                        rootStyle.setProperty('--playerbot', '55px');
+                        rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottomAdj);
                 }
                 break;
             }
             case 'left': {
                 rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - (availableWidth / 9) - webtrcAdjust) + 'px');
                 if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
-                    rootStyle.setProperty('--playerbot', '-5px');
+                    rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottom);
                 else
-                    rootStyle.setProperty('--playerbot', '55px');
+                    rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottomAdj);
                 break;
             }
             case 'center': {
                 rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - webtrcAdjust) + 'px');
                 if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
-                    rootStyle.setProperty('--playerbot', '-5px');
+                    rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottom);
                 else
-                    rootStyle.setProperty('--playerbot', '55px');
+                    rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottomAdj);
                 break;
             }
             case 'right': {
                 rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - webtrcAdjust) + 'px');
                 if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
-                    rootStyle.setProperty('--playerbot', '-5px');
+                    rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottom);
                 else
-                    rootStyle.setProperty('--playerbot', '55px');
+                    rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottomAdj);
                 break;
             }
             case 'manual': {
                 rootStyle.setProperty('--hotbarxpos', (game.settings.get('minimal-ui', 'hotbarPixelPosition') - webtrcAdjust) + 'px');
                 if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
-                    rootStyle.setProperty('--playerbot', '-5px');
+                    rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottom);
                 else
-                    rootStyle.setProperty('--playerbot', '55px');
+                    rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottomAdj);
                 break;
             }
         }
@@ -107,7 +109,11 @@ export default class MinimalUIHotbar {
     }
 
     static configureHotbar() {
-        if (game.settings.get('minimal-ui', 'hotbar') === 'autohide') {
+        if (game.modules.get('window-controls')?.active &&
+            game.settings.get('window-controls', 'organizedMinimize') === 'persistentBottom') {
+            rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarWinControlsMod);
+            rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarWinControlsMod);
+        } else if (game.settings.get('minimal-ui', 'hotbar') === 'autohide') {
             if (!(game.modules.get("custom-hotbar")?.active || game.modules.get('monks-hotbar-expansion')?.active)) {
                 rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarHidden);
                 rootStyle.setProperty('--hotbarlh1', MinimalUIHotbar.cssHotbarLeftControlsLineHeight);

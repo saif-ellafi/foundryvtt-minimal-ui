@@ -1,6 +1,9 @@
-### 1.6.3
+### 1.6.4
 * Bugfix: Fixed an issue in Foundry that top buttons shadows are cut-off
 * Bugfix: Fixed alternating colors when locking hotbar macros
+
+### 1.6.3
+* Bugfix: Adjusted hotbar (again) and Window Controls support
 
 ### 1.6.2
 * Bugfix: Adjusted hotbar positioning and starfinder support
