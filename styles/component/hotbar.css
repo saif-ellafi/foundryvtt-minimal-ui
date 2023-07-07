@@ -47,14 +47,26 @@
 }
 
 #hotbar #macro-list:hover {
-    border-top: 1px solid var(--bordercolor);
+    border: 1px solid var(--bordercolor);
     box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
     transition: 0.5s;
 }
 
 #hotbar #macro-list {
-    border-top: 1px solid var(--bordercolor);
+    border: 1px solid var(--bordercolor);
     box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
+    transition: 0.05s ease-out 0.5s;
+}
+
+#hotbar.locked #macro-list:hover {
+    border: 1px solid var(--shadowcolor);
+    box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--bordercolor);
+    transition: 0.5s;
+}
+
+#hotbar.locked #macro-list {
+    border: 1px solid var(--shadowcolor);
+    box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--bordercolor);
     transition: 0.05s ease-out 0.5s;
 }
 

@@ -51,6 +51,7 @@
 #controls ol.control-tools > li.active, #controls ol.control-tools > li:hover {
     border: 1px solid var(--bordercolor);
     box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
+    margin-top: 6px;
 }
 
 #controls ol.sub-controls.active {
