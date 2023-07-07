@@ -7,7 +7,7 @@
     --playerbennies: none;
     --playerh3w: unset;
     --playerbot: -5px;
-    --playerleft: 0;
+    --playerleft: -5px;
     --playerpingdisplay: initial;
 }
 
@@ -18,7 +18,7 @@
     visibility: var(--playervis);
     opacity: var(--opacity);
     box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
-    position: absolute;
+    position: fixed;
     border: 1px solid var(--bordercolor);
 }
 

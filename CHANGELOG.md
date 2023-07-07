@@ -1,6 +1,7 @@
 ### 1.6.4
 * Bugfix: Fixed an issue in Foundry that top buttons shadows are cut-off
 * Bugfix: Fixed alternating colors when locking hotbar macros
+* Compatibility: Window Controls positioning of player and hotbar menues
 
 ### 1.6.3
 * Bugfix: Adjusted hotbar (again) and Window Controls support

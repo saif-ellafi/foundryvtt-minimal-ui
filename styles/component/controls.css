@@ -27,6 +27,7 @@
 
 #controls ol.main-controls {
     overflow: visible;
+    margin-top: calc(var(--shadowstrength) + 1px);
 }
 
 #controls > ol.main-controls > li.scene-control, #controls > ol.sub-controls > li {
@@ -51,15 +52,16 @@
 #controls ol.control-tools > li.active, #controls ol.control-tools > li:hover {
     border: 1px solid var(--bordercolor);
     box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
-    margin-top: 6px;
 }
 
 #controls ol.sub-controls.active {
     opacity: var(--controlssubop);
+    margin-top: calc(var(--shadowstrength) + 1px);
     transition: 2s;
 }
 
 #controls:hover ol.sub-controls.active {
     transition: 0.5s;
+    margin-top: calc(var(--shadowstrength) + 1px);
     opacity: 100%;
 }
