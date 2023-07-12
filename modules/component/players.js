@@ -41,8 +41,8 @@ export default class MinimalUIPlayers {
             onChange: debouncedReload
         });
 
-        // Ping Logger compatibility setting 
-        if (game.modules.get('ping-logger')?.active) {
+        // User Latency (formerly Ping Logger) compatibility setting 
+        if (game.modules.get('user-latency')?.active) {
             game.settings.register('minimal-ui', 'playerShowPing', {
                 name: game.i18n.localize("MinimalUI.PlayersShowPingName"),
                 hint: game.i18n.localize("MinimalUI.PlayersShowPingHint"),
@@ -128,8 +128,8 @@ export default class MinimalUIPlayers {
                     }
                     let playerWidthPixel = parseInt(MinimalUIPlayers.cssPlayersHiddenWidth);
 
-                    // Compatibility for Ping Logger module
-                    if (game.modules.get('ping-logger')?.active) {
+                    // Compatibility for User Latency (formerly Ping Logger) module
+                    if (game.modules.get('user-latency')?.active) {
                         if (game.settings.get('minimal-ui', 'playerShowPing') === "showPing") {
                             // Increase width and height to display ping
                             rootStyle.setProperty('--playerpingdisplay', 'initial');
