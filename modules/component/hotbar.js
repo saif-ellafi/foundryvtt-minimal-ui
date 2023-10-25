@@ -18,8 +18,6 @@ export default class MinimalUIHotbar {
     static cssHotbarControlsMargin = '0px';
     static cssHotbarCustomHotbarCompatHover = '10px';
 
-    static cssHotbarBottomWinBottom = '33px'
-
     static htmlHotbarLockButton =
         `
         <a class="minui-lock" id="bar-lock">
@@ -97,7 +95,7 @@ export default class MinimalUIHotbar {
                 break;
             }
             case 'manual': {
-                rootStyle.setProperty('--hotbarxpos', (game.settings.get('minimal-ui', 'hotbarPixelPosition') + webrtcAdjust) + 'px');
+                rootStyle.setProperty('--hotbarxpos', (parseInt(game.settings.get('minimal-ui', 'hotbarPixelPosition')) + webrtcAdjust) + 'px');
                 break;
             }
         }
@@ -207,7 +205,7 @@ export default class MinimalUIHotbar {
             }
         });
 
-        Hooks.on('renderCameraViews', function() {
+        Hooks.on('rtcSettingsChanged', function() {
             MinimalUIHotbar.positionHotbar();
         })
 

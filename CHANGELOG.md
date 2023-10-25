@@ -1,3 +1,7 @@
+### 1.6.7
+* Enhancement: Improved setting change detection
+* Bugfix: Fixed broken hotbar and navigation custom positioning (Thanks @GambetTV)
+
 ### 1.6.6
 * Bugfix: Fixed several issues with Minimal UI when using Camera views
 * Compatibility: Fixed player list overlapping with other mods in general 

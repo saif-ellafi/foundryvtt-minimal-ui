@@ -1,6 +1,6 @@
 :root {
     --navivis: hidden;
-    --navixpos: 100px;
+    --navixpos: 120px;
     --navixmg: 75px;
     --navilh: 20px;
     --navifs: 14px;
@@ -13,7 +13,7 @@
     visibility: var(--navivis);
     opacity: var(--opacity);
     transition: 0.5s ease-out 0.5s;
-    position: relative;
+    position: fixed;
     margin: 5px 0 0 0;
 }
 

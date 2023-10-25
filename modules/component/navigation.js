@@ -3,21 +3,18 @@ import '../../styles/component/navigation.css';
 
 export default class MinimalUINavigation {
 
-    static cssSceneNavNoLogoStart = '-9px';
-    static cssSceneNavNoLogoStartStarfinder = '-2px';
-    static cssSceneNavNoLogoStartRtc = '-115px';
+    static cssSceneNavNoLogoStart = 10;
 
     static async collapseNavigation() {
         await ui.nav.collapse();
     }
 
     static positionNav() {
+        let navixpos = game.settings.get('minimal-ui', 'foundryLogoSize') === 'hidden' ? MinimalUINavigation.cssSceneNavNoLogoStart : 120;
         if (game.webrtc.mode > 0 && !ui.webrtc.element.hasClass('hidden'))
-            rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStartRtc);
-        else if (game.system.id === 'sfrpg') // starfinder has something, ugly fix
-            rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStartStarfinder);
-        else
-            rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStart);
+            if (game.webrtc.settings.client.dockPosition === 'left')
+                navixpos += ui.webrtc.position.width;
+        rootStyle.setProperty('--navixpos', navixpos + 'px');
     }
 
     static initSettings() {
@@ -34,7 +31,7 @@ export default class MinimalUINavigation {
                 "hidden": game.i18n.localize("MinimalUI.SettingsHide")
             },
             default: "collapsed",
-            onChange: debouncedReload
+            onChange: MinimalUINavigation.positionNav
         });
 
         game.settings.register('minimal-ui', 'sceneNavigationSize', {
@@ -101,17 +98,10 @@ export default class MinimalUINavigation {
         });
 
         Hooks.on('renderSceneNavigation', async function () {
-
-            switch (game.settings.get('minimal-ui', 'foundryLogoSize')) {
-                case 'hidden': {
-                    MinimalUINavigation.positionNav();
-                    break;
-                }
-            }
-
+            MinimalUINavigation.positionNav();
         });
 
-        Hooks.on('renderCameraViews', function () {
+        Hooks.on('rtcSettingsChanged', function () {
             MinimalUINavigation.positionNav();
         });
 
