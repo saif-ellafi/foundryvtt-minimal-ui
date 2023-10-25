@@ -6,19 +6,18 @@
     --playerslh: 20px;
     --playerbennies: none;
     --playerh3w: unset;
-    --playerbot: -5px;
+    --playerbot: 5px;
     --playerleft: -5px;
     --playerpingdisplay: initial;
 }
 
 #players {
-    bottom: var(--playerbot);
+    margin-bottom: var(--playerbot);
     left: var(--playerleft);
     font-size: var(--playerfsize);
     visibility: var(--playervis);
     opacity: var(--opacity);
     box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
-    position: fixed;
     border: 1px solid var(--bordercolor);
 }
 

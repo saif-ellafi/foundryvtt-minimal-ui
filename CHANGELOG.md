@@ -1,3 +1,7 @@
+### 1.6.6
+* Bugfix: Fixed several issues with Minimal UI when using Camera views
+* Compatibility: Fixed player list overlapping with other mods in general 
+
 ### 1.6.4
 * Bugfix: Fixed an issue in Foundry that top buttons shadows are cut-off
 * Bugfix: Fixed alternating colors when locking hotbar macros

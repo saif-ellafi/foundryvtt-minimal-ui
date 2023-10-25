@@ -11,6 +11,15 @@ export default class MinimalUINavigation {
         await ui.nav.collapse();
     }
 
+    static positionNav() {
+        if (game.webrtc.mode > 0 && !ui.webrtc.element.hasClass('hidden'))
+            rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStartRtc);
+        else if (game.system.id === 'sfrpg') // starfinder has something, ugly fix
+            rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStartStarfinder);
+        else
+            rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStart);
+    }
+
     static initSettings() {
 
         game.settings.register('minimal-ui', 'sceneNavigation', {
@@ -95,16 +104,15 @@ export default class MinimalUINavigation {
 
             switch (game.settings.get('minimal-ui', 'foundryLogoSize')) {
                 case 'hidden': {
-                    if (ui.webrtc?.rendered && game.webrtc.settings.client.dockPosition === 'left')
-                        rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStartRtc);
-                    else if (game.system.id === 'sfrpg') // starfinder has something, ugly fix
-                        rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStartStarfinder);
-                    else
-                        rootStyle.setProperty('--navixpos', MinimalUINavigation.cssSceneNavNoLogoStart);
+                    MinimalUINavigation.positionNav();
                     break;
                 }
             }
 
+        });
+
+        Hooks.on('renderCameraViews', function () {
+            MinimalUINavigation.positionNav();
         });
 
     }

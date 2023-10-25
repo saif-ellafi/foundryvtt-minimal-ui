@@ -4,7 +4,7 @@
     --hotbarxpos: 510px;
     --hotbarlh1: 24px;
     --hotbarlh2: 8px;
-    --hotbarhv: -5px;
+    --hotbarhv: var(--hotbarypos);
     --hotbarmg: 0px;
     --hotbarhh: 100%;
     --hotbarshp: 0px;

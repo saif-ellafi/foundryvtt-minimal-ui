@@ -1,6 +1,5 @@
 import {debouncedReload, rootStyle} from '../util.js';
 import '../../styles/component/players.css';
-import MinimalUIHotbar from "./hotbar";
 
 export default class MinimalUIPlayers {
 
@@ -9,6 +8,9 @@ export default class MinimalUIPlayers {
     static cssPlayersSmallWidth = '175px';
     static cssPlayersStandardFontSize = 'inherit';
     static cssPlayersStandardWidth = '200px';
+
+    static cssHotbarPlayerBottom = 5;
+    static cssHotbarPlayerBottomAdj = 70;
 
     static initSettings() {
         game.settings.register('minimal-ui', 'playerList', {
@@ -59,6 +61,24 @@ export default class MinimalUIPlayers {
         }
     }
 
+    static positionPlayers() {
+        if (!(game.modules.get('sidebar-macros')?.active && game.settings.get('sidebar-macros', 'hideMacroHotbar'))) {
+            let playerbot = 0;
+
+            if (!(game.settings.get('minimal-ui', 'hotbar') === 'hidden') && game.settings.get('minimal-ui', 'hotbarPosition') === 'extremeLeft')
+                playerbot = MinimalUIPlayers.cssHotbarPlayerBottomAdj;
+            else
+                playerbot = MinimalUIPlayers.cssHotbarPlayerBottom;
+
+            if (game.modules.get('window-controls')?.active &&
+                game.settings.get('window-controls', 'organizedMinimize') === 'persistentTop')
+                rootStyle.setProperty('--playerbot', (playerbot - 5) + 'px');
+            else
+                rootStyle.setProperty('--playerbot', playerbot + 'px');
+
+        }
+    }
+
     static initHooks() {
 
         Hooks.on('renderPlayerList', async function () {
@@ -72,7 +92,6 @@ export default class MinimalUIPlayers {
                     plSize = 'standard';
                     plSetting = 'default';
                 }
-                MinimalUIHotbar.positionHotbar();
             }
 
             switch (plSetting) {

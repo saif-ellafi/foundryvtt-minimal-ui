@@ -1,5 +1,6 @@
 import {debouncedReload, rootStyle} from '../util.js';
 import '../../styles/component/hotbar.css';
+import MinimalUIPlayers from "./players";
 
 export default class MinimalUIHotbar {
 
@@ -17,14 +18,7 @@ export default class MinimalUIHotbar {
     static cssHotbarControlsMargin = '0px';
     static cssHotbarCustomHotbarCompatHover = '10px';
 
-    static cssHotbarPlayerBottom = '-5px';
-    static cssHotbarPlayerBottomAdj = '60px'
-
-    static cssHotbarPlayerBottomWinTop = '1px';
-    static cssHotbarPlayerBottomAdjWinTop = '65px'
-
-    static cssHotbarPlayerBottomWinBottom = '33px'
-    static cssHotbarPlayerBottomAdjWinBottom = '95px'
+    static cssHotbarBottomWinBottom = '33px'
 
     static htmlHotbarLockButton =
         `
@@ -34,7 +28,7 @@ export default class MinimalUIHotbar {
         `
 
     static lockHotbar(unlock) {
-        if ((game.modules.get("custom-hotbar")?.active) || (game.modules.get('monks-hotbar-expansion')?.active))
+        if ((game.modules.get("custom-hotbar")?.active) || (game.modules.get('monks-hotbar-expansion')?.active) || (game.webrtc.mode > 0 && game.webrtc.settings.client.dockPosition === 'bottom'))
             return;
         const barLock = $("#bar-lock > i");
         if (MinimalUIHotbar.hotbarLocked && unlock) {
@@ -54,76 +48,67 @@ export default class MinimalUIHotbar {
         let availableWidth = canvas.app?.screen.width;
         if (!availableWidth)
             return;
-        let webtrcAdjust = 0;
-        if (game.webrtc.mode > 0)
-            webtrcAdjust = (ui.webrtc.hidden ? 0 : ui.webrtc.position.width)
-        else if (game.webrtc?.mode === 0 || ui.webrtc?.hidden)
-            if (game.modules.get('window-controls')?.active &&
-                game.settings.get('window-controls', 'organizedMinimize') === 'persistentTop')
-                rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottomWinTop);
-            else if (game.modules.get('window-controls')?.active &&
-                game.settings.get('window-controls', 'organizedMinimize') === 'persistentBottom')
-                rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottomWinBottom);
+        let webrtcAdjust = 0;
+        let webrtcVAdjust = 0;
+
+        if (game.webrtc.mode > 0 && !ui.webrtc.element.hasClass('hidden')) {
+            if (game.webrtc.settings.client.dockPosition === 'left')
+                webrtcAdjust = (ui.webrtc.hidden ? 0 : ui.webrtc.position.width)
+            if (game.webrtc.settings.client.dockPosition === 'bottom') {
+                webrtcVAdjust = 187;
+            }
+        }
+
+        const autoHideOrLock = !game.settings.get('minimal-ui', 'hotbar') === 'autohide' || ((game.webrtc.mode > 0 && game.webrtc.settings.client.dockPosition === 'bottom') ||
+            (game.modules.get('window-controls')?.active &&
+                game.settings.get('window-controls', 'organizedMinimize') === 'persistentBottom'));
+
+        if (game.modules.get('window-controls')?.active && autoHideOrLock)
+            if (game.settings.get('window-controls', 'organizedMinimize') === 'persistentBottom')
+                rootStyle.setProperty('--hotbarypos', webrtcVAdjust + 40 + 'px');
+            else if (game.settings.get('window-controls', 'organizedMinimize') === 'persistentTop')
+                rootStyle.setProperty('--hotbarypos', webrtcVAdjust + 5 + 'px');
             else
-                rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottom);
-        else
-            if (game.modules.get('window-controls')?.active &&
-                game.settings.get('window-controls', 'organizedMinimize') === 'persistentTop')
-                rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottomAdjWinTop);
-            else if (game.modules.get('window-controls')?.active &&
-                game.settings.get('window-controls', 'organizedMinimize') === 'persistentBottom')
-                rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottomAdjWinBottom);
-            else
-                rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottomAdj);
+                rootStyle.setProperty('--hotbarypos', webrtcVAdjust + 'px');
+
         switch (game.settings.get('minimal-ui', 'hotbarPosition')) {
             case 'default': {
-                rootStyle.setProperty('--hotbarxpos', (330 - webtrcAdjust)+'px');
+                rootStyle.setProperty('--hotbarxpos', (330 + webrtcAdjust)+'px');
                 break;
             }
             case 'extremeLeft': {
                 if (
                   !(game.modules.get("custom-hotbar")?.active) &&
                   availableWidth >= 1200
-                ) {
-                    rootStyle.setProperty('--hotbarxpos', '8px');
-                    if (!(game.modules.get('sidebar-macros')?.active && game.settings.get('sidebar-macros', 'hideMacroHotbar')))
-                        if (game.modules.get('window-controls')?.active &&
-                            game.settings.get('window-controls', 'organizedMinimize') === 'persistentTop')
-                            rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottomAdjWinTop);
-                        else if (game.modules.get('window-controls')?.active &&
-                            game.settings.get('window-controls', 'organizedMinimize') === 'persistentBottom')
-                            rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottomAdjWinBottom);
-                        else
-                            rootStyle.setProperty('--playerbot', MinimalUIHotbar.cssHotbarPlayerBottomAdj);
-                }
+                )
+                    rootStyle.setProperty('--hotbarxpos', 8 + webrtcAdjust + 'px');
                 break;
             }
             case 'left': {
-                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - (availableWidth / 9) - webtrcAdjust) + 'px');
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - (availableWidth / 9) + webrtcAdjust) + 'px');
                 break;
             }
             case 'center': {
-                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) - webtrcAdjust) + 'px');
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - (availableWidth / 9) + webrtcAdjust) + 'px');
                 break;
             }
             case 'right': {
-                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) - webtrcAdjust) + 'px');
+                rootStyle.setProperty('--hotbarxpos', ((availableWidth / 2.5) + webrtcAdjust) + 'px');
                 break;
             }
             case 'manual': {
-                rootStyle.setProperty('--hotbarxpos', (game.settings.get('minimal-ui', 'hotbarPixelPosition') - webtrcAdjust) + 'px');
+                rootStyle.setProperty('--hotbarxpos', (game.settings.get('minimal-ui', 'hotbarPixelPosition') + webrtcAdjust) + 'px');
                 break;
             }
         }
-
+        MinimalUIPlayers.positionPlayers();
     }
 
     static configureHotbar() {
-        if (game.modules.get('window-controls')?.active &&
-            game.settings.get('window-controls', 'organizedMinimize') === 'persistentBottom') {
-            rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarPlayerBottomWinBottom);
-            rootStyle.setProperty('--hotbarhv', MinimalUIHotbar.cssHotbarPlayerBottomWinBottom);
-        } else if (game.settings.get('minimal-ui', 'hotbar') === 'autohide') {
+        const autoHideBlocked = (game.webrtc.mode > 0 && game.webrtc.settings.client.dockPosition === 'bottom') ||
+            (game.modules.get('window-controls')?.active &&
+            game.settings.get('window-controls', 'organizedMinimize') === 'persistentBottom');
+        if (game.settings.get('minimal-ui', 'hotbar') === 'autohide' && !autoHideBlocked) {
             if (!(game.modules.get("custom-hotbar")?.active || game.modules.get('monks-hotbar-expansion')?.active)) {
                 rootStyle.setProperty('--hotbarypos', MinimalUIHotbar.cssHotbarHidden);
                 rootStyle.setProperty('--hotbarlh1', MinimalUIHotbar.cssHotbarLeftControlsLineHeight);
@@ -221,6 +206,10 @@ export default class MinimalUIHotbar {
                 $("#hotbar").css('position', 'absolute');
             }
         });
+
+        Hooks.on('renderCameraViews', function() {
+            MinimalUIHotbar.positionHotbar();
+        })
 
         Hooks.once('renderHotbar', function() {
             const hotbarSetting = game.settings.get('minimal-ui', 'hotbar');
