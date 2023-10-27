@@ -1,3 +1,6 @@
+### 1.6.8
+* Compatibility: Monk's Hotbar Extension
+
 ### 1.6.7
 * Enhancement: Improved setting change detection
 * Bugfix: Fixed broken hotbar and navigation custom positioning (Thanks @GambetTV)

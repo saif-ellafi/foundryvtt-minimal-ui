@@ -7,13 +7,11 @@
     --playerbennies: none;
     --playerh3w: unset;
     --playerbot: 5px;
-    --playerleft: -5px;
     --playerpingdisplay: initial;
 }
 
 #players {
     margin-bottom: var(--playerbot);
-    left: var(--playerleft);
     font-size: var(--playerfsize);
     visibility: var(--playervis);
     opacity: var(--opacity);

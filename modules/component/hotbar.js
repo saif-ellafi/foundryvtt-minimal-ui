@@ -201,7 +201,7 @@ export default class MinimalUIHotbar {
                 $("#hotbar").css('margin-bottom', '-5px');
             }
             if (game.modules.get('monks-hotbar-expansion')?.active) {
-                $("#hotbar").css('position', 'absolute');
+                $("#hotbar").css('position', 'fixed');
             }
         });
 
