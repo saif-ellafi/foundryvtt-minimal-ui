@@ -50,6 +50,10 @@ export default class MinimalUINavigation {
             onChange: debouncedReload
         });
 
+        if (game.system.id === 'sfrpg')
+            rootStyle.setProperty('--navileft', '-1px');
+            rootStyle.setProperty('--naviright', '5px');
+
     }
 
     static initHooks() {

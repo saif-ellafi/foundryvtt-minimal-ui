@@ -6,6 +6,8 @@
     --navifs: 14px;
     --navilisttop: 16px;
     --navibuttonsize: 23px;
+    --navileft: -10px;
+    --naviright: 0px;
 }
 
 #navigation {
@@ -33,8 +35,8 @@
     border: 1px solid var(--bordercolor);
     border-bottom: 1px solid var(--bordercolor);
     box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
-    left: -10px;
-    margin-right: 0px;
+    left: var(--navileft);
+    margin-right: var(--naviright);
     top: 5px;
 }
 

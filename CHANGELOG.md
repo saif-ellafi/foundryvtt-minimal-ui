@@ -1,3 +1,6 @@
+### 1.7.0
+* Compatibility: Starfinder system navi fix
+
 ### 1.6.9
 * Bugfix: Fixed navigation scenes overlapping under chat
 * Bugfix: Issues with logo size on some systems
