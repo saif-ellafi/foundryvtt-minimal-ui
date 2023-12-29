@@ -1,4 +1,4 @@
-### 1.7.0
+### 1.6.10
 * Compatibility: Starfinder system navi fix
 
 ### 1.6.9
