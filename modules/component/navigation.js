@@ -3,14 +3,15 @@ import '../../styles/component/navigation.css';
 
 export default class MinimalUINavigation {
 
-    static cssSceneNavNoLogoStart = 10;
+    static cssSceneNavNoLogoStart = 0;
+    static cssSceneNavLogoStart = 110;
 
     static async collapseNavigation() {
         await ui.nav.collapse();
     }
 
     static positionNav() {
-        let navixpos = game.settings.get('minimal-ui', 'foundryLogoSize') === 'hidden' ? MinimalUINavigation.cssSceneNavNoLogoStart : 120;
+        let navixpos = game.settings.get('minimal-ui', 'foundryLogoSize') === 'hidden' ? MinimalUINavigation.cssSceneNavNoLogoStart : MinimalUINavigation.cssSceneNavLogoStart;
         if (game.webrtc.mode > 0 && !ui.webrtc.element.hasClass('hidden'))
             if (game.webrtc.settings.client.dockPosition === 'left')
                 navixpos += ui.webrtc.position.width;

@@ -1,6 +1,6 @@
 :root {
     --navivis: hidden;
-    --navixpos: 120px;
+    --navixpos: 110px;
     --navixmg: 75px;
     --navilh: 20px;
     --navifs: 14px;
@@ -9,11 +9,10 @@
 }
 
 #navigation {
-    left: var(--navixpos);
+    padding-left: var(--navixpos);
     visibility: var(--navivis);
     opacity: var(--opacity);
     transition: 0.5s ease-out 0.5s;
-    position: fixed;
     margin: 5px 0 0 0;
 }
 
@@ -34,6 +33,8 @@
     border: 1px solid var(--bordercolor);
     border-bottom: 1px solid var(--bordercolor);
     box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
+    left: -10px;
+    margin-right: 0px;
     top: 5px;
 }
 

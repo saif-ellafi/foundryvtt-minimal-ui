@@ -1,3 +1,7 @@
+### 1.6.9
+* Bugfix: Fixed navigation scenes overlapping under chat
+* Bugfix: Issues with logo size on some systems
+
 ### 1.6.8
 * Compatibility: Monk's Hotbar Extension
 
