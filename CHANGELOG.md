@@ -1,3 +1,6 @@
+### 1.6.11
+* Bugfix: Fixed scene navigation moving with players list
+
 ### 1.6.10
 * Compatibility: Starfinder system navi fix
 

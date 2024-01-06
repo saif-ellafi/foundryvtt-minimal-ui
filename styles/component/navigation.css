@@ -8,6 +8,11 @@
     --navibuttonsize: 23px;
     --navileft: -10px;
     --naviright: 0px;
+    --topleft: -200px;
+}
+
+#ui-top.offset {
+    margin-left: var(--topleft);
 }
 
 #navigation {

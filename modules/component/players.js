@@ -101,11 +101,19 @@ export default class MinimalUIPlayers {
                         rootStyle.setProperty('--playerfsize', MinimalUIPlayers.cssPlayersSmallFontSize);
                         rootStyle.setProperty('--players-width', MinimalUIPlayers.cssPlayersSmallWidth);
                         rootStyle.setProperty('--playerwidthhv', MinimalUIPlayers.cssPlayersSmallWidth);
+                        if (game.system.id === 'sfrpg')
+                            rootStyle.setProperty('--topleft', '-184px');
+                        else
+                            rootStyle.setProperty('--topleft', '-175px');
                     } else {
                         rootStyle.setProperty('--playerfsize', MinimalUIPlayers.cssPlayersStandardFontSize);
                         rootStyle.setProperty('--playerfsizehv', MinimalUIPlayers.cssPlayersStandardFontSize);
                         rootStyle.setProperty('--players-width', MinimalUIPlayers.cssPlayersStandardWidth);
                         rootStyle.setProperty('--playerwidthhv', MinimalUIPlayers.cssPlayersStandardWidth);
+                        if (game.system.id === 'sfrpg')
+                            rootStyle.setProperty('--topleft', '-209px');
+                        else
+                            rootStyle.setProperty('--topleft', '-200px');
                     }
                     rootStyle.setProperty('--playervis', 'visible');
                     rootStyle.setProperty('--playerslh', '20px');
@@ -182,6 +190,13 @@ export default class MinimalUIPlayers {
                         );
                     }
                     // ---
+                    if (game.settings.get('minimal-ui', 'controlsSize') === 'small')
+                        rootStyle.setProperty('--topleft', '-90px');
+                    else
+                        if (game.system.id === 'sfrpg')
+                            rootStyle.setProperty('--topleft', '-110px');
+                        else
+                            rootStyle.setProperty('--topleft', '-101px');
                     if (plSetting === 'autohide') {
                         players.hover(
                           () => {
@@ -189,12 +204,29 @@ export default class MinimalUIPlayers {
                               players.css('font-size', 'var(--playerfsizehv)');
                               players.css('opacity', '100%');
                               $("#players ol li.player").css('line-height', '20px');
+                              if (plSize === 'small')
+                                if (game.system.id === 'sfrpg')
+                                  rootStyle.setProperty('--topleft', '-184px');
+                                else
+                                    rootStyle.setProperty('--topleft', '-175px');
+                              else
+                                if (game.system.id === 'sfrpg')
+                                    rootStyle.setProperty('--topleft', '-209px');
+                                else
+                                    rootStyle.setProperty('--topleft', '-200px');
                           },
                           () => {
                               players.css('width', '');
                               players.css('font-size', 'var(--playerfsize)');
                               players.css('opacity', 'var(--opacity)');
                               $("#players ol li.player").css('line-height', '2px');
+                              if (game.settings.get('minimal-ui', 'controlsSize') === 'small')
+                                rootStyle.setProperty('--topleft', '-90px');
+                              else
+                                if (game.system.id === 'sfrpg')
+                                    rootStyle.setProperty('--topleft', '-110px');
+                                else
+                                    rootStyle.setProperty('--topleft', '-101px');
                           })
                     } else {
                         players.css('transition', 'ease-out 0.5s');
@@ -206,6 +238,16 @@ export default class MinimalUIPlayers {
                                 players.css('font-size', 'var(--playerfsizehv)');
                                 players.css('opacity', '100%');
                                 $("#players ol li.player").css('line-height', '20px');
+                                if (plSize === 'small')
+                                    if (game.system.id === 'sfrpg')
+                                        rootStyle.setProperty('--topleft', '-184px');
+                                    else
+                                        rootStyle.setProperty('--topleft', '-175px');
+                                else
+                                    if (game.system.id === 'sfrpg')
+                                        rootStyle.setProperty('--topleft', '-209px');
+                                    else
+                                        rootStyle.setProperty('--topleft', '-200px');
                                 state = 1;
                                 setTimeout(() => {if (state === 1 ) players.css('transition', 'ease-out 0.5s')}, 100);
                             } else {
@@ -214,6 +256,13 @@ export default class MinimalUIPlayers {
                                 players.css('font-size', 'var(--playerfsize)');
                                 players.css('opacity', 'var(--opacity)');
                                 $("#players ol li.player").css('line-height', '2px');
+                                if (game.settings.get('minimal-ui', 'controlsSize') === 'small')
+                                    rootStyle.setProperty('--topleft', '-90px');
+                                else
+                                    if (game.system.id === 'sfrpg')
+                                        rootStyle.setProperty('--topleft', '-110px');
+                                    else
+                                        rootStyle.setProperty('--topleft', '-101px');
                                 state = 0;
                                 setTimeout(() => {if (state === 0 ) players.css('transition', 'ease-out 0.5s')}, 100);
                             }
