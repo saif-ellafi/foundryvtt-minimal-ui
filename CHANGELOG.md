@@ -1,3 +1,6 @@
+### 1.7.0
+* Compatibility: Support Foundry V12
+
 ### 1.6.11
 * Bugfix: Fixed scene navigation moving with players list
 
